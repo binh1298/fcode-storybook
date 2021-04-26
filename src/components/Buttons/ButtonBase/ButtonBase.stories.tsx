@@ -11,9 +11,16 @@ export default {
 //👇 We create a “template” of how args map to rendering
 const Template: Story<ButtonBaseProps> = (args) => <ButtonBase {...args} />;
 
-export const ButtonBaseStory = Template.bind({});
-ButtonBaseStory.args = {
+export const Primary = Template.bind({});
+Primary.args = {
     children: "Button Base",
     variant: "contained",
     color: "primary",
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+    children: "Button Base",
+    variant: "contained",
+    color: "secondary",
 };

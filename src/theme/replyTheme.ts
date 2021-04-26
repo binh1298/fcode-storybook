@@ -72,12 +72,12 @@ const breakpoints = createBreakpoint({
   },
 });
 
-const theme: Readonly<ThemeOptions> = {
+const themeObject: Readonly<ThemeOptions> = {
   palette,
   breakpoints,
   typography: {
     fontSize: 16,
-    fontFamily: "Roboto, sans-serif",
+    fontFamily: "Work Sans, sans-serif",
     h1: {
       fontSize: "6rem",
       fontWeight: 300,
@@ -86,7 +86,7 @@ const theme: Readonly<ThemeOptions> = {
     },
     h2: {
       fontSize: "3.75rem",
-      fontWeight: 300,
+      fontWeight: 600,
       letterSpacing: "-0.5px",
       textTransform: "none",
     },
@@ -159,5 +159,5 @@ const theme: Readonly<ThemeOptions> = {
   },
 };
 
-const muiTheme = createMuiTheme(theme);
-export default muiTheme;
+const replyTheme = createMuiTheme(themeObject);
+export default replyTheme;
