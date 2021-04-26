@@ -53,7 +53,7 @@ const palette: PaletteOptions = {
         hover: "#F5F5F5",
         selected: "#EBEBEB",
         disabledBackground: "#E0E0E0",
-        disabled: "BDBDBD",
+        disabled: "#BDBDBD",
     },
 
     background: {
