@@ -1,8 +1,6 @@
-name: FCode Storybook
+name: FCode Storybook CI
 
-on:
-    pull_request_review:
-        types: [submitted]
+on: [pull_request]
 
 jobs:
     install-deps:
