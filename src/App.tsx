@@ -12,7 +12,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <header className="App-header">
                     <ButtonBase variant="contained" color="primary">
-                        Hello FCode Storybook Team
+                        Hello FCode Storybook Team. <br /> Run yarn storybook
                     </ButtonBase>
                 </header>
             </ThemeProvider>
