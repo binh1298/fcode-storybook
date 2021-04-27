@@ -127,7 +127,7 @@ const themeObject: Readonly<ThemeOptions> = {
             textTransform: "none",
         },
         body1: {
-            fontSize: "1rem",
+            fontSize: "1.125rem",
             fontWeight: 400,
             letterSpacing: "0.15px",
             textTransform: "none",
