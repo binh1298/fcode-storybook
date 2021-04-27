@@ -17,7 +17,7 @@ const palette: PaletteOptions = {
   },
   secondary: {
     main: "#F9AA33",
-    contrastText: common.white,
+    contrastText: common.black,
   },
   info: {
     main: "#2196F3",
