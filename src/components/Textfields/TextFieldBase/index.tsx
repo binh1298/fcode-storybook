@@ -3,6 +3,7 @@ import {
     BaseTextFieldProps as MaterialTextFieldProps,
     makeStyles,
     Theme,
+    Box,
 } from "@material-ui/core";
 
 export interface TexfieldBaseProps extends MaterialTextFieldProps {
@@ -71,11 +72,7 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
 const TextFieldBase = (props: TexfieldBaseProps) => {
     const { color, errorMessage, ...rest } = props;
 
-    const isNotError =
-        typeof errorMessage === undefined ||
-        errorMessage === null ||
-        errorMessage === undefined ||
-        errorMessage === "";
+    const isNotError: boolean = !errorMessage;
 
     const classes = useStyles({ color: isNotError ? color : "error" });
 
