@@ -33,7 +33,7 @@ Secondary.args = {
 
 export const FabPrimary = Template.bind({});
 FabPrimary.args = {
-    children: <AddIcon style={{ fontSize: "1.5em" }} />,
+    children: <AddIcon />,
     color: "primary",
     style: {
         height: "60px",
