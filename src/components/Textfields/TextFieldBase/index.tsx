@@ -14,7 +14,7 @@ export interface TexfieldBaseProps extends MaterialTextFieldProps {
     fullWidth?: boolean;
     errorMessage?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
-    color?: "primary" | "secondary";
+    color: "primary" | "secondary";
 }
 
 interface Color {
@@ -71,18 +71,13 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
 const TextFieldBase = (props: TexfieldBaseProps) => {
     const { color, errorMessage, ...rest } = props;
 
-    let selectedColor =
-        typeof color === undefined || (color !== "primary" && color !== "secondary")
-            ? "primary"
-            : color;
-
     const isNotError =
         typeof errorMessage === undefined ||
         errorMessage === null ||
         errorMessage === undefined ||
         errorMessage === "";
 
-    const classes = useStyles({ color: isNotError ? selectedColor : "error" });
+    const classes = useStyles({ color: isNotError ? color : "error" });
 
     return (
         <MaterialTextField
