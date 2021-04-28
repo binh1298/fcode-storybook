@@ -1,3 +1,5 @@
+import { Add as AddIcon, Edit as EditIcon } from "@material-ui/icons";
+
 import ButtonBase, { ButtonBaseProps } from ".";
 
 import { Story } from "@storybook/react";
@@ -15,6 +17,7 @@ export const Primary = Template.bind({});
 Primary.args = {
     children: "Compose",
     color: "primary",
+    startIcon: <AddIcon />,
     variant: "contained",
 };
 
@@ -22,5 +25,6 @@ export const Secondary = Template.bind({});
 Secondary.args = {
     children: "Compose",
     color: "secondary",
+    startIcon: <EditIcon />,
     variant: "contained",
 };

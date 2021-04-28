@@ -8,13 +8,7 @@ const buttonStyle = {
 };
 
 const ButtonBase = (props: ButtonBaseProps) => {
-    return (
-        <MaterialButton
-            {...props}
-            style={buttonStyle}
-            startIcon={props.color === "primary" ? <AddIcon /> : <EditIcon />}
-        />
-    );
+    return <MaterialButton {...props} style={buttonStyle} />;
 };
 
 export default ButtonBase;
