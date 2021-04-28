@@ -1,5 +1,4 @@
 import { createMuiTheme, ThemeOptions } from "@material-ui/core";
-// import createSpacing from '@material-ui/core/styles/createSpacing';
 import createBreakpoint from "@material-ui/core/styles/createBreakpoints";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
@@ -161,3 +160,4 @@ const themeObject: Readonly<ThemeOptions> = {
 
 const replyTheme = createMuiTheme(themeObject);
 export default replyTheme;
+
