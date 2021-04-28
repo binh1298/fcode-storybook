@@ -79,3 +79,29 @@ exports[`<TextfieldBase /> should match snapshot 3`] = `
   </div>
 </div>
 `;
+
+exports[`<TextfieldBase /> should match snapshot 4`] = `
+<div>
+  <div
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-17 makeStyles-root-20"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-16 makeStyles-cssLabel-19 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+    >
+      Test
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    >
+      <input
+        aria-invalid="false"
+        class="MuiInputBase-input MuiInput-input"
+        type="text"
+        value="Value"
+      />
+    </div>
+    
+  </div>
+</div>
+`;

@@ -24,6 +24,13 @@ describe("<TextfieldBase />", () => {
         color: "secondary",
     };
 
+    const propsWithNoErrorMessage: TexfieldBaseProps = {
+        label: "Test",
+        value: "Value",
+        errorMessage: "",
+        color: "secondary",
+    };
+
     it("should match snapshot", () => {
         wrapper = render(<TextfieldBase {...propsForSecondaryColor} />);
         expect(wrapper.container).toMatchSnapshot();
@@ -36,6 +43,11 @@ describe("<TextfieldBase />", () => {
 
     it("should match snapshot", () => {
         wrapper = render(<TextfieldBase {...propsWithErrorMessage} />);
+        expect(wrapper.container).toMatchSnapshot();
+    });
+
+    it("should match snapshot", () => {
+        wrapper = render(<TextfieldBase {...propsWithNoErrorMessage} />);
         expect(wrapper.container).toMatchSnapshot();
     });
 });
