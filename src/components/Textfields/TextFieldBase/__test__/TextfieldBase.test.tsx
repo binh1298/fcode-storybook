@@ -5,20 +5,37 @@ import { render, RenderResult, screen } from "@testing-library/react";
 describe("<TextfieldBase />", () => {
     let wrapper: RenderResult;
 
-    const props: TexfieldBaseProps = {
+    const propsForSecondaryColor: TexfieldBaseProps = {
         label: "Test",
         value: "Value",
+        color: "secondary",
     };
 
-    beforeEach(() => {
-        wrapper = render(<TextfieldBase {...props} />);
-    });
+    const propsForPrimaryColor: TexfieldBaseProps = {
+        label: "Test",
+        value: "Value",
+        color: "primary",
+    };
 
-    it("should exist value", () => {
-        expect(screen.getByDisplayValue("Value")).toBeInTheDocument();
+    const propsWithErrorMessage: TexfieldBaseProps = {
+        label: "Test",
+        value: "Value",
+        errorMessage: "error",
+        color: "secondary",
+    };
+
+    it("should match snapshot", () => {
+        wrapper = render(<TextfieldBase {...propsForSecondaryColor} />);
+        expect(wrapper.container).toMatchSnapshot();
     });
 
     it("should match snapshot", () => {
+        wrapper = render(<TextfieldBase {...propsForPrimaryColor} />);
+        expect(wrapper.container).toMatchSnapshot();
+    });
+
+    it("should match snapshot", () => {
+        wrapper = render(<TextfieldBase {...propsWithErrorMessage} />);
         expect(wrapper.container).toMatchSnapshot();
     });
 });

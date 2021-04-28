@@ -3,10 +3,10 @@
 exports[`<TextfieldBase /> should match snapshot 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-2 makeStyles-root-5"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-1 makeStyles-cssLabel-4 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
       data-shrink="true"
     >
       Test
@@ -21,6 +21,61 @@ exports[`<TextfieldBase /> should match snapshot 1`] = `
         value="Value"
       />
     </div>
+  </div>
+</div>
+`;
+
+exports[`<TextfieldBase /> should match snapshot 2`] = `
+<div>
+  <div
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-7 makeStyles-root-10"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-6 makeStyles-cssLabel-9 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+    >
+      Test
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+    >
+      <input
+        aria-invalid="false"
+        class="MuiInputBase-input MuiInput-input"
+        type="text"
+        value="Value"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextfieldBase /> should match snapshot 3`] = `
+<div>
+  <div
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-12 makeStyles-root-15"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-11 makeStyles-cssLabel-14 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-error Mui-error MuiFormLabel-filled"
+      data-shrink="true"
+    >
+      Test
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
+    >
+      <input
+        aria-invalid="true"
+        class="MuiInputBase-input MuiInput-input"
+        type="text"
+        value="Value"
+      />
+    </div>
+    <p
+      class="MuiFormHelperText-root Mui-error MuiFormHelperText-filled"
+    >
+      error
+    </p>
   </div>
 </div>
 `;
