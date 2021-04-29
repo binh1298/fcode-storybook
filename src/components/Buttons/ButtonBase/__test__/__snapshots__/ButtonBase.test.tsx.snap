@@ -4,7 +4,7 @@ exports[`<ButtonBase /> should match snapshot 1`] = `
 <div>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-text"
-    style="border-radius: 2em;"
+    style="border-radius: calc(1em + 6px);"
     tabindex="0"
     type="button"
   >
