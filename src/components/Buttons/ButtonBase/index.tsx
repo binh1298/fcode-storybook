@@ -2,8 +2,12 @@ import { Button as MaterialButton, ButtonProps as MaterialButtonProps } from "@m
 
 export interface ButtonBaseProps extends MaterialButtonProps {}
 
+const buttonStyle = {
+    borderRadius: "calc(1rem + 6px)",
+};
+
 const ButtonBase = (props: ButtonBaseProps) => {
-    return <MaterialButton {...props} />;
+    return <MaterialButton {...props} style={buttonStyle} />;
 };
 
 export default ButtonBase;

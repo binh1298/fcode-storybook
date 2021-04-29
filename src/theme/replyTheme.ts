@@ -1,5 +1,4 @@
 import { createMuiTheme, ThemeOptions } from "@material-ui/core";
-// import createSpacing from '@material-ui/core/styles/createSpacing';
 import createBreakpoint from "@material-ui/core/styles/createBreakpoints";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
@@ -17,7 +16,7 @@ const palette: PaletteOptions = {
     },
     secondary: {
         main: "#F9AA33",
-        contrastText: common.white,
+        contrastText: common.black,
     },
     info: {
         main: "#2196F3",
