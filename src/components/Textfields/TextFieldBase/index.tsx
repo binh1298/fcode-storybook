@@ -26,6 +26,9 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
     cssLabel: {
         color: ({ color }) => theme.palette[color].main,
     },
+    fontColor: {
+        color: ({ color }) => theme.palette[color].main,
+    },
     root: {
         "& label.Mui-focused": {
             color: ({ color }) => theme.palette[color].main,
@@ -83,6 +86,7 @@ const TextFieldBase = (props: TexfieldBaseProps) => {
             error={!isNotError}
             helperText={errorMessage}
             InputLabelProps={{ classes: { root: classes.cssLabel } }}
+            InputProps={{ className: classes.fontColor }}
         />
     );
 };

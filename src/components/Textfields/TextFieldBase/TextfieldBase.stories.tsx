@@ -1,6 +1,24 @@
 import TextfieldBase, { TexfieldBaseProps } from ".";
 
-import { Story } from "@storybook/react";
+import { Story, Meta, StoryContext } from "@storybook/react";
+
+const backgroundColor = {
+    light: "#fff",
+    dark: "#000",
+};
+
+const styles = (context: StoryContext) => {
+    return {
+        backgroundColor:
+            context.args.color === "secondary" ? backgroundColor.dark : backgroundColor.light,
+        minHeight: "300px",
+        margin: "10px",
+        padding: "10px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    };
+};
 
 export default {
     title: "Components/TextfieldBase",
@@ -13,9 +31,18 @@ export default {
             },
         },
     },
-};
+    decorators: [
+        (Story, context) => (
+            <div style={styles(context)}>
+                <Story />
+            </div>
+        ),
+    ],
+} as Meta;
 
-const Template: Story<TexfieldBaseProps> = (args) => <TextfieldBase {...args} />;
+const Template: Story<TexfieldBaseProps> = (args) => {
+    return <TextfieldBase {...args} />;
+};
 
 export const Standard = Template.bind({});
 Standard.args = {
