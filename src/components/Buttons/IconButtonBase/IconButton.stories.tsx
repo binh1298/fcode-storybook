@@ -1,15 +1,15 @@
 import { Add as AddIcon, Edit as EditIcon } from "@material-ui/icons";
 
-import IconButton, { FabBaseProps } from ".";
+import IconButtonBase, { FabBaseProps } from ".";
 
 import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/IconButton",
-    component: IconButton,
+    title: "Components/IconButtonBase",
+    component: IconButtonBase,
 };
 
-const Template: Story<FabBaseProps> = (args) => <IconButton {...args} />;
+const Template: Story<FabBaseProps> = (args) => <IconButtonBase {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
