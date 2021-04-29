@@ -1,4 +1,4 @@
-import IconButton, { FabBaseProps } from "../";
+import IconButton, { FabBaseProps } from "..";
 
 import { render, RenderResult, screen } from "@testing-library/react";
 
