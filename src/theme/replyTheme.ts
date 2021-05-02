@@ -60,6 +60,7 @@ const palette: PaletteOptions = {
         default: common.white,
     },
     contrastThreshold: 500,
+    common: common,
 };
 
 const breakpoints = createBreakpoint({

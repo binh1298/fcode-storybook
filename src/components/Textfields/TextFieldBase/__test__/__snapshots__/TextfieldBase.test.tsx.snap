@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextfieldBase /> should match snapshot 1`] = `
+exports[`<TextfieldBase /> should not show #F44336 color when not have any error message 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root makeStyles-root-3 makeStyles-root-7"
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-31 makeStyles-root-35"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-1 makeStyles-cssLabel-5 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-29 makeStyles-cssLabel-33 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
       data-shrink="true"
     >
       Test
     </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-2 makeStyles-fontColor-6 MuiInputBase-formControl MuiInput-formControl"
+      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-30 makeStyles-fontColor-34 MuiInputBase-formControl MuiInput-formControl"
     >
       <input
         aria-invalid="false"
@@ -25,7 +25,32 @@ exports[`<TextfieldBase /> should match snapshot 1`] = `
 </div>
 `;
 
-exports[`<TextfieldBase /> should match snapshot 2`] = `
+exports[`<TextfieldBase /> should show #344955 color when color=primary 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-17 makeStyles-root-21"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-15 makeStyles-cssLabel-19 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      data-shrink="true"
+    >
+      Test
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-16 makeStyles-fontColor-20 MuiInputBase-formControl MuiInput-formControl"
+    >
+      <input
+        aria-invalid="false"
+        class="MuiInputBase-input MuiInput-input"
+        type="text"
+        value="Value"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<TextfieldBase /> should show #F9AA33 color when color=secondary 1`] = `
 <div>
   <div
     class="MuiFormControl-root MuiTextField-root makeStyles-root-10 makeStyles-root-14"
@@ -50,19 +75,19 @@ exports[`<TextfieldBase /> should match snapshot 2`] = `
 </div>
 `;
 
-exports[`<TextfieldBase /> should match snapshot 3`] = `
+exports[`<TextfieldBase /> should show #F44336 color when errorMessage is available 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root makeStyles-root-17 makeStyles-root-21"
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-24 makeStyles-root-28"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-15 makeStyles-cssLabel-19 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-error Mui-error MuiFormLabel-filled"
+      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-22 makeStyles-cssLabel-26 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-error Mui-error MuiFormLabel-filled"
       data-shrink="true"
     >
       Test
     </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-16 makeStyles-fontColor-20 Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
+      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-23 makeStyles-fontColor-27 Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
     >
       <input
         aria-invalid="true"
@@ -74,34 +99,8 @@ exports[`<TextfieldBase /> should match snapshot 3`] = `
     <p
       class="MuiFormHelperText-root Mui-error MuiFormHelperText-filled"
     >
-      error
+      error message
     </p>
-  </div>
-</div>
-`;
-
-exports[`<TextfieldBase /> should match snapshot 4`] = `
-<div>
-  <div
-    class="MuiFormControl-root MuiTextField-root makeStyles-root-24 makeStyles-root-28"
-  >
-    <label
-      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-22 makeStyles-cssLabel-26 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-      data-shrink="true"
-    >
-      Test
-    </label>
-    <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-23 makeStyles-fontColor-27 MuiInputBase-formControl MuiInput-formControl"
-    >
-      <input
-        aria-invalid="false"
-        class="MuiInputBase-input MuiInput-input"
-        type="text"
-        value="Value"
-      />
-    </div>
-    
   </div>
 </div>
 `;

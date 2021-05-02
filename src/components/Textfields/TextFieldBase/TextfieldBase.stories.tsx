@@ -1,24 +1,23 @@
+import { makeStyles, Theme } from "@material-ui/core";
+
 import TextfieldBase, { TexfieldBaseProps } from ".";
 
 import { Story, Meta, StoryContext } from "@storybook/react";
 
-const backgroundColor = {
-    light: "#fff",
-    dark: "#000",
-};
-
-const styles = (context: StoryContext) => {
-    return {
-        backgroundColor:
-            context.args.color === "secondary" ? backgroundColor.dark : backgroundColor.light,
+const useStyles = makeStyles<Theme, StoryContext>((theme) => ({
+    root: {
+        backgroundColor: (context) =>
+            context.args.color === "secondary"
+                ? theme.palette.common.black
+                : theme.palette.common.white,
         minHeight: "300px",
         margin: "10px",
         padding: "10px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-    };
-};
+    },
+}));
 
 export default {
     title: "Components/TextfieldBase",
@@ -32,11 +31,14 @@ export default {
         },
     },
     decorators: [
-        (Story, context) => (
-            <div style={styles(context)}>
-                <Story />
-            </div>
-        ),
+        (Story, context) => {
+            const classes = useStyles(context);
+            return (
+                <div className={classes.root}>
+                    <Story />
+                </div>
+            );
+        },
     ],
 } as Meta;
 

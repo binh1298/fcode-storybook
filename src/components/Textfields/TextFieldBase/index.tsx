@@ -75,15 +75,13 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
 const TextFieldBase = (props: TexfieldBaseProps) => {
     const { color, errorMessage, ...rest } = props;
 
-    const isNotError: boolean = !errorMessage;
-
-    const classes = useStyles({ color: isNotError ? color : "error" });
+    const classes = useStyles({ color: !errorMessage ? color : "error" });
 
     return (
         <MaterialTextField
             className={classes.root}
             {...rest}
-            error={!isNotError}
+            error={Boolean(errorMessage)}
             helperText={errorMessage}
             InputLabelProps={{ classes: { root: classes.cssLabel } }}
             InputProps={{ className: classes.fontColor }}
