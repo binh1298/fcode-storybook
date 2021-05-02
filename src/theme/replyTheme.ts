@@ -1,5 +1,4 @@
 import { createMuiTheme, ThemeOptions } from "@material-ui/core";
-// import createSpacing from '@material-ui/core/styles/createSpacing';
 import createBreakpoint from "@material-ui/core/styles/createBreakpoints";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
@@ -17,7 +16,7 @@ const palette: PaletteOptions = {
     },
     secondary: {
         main: "#F9AA33",
-        contrastText: common.white,
+        contrastText: common.black,
     },
     info: {
         main: "#2196F3",
@@ -82,79 +81,91 @@ const themeObject: Readonly<ThemeOptions> = {
         h1: {
             fontSize: "6rem",
             fontWeight: 300,
+            fontStyle: "normal",
             letterSpacing: "-1.5px",
             textTransform: "none",
         },
         h2: {
             fontSize: "3.75rem",
             fontWeight: 600,
+            fontStyle: "normal",
             letterSpacing: "-0.5px",
             textTransform: "none",
         },
         h3: {
             fontSize: "3rem",
             fontWeight: 400,
+            fontStyle: "normal",
             letterSpacing: "0px",
             textTransform: "none",
         },
         h4: {
             fontSize: "2.125rem",
             fontWeight: 400,
+            fontStyle: "normal",
             letterSpacing: "0.25px",
             textTransform: "none",
         },
         h5: {
             fontSize: "1.5rem",
-            fontWeight: 300,
+            fontWeight: 700,
+            fontStyle: "normal",
             letterSpacing: "0px",
             textTransform: "none",
         },
         h6: {
             fontSize: "1.25rem",
             fontWeight: 500,
+            fontStyle: "normal",
             letterSpacing: "0.15px",
             textTransform: "none",
         },
         subtitle1: {
             fontSize: "1rem",
             fontWeight: 400,
+            fontStyle: "normal",
             letterSpacing: "0.15px",
             textTransform: "none",
         },
         subtitle2: {
             fontSize: "0.875rem",
             fontWeight: 500,
+            fontStyle: "normal",
             letterSpacing: "0.1px",
             textTransform: "none",
         },
         body1: {
-            fontSize: "1rem",
+            fontSize: "1.125rem",
             fontWeight: 400,
-            letterSpacing: "0.15px",
+            fontStyle: "normal",
+            letterSpacing: "0.5px",
             textTransform: "none",
         },
         body2: {
             fontSize: "0.875rem",
             fontWeight: 400,
-            letterSpacing: "0.15px",
+            letterSpacing: "0.25px",
             textTransform: "none",
         },
         button: {
             fontSize: "0.875rem",
             fontWeight: 500,
-            letterSpacing: "0.4px",
+            fontStyle: "normal",
+            letterSpacing: "1.25px",
             textTransform: "capitalize",
         },
         caption: {
             fontSize: "0.75rem",
             fontWeight: 400,
+            fontStyle: "normal",
             letterSpacing: "0.4px",
             textTransform: "none",
         },
         overline: {
             fontSize: "0.75rem",
-            fontWeight: 400,
-            letterSpacing: "1px",
+            fontWeight: 600,
+            fontStyle: "normal",
+            letterSpacing: "1.5px",
             textTransform: "capitalize",
         },
     },
