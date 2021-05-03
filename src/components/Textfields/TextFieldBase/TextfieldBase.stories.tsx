@@ -1,42 +1,26 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 import TextfieldBase, { TexfieldBaseProps } from ".";
 
-import { Story, Meta, StoryContext } from "@storybook/react";
-
-const useStyles = makeStyles<Theme, StoryContext>((theme) => ({
-    root: {
-        backgroundColor: (context) =>
-            context.args.color === "secondary"
-                ? theme.palette.common.black
-                : theme.palette.common.white,
-        minHeight: "300px",
-        margin: "10px",
-        padding: "10px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-}));
+import { Story, Meta } from "@storybook/react";
 
 export default {
     title: "Components/TextfieldBase",
     component: TextfieldBase,
-    argTypes: {
-        color: {
-            control: {
-                type: "radio",
-                options: ["primary", "secondary"],
-            },
-        },
-    },
     decorators: [
-        (Story, context) => {
-            const classes = useStyles(context);
+        (Story) => {
             return (
-                <div className={classes.root}>
+                <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    minHeight="300px"
+                    m={10}
+                    p={10}
+                >
                     <Story />
-                </div>
+                </Box>
             );
         },
     ],
@@ -50,19 +34,16 @@ export const Standard = Template.bind({});
 Standard.args = {
     label: "Hello World",
     variant: "standard",
-    color: "primary",
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
     label: "Hello World",
     variant: "outlined",
-    color: "primary",
 };
 
 export const Filled = Template.bind({});
 Filled.args = {
     label: "Hello World",
     variant: "filled",
-    color: "primary",
 };

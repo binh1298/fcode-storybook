@@ -3,7 +3,6 @@ import {
     BaseTextFieldProps as MaterialTextFieldProps,
     makeStyles,
     Theme,
-    Box,
 } from "@material-ui/core";
 
 export interface TexfieldBaseProps extends MaterialTextFieldProps {
@@ -15,11 +14,10 @@ export interface TexfieldBaseProps extends MaterialTextFieldProps {
     fullWidth?: boolean;
     errorMessage?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
-    color: "primary" | "secondary";
 }
 
 interface Color {
-    color: "primary" | "secondary" | "error";
+    color: "primary" | "error";
 }
 
 const useStyles = makeStyles<Theme, Color>((theme) => ({
@@ -73,9 +71,9 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
 }));
 
 const TextFieldBase = (props: TexfieldBaseProps) => {
-    const { color, errorMessage, ...rest } = props;
+    const { errorMessage, ...rest } = props;
 
-    const classes = useStyles({ color: !errorMessage ? color : "error" });
+    const classes = useStyles({ color: !errorMessage ? "primary" : "error" });
 
     return (
         <MaterialTextField
