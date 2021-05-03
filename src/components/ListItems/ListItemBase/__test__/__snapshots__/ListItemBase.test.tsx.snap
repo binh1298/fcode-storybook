@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonBase /> should match snapshot 1`] = `
+<div>
+  <li
+    class="MuiListItem-root MuiListItem-gutters"
+  >
+    <div>
+      Test
+    </div>
+  </li>
+</div>
+`;
