@@ -77,6 +77,10 @@ const themeObject: Readonly<ThemeOptions> = {
     typography: {
         fontSize: 16,
         fontFamily: "Work Sans, sans-serif",
+        fontWeightLight: 300,
+        fontWeightRegular: 400,
+        fontWeightMedium: 500,
+        fontWeightBold: 700,
         h1: {
             fontSize: "6rem",
             fontWeight: 300,
