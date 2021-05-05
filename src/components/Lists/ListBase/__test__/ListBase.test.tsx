@@ -2,7 +2,7 @@ import ListBase, { ListBaseProps } from "..";
 
 import { render, RenderResult, screen } from "@testing-library/react";
 
-describe("<ButtonBase />", () => {
+describe("<ListBase />", () => {
     let wrapper: RenderResult;
 
     const props: ListBaseProps = {

@@ -1,17 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ButtonBase /> should match snapshot 1`] = `
+exports[`<ListItemTextBase /> should match snapshot 1`] = `
 <div>
   <div
-    class="MuiListItemText-root"
+    class="MuiBox-root MuiBox-root-2"
   >
-    <span
-      class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+    <div
+      class="MuiListItemText-root"
     >
-      <div>
-        Test
-      </div>
-    </span>
+      <span
+        class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+      >
+        <div>
+          Test
+        </div>
+      </span>
+    </div>
   </div>
 </div>
 `;

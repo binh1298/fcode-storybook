@@ -1,4 +1,4 @@
-import { Box } from "@material-ui/core";
+import { Box as MaterialBox } from "@material-ui/core";
 import {
     InboxRounded as InboxIcon,
     StarBorderRounded as StarIcon,
@@ -21,75 +21,79 @@ export default {
     component: ListBase,
 };
 
-export const ListBase1: Story<ListBaseProps> = (args) => (
-    <Box width={320} color="primary.contrastText" bgcolor="primary.main">
-        <ListBase {...args}>
-            <Box color="secondary.main" bgcolor="primary.main">
-                <ListItemBase>
-                    <Box ml={3}>
-                        <ListItemIconBase>
-                            <Box color="secondary.main" bgcolor="primary.main">
-                                <InboxIcon />
-                            </Box>
-                        </ListItemIconBase>
-                    </Box>
-                    <ListItemTextBase primary={<Box fontWeight="fontWeightBold">Inbox</Box>} />
-                </ListItemBase>
-            </Box>
+export const SimpleList: Story<ListBaseProps> = (args) => (
+    <ListBase {...args}>
+        <MaterialBox color="secondary.main" bgcolor="primary.main">
             <ListItemBase>
-                <Box ml={3}>
+                <MaterialBox ml={3}>
                     <ListItemIconBase>
-                        <Box color="primary.contrastText" bgcolor="primary.main">
-                            <StarIcon />
-                        </Box>
+                        <MaterialBox color="secondary.main" bgcolor="primary.main">
+                            <InboxIcon />
+                        </MaterialBox>
                     </ListItemIconBase>
-                </Box>
-                <ListItemTextBase primary="Starred" />
+                </MaterialBox>
+                <ListItemTextBase
+                    primary={
+                        <MaterialBox color="secondary.main" fontWeight="fontWeightBold">
+                            Inbox
+                        </MaterialBox>
+                    }
+                />
             </ListItemBase>
+        </MaterialBox>
+        <ListItemBase>
+            <MaterialBox ml={3}>
+                <ListItemIconBase>
+                    <MaterialBox color="primary.contrastText" bgcolor="primary.main">
+                        <StarIcon />
+                    </MaterialBox>
+                </ListItemIconBase>
+            </MaterialBox>
+            <ListItemTextBase primary="Starred" />
+        </ListItemBase>
 
-            <ListItemBase>
-                <Box ml={3}>
-                    <ListItemIconBase>
-                        <Box color="primary.contrastText" bgcolor="primary.main">
-                            <SendIcon />
-                        </Box>
-                    </ListItemIconBase>
-                </Box>
-                <ListItemTextBase primary="Sent" />
-            </ListItemBase>
+        <ListItemBase>
+            <MaterialBox ml={3}>
+                <ListItemIconBase>
+                    <MaterialBox color="primary.contrastText" bgcolor="primary.main">
+                        <SendIcon />
+                    </MaterialBox>
+                </ListItemIconBase>
+            </MaterialBox>
+            <ListItemTextBase primary="Sent" />
+        </ListItemBase>
 
-            <ListItemBase>
-                <Box ml={3}>
-                    <ListItemIconBase>
-                        <Box color="primary.contrastText" bgcolor="primary.main">
-                            <DeleteIcon />
-                        </Box>
-                    </ListItemIconBase>
-                </Box>
-                <ListItemTextBase primary="Trash" />
-            </ListItemBase>
+        <ListItemBase>
+            <MaterialBox ml={3}>
+                <ListItemIconBase>
+                    <MaterialBox color="primary.contrastText" bgcolor="primary.main">
+                        <DeleteIcon />
+                    </MaterialBox>
+                </ListItemIconBase>
+            </MaterialBox>
+            <ListItemTextBase primary="Trash" />
+        </ListItemBase>
 
-            <ListItemBase>
-                <Box ml={3}>
-                    <ListItemIconBase>
-                        <Box color="primary.contrastText" bgcolor="primary.main">
-                            <ReportIcon />
-                        </Box>
-                    </ListItemIconBase>
-                </Box>
-                <ListItemTextBase primary="Spam" />
-            </ListItemBase>
+        <ListItemBase>
+            <MaterialBox ml={3}>
+                <ListItemIconBase>
+                    <MaterialBox color="primary.contrastText" bgcolor="primary.main">
+                        <ReportIcon />
+                    </MaterialBox>
+                </ListItemIconBase>
+            </MaterialBox>
+            <ListItemTextBase primary="Spam" />
+        </ListItemBase>
 
-            <ListItemBase>
-                <Box ml={3}>
-                    <ListItemIconBase>
-                        <Box color="primary.contrastText" bgcolor="primary.main">
-                            <DraftsIcon />
-                        </Box>
-                    </ListItemIconBase>
-                </Box>
-                <ListItemTextBase primary="Drafts" />
-            </ListItemBase>
-        </ListBase>
-    </Box>
+        <ListItemBase>
+            <MaterialBox ml={3}>
+                <ListItemIconBase>
+                    <MaterialBox color="primary.contrastText" bgcolor="primary.main">
+                        <DraftsIcon />
+                    </MaterialBox>
+                </ListItemIconBase>
+            </MaterialBox>
+            <ListItemTextBase primary="Drafts" />
+        </ListItemBase>
+    </ListBase>
 );

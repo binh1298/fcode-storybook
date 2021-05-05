@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ButtonBase /> should match snapshot 1`] = `
+exports[`<ListBase /> should match snapshot 1`] = `
 <div>
-  <ul
-    class="MuiList-root MuiList-padding"
+  <div
+    class="MuiBox-root MuiBox-root-2"
   >
-    <div>
-      Test
-    </div>
-  </ul>
+    <ul
+      class="MuiList-root MuiList-padding"
+    >
+      <div>
+        Test
+      </div>
+    </ul>
+  </div>
 </div>
 `;
