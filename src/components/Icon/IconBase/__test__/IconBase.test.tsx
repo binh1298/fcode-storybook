@@ -6,14 +6,14 @@ describe("<IconBase />", () => {
     let wrapper: RenderResult;
 
     const props: IconBaseProps = {
-        children: <div>Test</div>,
+        icon: <div>Test</div>,
     };
 
     beforeEach(() => {
         wrapper = render(<IconBase {...props} />);
     });
 
-    it("should exist children", () => {
+    it("should exist icon", () => {
         expect(screen.getByText("Test")).toBeInTheDocument();
     });
 });
