@@ -1,16 +1,14 @@
 import ListItemIconBase, { ListItemIconBaseProps } from "../";
 
-import { render, RenderResult, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("<ListItemIconBase />", () => {
-    let wrapper: RenderResult;
-
     const props: ListItemIconBaseProps = {
-        children: <div>Test</div>,
+        children: "Test",
     };
 
     beforeEach(() => {
-        wrapper = render(<ListItemIconBase {...props} />);
+        render(<ListItemIconBase {...props} />);
     });
 
     it("should exist children", () => {

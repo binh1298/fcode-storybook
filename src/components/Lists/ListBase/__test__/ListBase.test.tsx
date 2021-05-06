@@ -1,16 +1,14 @@
 import ListBase, { ListBaseProps } from "..";
 
-import { render, RenderResult, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("<ListBase />", () => {
-    let wrapper: RenderResult;
-
     const props: ListBaseProps = {
-        children: <div>Test</div>,
+        children: "Test",
     };
 
     beforeEach(() => {
-        wrapper = render(<ListBase {...props} />);
+        render(<ListBase {...props} />);
     });
 
     it("should exist children", () => {

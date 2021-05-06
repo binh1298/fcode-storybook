@@ -1,16 +1,14 @@
 import ListItemTextBase, { ListItemTextBaseProps } from "..";
 
-import { render, RenderResult, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("<ListItemTextBase />", () => {
-    let wrapper: RenderResult;
-
     const props: ListItemTextBaseProps = {
-        children: <div>Test</div>,
+        primary: "Test",
     };
 
     beforeEach(() => {
-        wrapper = render(<ListItemTextBase {...props} />);
+        render(<ListItemTextBase {...props} />);
     });
 
     it("should exist children", () => {
