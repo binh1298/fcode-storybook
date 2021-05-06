@@ -16,8 +16,4 @@ describe("<ListItemTextBase />", () => {
     it("should exist children", () => {
         expect(screen.getByText("Test")).toBeInTheDocument();
     });
-
-    it("should match snapshot", () => {
-        expect(wrapper.container).toMatchSnapshot();
-    });
 });
