@@ -3,12 +3,12 @@ import React from "react";
 import { Icon as MaterialIcon, IconProps as MaterialIconProps } from "@material-ui/core";
 
 export interface IconBaseProps extends MaterialIconProps {
-    children?: React.ReactNode;
+    icon?: React.ReactNode;
 }
 
 const IconBase = (props: IconBaseProps) => {
-    const { children } = props;
-    return <MaterialIcon {...props}>{children}</MaterialIcon>;
+    const { icon } = props;
+    return <MaterialIcon {...props}>{icon}</MaterialIcon>;
 };
 
 export default IconBase;
