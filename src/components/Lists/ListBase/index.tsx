@@ -8,7 +8,7 @@ export interface ListBaseProps extends MaterialListProps {}
 
 const ListBase = (props: ListBaseProps) => {
     return (
-        <MaterialBox width={320} color="secondary.main" bgcolor="primary.main">
+        <MaterialBox color="secondary.main" bgcolor="primary.main">
             <MaterialList {...props} />
         </MaterialBox>
     );
