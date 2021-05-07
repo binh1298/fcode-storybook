@@ -74,7 +74,6 @@ const breakpoints = createBreakpoint({
 const themeObject: Readonly<ThemeOptions> = {
     palette,
     breakpoints,
-    spacing: 16,
     typography: {
         fontSize: 16,
         fontFamily: "Work Sans, sans-serif",

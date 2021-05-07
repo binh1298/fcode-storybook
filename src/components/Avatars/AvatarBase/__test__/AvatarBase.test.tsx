@@ -1,23 +1,51 @@
 import AvatarBase, { AvatarBaseProps } from "../";
 
-import { render, RenderResult, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("<AvatarBase />", () => {
-    let wrapper: RenderResult;
+    let props: AvatarBaseProps;
 
-    const props: AvatarBaseProps = {
-        children: "Test",
-    };
-
-    beforeEach(() => {
-        wrapper = render(<AvatarBase {...props} />);
+    it("should render a 36px div inside a div containing an img", () => {
+        props = {
+            src: "/fake.png",
+            alt: "a fake image",
+        };
+        const { container } = render(<AvatarBase {...props} />);
+        const box = container.querySelector("div");
+        const avatar = box!.querySelector("div");
+        const img = avatar!.querySelector("img");
+        expect(box).toBeDefined();
+        expect(avatar).toBeDefined();
+        expect(img).toBeDefined();
     });
 
-    it("should exist children", () => {
-        expect(screen.getByText("Test")).toBeInTheDocument();
+    it("should render a 24px div inside a div containing an img", () => {
+        props = {
+            size: "small",
+            src: "/fake.png",
+            alt: "a fake image",
+        };
+        const { container } = render(<AvatarBase {...props} />);
+        const box = container.querySelector("div");
+        const avatar = box!.querySelector("div");
+        const img = avatar!.querySelector("img");
+        expect(box).toBeDefined();
+        expect(avatar).toBeDefined();
+        expect(img).toBeDefined();
     });
 
-    it("should match snapshot", () => {
-        expect(wrapper.container).toMatchSnapshot();
+    it("should render a 56px div inside a div containing an img", () => {
+        props = {
+            size: "large",
+            src: "/fake.png",
+            alt: "a fake image",
+        };
+        const { container } = render(<AvatarBase {...props} />);
+        const box = container.querySelector("div");
+        const avatar = box!.querySelector("div");
+        const img = avatar!.querySelector("img");
+        expect(box).toBeDefined();
+        expect(avatar).toBeDefined();
+        expect(img).toBeDefined();
     });
 });
