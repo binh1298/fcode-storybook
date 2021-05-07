@@ -121,6 +121,7 @@
         ],
         "collectCoverageFrom": [
             "src/components/**/*.{js,jsx,ts,tsx}",
+            "!<rootDir>/src/**/*.stories.component.{js,jsx,ts,tsx}",
             "!<rootDir>/src/**/*.stories.{js,jsx,ts,tsx}",
             "!<rootDir>/src/stories/**/*",
             "!<rootDir>/node_modules/*"
