@@ -1,4 +1,5 @@
 import { Box as MaterialBox } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import {
     InboxRounded as InboxIcon,
     StarBorderRounded as StarIcon,
@@ -33,34 +34,24 @@ const simpleListItems = [
 export const SimpleList: Story<ListBaseProps> = (args) => (
     <MaterialBox width={320}>
         <ListBase {...args}>
-            <MaterialBox color="secondary.main" bgcolor="primary.main">
-                <ListItemBase>
-                    <MaterialBox ml={3}>
-                        <ListItemIconBase>
-                            <MaterialBox color="secondary.main" bgcolor="primary.main">
-                                <InboxIcon />
-                            </MaterialBox>
-                        </ListItemIconBase>
+            <ListItemBase>
+                <ListItemIconBase>
+                    <MaterialBox color="secondary.main">
+                        <InboxIcon />
                     </MaterialBox>
-                    <ListItemTextBase
-                        primary={
-                            <TypographyBase variant="h6" color="secondary">
-                                Inbox
-                            </TypographyBase>
-                        }
-                    />
-                </ListItemBase>
-            </MaterialBox>
+                </ListItemIconBase>
+                <ListItemTextBase
+                    primary={
+                        <TypographyBase variant="h6" color="secondary">
+                            Inbox
+                        </TypographyBase>
+                    }
+                />
+            </ListItemBase>
 
             {simpleListItems.map((item, index) => (
                 <ListItemBase key={index}>
-                    <MaterialBox ml={3}>
-                        <ListItemIconBase>
-                            <MaterialBox color="primary.contrastText" bgcolor="primary.main">
-                                {item.icon}
-                            </MaterialBox>
-                        </ListItemIconBase>
-                    </MaterialBox>
+                    <ListItemIconBase>{item.icon}</ListItemIconBase>
                     <ListItemTextBase primary={item.text} />
                 </ListItemBase>
             ))}
