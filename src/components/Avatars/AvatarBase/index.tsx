@@ -5,7 +5,7 @@ import {
 } from "@material-ui/core";
 
 export interface AvatarBaseProps extends MaterialAvatarProps {
-    size?: "small" | "large" | undefined;
+    size?: "small" | "medium" | "large" | undefined;
 }
 
 const avatarStyle = {
@@ -19,6 +19,10 @@ const AvatarBase = (props: AvatarBaseProps) => {
         case "small":
             width = 24;
             height = 24;
+            break;
+        case "medium":
+            width = 36;
+            height = 36;
             break;
         case "large":
             width = 56;
