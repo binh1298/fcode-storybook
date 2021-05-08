@@ -32,29 +32,22 @@ const simpleListItems = [
 ];
 
 export const SimpleList: Story<ListBaseProps> = (args) => (
-    <MaterialBox width={320}>
-        <ListBase {...args}>
-            <ListItemBase>
-                <ListItemIconBase>
-                    <MaterialBox color="secondary.main">
-                        <InboxIcon />
-                    </MaterialBox>
-                </ListItemIconBase>
-                <ListItemTextBase
-                    primary={
-                        <TypographyBase variant="h6" color="secondary">
-                            Inbox
-                        </TypographyBase>
-                    }
-                />
-            </ListItemBase>
+    <ListBase {...args}>
+        <ListItemBase>
+            <ListItemIconBase color="secondary">
+                <InboxIcon />
+            </ListItemIconBase>
+            <ListItemTextBase primary="Inbox" color="secondary" />
+        </ListItemBase>
 
-            {simpleListItems.map((item, index) => (
-                <ListItemBase key={index}>
-                    <ListItemIconBase>{item.icon}</ListItemIconBase>
-                    <ListItemTextBase primary={item.text} />
-                </ListItemBase>
-            ))}
-        </ListBase>
-    </MaterialBox>
+        {simpleListItems.map((item, index) => (
+            <ListItemBase key={index}>
+                <ListItemIconBase>{item.icon}</ListItemIconBase>
+                <ListItemTextBase primary={item.text} />
+            </ListItemBase>
+        ))}
+    </ListBase>
 );
+SimpleList.args = {
+    width: 320,
+};
