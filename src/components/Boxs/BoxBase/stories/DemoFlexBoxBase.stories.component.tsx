@@ -2,13 +2,14 @@ import React from "react";
 
 import BoxBase, { BoxBaseProps } from "..";
 
+interface ChildrenForDemo {
+    id: string;
+    content: string;
+    color: "primary" | "secondary" | "info" | "error" | "warning" | "success";
+    order: number;
+}
 const ChildrenComponentForFlexStory = () => {
-    const data: Array<{
-        id: string;
-        content: string;
-        color: "primary" | "secondary" | "info" | "error" | "warning" | "success";
-        order: number;
-    }> = [
+    const data: Array<ChildrenForDemo> = [
         { id: "1", content: "a", color: "primary", order: 1 },
         { id: "2", content: "b", color: "secondary", order: 2 },
         { id: "3", content: "c", color: "error", order: 3 },
