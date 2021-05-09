@@ -7,10 +7,11 @@ const ChildrenComponentForFlexStory = () => {
         id: string;
         content: string;
         color: "primary" | "secondary" | "info" | "error" | "warning" | "success";
+        order: number;
     }> = [
-        { id: "1", content: "a", color: "primary" },
-        { id: "2", content: "b", color: "secondary" },
-        { id: "3", content: "c", color: "error" },
+        { id: "1", content: "a", color: "primary", order: 1 },
+        { id: "2", content: "b", color: "secondary", order: 2 },
+        { id: "3", content: "c", color: "error", order: 3 },
     ];
     return (
         <React.Fragment>
@@ -21,6 +22,7 @@ const ChildrenComponentForFlexStory = () => {
                         key={item.id}
                         width={100}
                         height={100}
+                        order={item.order}
                         m={1}
                         p={1}
                         boxSizing="border-box"

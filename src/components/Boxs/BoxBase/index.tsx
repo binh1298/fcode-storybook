@@ -2,6 +2,7 @@ import { Box as MaterialBox, BoxProps as MaterialBoxProps } from "@material-ui/c
 
 export interface BoxBaseProps extends MaterialBoxProps {
     display?: "flex" | "inline" | "block" | "inline-block";
+    flexBasis?: number;
     flexDirection?: "row" | "row-reverse" | "column" | "column-reverse" | "initial" | "inherit";
     flexWrap?: "nowrap" | "wrap" | "wrap-reverse" | "initial" | "inherit";
     justifyContent?:
@@ -21,6 +22,58 @@ export interface BoxBaseProps extends MaterialBoxProps {
         | "baseline"
         | "initial"
         | "inherit";
+    alignContent?:
+        | "flex-start"
+        | "flex-end"
+        | "center"
+        | "space-between"
+        | "space-around"
+        | "space-evenly"
+        | "inital"
+        | "inherit";
+    order?: number;
+    flexGrow?: number;
+    flexShrink?: number;
+    alignSelf?:
+        | "stretch"
+        | "center"
+        | "flex-start"
+        | "flex-end"
+        | "baseline"
+        | "initial"
+        | "inherit";
+    justifyItems?:
+        | "auto"
+        | "normal"
+        | "start"
+        | "end"
+        | "flex-start"
+        | "flex-end"
+        | "self-start"
+        | "self-end"
+        | "center"
+        | "left"
+        | "right"
+        | "baseline"
+        | "initial"
+        | "inherit"
+        | "unset";
+    justifySelf?:
+        | "auto"
+        | "normal"
+        | "start"
+        | "end"
+        | "flex-start"
+        | "flex-end"
+        | "self-start"
+        | "self-end"
+        | "center"
+        | "left"
+        | "right"
+        | "baseline"
+        | "initial"
+        | "inherit"
+        | "unset";
     bgcolor?: "primary" | "secondary" | "info" | "error" | "warning" | "success";
     colorProps?: "main" | "light" | "dark";
     boxSizing?: "content-box" | "border-box";
