@@ -33,6 +33,6 @@ FilledAlertInfo.args = {
 export const FilledAlertSuccess = Template.bind({});
 FilledAlertSuccess.args = {
     children: "This is an success alert — check it out!",
-    severity: "info",
+    severity: "success",
     variant: "filled",
 };
