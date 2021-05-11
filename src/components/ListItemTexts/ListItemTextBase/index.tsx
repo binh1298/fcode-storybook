@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 import {
     ListItemText as MaterialListItemText,
     ListItemTextProps as MaterialListItemTextProps,
@@ -6,27 +8,30 @@ import {
 import { useTheme } from "@material-ui/core/styles";
 
 export interface ListItemTextBaseProps extends MaterialListItemTextProps {
-    color?: "primary" | "secondary";
+    color?: "primary" | "secondary" | "secondary-main";
 }
 
 const ListItemTextBase = (props: ListItemTextBaseProps) => {
     const theme = useTheme();
     const { color, ...rest } = props;
-    let listItemTextBaseColor: string;
+    let listItemTextBaseStyle: CSSProperties = {};
     switch (color) {
         case "primary":
-            listItemTextBaseColor = theme.palette.primary.contrastText;
+            listItemTextBaseStyle.color = theme.palette.primary.contrastText;
             break;
         case "secondary":
-            listItemTextBaseColor = theme.palette.secondary.main;
+            listItemTextBaseStyle.color = theme.palette.secondary.contrastText;
+            break;
+        case "secondary-main":
+            listItemTextBaseStyle.color = theme.palette.secondary.main;
             break;
         default:
-            listItemTextBaseColor = theme.palette.primary.contrastText;
+            listItemTextBaseStyle.color = theme.palette.primary.contrastText;
             break;
     }
 
     return (
-        <MaterialBox color={listItemTextBaseColor}>
+        <MaterialBox data-testid="muiBox" style={listItemTextBaseStyle}>
             <MaterialListItemText {...rest} />
         </MaterialBox>
     );

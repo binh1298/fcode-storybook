@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 import {
     ListItemIcon as MaterialListItemIcon,
     ListItemIconProps as MaterialListItemIconProps,
@@ -13,34 +15,34 @@ export interface ListItemIconBaseProps extends MaterialListItemIconProps {
 const ListItemIconBase = (props: ListItemIconBaseProps) => {
     const theme = useTheme();
     const { children, color, bgColor, ...rest } = props;
-    let listItemIconBaseColor: string, listItemIconBaseBgColor: string;
+    let listItemIconBaseStyle: CSSProperties = {};
     switch (color) {
         case "primary":
-            listItemIconBaseColor = theme.palette.primary.main;
+            listItemIconBaseStyle.color = theme.palette.primary.main;
             break;
         case "secondary":
-            listItemIconBaseColor = theme.palette.secondary.main;
+            listItemIconBaseStyle.color = theme.palette.secondary.main;
             break;
         default:
-            listItemIconBaseColor = theme.palette.primary.contrastText;
+            listItemIconBaseStyle.color = theme.palette.primary.contrastText;
             break;
     }
     switch (bgColor) {
         case "primary":
-            listItemIconBaseBgColor = theme.palette.primary.main;
+            listItemIconBaseStyle.backgroundColor = theme.palette.primary.main;
             break;
         case "secondary":
-            listItemIconBaseBgColor = theme.palette.secondary.main;
+            listItemIconBaseStyle.backgroundColor = theme.palette.secondary.main;
             break;
         default:
-            listItemIconBaseBgColor = theme.palette.primary.main;
+            listItemIconBaseStyle.backgroundColor = theme.palette.primary.main;
             break;
     }
 
     return (
         <MaterialBox ml={3}>
             <MaterialListItemIcon {...rest}>
-                <MaterialBox color={listItemIconBaseColor} bgcolor={listItemIconBaseBgColor}>
+                <MaterialBox data-testid="muiBox" style={listItemIconBaseStyle}>
                     {children}
                 </MaterialBox>
             </MaterialListItemIcon>

@@ -37,7 +37,7 @@ export const SimpleList: Story<ListBaseProps> = (args) => (
             <ListItemIconBase color="secondary">
                 <InboxIcon />
             </ListItemIconBase>
-            <ListItemTextBase primary="Inbox" color="secondary" />
+            <ListItemTextBase primary="Inbox" color="secondary-main" />
         </ListItemBase>
 
         {simpleListItems.map((item, index) => (

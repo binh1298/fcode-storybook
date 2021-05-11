@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 import {
     List as MaterialList,
     ListProps as MaterialListProps,
@@ -11,16 +13,14 @@ export interface ListBaseProps extends MaterialListProps {
 
 const ListBase = (props: ListBaseProps) => {
     const theme = useTheme();
-    const { width, ...rest } = props;
-    let listBaseWidth: string | number;
-    if (width) {
-        listBaseWidth = width;
-    } else {
-        listBaseWidth = "auto";
-    }
+    const { width = 260, ...rest } = props;
+    let listBaseStyle: CSSProperties = {
+        backgroundColor: theme.palette.primary.main,
+        width: width,
+    };
 
     return (
-        <MaterialBox width={listBaseWidth} bgcolor={theme.palette.primary.main}>
+        <MaterialBox data-testid="muiBox" style={listBaseStyle}>
             <MaterialList {...rest} />
         </MaterialBox>
     );

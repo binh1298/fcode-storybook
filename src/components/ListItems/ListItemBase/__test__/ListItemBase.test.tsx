@@ -11,7 +11,7 @@ describe("<ListItemBase />", () => {
         render(<ListItemBase {...props} />);
     });
 
-    it("should exist children", () => {
+    it("should exist children with default style", () => {
         expect(screen.getByText("Test")).toBeInTheDocument();
     });
 });
