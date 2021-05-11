@@ -1,7 +1,10 @@
+import { CSSProperties } from "react";
+
 import {
     Avatar as MaterialAvatar,
     AvatarProps as MaterialAvatarProps,
     Box as MaterialBox,
+    useTheme,
 } from "@material-ui/core";
 
 export interface AvatarBaseProps extends MaterialAvatarProps {
@@ -14,34 +17,29 @@ const avatarStyle = {
 };
 
 const AvatarBase = (props: AvatarBaseProps) => {
-    let width: number, height: number;
+    const theme = useTheme();
+    let avatarBaseStyle: CSSProperties = {
+        borderRadius: "50%",
+        borderColor: theme.palette.primary.light,
+        borderWidth: "1px",
+    };
     switch (props.size) {
         case "small":
-            width = 24;
-            height = 24;
+            avatarBaseStyle.width = 24;
             break;
         case "medium":
-            width = 36;
-            height = 36;
+            avatarBaseStyle.width = 36;
             break;
         case "large":
-            width = 56;
-            height = 56;
+            avatarBaseStyle.width = 56;
             break;
         default:
-            width = 36;
-            height = 36;
+            avatarBaseStyle.width = 36;
     }
 
     return (
-        <MaterialBox
-            width={width}
-            height={height}
-            borderRadius="50%"
-            borderColor="primary.light"
-            border={1}
-        >
-            <MaterialAvatar {...props} style={avatarStyle} />
+        <MaterialBox data-testid="muiBox" style={avatarBaseStyle}>
+            <MaterialAvatar data-testid="muiAvatar" {...props} style={avatarStyle} />
         </MaterialBox>
     );
 };

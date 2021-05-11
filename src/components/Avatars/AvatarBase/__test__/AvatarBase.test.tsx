@@ -5,62 +5,70 @@ import { render, screen } from "@testing-library/react";
 describe("<AvatarBase />", () => {
     let props: AvatarBaseProps;
 
-    it("should render a 36px div inside a div containing an img", () => {
+    it("should render image with default stats", () => {
         props = {
             src: "/fake.png",
             alt: "a fake image",
         };
-        const { container } = render(<AvatarBase {...props} />);
-        const box = container.querySelector("div");
-        const avatar = box!.querySelector("div");
+        render(<AvatarBase {...props} />);
+        const muiBox = screen.getByTestId("muiBox");
+        const avatar = screen.getByTestId("muiAvatar");
         const img = avatar!.querySelector("img");
-        expect(box).toBeDefined();
+        expect(muiBox).toBeDefined();
+        expect(muiBox).toHaveStyle("width: 36px");
         expect(avatar).toBeDefined();
-        expect(img).toBeDefined();
+        expect(img).toHaveAttribute("alt", "a fake image");
+        expect(img).toHaveAttribute("src", "/fake.png");
     });
 
-    it("should render a 24px div inside a div containing an img", () => {
+    it("should render image with small size", () => {
         props = {
             size: "small",
             src: "/fake.png",
             alt: "a fake image",
         };
-        const { container } = render(<AvatarBase {...props} />);
-        const box = container.querySelector("div");
-        const avatar = box!.querySelector("div");
+        render(<AvatarBase {...props} />);
+        const muiBox = screen.getByTestId("muiBox");
+        const avatar = screen.getByTestId("muiAvatar");
         const img = avatar!.querySelector("img");
-        expect(box).toBeDefined();
+        expect(muiBox).toBeDefined();
+        expect(muiBox).toHaveStyle("width: 24px");
         expect(avatar).toBeDefined();
-        expect(img).toBeDefined();
+        expect(img).toHaveAttribute("alt", "a fake image");
+        expect(img).toHaveAttribute("src", "/fake.png");
     });
 
-    it("should render a 24px div inside a div containing an img", () => {
+    it("should render image with medium size", () => {
         props = {
             size: "medium",
             src: "/fake.png",
             alt: "a fake image",
         };
-        const { container } = render(<AvatarBase {...props} />);
-        const box = container.querySelector("div");
-        const avatar = box!.querySelector("div");
+        render(<AvatarBase {...props} />);
+        const muiBox = screen.getByTestId("muiBox");
+        const avatar = screen.getByTestId("muiAvatar");
         const img = avatar!.querySelector("img");
-        expect(box).toBeDefined();
+        expect(muiBox).toBeDefined();
+        expect(muiBox).toHaveStyle("width: 36px");
         expect(avatar).toBeDefined();
-        expect(img).toBeDefined();
+        expect(img).toHaveAttribute("alt", "a fake image");
+        expect(img).toHaveAttribute("src", "/fake.png");
     });
 
-    it("should render a 56px div inside a div containing an img", () => {
+    it("should render image with large size", () => {
         props = {
             size: "large",
             src: "/fake.png",
             alt: "a fake image",
         };
-        const { container } = render(<AvatarBase {...props} />);
-        const box = container.querySelector("div");
-        const avatar = box!.querySelector("div");
+        render(<AvatarBase {...props} />);
+        const muiBox = screen.getByTestId("muiBox");
+        const avatar = screen.getByTestId("muiAvatar");
         const img = avatar!.querySelector("img");
-        expect(box).toBeDefined();
+        expect(muiBox).toBeDefined();
+        expect(muiBox).toHaveStyle("width: 56px");
         expect(avatar).toBeDefined();
-        expect(img).toBeDefined();
+        expect(img).toHaveAttribute("alt", "a fake image");
+        expect(img).toHaveAttribute("src", "/fake.png");
     });
 });
