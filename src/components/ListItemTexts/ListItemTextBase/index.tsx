@@ -31,7 +31,7 @@ const ListItemTextBase = (props: ListItemTextBaseProps) => {
     }
 
     return (
-        <MaterialBox data-testid="muiBox" style={listItemTextBaseStyle}>
+        <MaterialBox data-testid="ListItemTextBase__root" style={listItemTextBaseStyle}>
             <MaterialListItemText {...rest} />
         </MaterialBox>
     );

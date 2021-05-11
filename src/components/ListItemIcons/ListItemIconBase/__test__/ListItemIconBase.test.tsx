@@ -18,7 +18,7 @@ describe("<ListItemIconBase />", () => {
             children: "Test",
         };
         render(<ListItemIconBaseTest {...props} />);
-        const muiBox = screen.getByTestId("muiBox");
+        const muiBox = screen.getByTestId("ListItemIconBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
         expect(muiBox).toHaveStyle(`color: ${theme.palette.primary.contrastText};`);
         expect(muiBox).toHaveStyle(`background-color: ${theme.palette.primary.main};`);
@@ -31,7 +31,7 @@ describe("<ListItemIconBase />", () => {
             bgColor: "primary",
         };
         render(<ListItemIconBaseTest {...props} />);
-        const muiBox = screen.getByTestId("muiBox");
+        const muiBox = screen.getByTestId("ListItemIconBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
         expect(muiBox).toHaveStyle(`color: ${theme.palette.primary.main};`);
         expect(muiBox).toHaveStyle(`background-color: ${theme.palette.primary.main};`);
@@ -44,7 +44,7 @@ describe("<ListItemIconBase />", () => {
             bgColor: "secondary",
         };
         render(<ListItemIconBaseTest {...props} />);
-        const muiBox = screen.getByTestId("muiBox");
+        const muiBox = screen.getByTestId("ListItemIconBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
         expect(muiBox).toHaveStyle(`color: ${theme.palette.secondary.main};`);
         expect(muiBox).toHaveStyle(`background-color: ${theme.palette.secondary.main};`);

@@ -20,7 +20,7 @@ const ListBase = (props: ListBaseProps) => {
     };
 
     return (
-        <MaterialBox data-testid="muiBox" style={listBaseStyle}>
+        <MaterialBox data-testid="ListBase__root" style={listBaseStyle}>
             <MaterialList {...rest} />
         </MaterialBox>
     );

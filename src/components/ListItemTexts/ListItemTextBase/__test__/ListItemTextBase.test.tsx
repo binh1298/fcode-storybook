@@ -17,7 +17,7 @@ describe("<ListItemTextBase />", () => {
             primary: "Test",
         };
         render(<ListBaseTextBaseTest {...props} />);
-        const muiBox = screen.getByTestId("muiBox");
+        const muiBox = screen.getByTestId("ListItemTextBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
         expect(muiBox).toHaveStyle(`color: ${theme.palette.primary.contrastText};`);
     });
@@ -28,7 +28,7 @@ describe("<ListItemTextBase />", () => {
             color: "primary",
         };
         render(<ListItemTextBase {...props} />);
-        const muiBox = screen.getByTestId("muiBox");
+        const muiBox = screen.getByTestId("ListItemTextBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
         expect(muiBox).toHaveStyle(`color: ${theme.palette.primary.contrastText};`);
     });
@@ -39,7 +39,7 @@ describe("<ListItemTextBase />", () => {
             color: "secondary",
         };
         render(<ListItemTextBase {...props} />);
-        const muiBox = screen.getByTestId("muiBox");
+        const muiBox = screen.getByTestId("ListItemTextBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
         expect(muiBox).toHaveStyle(`color: ${theme.palette.secondary.contrastText};`);
     });
@@ -50,7 +50,7 @@ describe("<ListItemTextBase />", () => {
             color: "secondary-main",
         };
         render(<ListItemTextBase {...props} />);
-        const muiBox = screen.getByTestId("muiBox");
+        const muiBox = screen.getByTestId("ListItemTextBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
         expect(muiBox).toHaveStyle(`color: ${theme.palette.secondary.main};`);
     });

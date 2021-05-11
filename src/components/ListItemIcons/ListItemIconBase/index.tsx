@@ -42,7 +42,7 @@ const ListItemIconBase = (props: ListItemIconBaseProps) => {
     return (
         <MaterialBox ml={3}>
             <MaterialListItemIcon {...rest}>
-                <MaterialBox data-testid="muiBox" style={listItemIconBaseStyle}>
+                <MaterialBox data-testid="ListItemIconBase__root" style={listItemIconBaseStyle}>
                     {children}
                 </MaterialBox>
             </MaterialListItemIcon>
