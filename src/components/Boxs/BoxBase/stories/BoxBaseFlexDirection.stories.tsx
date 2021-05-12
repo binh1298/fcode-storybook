@@ -22,7 +22,6 @@ Row.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const Column = Template.bind({});
@@ -31,7 +30,6 @@ Column.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const RowReverse = Template.bind({});
@@ -40,7 +38,6 @@ RowReverse.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const ColumnReverse = Template.bind({});
@@ -49,5 +46,4 @@ ColumnReverse.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };

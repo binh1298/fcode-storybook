@@ -5,31 +5,28 @@ import BoxBase, { BoxBaseProps } from "..";
 interface ChildrenForDemo {
     id: string;
     content: string;
-    color: "primary" | "secondary" | "info" | "error" | "warning" | "success";
-    order: number;
 }
 const ChildrenComponentForFlexStory = () => {
     const data: Array<ChildrenForDemo> = [
-        { id: "1", content: "a", color: "primary", order: 1 },
-        { id: "2", content: "b", color: "secondary", order: 2 },
-        { id: "3", content: "c", color: "error", order: 3 },
+        { id: "1", content: "Item 1" },
+        { id: "2", content: "Item 2" },
+        { id: "3", content: "Item 3" },
     ];
     return (
         <React.Fragment>
             {data.map((item) => {
                 return (
                     <BoxBase
-                        bgcolor={item.color}
+                        bgcolor="primary"
+                        display="flex"
                         key={item.id}
+                        alignItems="center"
+                        justifyContent="center"
                         width={100}
                         height={100}
-                        order={item.order}
                         m={1}
                         p={1}
                         boxSizing="border-box"
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
                     >
                         {item.content}
                     </BoxBase>

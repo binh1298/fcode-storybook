@@ -13,7 +13,7 @@ export default {
 };
 
 const Template: Story<BoxBaseProps> = (args) => {
-    return <DemoFlexBoxBase minHeight={300} width={1} display="flex" bgcolor="info" {...args} />;
+    return <DemoFlexBoxBase {...args} />;
 };
 
 export const Center = Template.bind({});
@@ -22,7 +22,6 @@ Center.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const SpaceAround = Template.bind({});
@@ -31,7 +30,6 @@ SpaceAround.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const SpaceBetween = Template.bind({});
@@ -40,7 +38,6 @@ SpaceBetween.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const SpaceEvenly = Template.bind({});
@@ -49,7 +46,6 @@ SpaceEvenly.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const FlexEnd = Template.bind({});
@@ -58,7 +54,6 @@ FlexEnd.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const FlexStart = Template.bind({});
@@ -67,5 +62,4 @@ FlexStart.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };

@@ -22,7 +22,6 @@ Wrap.args = {
     minHeight: 300,
     width: 1 / 4,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const NoWrap = Template.bind({});
@@ -31,7 +30,6 @@ NoWrap.args = {
     minHeight: 300,
     width: 1 / 4,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const WrapReverse = Template.bind({});
@@ -40,5 +38,4 @@ WrapReverse.args = {
     minHeight: 300,
     width: 1 / 4,
     display: "flex",
-    bgcolor: "info",
 };

@@ -22,7 +22,6 @@ Baseline.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const Center = Template.bind({});
@@ -31,7 +30,6 @@ Center.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const FlexEnd = Template.bind({});
@@ -40,7 +38,6 @@ FlexEnd.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const FlexStart = Template.bind({});
@@ -49,7 +46,6 @@ FlexStart.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
 
 export const Stretch = Template.bind({});
@@ -58,5 +54,4 @@ Stretch.args = {
     minHeight: 300,
     width: 1,
     display: "flex",
-    bgcolor: "info",
 };
