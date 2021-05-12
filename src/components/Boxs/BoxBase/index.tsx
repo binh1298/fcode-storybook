@@ -1,6 +1,19 @@
-import { FlexDirectionProperty, FlexWrapProperty, BoxSizingProperty } from "csstype";
+import {
+    FlexDirectionProperty,
+    FlexWrapProperty,
+    BoxSizingProperty,
+    TextAlignProperty,
+    FontWeightProperty,
+    LineHeightProperty,
+    LetterSpacingProperty,
+    FontStyleProperty,
+    FontSizeProperty,
+    FontFamilyProperty,
+} from "csstype";
 
 import { Box as MaterialBox, BoxProps as MaterialBoxProps } from "@material-ui/core";
+
+export type TLength = "em" | "rem" | "vw" | "vh" | "vmin" | "vmax" | "lh" | "ch" | "ex";
 
 export interface BoxBaseProps extends MaterialBoxProps {
     display?: "flex" | "inline" | "block" | "inline-block";
@@ -95,6 +108,13 @@ export interface BoxBaseProps extends MaterialBoxProps {
     maxWidth?: number;
     minHeight?: number;
     maxHeight?: number;
+    textAlign?: TextAlignProperty;
+    fontWeight?: FontWeightProperty;
+    lightHeight?: LineHeightProperty<TLength>;
+    letterSpacing?: LetterSpacingProperty<TLength>;
+    fontStyle?: FontStyleProperty;
+    fontSize?: FontSizeProperty<TLength>;
+    fontFamily?: FontFamilyProperty;
 }
 
 const BoxBase: React.FC<BoxBaseProps> = ({ bgcolor, colorProps = "main", color, ...rest }) => {
