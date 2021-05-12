@@ -1,34 +1,18 @@
 import React from "react";
 
 import BoxBase, { BoxBaseProps } from "..";
+import AvatarBase from "../../../Avatars/AvatarBase";
 
-interface ChildrenForDemo {
-    id: string;
-    content: string;
-}
+const source = "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
+
 const ChildrenComponentForFlexStory = () => {
-    const data: Array<ChildrenForDemo> = [
-        { id: "1", content: "Item 1" },
-        { id: "2", content: "Item 2" },
-        { id: "3", content: "Item 3" },
-    ];
+    const data: Array<number> = [1, 2, 3];
     return (
         <React.Fragment>
             {data.map((item) => {
                 return (
-                    <BoxBase
-                        bgcolor="primary"
-                        display="flex"
-                        key={item.id}
-                        alignItems="center"
-                        justifyContent="center"
-                        width={100}
-                        height={100}
-                        m={1}
-                        p={1}
-                        boxSizing="border-box"
-                    >
-                        {item.content}
+                    <BoxBase m={1} p={1} key={item}>
+                        <AvatarBase size="large" src={source} />
                     </BoxBase>
                 );
             })}
