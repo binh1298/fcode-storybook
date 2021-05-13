@@ -1,8 +1,8 @@
 import SnackbarBase from ".";
-import useSnackbar from "../../../context";
-import { SnackbarProvider } from "../../../context/SnackbarContext";
+import SnackbarProvider from "../../../context/SnackbarContext";
 import { AlertBaseProps } from "../../Alerts/AlertBase";
 import ButtonBase from "../../Buttons/ButtonBase";
+import useSnackbar from "../useSnackbar";
 
 import { Story, Meta } from "@storybook/react";
 

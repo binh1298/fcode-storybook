@@ -6,7 +6,7 @@ import SnackbarBase from "../components/SnackBars/SnackbarBase";
 type showSnackbar = (newAlert: AlertBaseProps) => void;
 export const SnackbarContext = createContext<showSnackbar>(({}) => {});
 
-export const SnackbarProvider: React.FC = ({ children }) => {
+const SnackbarProvider: React.FC = ({ children }) => {
     const [alert, setAlert] = useState<AlertBaseProps>({});
     const [open, setOpen] = useState<boolean>(false);
 
@@ -34,3 +34,5 @@ export const SnackbarProvider: React.FC = ({ children }) => {
         </SnackbarContext.Provider>
     );
 };
+
+export default SnackbarProvider;
