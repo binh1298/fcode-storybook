@@ -3,13 +3,8 @@ import {
     AutocompleteProps as MaterialAutocompleteProps,
 } from "@material-ui/lab";
 
-interface Options {
-    title?: string;
-    description?: string;
-}
-
 export interface AutocompleteBaseProps
-    extends MaterialAutocompleteProps<Options, true, true, true> {}
+    extends MaterialAutocompleteProps<Object, boolean, boolean, boolean> {}
 
 const AutoCompleteBase = (props: AutocompleteBaseProps) => {
     return <MaterialAutocomplete {...props} />;

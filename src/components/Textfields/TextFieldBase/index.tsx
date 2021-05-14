@@ -78,11 +78,11 @@ const TextFieldBase = (props: TexfieldBaseProps) => {
     return (
         <MaterialTextField
             className={classes.root}
-            {...rest}
             error={Boolean(errorMessage)}
             helperText={errorMessage}
             InputLabelProps={{ classes: { root: classes.cssLabel } }}
             InputProps={{ className: classes.fontColor }}
+            {...rest}
         />
     );
 };
