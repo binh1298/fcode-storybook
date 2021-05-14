@@ -16,7 +16,7 @@ describe("<AutocompleteBase />", () => {
         render(<AutocompleteBase {...props} />);
     });
 
-    it("should exist children", () => {
+    it("should render input", () => {
         expect(screen.getByText("Test")).toBeInTheDocument();
     });
 });
