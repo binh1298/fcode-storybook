@@ -42,7 +42,7 @@ describe("Structure of <BoxBase />", () => {
     it("backgroundColor is white when bgcolor is none", () => {
         wrapper = render(
             <ThemeProvider theme={replyTheme}>
-                <BoxBase data-testid="box-none" {...props} bgcolor="none" />
+                <BoxBase data-testid="box-none" {...props} bgcolor="default" />
             </ThemeProvider>
         );
         expect(screen.getByTestId("box-none")).toHaveStyle("backgroundColor: #fff");

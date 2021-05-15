@@ -70,12 +70,12 @@ Info.args = {
     display: "flex",
 };
 
-export const None = Template.bind({});
-None.args = {
+export const Default = Template.bind({});
+Default.args = {
     minHeight: 300,
     width: 1,
-    bgcolor: "none",
-    children: "None",
+    bgcolor: "default",
+    children: "Default",
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
