@@ -1,5 +1,5 @@
 import BoxBase, { BoxBaseProps } from "..";
-import { argTypes } from "./ArgTypes.BoxBase.component";
+import { argTypes } from "./ArgTypes.BoxBase.stories.component";
 
 import { Story } from "@storybook/react";
 
