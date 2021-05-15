@@ -98,12 +98,12 @@ export interface BoxBaseProps extends MaterialBoxProps {
 }
 
 const BoxBase: React.FC<BoxBaseProps> = ({ bgcolor, colorProps = "main", color, ...rest }) => {
-    let backgroundColor = "background.default";
+    let backgroundColor = undefined;
     if (bgcolor) {
         color = bgcolor + ".contrastText";
         backgroundColor = `${bgcolor}.${colorProps}`;
     } else {
-        color = "text.primary";
+        color = color || "text.primary";
     }
     return <MaterialBox bgcolor={backgroundColor} color={color} {...rest} />;
 };
