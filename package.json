@@ -5,6 +5,7 @@
     "dependencies": {
         "@material-ui/core": "^4.11.3",
         "@material-ui/icons": "^4.11.2",
+        "@material-ui/styles": "^4.11.4"
         "@material-ui/lab": "^4.0.0-alpha.58",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
@@ -122,6 +123,7 @@
         ],
         "collectCoverageFrom": [
             "src/components/**/*.{js,jsx,ts,tsx}",
+            "!<rootDir>/src/**/*.stories.component.{js,jsx,ts,tsx}",
             "!<rootDir>/src/**/*.stories.{js,jsx,ts,tsx}",
             "!<rootDir>/src/stories/**/*",
             "!<rootDir>/node_modules/*"
