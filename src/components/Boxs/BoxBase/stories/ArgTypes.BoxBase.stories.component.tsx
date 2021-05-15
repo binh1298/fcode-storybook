@@ -3,7 +3,16 @@ export const argTypes = {
         control: {
             type: "radio",
             default: "default",
-            options: ["default", "primary", "secondary", "info", "error", "warning", "success"],
+            options: [
+                "default",
+                "primary",
+                "secondary",
+                "info",
+                "error",
+                "warning",
+                "success",
+                "none",
+            ],
         },
     },
     colorProps: {

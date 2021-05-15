@@ -69,3 +69,26 @@ Info.args = {
     alignItems: "center",
     display: "flex",
 };
+
+export const None = Template.bind({});
+None.args = {
+    minHeight: 300,
+    width: 1,
+    bgcolor: "none",
+    children: "None",
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+};
+
+export const ImportantColor = Template.bind({});
+ImportantColor.args = {
+    minHeight: 300,
+    width: 1,
+    bgcolor: "primary",
+    children: "Demo Override Color",
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    overrideColor: "secondary.main",
+};
