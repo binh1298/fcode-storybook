@@ -1,5 +1,3 @@
-import { TextField } from "@material-ui/core";
-
 import AutocompleteBase, { AutocompleteBaseProps } from "../";
 
 import { render, screen } from "@testing-library/react";
