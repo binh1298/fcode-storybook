@@ -2,9 +2,9 @@ import React from "react";
 
 import { Switch } from "react-router-dom";
 
-import Home from "../pages/HomePage";
-import Login from "../pages/LoginPage";
-import Post from "../pages/PostPage";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Post from "../pages/Post";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
