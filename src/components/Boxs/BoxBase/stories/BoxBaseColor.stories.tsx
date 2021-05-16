@@ -74,7 +74,7 @@ export const Default = Template.bind({});
 Default.args = {
     minHeight: 300,
     width: 1,
-    bgcolor: "default",
+    bgcolor: "common",
     children: "Default",
     justifyContent: "center",
     alignItems: "center",

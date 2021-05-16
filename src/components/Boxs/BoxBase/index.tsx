@@ -76,7 +76,7 @@ export interface BoxBaseProps extends MaterialBoxProps {
         | "initial"
         | "inherit"
         | "unset";
-    bgcolor?: "primary" | "secondary" | "info" | "error" | "warning" | "success" | "default";
+    bgcolor?: "primary" | "secondary" | "info" | "error" | "warning" | "success" | "common";
     colorProps?: "main" | "light" | "dark";
     boxSizing?: BoxSizingProperty;
     m?: number;
@@ -106,7 +106,7 @@ const BoxBase: React.FC<BoxBaseProps> = ({
     ...rest
 }) => {
     let backgroundColor = undefined;
-    if (bgcolor === "default") {
+    if (bgcolor === "common") {
         color = "text.primary";
         backgroundColor = "background.default";
     } else if (bgcolor) {
