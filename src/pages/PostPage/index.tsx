@@ -1,6 +1,6 @@
 import React from "react";
 
-function PostPage() {
+function Post() {
     return <div>Post Page</div>;
 }
 
