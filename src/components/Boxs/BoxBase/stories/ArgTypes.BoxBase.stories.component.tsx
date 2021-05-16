@@ -11,8 +11,15 @@ export const argTypes = {
                 "error",
                 "warning",
                 "success",
-                "none",
+                "common",
             ],
+        },
+    },
+    overrideColor: {
+        control: {
+            type: "radio",
+            default: "default",
+            options: [undefined, "primary", "secondary", "info", "error", "warning", "success"],
         },
     },
     colorProps: {

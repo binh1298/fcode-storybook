@@ -70,8 +70,8 @@ Info.args = {
     display: "flex",
 };
 
-export const Default = Template.bind({});
-Default.args = {
+export const Common = Template.bind({});
+Common.args = {
     minHeight: 300,
     width: 1,
     bgcolor: "common",
@@ -90,5 +90,5 @@ ImportantColor.args = {
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
-    overrideColor: "secondary.main",
+    overrideColor: "secondary",
 };
