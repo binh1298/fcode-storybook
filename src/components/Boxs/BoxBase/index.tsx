@@ -95,7 +95,7 @@ export interface BoxBaseProps extends MaterialBoxProps {
     maxWidth?: number;
     minHeight?: number;
     maxHeight?: number;
-    overrideColor?: string;
+    overrideColor?: "primary" | "secondary" | "info" | "error" | "warning" | "success";
 }
 
 const BoxBase: React.FC<BoxBaseProps> = ({
@@ -116,7 +116,7 @@ const BoxBase: React.FC<BoxBaseProps> = ({
         color = color || "text.primary";
     }
     if (overrideColor) {
-        color = overrideColor;
+        color = overrideColor + ".main";
     }
     return <MaterialBox bgcolor={backgroundColor} color={color} {...rest} />;
 };
