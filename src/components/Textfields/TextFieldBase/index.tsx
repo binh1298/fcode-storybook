@@ -3,6 +3,7 @@ import {
     BaseTextFieldProps as MaterialTextFieldProps,
     makeStyles,
     Theme,
+    OutlinedInputProps,
 } from "@material-ui/core";
 
 export interface TexfieldBaseProps extends MaterialTextFieldProps {
@@ -14,6 +15,7 @@ export interface TexfieldBaseProps extends MaterialTextFieldProps {
     fullWidth?: boolean;
     errorMessage?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
+    InputProps?: Partial<OutlinedInputProps>;
 }
 
 interface Color {
@@ -71,18 +73,18 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
 }));
 
 const TextFieldBase = (props: TexfieldBaseProps) => {
-    const { errorMessage, ...rest } = props;
+    const { errorMessage, InputLabelProps, InputProps, ...rest } = props;
 
     const classes = useStyles({ color: !errorMessage ? "primary" : "error" });
 
     return (
         <MaterialTextField
             className={classes.root}
-            {...rest}
             error={Boolean(errorMessage)}
             helperText={errorMessage}
-            InputLabelProps={{ classes: { root: classes.cssLabel } }}
-            InputProps={{ className: classes.fontColor }}
+            InputLabelProps={{ ...InputLabelProps, classes: { root: classes.cssLabel } }}
+            InputProps={{ ...InputProps, className: classes.fontColor }}
+            {...rest}
         />
     );
 };
