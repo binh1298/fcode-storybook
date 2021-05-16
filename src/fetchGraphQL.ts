@@ -1,9 +1,6 @@
 import { Variables } from "relay-runtime";
 
-import {
-    REACT_APP_HASURA_ADMIN_SECRET,
-    REACT_APP_HASURA_END_POINT,
-} from "./configuration/configuration";
+import { REACT_APP_HASURA_ADMIN_SECRET, REACT_APP_HASURA_END_POINT } from "./configuration";
 
 async function fetchGraphQL(text: string | null | undefined, variables: Variables) {
     if (!REACT_APP_HASURA_END_POINT) throw new Error("Missing environment");

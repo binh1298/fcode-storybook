@@ -1,6 +1,11 @@
 const publicRuntimeConfig = {
+    API_ROOT_URL: process.env.REACT_APP_API_ROOT_URL,
     REACT_APP_HASURA_ADMIN_SECRET: process.env.REACT_APP_HASURA_ADMIN_SECRET,
     REACT_APP_HASURA_END_POINT: process.env.REACT_APP_HASURA_END_POINT,
 };
 
-export const { REACT_APP_HASURA_ADMIN_SECRET, REACT_APP_HASURA_END_POINT } = publicRuntimeConfig;
+export const {
+    API_ROOT_URL,
+    REACT_APP_HASURA_ADMIN_SECRET,
+    REACT_APP_HASURA_END_POINT,
+} = publicRuntimeConfig;

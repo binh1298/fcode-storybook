@@ -1,14 +1,16 @@
-import React from "react";
-
+import { loadQuery } from "react-relay";
 import { Switch } from "react-router-dom";
+import { RouteCustom } from "src/common/types";
 
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Post from "../pages/Post";
+import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
-export const publicRoutes = [
+import Home, { HomeUserGraphQL } from "src/pages/Home";
+import Login from "src/pages/Login";
+import Post from "src/pages/Post";
+
+const publicRoutes: RouteCustom[] = [
     {
         path: "/login",
         name: "login",
@@ -16,11 +18,16 @@ export const publicRoutes = [
     },
 ];
 
-export const privateRoutes = [
+const privateRoutes: RouteCustom[] = [
     {
         path: "/",
         name: "home",
         component: Home,
+        queryInfo: {
+            query: HomeUserGraphQL,
+            preloadedQuery: loadQuery(RelayEnvironment, HomeUserGraphQL, {}),
+            queryObject: Object,
+        },
     },
     {
         path: "/posts",
@@ -34,18 +41,16 @@ export const privateRoutes = [
     },
 ];
 
-export const Routes = (
-    <Switch>
-        {publicRoutes.map((route) => (
-            <PublicRoute
-                key={route.name}
-                exact={true}
-                path={route.path}
-                component={route.component}
-            />
-        ))}
-        {privateRoutes.map((route) => (
-            <PrivateRoute key={route.name} path={route.path} component={route.component} />
-        ))}
-    </Switch>
-);
+export const Routes = () => {
+    return (
+        <Switch>
+            {publicRoutes.map((route) => (
+                <PublicRoute key={route.name} exact={true} {...route} />
+            ))}
+            {privateRoutes.map((route) => {
+                const { queryInfo, ...rest } = route;
+                return <PrivateRoute key={route.name} routeProps={rest} queryInfo={queryInfo} />;
+            })}
+        </Switch>
+    );
+};

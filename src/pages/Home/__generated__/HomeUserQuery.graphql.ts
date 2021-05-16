@@ -3,25 +3,25 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from "relay-runtime";
-export type AppUserEmailQueryVariables = {};
-export type AppUserEmailQueryResponse = {
+export type HomeUserQueryVariables = {};
+export type HomeUserQueryResponse = {
     readonly users: ReadonlyArray<{
-        readonly id: unknown;
+        readonly userId: unknown;
         readonly email: string;
         readonly name: string;
     }>;
 };
-export type AppUserEmailQuery = {
-    readonly response: AppUserEmailQueryResponse;
-    readonly variables: AppUserEmailQueryVariables;
+export type HomeUserQuery = {
+    readonly response: HomeUserQueryResponse;
+    readonly variables: HomeUserQueryVariables;
 };
 
 
 
 /*
-query AppUserEmailQuery {
+query HomeUserQuery {
   users {
-    id
+    userId
     email
     name
   }
@@ -42,7 +42,7 @@ var v0 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "id",
+        "name": "userId",
         "storageKey": null
       },
       {
@@ -68,7 +68,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppUserEmailQuery",
+    "name": "HomeUserQuery",
     "selections": (v0/*: any*/),
     "type": "query_root",
     "abstractKey": null
@@ -77,18 +77,18 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "AppUserEmailQuery",
+    "name": "HomeUserQuery",
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "14801dd466a09ab378da212393c784d9",
+    "cacheID": "e83d758ac58579e54c36dcd3077cd2e3",
     "id": null,
     "metadata": {},
-    "name": "AppUserEmailQuery",
+    "name": "HomeUserQuery",
     "operationKind": "query",
-    "text": "query AppUserEmailQuery {\n  users {\n    id\n    email\n    name\n  }\n}\n"
+    "text": "query HomeUserQuery {\n  users {\n    userId\n    email\n    name\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'ba0a557122a50d767a08b7df8a887123';
+(node as any).hash = '7e009af1573dca2515a74d7dbd54bdda';
 export default node;
