@@ -2,9 +2,9 @@ import React from "react";
 
 import { Switch } from "react-router-dom";
 
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import PostPage from "../pages/PostPage";
+import Home from "../pages/HomePage";
+import Login from "../pages/LoginPage";
+import Post from "../pages/PostPage";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
@@ -12,7 +12,7 @@ export const publicRoutes = [
     {
         path: "/login",
         name: "login",
-        component: LoginPage,
+        component: Login,
     },
 ];
 
@@ -20,17 +20,17 @@ export const privateRoutes = [
     {
         path: "/",
         name: "home",
-        component: HomePage,
+        component: Home,
     },
     {
         path: "/posts",
         name: "posts",
-        component: PostPage,
+        component: Post,
     },
     {
         path: "/posts/:id",
         name: "postDetail",
-        component: PostPage,
+        component: Post,
     },
 ];
 

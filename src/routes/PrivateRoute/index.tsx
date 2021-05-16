@@ -2,8 +2,10 @@ import React from "react";
 
 import { Route, RouteProps, Redirect } from "react-router-dom";
 
+import LocalStorageUtils from "../../utils/LocalStorageUtils";
+
 const PrivateRoute = (props: RouteProps) => {
-    const user: string = "test";
+    const user = LocalStorageUtils.getUser();
     if (user) {
         return <Route {...props} />;
     }

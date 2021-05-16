@@ -4,4 +4,4 @@ function Post() {
     return <div>Post Page</div>;
 }
 
-export default PostPage;
+export default Post;
