@@ -15,13 +15,15 @@ export default {
     component: AutocompleteBase,
 };
 
-const Template: Story<AutocompleteBaseProps<Object, boolean, boolean, boolean>> = (args) => {
+const Template: Story<AutocompleteBaseProps<{ title: string }, boolean, boolean, boolean>> = (
+    args
+) => {
     return <AutocompleteBase {...args} />;
 };
 export const Basic = Template.bind({});
 Basic.args = {
     options: options,
-    getOptionLabel: (option: any) => option.title,
+    getOptionLabel: (option) => option.title,
     renderInput: (params) => <TextField {...params} label="Name" variant="outlined" />,
     style: { width: 300 },
 };
