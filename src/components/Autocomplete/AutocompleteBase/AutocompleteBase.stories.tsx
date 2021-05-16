@@ -3,11 +3,15 @@ import TextField from "../../Textfields/TextFieldBase";
 
 import { Story } from "@storybook/react";
 
-const options = [
-    { title: "Thien Duc" },
-    { title: "Kien Tran" },
-    { title: "Binh Pham" },
-    { title: "Thanh Binh" },
+interface UserInfo {
+    name: string;
+}
+
+const options: UserInfo[] = [
+    { name: "Thien Duc" },
+    { name: "Kien Tran" },
+    { name: "Binh Pham" },
+    { name: "Thanh Binh" },
 ];
 
 export default {
@@ -15,15 +19,13 @@ export default {
     component: AutocompleteBase,
 };
 
-const Template: Story<AutocompleteBaseProps<{ title: string }, boolean, boolean, boolean>> = (
-    args
-) => {
+const Template: Story<AutocompleteBaseProps<UserInfo, boolean, boolean, boolean>> = (args) => {
     return <AutocompleteBase {...args} />;
 };
 export const Basic = Template.bind({});
 Basic.args = {
     options: options,
-    getOptionLabel: (option) => option.title,
+    getOptionLabel: (option) => option.name,
     renderInput: (params) => <TextField {...params} label="Name" variant="outlined" />,
     style: { width: 300 },
 };
