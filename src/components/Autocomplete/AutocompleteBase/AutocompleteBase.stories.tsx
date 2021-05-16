@@ -15,7 +15,7 @@ export default {
     component: AutocompleteBase,
 };
 
-const Template: Story<AutocompleteBaseProps> = (args) => {
+const Template: Story<AutocompleteBaseProps<Object, boolean, boolean, boolean>> = (args) => {
     return <AutocompleteBase {...args} />;
 };
 export const Basic = Template.bind({});

@@ -3,10 +3,21 @@ import {
     AutocompleteProps as MaterialAutocompleteProps,
 } from "@material-ui/lab";
 
-export interface AutocompleteBaseProps
-    extends MaterialAutocompleteProps<Object, boolean, boolean, boolean> {}
+export interface AutocompleteBaseProps<
+    T,
+    Multiple extends boolean | undefined,
+    DisableClearable extends boolean | undefined,
+    FreeSolo extends boolean | undefined
+> extends MaterialAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> {}
 
-const AutoCompleteBase = (props: AutocompleteBaseProps) => {
+const AutoCompleteBase = <
+    T extends {},
+    Multiple extends boolean | undefined,
+    DisableClearable extends boolean | undefined,
+    FreeSolo extends boolean | undefined
+>(
+    props: AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>
+) => {
     return <MaterialAutocomplete {...props} />;
 };
 
