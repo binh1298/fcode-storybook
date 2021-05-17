@@ -19,7 +19,7 @@ export default {
     component: AutocompleteBase,
 };
 
-const Template: Story<AutocompleteBaseProps<UserInfo, boolean, boolean, boolean>> = (args) => {
+const Template: Story<AutocompleteBaseProps<UserInfo>> = (args) => {
     return <AutocompleteBase {...args} />;
 };
 export const Basic = Template.bind({});
@@ -33,7 +33,7 @@ export const MultiValue = Template.bind({});
 MultiValue.args = {
     multiple: true,
     options: options,
-    getOptionLabel: (option: any) => option.title,
+    getOptionLabel: (option) => option.name,
     renderInput: (params) => <TextField {...params} label="Name" variant="standard" />,
     style: { width: "50%" },
 };
