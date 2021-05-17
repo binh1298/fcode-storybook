@@ -1,5 +1,3 @@
-import { Box as MaterialBox } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
 import {
     InboxRounded as InboxIcon,
     StarBorderRounded as StarIcon,
