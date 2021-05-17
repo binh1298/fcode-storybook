@@ -4,8 +4,36 @@ schema {
   subscription: subscription_root
 }
 
+"""
+expression to compare columns of type Boolean. All fields are combined with logical 'AND'.
+"""
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
 """mutation root"""
 type mutation_root {
+  """
+  delete data from the table: "posts"
+  """
+  delete_posts(
+    """filter the rows which have to be deleted"""
+    where: posts_bool_exp!
+  ): posts_mutation_response
+
+  """
+  delete single row from the table: "posts"
+  """
+  delete_posts_by_pk(postId: uuid!): posts
+
   """
   delete data from the table: "users"
   """
@@ -17,7 +45,29 @@ type mutation_root {
   """
   delete single row from the table: "users"
   """
-  delete_users_by_pk(id: uuid!): users
+  delete_users_by_pk(userId: uuid!): users
+
+  """
+  insert data into the table: "posts"
+  """
+  insert_posts(
+    """the rows to be inserted"""
+    objects: [posts_insert_input!]!
+
+    """on conflict condition"""
+    on_conflict: posts_on_conflict
+  ): posts_mutation_response
+
+  """
+  insert a single row into the table: "posts"
+  """
+  insert_posts_one(
+    """the row to be inserted"""
+    object: posts_insert_input!
+
+    """on conflict condition"""
+    on_conflict: posts_on_conflict
+  ): posts
 
   """
   insert data into the table: "users"
@@ -40,6 +90,26 @@ type mutation_root {
     """on conflict condition"""
     on_conflict: users_on_conflict
   ): users
+
+  """
+  update data of the table: "posts"
+  """
+  update_posts(
+    """sets the columns of the filtered rows to the given values"""
+    _set: posts_set_input
+
+    """filter the rows which have to be updated"""
+    where: posts_bool_exp!
+  ): posts_mutation_response
+
+  """
+  update single row of the table: "posts"
+  """
+  update_posts_by_pk(
+    """sets the columns of the filtered rows to the given values"""
+    _set: posts_set_input
+    pk_columns: posts_pk_columns_input!
+  ): posts
 
   """
   update data of the table: "users"
@@ -83,8 +153,302 @@ enum order_by {
   desc_nulls_last
 }
 
+"""
+columns and relationships of "posts"
+"""
+type posts {
+  authorId: uuid
+  content: String!
+  createdAt: timestamp!
+  deletedAt: timestamp
+  postId: uuid!
+  title: String!
+  updatedAt: timestamp!
+
+  """An object relationship"""
+  user: users
+}
+
+"""
+aggregated selection of "posts"
+"""
+type posts_aggregate {
+  aggregate: posts_aggregate_fields
+  nodes: [posts!]!
+}
+
+"""
+aggregate fields of "posts"
+"""
+type posts_aggregate_fields {
+  count(columns: [posts_select_column!], distinct: Boolean): Int
+  max: posts_max_fields
+  min: posts_min_fields
+}
+
+"""
+order by aggregate values of table "posts"
+"""
+input posts_aggregate_order_by {
+  count: order_by
+  max: posts_max_order_by
+  min: posts_min_order_by
+}
+
+"""
+input type for inserting array relation for remote table "posts"
+"""
+input posts_arr_rel_insert_input {
+  data: [posts_insert_input!]!
+  on_conflict: posts_on_conflict
+}
+
+"""
+Boolean expression to filter rows from the table "posts". All fields are combined with a logical 'AND'.
+"""
+input posts_bool_exp {
+  _and: [posts_bool_exp]
+  _not: posts_bool_exp
+  _or: [posts_bool_exp]
+  authorId: uuid_comparison_exp
+  content: String_comparison_exp
+  createdAt: timestamp_comparison_exp
+  deletedAt: timestamp_comparison_exp
+  postId: uuid_comparison_exp
+  title: String_comparison_exp
+  updatedAt: timestamp_comparison_exp
+  user: users_bool_exp
+}
+
+"""
+unique or primary key constraints on table "posts"
+"""
+enum posts_constraint {
+  """unique or primary key constraint"""
+  PK_cdc670193be6ca43f590dbabcee
+}
+
+"""
+input type for inserting data into table "posts"
+"""
+input posts_insert_input {
+  authorId: uuid
+  content: String
+  createdAt: timestamp
+  deletedAt: timestamp
+  postId: uuid
+  title: String
+  updatedAt: timestamp
+  user: users_obj_rel_insert_input
+}
+
+"""aggregate max on columns"""
+type posts_max_fields {
+  authorId: uuid
+  content: String
+  createdAt: timestamp
+  deletedAt: timestamp
+  postId: uuid
+  title: String
+  updatedAt: timestamp
+}
+
+"""
+order by max() on columns of table "posts"
+"""
+input posts_max_order_by {
+  authorId: order_by
+  content: order_by
+  createdAt: order_by
+  deletedAt: order_by
+  postId: order_by
+  title: order_by
+  updatedAt: order_by
+}
+
+"""aggregate min on columns"""
+type posts_min_fields {
+  authorId: uuid
+  content: String
+  createdAt: timestamp
+  deletedAt: timestamp
+  postId: uuid
+  title: String
+  updatedAt: timestamp
+}
+
+"""
+order by min() on columns of table "posts"
+"""
+input posts_min_order_by {
+  authorId: order_by
+  content: order_by
+  createdAt: order_by
+  deletedAt: order_by
+  postId: order_by
+  title: order_by
+  updatedAt: order_by
+}
+
+"""
+response of any mutation on the table "posts"
+"""
+type posts_mutation_response {
+  """number of affected rows by the mutation"""
+  affected_rows: Int!
+
+  """data of the affected rows by the mutation"""
+  returning: [posts!]!
+}
+
+"""
+input type for inserting object relation for remote table "posts"
+"""
+input posts_obj_rel_insert_input {
+  data: posts_insert_input!
+  on_conflict: posts_on_conflict
+}
+
+"""
+on conflict condition type for table "posts"
+"""
+input posts_on_conflict {
+  constraint: posts_constraint!
+  update_columns: [posts_update_column!]!
+  where: posts_bool_exp
+}
+
+"""
+ordering options when selecting data from "posts"
+"""
+input posts_order_by {
+  authorId: order_by
+  content: order_by
+  createdAt: order_by
+  deletedAt: order_by
+  postId: order_by
+  title: order_by
+  updatedAt: order_by
+  user: users_order_by
+}
+
+"""
+primary key columns input for table: "posts"
+"""
+input posts_pk_columns_input {
+  postId: uuid!
+}
+
+"""
+select columns of table "posts"
+"""
+enum posts_select_column {
+  """column name"""
+  authorId
+
+  """column name"""
+  content
+
+  """column name"""
+  createdAt
+
+  """column name"""
+  deletedAt
+
+  """column name"""
+  postId
+
+  """column name"""
+  title
+
+  """column name"""
+  updatedAt
+}
+
+"""
+input type for updating data in table "posts"
+"""
+input posts_set_input {
+  authorId: uuid
+  content: String
+  createdAt: timestamp
+  deletedAt: timestamp
+  postId: uuid
+  title: String
+  updatedAt: timestamp
+}
+
+"""
+update columns of table "posts"
+"""
+enum posts_update_column {
+  """column name"""
+  authorId
+
+  """column name"""
+  content
+
+  """column name"""
+  createdAt
+
+  """column name"""
+  deletedAt
+
+  """column name"""
+  postId
+
+  """column name"""
+  title
+
+  """column name"""
+  updatedAt
+}
+
 """query root"""
 type query_root {
+  """
+  fetch data from the table: "posts"
+  """
+  posts(
+    """distinct select on columns"""
+    distinct_on: [posts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [posts_order_by!]
+
+    """filter the rows returned"""
+    where: posts_bool_exp
+  ): [posts!]!
+
+  """
+  fetch aggregated fields from the table: "posts"
+  """
+  posts_aggregate(
+    """distinct select on columns"""
+    distinct_on: [posts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [posts_order_by!]
+
+    """filter the rows returned"""
+    where: posts_bool_exp
+  ): posts_aggregate!
+
+  """fetch data from the table: "posts" using primary key columns"""
+  posts_by_pk(postId: uuid!): posts
+
   """
   fetch data from the table: "users"
   """
@@ -126,7 +490,7 @@ type query_root {
   ): users_aggregate!
 
   """fetch data from the table: "users" using primary key columns"""
-  users_by_pk(id: uuid!): users
+  users_by_pk(userId: uuid!): users
 }
 
 """
@@ -153,6 +517,49 @@ input String_comparison_exp {
 """subscription root"""
 type subscription_root {
   """
+  fetch data from the table: "posts"
+  """
+  posts(
+    """distinct select on columns"""
+    distinct_on: [posts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [posts_order_by!]
+
+    """filter the rows returned"""
+    where: posts_bool_exp
+  ): [posts!]!
+
+  """
+  fetch aggregated fields from the table: "posts"
+  """
+  posts_aggregate(
+    """distinct select on columns"""
+    distinct_on: [posts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [posts_order_by!]
+
+    """filter the rows returned"""
+    where: posts_bool_exp
+  ): posts_aggregate!
+
+  """fetch data from the table: "posts" using primary key columns"""
+  posts_by_pk(postId: uuid!): posts
+
+  """
   fetch data from the table: "users"
   """
   users(
@@ -193,7 +600,7 @@ type subscription_root {
   ): users_aggregate!
 
   """fetch data from the table: "users" using primary key columns"""
-  users_by_pk(id: uuid!): users
+  users_by_pk(userId: uuid!): users
 }
 
 scalar timestamp
@@ -217,10 +624,48 @@ input timestamp_comparison_exp {
 columns and relationships of "users"
 """
 type users {
-  created_at: timestamp!
+  avatar: String
   email: String!
-  id: uuid!
+  isActive: Boolean!
   name: String!
+
+  """An array relationship"""
+  posts(
+    """distinct select on columns"""
+    distinct_on: [posts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [posts_order_by!]
+
+    """filter the rows returned"""
+    where: posts_bool_exp
+  ): [posts!]!
+
+  """An aggregated array relationship"""
+  posts_aggregate(
+    """distinct select on columns"""
+    distinct_on: [posts_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [posts_order_by!]
+
+    """filter the rows returned"""
+    where: posts_bool_exp
+  ): posts_aggregate!
+  role: String!
+  userId: uuid!
 }
 
 """
@@ -264,10 +709,13 @@ input users_bool_exp {
   _and: [users_bool_exp]
   _not: users_bool_exp
   _or: [users_bool_exp]
-  created_at: timestamp_comparison_exp
+  avatar: String_comparison_exp
   email: String_comparison_exp
-  id: uuid_comparison_exp
+  isActive: Boolean_comparison_exp
   name: String_comparison_exp
+  posts: posts_bool_exp
+  role: String_comparison_exp
+  userId: uuid_comparison_exp
 }
 
 """
@@ -275,56 +723,63 @@ unique or primary key constraints on table "users"
 """
 enum users_constraint {
   """unique or primary key constraint"""
-  users_email_key
+  PK_8bf09ba754322ab9c22a215c919
 
   """unique or primary key constraint"""
-  users_pkey
+  UQ_97672ac88f789774dd47f7c8be3
 }
 
 """
 input type for inserting data into table "users"
 """
 input users_insert_input {
-  created_at: timestamp
+  avatar: String
   email: String
-  id: uuid
+  isActive: Boolean
   name: String
+  posts: posts_arr_rel_insert_input
+  role: String
+  userId: uuid
 }
 
 """aggregate max on columns"""
 type users_max_fields {
-  created_at: timestamp
+  avatar: String
   email: String
-  id: uuid
   name: String
+  role: String
+  userId: uuid
 }
 
 """
 order by max() on columns of table "users"
 """
 input users_max_order_by {
-  created_at: order_by
+  avatar: order_by
   email: order_by
-  id: order_by
   name: order_by
+  role: order_by
+  userId: order_by
 }
 
 """aggregate min on columns"""
 type users_min_fields {
-  created_at: timestamp
+  avatar: String
   email: String
-  id: uuid
   name: String
+  role: String
+  userId: uuid
 }
 
 """
 order by min() on columns of table "users"
 """
 input users_min_order_by {
-  created_at: order_by
+  avatar: order_by
   email: order_by
-  id: order_by
   name: order_by
+  role: order_by
+  userId: order_by
 }
 
 """
@@ -359,17 +814,20 @@ input users_on_conflict {
 ordering options when selecting data from "users"
 """
 input users_order_by {
-  created_at: order_by
+  avatar: order_by
   email: order_by
-  id: order_by
+  isActive: order_by
   name: order_by
+  posts_aggregate: posts_aggregate_order_by
+  role: order_by
+  userId: order_by
 }
 
 """
 primary key columns input for table: "users"
 """
 input users_pk_columns_input {
-  id: uuid!
+  userId: uuid!
 }
 
 """
@@ -377,26 +835,34 @@ select columns of table "users"
 """
 enum users_select_column {
   """column name"""
-  created_at
+  avatar
 
   """column name"""
   email
 
   """column name"""
-  id
+  isActive
 
   """column name"""
   name
+
+  """column name"""
+  role
+
+  """column name"""
+  userId
 }
 
 """
 input type for updating data in table "users"
 """
 input users_set_input {
-  created_at: timestamp
+  avatar: String
   email: String
-  id: uuid
+  isActive: Boolean
   name: String
+  role: String
+  userId: uuid
 }
 
 """
@@ -404,16 +870,22 @@ update columns of table "users"
 """
 enum users_update_column {
   """column name"""
-  created_at
+  avatar
 
   """column name"""
   email
 
   """column name"""
-  id
+  isActive
 
   """column name"""
   name
+
+  """column name"""
+  role
+
+  """column name"""
+  userId
 }
 
 scalar uuid

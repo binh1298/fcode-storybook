@@ -2,10 +2,13 @@ import jwt_decode from "jwt-decode";
 
 const LOCALSTORAGE_TOKEN_NAME = "token";
 class LocalStorageUtils {
-    getItem(key: string, defaultValue = '""') {
+    getItem(key: string) {
         if (typeof localStorage !== "undefined") {
             let item = localStorage.getItem(key);
-            if (item && item === "undefined") item = defaultValue;
+            if (!item) {
+                this.setItem(key);
+                return localStorage.getItem(key);
+            }
             return JSON.parse(item || "{}");
         }
         return undefined;
@@ -32,12 +35,23 @@ class LocalStorageUtils {
     getUser() {
         if (typeof localStorage !== "undefined") {
             const token = this.getItem(LOCALSTORAGE_TOKEN_NAME);
-            if (token) return jwt_decode(token);
-            else return token;
+            try {
+                if (token) return jwt_decode(token);
+                else return token;
+            } catch (error) {
+                return token;
+            }
         }
         return undefined;
     }
 
+    setUser(token: string) {
+        if (typeof localStorage !== "undefined") {
+            this.setItem(LOCALSTORAGE_TOKEN_NAME, token);
+            this.setItem("user", JSON.stringify(jwt_decode(token)));
+        }
+        return undefined;
+    }
     getToken() {
         return this.getItem(LOCALSTORAGE_TOKEN_NAME);
     }

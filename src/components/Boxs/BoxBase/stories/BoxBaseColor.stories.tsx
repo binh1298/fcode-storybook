@@ -1,5 +1,5 @@
 import BoxBase, { BoxBaseProps } from "..";
-import { argTypes } from "./ArgTypes.BoxBase.component";
+import { argTypes } from "./ArgTypes.BoxBase.stories.component";
 
 import { Story } from "@storybook/react";
 
@@ -68,4 +68,27 @@ Info.args = {
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
+};
+
+export const Default = Template.bind({});
+Default.args = {
+    minHeight: 300,
+    width: 1,
+    bgcolor: "common",
+    children: "Default",
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+};
+
+export const ImportantColor = Template.bind({});
+ImportantColor.args = {
+    minHeight: 300,
+    width: 1,
+    bgcolor: "primary",
+    children: "Demo Override Color",
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    overrideColor: "secondary.main",
 };

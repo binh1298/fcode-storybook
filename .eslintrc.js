@@ -8,6 +8,11 @@ module.exports = {
         react: {
             version: "detect",
         },
+        "import/resolver": {
+            node: {
+                paths: ["src"],
+            },
+        },
     },
     extends: [
         "prettier",
@@ -16,18 +21,23 @@ module.exports = {
         "plugin:react-hooks/recommended",
     ],
     parser: "@typescript-eslint/parser",
-    plugins: ["@typescript-eslint"],
+    plugins: ["@typescript-eslint", "unused-imports"],
     parserOptions: {
         ecmaVersion: 2018,
         sourceType: "module",
     },
     rules: {
         "prettier/prettier": "error",
-        "react/react-in-jsx-scope": "off",
         "no-console": "warn",
         "no-eval": "warn",
         "no-proto": 2,
+        "no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": "warn",
         "react/display-name": "off",
         "react/prop-types": "off",
+        "react/jsx-uses-react": "error",
+        "react/react-in-jsx-scope": "off",
+        "react-hooks/exhaustive-deps": "error",
     },
 };
