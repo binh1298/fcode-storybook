@@ -33,7 +33,7 @@ describe("Structure of <BoxBase />", () => {
     it("overrideColor should override the color", () => {
         wrapper = render(
             <ThemeProvider theme={replyTheme}>
-                <BoxBase {...props} bgcolor="info" overrideColor="primary.main" />
+                <BoxBase {...props} bgcolor="info" overrideColor="primary" />
             </ThemeProvider>
         );
         expect(screen.getByText("Value")).toHaveStyle("color: #344955");
