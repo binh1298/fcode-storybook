@@ -1,26 +1,29 @@
-import { CSSProperties } from "react";
-
 import {
     ListItem as MaterialListItem,
     ListItemProps as MaterialListItemProps,
+    makeStyles,
+    Theme,
 } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
 
 import BoxBase from "../../Boxs/BoxBase";
 
 export interface ListItemBaseProps extends MaterialListItemProps {}
 
+const useStyles = makeStyles<Theme>((theme) => ({
+    root: {
+        "&:hover": {
+            backgroundColor: theme.palette.primary.main,
+        },
+    },
+}));
+
 const ListItemBase = (props: ListItemBaseProps) => {
     const { button, ...rest } = props;
-    const theme = useTheme();
-
-    let listItemBaseStyle: CSSProperties = {
-        backgroundColor: theme.palette.primary.main,
-    };
+    const classes = useStyles();
 
     return (
-        <BoxBase style={listItemBaseStyle}>
-            <MaterialListItem button={button as false} {...rest} />
+        <BoxBase bgcolor="primary">
+            <MaterialListItem className={classes.root} button={button as false} {...rest} />
         </BoxBase>
     );
 };

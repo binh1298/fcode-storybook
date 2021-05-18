@@ -16,6 +16,7 @@ describe("<ListItemIconBase />", () => {
     it("should exist children with default style", () => {
         props = {
             children: "Test",
+            bgColor: "primary",
         };
         render(<ListItemIconBaseTest {...props} />);
         const muiBox = screen.getByTestId("ListItemIconBase__root");
