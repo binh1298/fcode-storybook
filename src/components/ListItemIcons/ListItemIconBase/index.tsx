@@ -3,9 +3,10 @@ import { CSSProperties } from "react";
 import {
     ListItemIcon as MaterialListItemIcon,
     ListItemIconProps as MaterialListItemIconProps,
-    Box as MaterialBox,
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
+
+import BoxBase from "../../Boxs/BoxBase";
 
 export interface ListItemIconBaseProps extends MaterialListItemIconProps {
     color?: "primary" | "secondary";
@@ -40,13 +41,13 @@ const ListItemIconBase = (props: ListItemIconBaseProps) => {
     }
 
     return (
-        <MaterialBox ml={3}>
+        <BoxBase ml={3}>
             <MaterialListItemIcon {...rest}>
-                <MaterialBox data-testid="ListItemIconBase__root" style={listItemIconBaseStyle}>
+                <BoxBase data-testid="ListItemIconBase__root" style={listItemIconBaseStyle}>
                     {children}
-                </MaterialBox>
+                </BoxBase>
             </MaterialListItemIcon>
-        </MaterialBox>
+        </BoxBase>
     );
 };
 

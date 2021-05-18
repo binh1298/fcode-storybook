@@ -3,9 +3,10 @@ import { CSSProperties } from "react";
 import {
     ListItemText as MaterialListItemText,
     ListItemTextProps as MaterialListItemTextProps,
-    Box as MaterialBox,
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
+
+import BoxBase from "../../Boxs/BoxBase";
 
 export interface ListItemTextBaseProps extends MaterialListItemTextProps {
     color?: "primary" | "secondary" | "secondary-main";
@@ -31,9 +32,9 @@ const ListItemTextBase = (props: ListItemTextBaseProps) => {
     }
 
     return (
-        <MaterialBox data-testid="ListItemTextBase__root" style={listItemTextBaseStyle}>
+        <BoxBase data-testid="ListItemTextBase__root" style={listItemTextBaseStyle}>
             <MaterialListItemText {...rest} />
-        </MaterialBox>
+        </BoxBase>
     );
 };
 

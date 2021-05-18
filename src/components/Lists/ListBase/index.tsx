@@ -1,28 +1,27 @@
 import { CSSProperties } from "react";
 
-import {
-    List as MaterialList,
-    ListProps as MaterialListProps,
-    Box as MaterialBox,
-} from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { List as MaterialList, ListProps as MaterialListProps, useTheme } from "@material-ui/core";
+
+import BoxBase from "../../Boxs/BoxBase";
 
 export interface ListBaseProps extends MaterialListProps {
     width?: number;
 }
 
 const ListBase = (props: ListBaseProps) => {
-    const theme = useTheme();
     const { width = 260, ...rest } = props;
+    const theme = useTheme();
     let listBaseStyle: CSSProperties = {
-        backgroundColor: theme.palette.primary.main,
         width: width,
+        backgroundColor: theme.palette.primary.main,
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
     };
 
     return (
-        <MaterialBox data-testid="ListBase__root" style={listBaseStyle}>
+        <BoxBase data-testid="ListBase__root" style={listBaseStyle}>
             <MaterialList {...rest} />
-        </MaterialBox>
+        </BoxBase>
     );
 };
 
