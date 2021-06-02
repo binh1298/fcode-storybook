@@ -40,7 +40,7 @@ export default {
     },
     component: DrawerBase,
     decorators: [
-        (Story, context) => {
+        (Story) => {
             return (
                 <ThemeProvider theme={replyTheme}>
                     <Story />
@@ -95,9 +95,9 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
         overflowX: "hidden",
-        width: theme.spacing(7) + 1,
+        width: theme.spacing(10) + 1,
         [theme.breakpoints.up("sm")]: {
-            width: theme.spacing(13) + 1,
+            width: theme.spacing(12) + 1,
         },
     },
     toolbar: {
@@ -196,6 +196,7 @@ export const MiniVariant: Story<DrawerBaseProps> = (args) => {
                 </ListBase>
             </DrawerBase>
             <BoxBase component="main" className={classes.content}>
+                <BoxBase p={3} />
                 <TypographyBase paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim
