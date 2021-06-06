@@ -16,7 +16,7 @@ describe("<ListItemIconBase />", () => {
     it("should exist children with default style", () => {
         props = {
             children: "Test",
-            bgColor: "primary",
+            bgcolor: "primary",
         };
         render(<ListItemIconBaseTest {...props} />);
         const muiBox = screen.getByTestId("ListItemIconBase__root");
@@ -29,7 +29,7 @@ describe("<ListItemIconBase />", () => {
         props = {
             children: "Test",
             color: "primary",
-            bgColor: "primary",
+            bgcolor: "primary",
         };
         render(<ListItemIconBaseTest {...props} />);
         const muiBox = screen.getByTestId("ListItemIconBase__root");
@@ -42,7 +42,7 @@ describe("<ListItemIconBase />", () => {
         props = {
             children: "Test",
             color: "secondary",
-            bgColor: "secondary",
+            bgcolor: "secondary",
         };
         render(<ListItemIconBaseTest {...props} />);
         const muiBox = screen.getByTestId("ListItemIconBase__root");

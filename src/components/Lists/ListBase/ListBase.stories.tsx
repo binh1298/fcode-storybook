@@ -13,7 +13,6 @@ import { Edit as EditIcon } from "@material-ui/icons";
 
 import ListBase, { ListBaseProps } from ".";
 import AvatarBase from "../../Avatars/AvatarBase";
-import BoxBase from "../../Boxs/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
@@ -39,7 +38,7 @@ const listItems = [
 export const SimpleList: Story<ListBaseProps> = (args) => (
     <ListBase {...args}>
         <ListItemBase button>
-            <ListItemIconBase bgColor="primary" color="secondary">
+            <ListItemIconBase bgcolor="primary" color="secondary">
                 <InboxIcon />
             </ListItemIconBase>
             <ListItemTextBase primary="Inbox" color="secondary-main" />
@@ -47,7 +46,7 @@ export const SimpleList: Story<ListBaseProps> = (args) => (
 
         {listItems.map((item, index) => (
             <ListItemBase key={index} button>
-                <ListItemIconBase bgColor="primary">{item.icon}</ListItemIconBase>
+                <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
                 <ListItemTextBase primary={item.text} />
             </ListItemBase>
         ))}
@@ -65,42 +64,37 @@ const fcodeAvatarSource =
 export const LoggedIn: Story<ListBaseProps> = (args) => (
     <ListBase {...args}>
         <ListItemBase>
-            <BoxBase display="flex" justifyContent="space-between" flexGrow={1}>
-                <BoxBase display="flex" flexGrow={1}>
-                    <BoxBase bgcolor="primary">
-                        <ArrowLeftIcon />
-                    </BoxBase>
-                    <AvatarBase variant="square" src={replyLogoSource} />
-                    <BoxBase ml={2} bgcolor="primary">
-                        <TypographyBase variant="h6">REPLY</TypographyBase>
-                    </BoxBase>
-                </BoxBase>
-                <BoxBase display="flex" justifyContent="flex-end" alignItems="center" flexGrow={1}>
-                    <AvatarBase src={fcodeAvatarSource} />
-                    <BoxBase bgcolor="primary" pl={2}>
-                        <SettingsIcon />
-                    </BoxBase>
-                </BoxBase>
-            </BoxBase>
+            <ListItemIconBase bgcolor="primary" width={24}>
+                <ArrowLeftIcon />
+            </ListItemIconBase>
+            <AvatarBase variant="square" src={replyLogoSource} />
+            <TypographyBase variant="h6" pl={2} pr={10} bgcolor="primary">
+                REPLY
+            </TypographyBase>
+            <AvatarBase src={fcodeAvatarSource} />
+            <ListItemIconBase bgcolor="primary" pl={1} width={24}>
+                <SettingsIcon />
+            </ListItemIconBase>
         </ListItemBase>
         <ListItemBase>
-            <BoxBase pl={2} pt={1} pb={2}>
-                <ButtonBase
-                    color="secondary"
-                    variant="contained"
-                    startIcon={
-                        <TypographyBase variant="h6">
-                            <EditIcon />
-                        </TypographyBase>
-                    }
-                >
-                    <TypographyBase variant="h5">Compose</TypographyBase>
-                </ButtonBase>
-            </BoxBase>
+            <ButtonBase
+                pl={4}
+                pt={1}
+                pb={2}
+                color="secondary"
+                variant="contained"
+                startIcon={
+                    <TypographyBase variant="h6">
+                        <EditIcon />
+                    </TypographyBase>
+                }
+            >
+                <TypographyBase variant="h5">Compose</TypographyBase>
+            </ButtonBase>
         </ListItemBase>
 
         <ListItemBase button>
-            <ListItemIconBase bgColor="primary" color="secondary">
+            <ListItemIconBase bgcolor="primary" color="secondary" ml={3}>
                 <InboxIcon />
             </ListItemIconBase>
             <ListItemTextBase primary="Inbox" color="secondary-main" />
@@ -108,7 +102,9 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
 
         {listItems.map((item, index) => (
             <ListItemBase key={index} button>
-                <ListItemIconBase bgColor="primary">{item.icon}</ListItemIconBase>
+                <ListItemIconBase bgcolor="primary" ml={3}>
+                    {item.icon}
+                </ListItemIconBase>
                 <ListItemTextBase primary={item.text} />
             </ListItemBase>
         ))}
@@ -121,39 +117,37 @@ LoggedIn.args = {
 export const LoggedOut: Story<ListBaseProps> = (args) => (
     <ListBase {...args}>
         <ListItemBase>
-            <BoxBase display="flex" justifyContent="space-between" flexGrow={1}>
-                <BoxBase display="flex" flexGrow={1}>
-                    <BoxBase bgcolor="primary">
-                        <ArrowLeftIcon />
-                    </BoxBase>
-                    <AvatarBase variant="square" src={replyLogoSource} />
-                    <BoxBase ml={2} bgcolor="primary">
-                        <TypographyBase variant="h6">REPLY</TypographyBase>
-                    </BoxBase>
-                </BoxBase>
-            </BoxBase>
+            <ListItemIconBase bgcolor="primary" width={24}>
+                <ArrowLeftIcon />
+            </ListItemIconBase>
+            <AvatarBase variant="square" src={replyLogoSource} />
+
+            <TypographyBase ml={2} variant="h6" bgcolor="primary">
+                REPLY
+            </TypographyBase>
         </ListItemBase>
 
         <ListItemBase divider>
-            <BoxBase display="flex" justifyContent="center" bgcolor="primary" flexGrow={1} pt={1}>
-                <TypographyBase variant="body1">WELCOME TO OUR APP</TypographyBase>
-            </BoxBase>
+            <TypographyBase variant="body1" bgcolor="primary" ml={3}>
+                WELCOME TO OUR APP
+            </TypographyBase>
         </ListItemBase>
 
         <ListItemBase>
-            <BoxBase display="flex" justifyContent="center" flexGrow={1} pl={2} pt={2} pb={2}>
-                <ButtonBase
-                    color="secondary"
-                    variant="contained"
-                    startIcon={
-                        <TypographyBase variant="h6">
-                            <ExitToAppIcon />
-                        </TypographyBase>
-                    }
-                >
-                    <TypographyBase variant="h5">Sign In</TypographyBase>
-                </ButtonBase>
-            </BoxBase>
+            <ButtonBase
+                pl={2}
+                pt={2}
+                pb={2}
+                color="secondary"
+                variant="contained"
+                startIcon={
+                    <TypographyBase variant="h6">
+                        <ExitToAppIcon />
+                    </TypographyBase>
+                }
+            >
+                <TypographyBase variant="h5">Sign In</TypographyBase>
+            </ButtonBase>
         </ListItemBase>
     </ListBase>
 );
