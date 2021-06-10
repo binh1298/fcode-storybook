@@ -9,6 +9,7 @@ import PublicRoute from "./PublicRoute";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
+import UpSertPost from "src/pages/Post/UpSertPost";
 
 const publicRoutes: RouteCustom[] = [
     {
@@ -38,6 +39,16 @@ const privateRoutes: RouteCustom[] = [
         path: "/posts/:id",
         name: "postDetail",
         component: Post,
+    },
+    {
+        path: "/create/posts",
+        name: "createPosts",
+        component: UpSertPost,
+    },
+    {
+        path: "/update/posts/:id",
+        name: "updatePosts",
+        component: UpSertPost,
     },
 ];
 

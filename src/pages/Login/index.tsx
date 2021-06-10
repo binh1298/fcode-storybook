@@ -5,6 +5,8 @@ import { API_ROOT_URL } from "src/configuration";
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 
+import LocalStorageUtils from "src/utils/LocalStorageUtils";
+
 interface ApiResponse<T> {
     data: T;
     message: string;
@@ -24,6 +26,8 @@ const Login = () => {
             setRedirectUrl(resultObject.data);
             // eslint-disable-next-line no-console
             console.log("fetchLoginUri", resultObject.data);
+            // eslint-disable-next-line no-console
+            console.log(resultObject.data);
         } catch (error) {
             // eslint-disable-next-line no-console
             console.log("error", error);
@@ -46,6 +50,7 @@ const Login = () => {
                 const resultObject = await result.json();
                 // eslint-disable-next-line no-console
                 console.log("fetchToken", resultObject.data);
+                LocalStorageUtils.setUser(resultObject.data);
             } catch (error) {
                 // eslint-disable-next-line no-console
                 console.log("error", error);
