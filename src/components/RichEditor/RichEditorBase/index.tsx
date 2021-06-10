@@ -3,28 +3,27 @@ import { useEffect, useRef, useState } from "react";
 import { EditorState, convertToRaw, RawDraftContentState, convertFromRaw } from "draft-js";
 import { Editor, EditorProps } from "react-draft-wysiwyg";
 
+import BoxBase from "src/components/Boxs/BoxBase";
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export interface RichEditorBaseProps extends EditorProps {
     placeholder?: string;
     initContent?: string;
     getValue?: (content: string) => void;
-    loading?: boolean;
     height?: number;
+    focus?: boolean;
 }
 
 const RichEditorBase = (props: RichEditorBaseProps) => {
     const editorRef = useRef<HTMLInputElement>();
 
     useEffect(() => {
-        if (editorRef.current) {
+        if (editorRef.current && props.focus) {
             editorRef.current.focus();
         }
-    }, []);
+    }, [props.focus]);
 
-    const editorStyles = {
-        height: props.height ? `${props.height}px` : "200px",
-    };
     const setDefaultValue = (initString?: string) => {
         if (!initString) {
             return () => EditorState.createEmpty();
@@ -42,17 +41,21 @@ const RichEditorBase = (props: RichEditorBaseProps) => {
         }
     };
 
-    if (props.loading) {
-        return <div>Is loading</div>;
-    }
     return (
-        <Editor
-            editorRef={(ref: HTMLInputElement) => (editorRef.current = ref)}
-            editorState={editorState}
-            onEditorStateChange={onEditorStateChange}
-            editorStyle={editorStyles}
-            placeholder={props.placeholder}
-        />
+        <BoxBase
+            border
+            boxSizing="border-box"
+            p={1}
+            minHeight={props.height}
+            aria-label="draft-border"
+        >
+            <Editor
+                editorRef={(ref: HTMLInputElement) => (editorRef.current = ref)}
+                editorState={editorState}
+                onEditorStateChange={onEditorStateChange}
+                placeholder={props.placeholder}
+            />
+        </BoxBase>
     );
 };
 

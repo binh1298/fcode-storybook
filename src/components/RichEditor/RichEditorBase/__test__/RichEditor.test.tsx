@@ -8,6 +8,7 @@ import RichEditorBase, { RichEditorBaseProps } from "..";
 import { render, RenderResult, screen } from "@testing-library/react";
 
 const jsonData = `{"blocks":[{"key":"3b480","text":"abc","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`;
+const defalutValue = `{"blocks":[{"key":"fmt8s","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`;
 const TestComponent = (props: RichEditorBaseProps) => {
     const [value, setValue] = useState<string>("");
     const getEditorValue = (content: string) => {
@@ -17,7 +18,7 @@ const TestComponent = (props: RichEditorBaseProps) => {
     return (
         <BoxBase width={1} display="flex">
             <BoxBase width={1 / 2} p={1} m={1}>
-                <RichEditorBase aria-label="cost-input" getValue={getEditorValue} {...rest} />
+                <RichEditorBase aria-label="draft-input" getValue={getEditorValue} {...rest} />
             </BoxBase>
             <BoxBase width={1 / 2} p={1} m={1}>
                 <TypographyBase variant="h6">Content: </TypographyBase>
@@ -31,29 +32,45 @@ const TestComponent = (props: RichEditorBaseProps) => {
 
 describe("<RichEditorBase />", () => {
     let wrapper: RenderResult;
-
     it("should show placeholder", () => {
-        wrapper = render(<RichEditorBase placeholder="Placeholer" />);
+        wrapper = render(<RichEditorBase placeholder="Placeholer" focus />);
         expect(screen.queryByText("Placeholer")).toBeInTheDocument();
     });
 
-    it("should have height is 500 when height is 499.99 (-m,p,b)", () => {
-        wrapper = render(<RichEditorBase height={500} placeholder="Placeholer" />);
-        expect(screen.queryByLabelText("rdw-editor")).toHaveStyle("height:499.99");
+    it("should have min-height is 500 when height=500", () => {
+        wrapper = render(<RichEditorBase height={500} placeholder="Placeholer" focus />);
+        expect(screen.queryByLabelText("draft-border")).toHaveStyle({
+            border: "1px solid",
+            padding: "8px",
+            boxSizing: "border-box",
+            borderRadius: "0px",
+            minHeight: "500px",
+        });
     });
 
-    it("should not show when loading", () => {
-        wrapper = render(<RichEditorBase placeholder="Placeholder" loading />);
-        expect(screen.queryByText("Is loading")).toBeInTheDocument();
+    it("should have height=auto when height=undefined", () => {
+        wrapper = render(<RichEditorBase />);
+        expect(screen.queryByLabelText("draft-border")).toHaveStyle({
+            border: "1px solid",
+            padding: "8px",
+            boxSizing: "border-box",
+            borderRadius: "0px",
+        });
+        expect(screen.queryByText("Placeholer")).toBeFalsy();
     });
 
-    it('should show defalut content when type="json" and data is json', () => {
+    it("should show defalut content when init data", () => {
         wrapper = render(<RichEditorBase initContent={jsonData} />);
         expect(screen.queryByText("abc")).toBeInTheDocument();
     });
 
-    it("should show value with import json and export html", () => {
-        wrapper = render(<TestComponent initContent={jsonData} />);
+    it("have data when textarea is changed", () => {
+        wrapper = render(<TestComponent initContent={jsonData} focus />);
         expect(screen.getByLabelText("test-label")).toBeInTheDocument();
+    });
+
+    it("don't have data first when dont set initContent", () => {
+        wrapper = render(<TestComponent />);
+        expect(wrapper.getByLabelText("test-label").firstChild).toBeNull();
     });
 });
