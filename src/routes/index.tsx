@@ -21,6 +21,11 @@ const publicRoutes: RouteCustom[] = [
 
 const privateRoutes: RouteCustom[] = [
     {
+        path: "/create/posts",
+        name: "createPosts",
+        component: UpSertPost,
+    },
+    {
         path: "/",
         name: "home",
         component: Home,
@@ -39,11 +44,6 @@ const privateRoutes: RouteCustom[] = [
         path: "/posts/:id",
         name: "postDetail",
         component: Post,
-    },
-    {
-        path: "/create/posts",
-        name: "createPosts",
-        component: UpSertPost,
     },
     {
         path: "/update/posts/:id",
