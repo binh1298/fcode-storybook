@@ -15,7 +15,6 @@ const NormalTextField = (props: NormalTextFieldProps) => {
                 style: { fontSize: "1rem" },
             }}
             InputLabelProps={{ style: { fontSize: "1rem" } }}
-            fullWidth
         />
     );
 };

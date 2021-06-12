@@ -1,16 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 
+import { useHistory } from "react-router";
 import { API_ROOT_URL } from "src/configuration";
 
-import { Container, Grid } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Hidden } from "@material-ui/core";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
+import AlertBase from "src/components/Alerts/AlertBase";
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
+import SnackbarBase from "src/components/SnackBars/SnackbarBase";
 import NormalTextField from "src/components/Textfields/NormalTextField";
+import TypographyBase from "src/components/Typography/TypographyBase";
 
+import fcodeImage from "src/assets/fcode.png";
+import SnackbarProvider from "src/context/SnackbarContext";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 interface ApiResponse<T> {
@@ -19,31 +23,15 @@ interface ApiResponse<T> {
     success: boolean;
 }
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: "100%", // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
-
 const Login = () => {
     const [redirectUrl, setRedirectUrl] = useState<string>("");
+    const [isError, setIsError] = useState<boolean>(false);
     const apiEndpoint = API_ROOT_URL;
     const redirectRouteAfterLogin = "/";
-    const classes = useStyles();
+    const history = useHistory();
+    const handleClose = () => {
+        setIsError(false);
+    };
     const fetchLoginUri = useCallback(async () => {
         try {
             const result = await fetch(
@@ -77,14 +65,16 @@ const Login = () => {
                 console.log("fetchToken", resultObject);
                 if (resultObject.success) {
                     LocalStorageUtils.setItem("token", resultObject.data);
-                    window.location.reload(false);
+                    history.push(redirectRouteAfterLogin);
+                } else if (resultObject.data.code === 401) {
+                    setIsError(true);
                 }
             } catch (error) {
                 // eslint-disable-next-line no-console
                 console.log("error", error);
             }
         },
-        [apiEndpoint]
+        [apiEndpoint, history]
     );
 
     useEffect(() => {
@@ -106,12 +96,28 @@ const Login = () => {
     };
 
     return (
-        <Container component="main">
-            <CssBaseline />
+        <SnackbarProvider>
+            <SnackbarBase open={isError} autoHideDuration={6000} onClose={handleClose}>
+                <AlertBase severity="error" variant="filled" onClose={handleClose}>
+                    Invalid credential!
+                </AlertBase>
+            </SnackbarBase>
             <Grid container style={{ minHeight: "100vh" }}>
-                <Grid item xs={12} sm={6}>
-                    <div style={{ width: "100%" }}></div>
-                </Grid>
+                <Hidden only="xs">
+                    <Grid item xs={12} sm={6}>
+                        <BoxBase
+                            width={1}
+                            bgcolor="primary"
+                            minHeight={1}
+                            justifyContent="center"
+                            alignItems="center"
+                            display="flex"
+                        >
+                            <img src={fcodeImage} width="50%" />
+                        </BoxBase>
+                    </Grid>
+                </Hidden>
+
                 <Grid
                     container
                     item
@@ -129,36 +135,68 @@ const Login = () => {
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
-                                minWidth: 200,
+                                minWidth: 300,
                                 maxWidth: 400,
                             }}
                         >
-                            <div></div>
+                            <TypographyBase variant="h3" color="primary">
+                                Sign in
+                            </TypographyBase>
+                            <div style={{ height: 20 }} />
                             <NormalTextField
-                                label="Username"
+                                label="Username or Email"
                                 margin="normal"
                                 icon={<AccountCircle />}
+                                fullWidth
                             />
                             <NormalTextField
-                                label="Username"
+                                label="Password"
                                 margin="normal"
                                 type="password"
                                 icon={<LockRounded />}
+                                fullWidth
                             />
                             <div style={{ height: 20 }} />
                             <ButtonBase color="primary" variant="contained" fullWidth>
                                 <b>Sign in</b>
                             </ButtonBase>
+                            <BoxBase
+                                display="flex"
+                                flexDirection="row"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
+                                <hr
+                                    style={{
+                                        border: "solid 1px",
+                                        margin: "auto 20px",
+                                        width: "70px",
+                                    }}
+                                />
+                                <p>or</p>
+                                <hr
+                                    style={{
+                                        border: "solid 1px",
+                                        margin: "auto 20px",
+                                        width: "70px",
+                                    }}
+                                />
+                            </BoxBase>
+                            <GoogleButton
+                                color="default"
+                                variant="outlined"
+                                onClick={startLogin}
+                                fullWidth
+                            >
+                                Login With Google
+                            </GoogleButton>
                         </div>
                     </div>
-                    <hr style={{ width: 20 }} />
-                    <GoogleButton color="default" variant="contained" onClick={startLogin}>
-                        Login With Google
-                    </GoogleButton>
+
                     <BoxBase />
                 </Grid>
             </Grid>
-        </Container>
+        </SnackbarProvider>
     );
 };
 
