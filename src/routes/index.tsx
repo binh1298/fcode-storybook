@@ -9,7 +9,7 @@ import PublicRoute from "./PublicRoute";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
-import UpSertPost from "src/pages/Post/UpSertPost";
+import UpSertPost from "src/pages/UpSertPost";
 
 const publicRoutes: RouteCustom[] = [
     {

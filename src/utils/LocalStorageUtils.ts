@@ -1,6 +1,14 @@
 import jwt_decode from "jwt-decode";
 
 const LOCALSTORAGE_TOKEN_NAME = "token";
+
+export interface User {
+    userId: string;
+    email: string;
+    name: string;
+    role: "author" | string;
+}
+
 class LocalStorageUtils {
     getItem(key: string) {
         if (typeof localStorage !== "undefined") {
@@ -32,7 +40,7 @@ class LocalStorageUtils {
         }
     }
 
-    getUser() {
+    getUser(): User | undefined {
         if (typeof localStorage !== "undefined") {
             const token = this.getItem(LOCALSTORAGE_TOKEN_NAME);
             try {

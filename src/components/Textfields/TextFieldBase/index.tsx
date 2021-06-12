@@ -16,6 +16,7 @@ export interface TexfieldBaseProps extends MaterialTextFieldProps {
     errorMessage?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
     InputProps?: Partial<OutlinedInputProps>;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 interface Color {
