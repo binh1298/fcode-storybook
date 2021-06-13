@@ -41,6 +41,7 @@ Placeholder.args = {
 export const HasInitValue = Template.bind({});
 HasInitValue.args = {
     initContent: stringDemo,
+    focus: true,
 };
 
 export const Height = Template.bind({});

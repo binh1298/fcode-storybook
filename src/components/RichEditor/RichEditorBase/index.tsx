@@ -43,7 +43,7 @@ const RichEditorBase = (props: RichEditorBaseProps) => {
 
     return (
         <BoxBase
-            border
+            shouldHaveBorder
             boxSizing="border-box"
             p={1}
             minHeight={props.height}
