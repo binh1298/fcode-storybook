@@ -10,7 +10,7 @@ const ListBase = (props: ListBaseProps) => {
     const { width = 260, ...rest } = props;
 
     return (
-        <BoxBase data-testid="ListBase__root" bgcolor="primary" width={width} pt={1} pb={1}>
+        <BoxBase data-testid="ListBase__root" bgcolor="primary" width={width} px={2}>
             <MaterialList {...rest} />
         </BoxBase>
     );

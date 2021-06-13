@@ -13,6 +13,7 @@ import { Edit as EditIcon } from "@material-ui/icons";
 
 import ListBase, { ListBaseProps } from ".";
 import AvatarBase from "../../Avatars/AvatarBase";
+import BoxBase from "../../Boxs/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
@@ -23,7 +24,14 @@ import { Story } from "@storybook/react";
 
 export default {
     title: "Components/ListBase",
-    subcomponents: { ListItemBase, ListItemIconBase, ListItemTextBase, TypographyBase, ButtonBase },
+    subcomponents: {
+        ListItemBase,
+        ListItemIconBase,
+        ListItemTextBase,
+        TypographyBase,
+        ButtonBase,
+        BoxBase,
+    },
     component: ListBase,
 };
 
@@ -64,23 +72,27 @@ const fcodeAvatarSource =
 export const LoggedIn: Story<ListBaseProps> = (args) => (
     <ListBase {...args}>
         <ListItemBase>
-            <ListItemIconBase bgcolor="primary" width={24}>
+            <ListItemBase>
                 <ArrowLeftIcon />
-            </ListItemIconBase>
-            <AvatarBase variant="square" src={replyLogoSource} />
-            <TypographyBase variant="h6" pl={2} pr={10} bgcolor="primary">
-                REPLY
-            </TypographyBase>
-            <AvatarBase src={fcodeAvatarSource} />
-            <ListItemIconBase bgcolor="primary" pl={1} width={24}>
+                <ListItemIconBase>
+                    <AvatarBase variant="square" src={replyLogoSource} />
+                </ListItemIconBase>
+                <ListItemTextBase
+                    primary="REPLY"
+                    color="primary"
+                    primaryTypographyProps={{ variant: "h6" }}
+                />
+            </ListItemBase>
+
+            <ListItemBase>
+                <ListItemIconBase bgcolor="primary">
+                    <AvatarBase src={fcodeAvatarSource} />
+                </ListItemIconBase>
                 <SettingsIcon />
-            </ListItemIconBase>
+            </ListItemBase>
         </ListItemBase>
-        <ListItemBase>
+        <ListItemBase justifyContent="center" alignItems="center">
             <ButtonBase
-                pl={4}
-                pt={1}
-                pb={2}
                 color="secondary"
                 variant="contained"
                 startIcon={
@@ -94,7 +106,7 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
         </ListItemBase>
 
         <ListItemBase button>
-            <ListItemIconBase bgcolor="primary" color="secondary" ml={3}>
+            <ListItemIconBase bgcolor="primary" color="secondary">
                 <InboxIcon />
             </ListItemIconBase>
             <ListItemTextBase primary="Inbox" color="secondary-main" />
@@ -102,9 +114,7 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
 
         {listItems.map((item, index) => (
             <ListItemBase key={index} button>
-                <ListItemIconBase bgcolor="primary" ml={3}>
-                    {item.icon}
-                </ListItemIconBase>
+                <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
                 <ListItemTextBase primary={item.text} />
             </ListItemBase>
         ))}
@@ -117,27 +127,21 @@ LoggedIn.args = {
 export const LoggedOut: Story<ListBaseProps> = (args) => (
     <ListBase {...args}>
         <ListItemBase>
-            <ListItemIconBase bgcolor="primary" width={24}>
+            <ListItemBase>
                 <ArrowLeftIcon />
-            </ListItemIconBase>
-            <AvatarBase variant="square" src={replyLogoSource} />
-
-            <TypographyBase ml={2} variant="h6" bgcolor="primary">
-                REPLY
-            </TypographyBase>
+                <ListItemIconBase bgcolor="primary">
+                    <AvatarBase variant="square" src={replyLogoSource} />
+                </ListItemIconBase>
+                <TypographyBase variant="h6">REPLY</TypographyBase>
+            </ListItemBase>
         </ListItemBase>
 
-        <ListItemBase divider>
-            <TypographyBase variant="body1" bgcolor="primary" ml={3}>
-                WELCOME TO OUR APP
-            </TypographyBase>
+        <ListItemBase divider justifyContent="center">
+            <TypographyBase variant="body1">WELCOME TO OUR APP</TypographyBase>
         </ListItemBase>
 
-        <ListItemBase>
+        <ListItemBase justifyContent="center">
             <ButtonBase
-                pl={2}
-                pt={2}
-                pb={2}
                 color="secondary"
                 variant="contained"
                 startIcon={
