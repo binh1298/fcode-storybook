@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import { RelayEnvironmentProvider } from "react-relay/hooks";
 import { BrowserRouter } from "react-router-dom";
 
-import { CircularProgress } from "@material-ui/core";
+import SpinnerBase from "./components/Spinner/SpinnerBase";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import "./App.css";
@@ -21,7 +21,7 @@ function AppRoot() {
         <React.StrictMode>
             <ThemeProvider theme={replyTheme}>
                 <RelayEnvironmentProvider environment={RelayEnvironment}>
-                    <Suspense fallback={<CircularProgress />}>
+                    <Suspense fallback={<SpinnerBase />}>
                         <BrowserRouter>
                             <Routes />
                         </BrowserRouter>

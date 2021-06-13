@@ -9,7 +9,12 @@ import PublicRoute from "./PublicRoute";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
-import UpSertPost from "src/pages/UpSertPost";
+import UpSertPost, { UpSertPostLoadPostGraphQL } from "src/pages/UpSertPost";
+
+// import {
+//     UpSertPostLoadPostQuery,
+//     uuid_comparison_exp,
+// } from "src/pages/UpSertPost/__generated__/UpSertPostLoadPostQuery.graphql";
 
 const publicRoutes: RouteCustom[] = [
     {
@@ -20,11 +25,6 @@ const publicRoutes: RouteCustom[] = [
 ];
 
 const privateRoutes: RouteCustom[] = [
-    {
-        path: "/create/posts",
-        name: "createPosts",
-        component: UpSertPost,
-    },
     {
         path: "/",
         name: "home",
@@ -46,9 +46,19 @@ const privateRoutes: RouteCustom[] = [
         component: Post,
     },
     {
+        path: "/create/posts",
+        name: "createPosts",
+        component: UpSertPost,
+    },
+    {
         path: "/update/posts/:id",
         name: "updatePosts",
         component: UpSertPost,
+        queryInfo: {
+            query: UpSertPostLoadPostGraphQL,
+            preloadedQuery: loadQuery(RelayEnvironment, UpSertPostLoadPostGraphQL, {}),
+            queryObject: Object,
+        },
     },
 ];
 

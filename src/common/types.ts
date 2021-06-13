@@ -18,5 +18,6 @@ export type RouteCustom = {
     path: string;
     name: string;
     component: ComponentType<any>;
+    exact?: boolean;
     queryInfo?: QueryInfo;
 };
