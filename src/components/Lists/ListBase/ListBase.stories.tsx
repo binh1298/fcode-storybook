@@ -71,27 +71,31 @@ const fcodeAvatarSource =
 
 export const LoggedIn: Story<ListBaseProps> = (args) => (
     <ListBase {...args}>
-        <ListItemBase>
-            <ListItemBase>
-                <ArrowLeftIcon />
-                <ListItemIconBase>
-                    <AvatarBase variant="square" src={replyLogoSource} />
-                </ListItemIconBase>
-                <ListItemTextBase
-                    primary="REPLY"
-                    color="primary"
-                    primaryTypographyProps={{ variant: "h6" }}
-                />
-            </ListItemBase>
+        <ListItemBase disableGutters>
+            <ListBase disablePadding>
+                <ListItemBase disableGutters>
+                    <ArrowLeftIcon />
+                    <ListItemIconBase>
+                        <AvatarBase variant="square" src={replyLogoSource} />
+                    </ListItemIconBase>
+                    <ListItemTextBase
+                        primary="REPLY"
+                        color="primary"
+                        primaryTypographyProps={{ variant: "h6" }}
+                    />
+                </ListItemBase>
+            </ListBase>
 
-            <ListItemBase>
-                <ListItemIconBase bgcolor="primary">
-                    <AvatarBase src={fcodeAvatarSource} />
-                </ListItemIconBase>
-                <SettingsIcon />
-            </ListItemBase>
+            <ListBase disablePadding>
+                <ListItemBase disableGutters>
+                    <ListItemIconBase bgcolor="primary">
+                        <AvatarBase src={fcodeAvatarSource} />
+                    </ListItemIconBase>
+                    <SettingsIcon />
+                </ListItemBase>
+            </ListBase>
         </ListItemBase>
-        <ListItemBase justifyContent="center" alignItems="center">
+        <ListItemBase variant="center">
             <ButtonBase
                 color="secondary"
                 variant="contained"
@@ -127,20 +131,18 @@ LoggedIn.args = {
 export const LoggedOut: Story<ListBaseProps> = (args) => (
     <ListBase {...args}>
         <ListItemBase>
-            <ListItemBase>
-                <ArrowLeftIcon />
-                <ListItemIconBase bgcolor="primary">
-                    <AvatarBase variant="square" src={replyLogoSource} />
-                </ListItemIconBase>
-                <TypographyBase variant="h6">REPLY</TypographyBase>
-            </ListItemBase>
+            <ArrowLeftIcon />
+            <ListItemIconBase bgcolor="primary">
+                <AvatarBase variant="square" src={replyLogoSource} />
+            </ListItemIconBase>
+            <TypographyBase variant="h6">REPLY</TypographyBase>
         </ListItemBase>
 
-        <ListItemBase divider justifyContent="center">
+        <ListItemBase divider variant="center">
             <TypographyBase variant="body1">WELCOME TO OUR APP</TypographyBase>
         </ListItemBase>
 
-        <ListItemBase justifyContent="center">
+        <ListItemBase variant="center">
             <ButtonBase
                 color="secondary"
                 variant="contained"

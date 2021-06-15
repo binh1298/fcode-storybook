@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 import {
     ListItem as MaterialListItem,
     ListItemProps as MaterialListItemProps,
@@ -5,18 +7,8 @@ import {
     Theme,
 } from "@material-ui/core";
 
-import BoxBase from "../../Boxs/BoxBase";
-
 export interface ListItemBaseProps extends MaterialListItemProps {
-    justifyContent?:
-        | "flex-start"
-        | "flex-end"
-        | "center"
-        | "space-between"
-        | "space-around"
-        | "space-evenly"
-        | "inital"
-        | "inherit";
+    variant?: "left" | "center" | "right";
 }
 
 const useStyles = makeStyles<Theme>((theme) => ({
@@ -28,18 +20,32 @@ const useStyles = makeStyles<Theme>((theme) => ({
 }));
 
 const ListItemBase = (props: ListItemBaseProps) => {
-    const { button, justifyContent, ...rest } = props;
     const classes = useStyles();
+    const { button, variant, ...rest } = props;
+    let listItemBaseStyle: CSSProperties = {};
+    switch (variant) {
+        case "left":
+            listItemBaseStyle.justifyContent = "flex-start";
+            break;
+        case "center":
+            listItemBaseStyle.justifyContent = "center";
+            break;
+        case "right":
+            listItemBaseStyle.justifyContent = "flex-end";
+            break;
+        default:
+            listItemBaseStyle.justifyContent = "flex-start";
+            break;
+    }
 
     return (
-        <BoxBase bgcolor="primary">
-            <MaterialListItem
-                className={classes.root}
-                button={button as false}
-                style={{ justifyContent }}
-                {...rest}
-            />
-        </BoxBase>
+        <MaterialListItem
+            data-testid="ListItemBase__root"
+            style={listItemBaseStyle}
+            className={classes.root}
+            button={button as false}
+            {...rest}
+        />
     );
 };
 
