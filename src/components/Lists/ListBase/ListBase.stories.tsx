@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
     InboxRounded as InboxIcon,
     StarBorderRounded as StarIcon,
@@ -35,7 +37,7 @@ export default {
     component: ListBase,
 };
 
-const listItems = [
+const simpleListItems = [
     { icon: <StarIcon />, text: "Starred" },
     { icon: <SendIcon />, text: "Sent" },
     { icon: <DeleteIcon />, text: "Trash" },
@@ -52,7 +54,7 @@ export const SimpleList: Story<ListBaseProps> = (args) => (
             <ListItemTextBase primary="Inbox" color="secondary-main" />
         </ListItemBase>
 
-        {listItems.map((item, index) => (
+        {simpleListItems.map((item, index) => (
             <ListItemBase key={index} button>
                 <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
                 <ListItemTextBase primary={item.text} />
@@ -69,63 +71,71 @@ const replyLogoSource =
 const fcodeAvatarSource =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
+const loggedInListItems = [
+    { icon: <InboxIcon />, text: "Inbox" },
+    { icon: <StarIcon />, text: "Starred" },
+    { icon: <SendIcon />, text: "Sent" },
+    { icon: <DeleteIcon />, text: "Trash" },
+    { icon: <ReportIcon />, text: "Spam" },
+    { icon: <DraftsIcon />, text: "Drafts" },
+];
+
 export const LoggedIn: Story<ListBaseProps> = (args) => (
-    <ListBase {...args}>
-        <ListItemBase disableGutters>
-            <ListBase disablePadding>
-                <ListItemBase disableGutters>
-                    <ArrowLeftIcon />
-                    <ListItemIconBase>
-                        <AvatarBase variant="square" src={replyLogoSource} />
-                    </ListItemIconBase>
-                    <ListItemTextBase
-                        primary="REPLY"
-                        color="primary"
-                        primaryTypographyProps={{ variant: "h6" }}
-                    />
-                </ListItemBase>
-            </ListBase>
+    <React.Fragment>
+        <ListBase {...args}>
+            <ListItemBase disableGutters>
+                <ListBase disablePadding>
+                    <ListItemBase disableGutters>
+                        <ArrowLeftIcon />
+                        <ListItemIconBase>
+                            <AvatarBase variant="square" src={replyLogoSource} />
+                        </ListItemIconBase>
+                        <ListItemTextBase
+                            primary="REPLY"
+                            color="primary"
+                            primaryTypographyProps={{ variant: "h6" }}
+                        />
+                    </ListItemBase>
+                </ListBase>
 
-            <ListBase disablePadding>
-                <ListItemBase disableGutters>
-                    <ListItemIconBase bgcolor="primary">
-                        <AvatarBase src={fcodeAvatarSource} />
-                    </ListItemIconBase>
-                    <SettingsIcon />
-                </ListItemBase>
-            </ListBase>
-        </ListItemBase>
-        <ListItemBase variant="center">
-            <ButtonBase
-                color="secondary"
-                variant="contained"
-                startIcon={
-                    <TypographyBase variant="h6">
-                        <EditIcon />
-                    </TypographyBase>
-                }
-            >
-                <TypographyBase variant="h5">Compose</TypographyBase>
-            </ButtonBase>
-        </ListItemBase>
-
-        <ListItemBase button>
-            <ListItemIconBase bgcolor="primary" color="secondary">
-                <InboxIcon />
-            </ListItemIconBase>
-            <ListItemTextBase primary="Inbox" color="secondary-main" />
-        </ListItemBase>
-
-        {listItems.map((item, index) => (
-            <ListItemBase key={index} button>
-                <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
-                <ListItemTextBase primary={item.text} />
+                <ListBase disablePadding>
+                    <ListItemBase disableGutters>
+                        <ListItemIconBase bgcolor="primary">
+                            <AvatarBase src={fcodeAvatarSource} />
+                        </ListItemIconBase>
+                        <SettingsIcon />
+                    </ListItemBase>
+                </ListBase>
             </ListItemBase>
-        ))}
-    </ListBase>
+        </ListBase>
+
+        <ListBase {...args}>
+            <ListItemBase variant="center">
+                <ButtonBase
+                    color="secondary"
+                    variant="contained"
+                    startIcon={
+                        <TypographyBase variant="h6">
+                            <EditIcon />
+                        </TypographyBase>
+                    }
+                >
+                    <TypographyBase variant="h5">Compose</TypographyBase>
+                </ButtonBase>
+            </ListItemBase>
+
+            {loggedInListItems.map((item, index) => (
+                <ListItemBase key={index} button>
+                    <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
+                    <ListItemTextBase primary={item.text} />
+                </ListItemBase>
+            ))}
+        </ListBase>
+    </React.Fragment>
 );
 LoggedIn.args = {
     width: 320,
+    disablePadding: true,
 };
 
 export const LoggedOut: Story<ListBaseProps> = (args) => (
