@@ -7,14 +7,10 @@ import {
     DeleteOutline as DeleteIcon,
     ReportOutlined as ReportIcon,
     DraftsRounded as DraftsIcon,
-    ArrowLeft as ArrowLeftIcon,
-    Settings as SettingsIcon,
-    ExitToApp as ExitToAppIcon,
 } from "@material-ui/icons";
-import { Edit as EditIcon } from "@material-ui/icons";
+import UserProfileBase from "src/components/UserProfiles/UserProfileBase";
 
 import ListBase, { ListBaseProps } from ".";
-import AvatarBase from "../../Avatars/AvatarBase";
 import BoxBase from "../../Boxs/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
@@ -66,11 +62,6 @@ SimpleList.args = {
     width: 320,
 };
 
-const replyLogoSource =
-    "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
-const fcodeAvatarSource =
-    "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
-
 const loggedInListItems = [
     { icon: <InboxIcon />, text: "Inbox" },
     { icon: <StarIcon />, text: "Starred" },
@@ -82,48 +73,8 @@ const loggedInListItems = [
 
 export const LoggedIn: Story<ListBaseProps> = (args) => (
     <React.Fragment>
+        <UserProfileBase {...args} variant="logged-in" />
         <ListBase {...args}>
-            <ListItemBase disableGutters>
-                <ListBase disablePadding>
-                    <ListItemBase disableGutters>
-                        <ArrowLeftIcon />
-                        <ListItemIconBase>
-                            <AvatarBase variant="square" src={replyLogoSource} />
-                        </ListItemIconBase>
-                        <ListItemTextBase
-                            primary="REPLY"
-                            color="primary"
-                            primaryTypographyProps={{ variant: "h6" }}
-                        />
-                    </ListItemBase>
-                </ListBase>
-
-                <ListBase disablePadding>
-                    <ListItemBase disableGutters>
-                        <ListItemIconBase bgcolor="primary">
-                            <AvatarBase src={fcodeAvatarSource} />
-                        </ListItemIconBase>
-                        <SettingsIcon />
-                    </ListItemBase>
-                </ListBase>
-            </ListItemBase>
-        </ListBase>
-
-        <ListBase {...args}>
-            <ListItemBase variant="center">
-                <ButtonBase
-                    color="secondary"
-                    variant="contained"
-                    startIcon={
-                        <TypographyBase variant="h6">
-                            <EditIcon />
-                        </TypographyBase>
-                    }
-                >
-                    <TypographyBase variant="h5">Compose</TypographyBase>
-                </ButtonBase>
-            </ListItemBase>
-
             {loggedInListItems.map((item, index) => (
                 <ListItemBase key={index} button>
                     <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
@@ -139,33 +90,7 @@ LoggedIn.args = {
 };
 
 export const LoggedOut: Story<ListBaseProps> = (args) => (
-    <ListBase {...args}>
-        <ListItemBase>
-            <ArrowLeftIcon />
-            <ListItemIconBase bgcolor="primary">
-                <AvatarBase variant="square" src={replyLogoSource} />
-            </ListItemIconBase>
-            <TypographyBase variant="h6">REPLY</TypographyBase>
-        </ListItemBase>
-
-        <ListItemBase divider variant="center">
-            <TypographyBase variant="body1">WELCOME TO OUR APP</TypographyBase>
-        </ListItemBase>
-
-        <ListItemBase variant="center">
-            <ButtonBase
-                color="secondary"
-                variant="contained"
-                startIcon={
-                    <TypographyBase variant="h6">
-                        <ExitToAppIcon />
-                    </TypographyBase>
-                }
-            >
-                <TypographyBase variant="h5">Sign In</TypographyBase>
-            </ButtonBase>
-        </ListItemBase>
-    </ListBase>
+    <UserProfileBase {...args} variant="logged-out" />
 );
 LoggedOut.args = {
     width: 320,
