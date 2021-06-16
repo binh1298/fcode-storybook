@@ -79,17 +79,23 @@ function UpSertPost(props: PagePropsWithQuery<UpSertPostLoadPostQuery>) {
 
     const setInitData = useCallback(
         (postId: string) => {
-            loadQuery({
-                where: {
-                    postId: {
-                        _eq: postId,
+            // eslint-disable-next-line no-console
+            console.log(data);
+            if (!data) {
+                loadQuery({
+                    where: {
+                        postId: {
+                            _eq: postId,
+                        },
                     },
-                },
-            });
-            setPost({
-                title: data.posts[0].title,
-                content: data.posts[0].content,
-            });
+                });
+            }
+            // if (data) {
+            //     setPost({
+            //         title: data.posts[0].title,
+            //         content: data.posts[0].content,
+            //     });
+            // }
         },
         [data, loadQuery]
     );

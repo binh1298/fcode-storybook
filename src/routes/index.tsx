@@ -26,6 +26,16 @@ const publicRoutes: RouteCustom[] = [
 
 const privateRoutes: RouteCustom[] = [
     {
+        path: "/update/posts/:id",
+        name: "updatePosts",
+        component: UpSertPost,
+        queryInfo: {
+            query: UpSertPostLoadPostGraphQL,
+            preloadedQuery: loadQuery(RelayEnvironment, UpSertPostLoadPostGraphQL, {}),
+            queryObject: Object,
+        },
+    },
+    {
         path: "/",
         name: "home",
         component: Home,
@@ -49,16 +59,6 @@ const privateRoutes: RouteCustom[] = [
         path: "/create/posts",
         name: "createPosts",
         component: UpSertPost,
-    },
-    {
-        path: "/update/posts/:id",
-        name: "updatePosts",
-        component: UpSertPost,
-        queryInfo: {
-            query: UpSertPostLoadPostGraphQL,
-            preloadedQuery: loadQuery(RelayEnvironment, UpSertPostLoadPostGraphQL, {}),
-            queryObject: Object,
-        },
     },
 ];
 
