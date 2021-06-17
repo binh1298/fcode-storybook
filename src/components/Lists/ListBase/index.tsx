@@ -2,15 +2,13 @@ import { List as MaterialList, ListProps as MaterialListProps } from "@material-
 
 import BoxBase from "../../Boxs/BoxBase";
 
-export interface ListBaseProps extends MaterialListProps {
-    width?: number;
-}
+export interface ListBaseProps extends MaterialListProps {}
 
 const ListBase = (props: ListBaseProps) => {
-    const { width = 260, ...rest } = props;
+    const { ...rest } = props;
 
     return (
-        <BoxBase data-testid="ListBase__root" bgcolor="primary" width={width} px={2}>
+        <BoxBase bgcolor="primary" px={2}>
             <MaterialList {...rest} />
         </BoxBase>
     );

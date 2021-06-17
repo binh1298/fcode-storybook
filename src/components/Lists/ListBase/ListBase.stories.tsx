@@ -42,25 +42,24 @@ const simpleListItems = [
 ];
 
 export const SimpleList: Story<ListBaseProps> = (args) => (
-    <ListBase {...args}>
-        <ListItemBase button>
-            <ListItemIconBase bgcolor="primary" color="secondary">
-                <InboxIcon />
-            </ListItemIconBase>
-            <ListItemTextBase primary="Inbox" color="secondary-main" />
-        </ListItemBase>
-
-        {simpleListItems.map((item, index) => (
-            <ListItemBase key={index} button>
-                <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
-                <ListItemTextBase primary={item.text} />
+    <BoxBase width={360}>
+        <ListBase {...args}>
+            <ListItemBase button>
+                <ListItemIconBase bgcolor="primary" color="secondary">
+                    <InboxIcon />
+                </ListItemIconBase>
+                <ListItemTextBase primary="Inbox" color="secondary-main" />
             </ListItemBase>
-        ))}
-    </ListBase>
+
+            {simpleListItems.map((item, index) => (
+                <ListItemBase key={index} button>
+                    <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
+                    <ListItemTextBase primary={item.text} />
+                </ListItemBase>
+            ))}
+        </ListBase>
+    </BoxBase>
 );
-SimpleList.args = {
-    width: 320,
-};
 
 const loggedInListItems = [
     { icon: <InboxIcon />, text: "Inbox" },
@@ -72,8 +71,8 @@ const loggedInListItems = [
 ];
 
 export const LoggedIn: Story<ListBaseProps> = (args) => (
-    <React.Fragment>
-        <UserProfileBase {...args} variant="logged-in" />
+    <BoxBase width={360}>
+        <UserProfileBase variant="logged-in" />
         <ListBase {...args}>
             {loggedInListItems.map((item, index) => (
                 <ListItemBase key={index} button>
@@ -82,16 +81,11 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
                 </ListItemBase>
             ))}
         </ListBase>
-    </React.Fragment>
+    </BoxBase>
 );
-LoggedIn.args = {
-    width: 320,
-    disablePadding: true,
-};
 
 export const LoggedOut: Story<ListBaseProps> = (args) => (
-    <UserProfileBase {...args} variant="logged-out" />
+    <BoxBase width={360}>
+        <UserProfileBase variant="logged-out" />
+    </BoxBase>
 );
-LoggedOut.args = {
-    width: 320,
-};

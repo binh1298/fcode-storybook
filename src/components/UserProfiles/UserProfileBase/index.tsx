@@ -5,11 +5,9 @@ import {
     Edit as EditIcon,
 } from "@material-ui/icons";
 import AvatarBase from "src/components/Avatars/AvatarBase";
+import BoxBase, { BoxBaseProps } from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
-import ListItemIconBase from "src/components/ListItemIcons/ListItemIconBase";
-import ListItemTextBase from "src/components/ListItemTexts/ListItemTextBase";
-import ListItemBase from "src/components/ListItems/ListItemBase";
-import ListBase, { ListBaseProps } from "src/components/Lists/ListBase";
+import DividerBase from "src/components/Dividers/DividerBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 const replyLogoSource =
@@ -17,7 +15,7 @@ const replyLogoSource =
 const fcodeAvatarSource =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
-export interface UserProfileBaseProps extends ListBaseProps {
+export interface UserProfileBaseProps extends BoxBaseProps {
     variant?: "logged-in" | "logged-out";
 }
 
@@ -25,33 +23,31 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
     const { variant, ...rest } = props;
 
     let userProfileLoggedIn: JSX.Element = (
-        <ListBase {...rest}>
-            <ListItemBase disableGutters>
-                <ListBase disablePadding>
-                    <ListItemBase disableGutters>
-                        <ArrowLeftIcon />
-                        <ListItemIconBase>
-                            <AvatarBase variant="square" src={replyLogoSource} />
-                        </ListItemIconBase>
-                        <ListItemTextBase
-                            primary="REPLY"
-                            color="primary"
-                            primaryTypographyProps={{ variant: "h6" }}
-                        />
-                    </ListItemBase>
-                </ListBase>
+        <BoxBase {...rest}>
+            <BoxBase
+                display="flex"
+                justifyContent="space-between"
+                bgcolor="primary"
+                px={3}
+                pt={3}
+                pb={2}
+            >
+                <BoxBase display="flex" bgcolor="primary">
+                    <ArrowLeftIcon />
+                    <AvatarBase variant="square" src={replyLogoSource} />
+                    <BoxBase bgcolor="primary" px={1}>
+                        <TypographyBase variant="h6">REPLY</TypographyBase>
+                    </BoxBase>
+                </BoxBase>
 
-                <ListBase disablePadding>
-                    <ListItemBase disableGutters>
-                        <ListItemIconBase bgcolor="primary">
-                            <AvatarBase src={fcodeAvatarSource} />
-                        </ListItemIconBase>
-                        <SettingsIcon />
-                    </ListItemBase>
-                </ListBase>
-            </ListItemBase>
-
-            <ListItemBase variant="center">
+                <BoxBase display="flex" justifyContent="flex-end" bgcolor="primary">
+                    <BoxBase bgcolor="primary" px={2}>
+                        <AvatarBase src={fcodeAvatarSource} />
+                    </BoxBase>
+                    <SettingsIcon />
+                </BoxBase>
+            </BoxBase>
+            <BoxBase bgcolor="primary" textAlign="center">
                 <ButtonBase
                     color="secondary"
                     variant="contained"
@@ -63,38 +59,40 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
                 >
                     <TypographyBase variant="h5">Compose</TypographyBase>
                 </ButtonBase>
-            </ListItemBase>
-        </ListBase>
+            </BoxBase>
+        </BoxBase>
     );
 
     let userProfileLoggedOut: JSX.Element = (
-        <ListBase {...rest}>
-            <ListItemBase>
+        <BoxBase {...rest}>
+            <BoxBase display="flex" bgcolor="primary" pt={3} pb={2} px={3}>
                 <ArrowLeftIcon />
-                <ListItemIconBase bgcolor="primary">
-                    <AvatarBase variant="square" src={replyLogoSource} />
-                </ListItemIconBase>
-                <TypographyBase variant="h6">REPLY</TypographyBase>
-            </ListItemBase>
+                <AvatarBase variant="square" src={replyLogoSource} />
+                <BoxBase bgcolor="primary" px={1}>
+                    <TypographyBase variant="h6">REPLY</TypographyBase>
+                </BoxBase>
+            </BoxBase>
 
-            <ListItemBase divider variant="center">
+            <BoxBase bgcolor="primary" textAlign="center">
                 <TypographyBase variant="body1">WELCOME TO OUR APP</TypographyBase>
-            </ListItemBase>
-
-            <ListItemBase variant="center">
-                <ButtonBase
-                    color="secondary"
-                    variant="contained"
-                    startIcon={
-                        <TypographyBase variant="h6">
-                            <ExitToAppIcon />
-                        </TypographyBase>
-                    }
-                >
-                    <TypographyBase variant="h5">Sign In</TypographyBase>
-                </ButtonBase>
-            </ListItemBase>
-        </ListBase>
+                <BoxBase px={2}>
+                    <DividerBase />
+                </BoxBase>
+                <BoxBase py={2}>
+                    <ButtonBase
+                        color="secondary"
+                        variant="contained"
+                        startIcon={
+                            <TypographyBase variant="h6">
+                                <ExitToAppIcon />
+                            </TypographyBase>
+                        }
+                    >
+                        <TypographyBase variant="h5">Sign In</TypographyBase>
+                    </ButtonBase>
+                </BoxBase>
+            </BoxBase>
+        </BoxBase>
     );
 
     switch (variant) {
