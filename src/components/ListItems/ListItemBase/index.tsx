@@ -10,9 +10,7 @@ import {
 
 export interface ListItemBaseProps extends MaterialListItemProps {
     variant?: "left" | "center" | "right";
-    color?: "primary" | "secondary" | "info" | "error" | "warning" | "success";
     highlighted?: boolean;
-    hlcolor?: "primary" | "secondary" | "info" | "error" | "warning" | "success";
 }
 
 const useStyles = makeStyles<Theme>((theme) => ({
@@ -26,7 +24,7 @@ const useStyles = makeStyles<Theme>((theme) => ({
 const ListItemBase = (props: ListItemBaseProps) => {
     const theme = useTheme();
     const classes = useStyles();
-    const { button, variant, color, highlighted, hlcolor, ...rest } = props;
+    const { button, variant, highlighted, ...rest } = props;
     let listItemBaseStyle: CSSProperties = {};
     switch (variant) {
         case "left":
@@ -44,17 +42,9 @@ const ListItemBase = (props: ListItemBaseProps) => {
     }
 
     if (highlighted) {
-        if (hlcolor) {
-            listItemBaseStyle.color = theme.palette[hlcolor].main;
-        } else {
-            listItemBaseStyle.color = theme.palette.secondary.main;
-        }
+        listItemBaseStyle.color = theme.palette.secondary.main;
     } else {
-        if (color) {
-            listItemBaseStyle.color = theme.palette[color].contrastText;
-        } else {
-            listItemBaseStyle.color = theme.palette.primary.contrastText;
-        }
+        listItemBaseStyle.color = theme.palette.primary.contrastText;
     }
 
     return (
