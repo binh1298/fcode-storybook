@@ -5,25 +5,23 @@ import {
     Edit as EditIcon,
 } from "@material-ui/icons";
 import AvatarBase from "src/components/Avatars/AvatarBase";
-import BoxBase, { BoxBaseProps } from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import DividerBase from "src/components/Dividers/DividerBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
-const replyLogoSource =
-    "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
-const fcodeAvatarSource =
-    "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
-
-export interface UserProfileBaseProps extends BoxBaseProps {
+export interface UserProfileBaseProps {
+    width?: number;
     variant?: "logged-in" | "logged-out";
+    logoSrc?: string;
+    avatarSrc?: string;
 }
 
 const UserProfileBase = (props: UserProfileBaseProps) => {
-    const { variant, ...rest } = props;
+    const { width, variant, logoSrc, avatarSrc } = props;
 
     let userProfileLoggedIn: JSX.Element = (
-        <BoxBase {...rest}>
+        <BoxBase width={width}>
             <BoxBase
                 display="flex"
                 justifyContent="space-between"
@@ -34,7 +32,7 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
             >
                 <BoxBase display="flex" bgcolor="primary">
                     <ArrowLeftIcon />
-                    <AvatarBase variant="square" src={replyLogoSource} />
+                    <AvatarBase variant="square" src={logoSrc} />
                     <BoxBase bgcolor="primary" px={1}>
                         <TypographyBase variant="h6">REPLY</TypographyBase>
                     </BoxBase>
@@ -42,7 +40,7 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
 
                 <BoxBase display="flex" justifyContent="flex-end" bgcolor="primary">
                     <BoxBase bgcolor="primary" px={2}>
-                        <AvatarBase src={fcodeAvatarSource} />
+                        <AvatarBase src={avatarSrc} />
                     </BoxBase>
                     <SettingsIcon />
                 </BoxBase>
@@ -64,10 +62,10 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
     );
 
     let userProfileLoggedOut: JSX.Element = (
-        <BoxBase {...rest}>
+        <BoxBase width={width}>
             <BoxBase display="flex" bgcolor="primary" pt={3} pb={2} px={3}>
                 <ArrowLeftIcon />
-                <AvatarBase variant="square" src={replyLogoSource} />
+                <AvatarBase variant="square" src={logoSrc} />
                 <BoxBase bgcolor="primary" px={1}>
                     <TypographyBase variant="h6">REPLY</TypographyBase>
                 </BoxBase>

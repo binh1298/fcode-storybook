@@ -44,22 +44,27 @@ const simpleListItems = [
 export const SimpleList: Story<ListBaseProps> = (args) => (
     <BoxBase width={360}>
         <ListBase {...args}>
-            <ListItemBase button>
-                <ListItemIconBase bgcolor="primary" color="secondary">
+            <ListItemBase button highlighted>
+                <ListItemIconBase>
                     <InboxIcon />
                 </ListItemIconBase>
-                <ListItemTextBase primary="Inbox" color="secondary-main" />
+                <ListItemTextBase primary="Inbox" />
             </ListItemBase>
 
             {simpleListItems.map((item, index) => (
                 <ListItemBase key={index} button>
-                    <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
+                    <ListItemIconBase>{item.icon}</ListItemIconBase>
                     <ListItemTextBase primary={item.text} />
                 </ListItemBase>
             ))}
         </ListBase>
     </BoxBase>
 );
+
+const replyLogoSource =
+    "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
+const fcodeAvatarSource =
+    "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
 const loggedInListItems = [
     { icon: <InboxIcon />, text: "Inbox" },
@@ -72,11 +77,15 @@ const loggedInListItems = [
 
 export const LoggedIn: Story<ListBaseProps> = (args) => (
     <BoxBase width={360}>
-        <UserProfileBase variant="logged-in" />
+        <UserProfileBase
+            variant="logged-in"
+            logoSrc={replyLogoSource}
+            avatarSrc={fcodeAvatarSource}
+        />
         <ListBase {...args}>
             {loggedInListItems.map((item, index) => (
                 <ListItemBase key={index} button>
-                    <ListItemIconBase bgcolor="primary">{item.icon}</ListItemIconBase>
+                    <ListItemIconBase>{item.icon}</ListItemIconBase>
                     <ListItemTextBase primary={item.text} />
                 </ListItemBase>
             ))}
@@ -84,8 +93,8 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
     </BoxBase>
 );
 
-export const LoggedOut: Story<ListBaseProps> = (args) => (
+export const LoggedOut: Story<ListBaseProps> = () => (
     <BoxBase width={360}>
-        <UserProfileBase variant="logged-out" />
+        <UserProfileBase variant="logged-out" logoSrc={replyLogoSource} />
     </BoxBase>
 );

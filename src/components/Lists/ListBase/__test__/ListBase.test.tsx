@@ -16,6 +16,7 @@ describe("<ListBase />", () => {
     it("should exist children with customized width", () => {
         props = {
             children: "Test",
+            disablePadding: true,
         };
         render(<ListBase {...props} />);
         expect(screen.getByText("Test")).toBeInTheDocument();
