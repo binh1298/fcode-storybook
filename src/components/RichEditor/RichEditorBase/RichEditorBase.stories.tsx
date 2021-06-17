@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import BoxBase from "src/components/Boxs/BoxBase";
+import BoxConvertDraftjsToHtml from "src/components/Boxs/BoxConvertDraftjsToHtml";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 import RichEditorBase, { RichEditorBaseProps } from ".";
@@ -19,13 +20,21 @@ const Template: Story<RichEditorBaseProps> = (args) => {
     };
     const { getValue, ...rest } = args;
     return (
-        <BoxBase width={1} display="flex">
-            <BoxBase width={1 / 2} p={1} m={1}>
-                <RichEditorBase getValue={getEditorValue} {...rest} />
-            </BoxBase>
-            <BoxBase width={1 / 2} p={1} m={1}>
-                <TypographyBase variant="h6">Content: </TypographyBase>
-                <TypographyBase variant="body1">{value}</TypographyBase>
+        <BoxBase width={1}>
+            <BoxBase width={1} display="flex">
+                <BoxBase width={1 / 2} p={1} m={1}>
+                    <RichEditorBase getValue={getEditorValue} {...rest} />
+                </BoxBase>
+                <BoxBase width={1 / 2} p={1} m={1}>
+                    <BoxBase shouldHaveBorder mb={1}>
+                        <TypographyBase variant="h6">Raw JSON: </TypographyBase>
+                        <TypographyBase variant="body1">{value}</TypographyBase>
+                    </BoxBase>
+                    <BoxBase shouldHaveBorder>
+                        <TypographyBase variant="h6">Content: </TypographyBase>
+                        <BoxConvertDraftjsToHtml input={value} />
+                    </BoxBase>
+                </BoxBase>
             </BoxBase>
         </BoxBase>
     );
