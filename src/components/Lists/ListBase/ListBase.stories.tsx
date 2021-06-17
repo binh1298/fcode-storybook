@@ -61,9 +61,8 @@ export const SimpleList: Story<ListBaseProps> = (args) => (
     </BoxBase>
 );
 
-const replyLogoSource =
-    "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
-const fcodeAvatarSource =
+const replyLogoUrl = "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
+const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
 const loggedInListItems = [
@@ -77,11 +76,7 @@ const loggedInListItems = [
 
 export const LoggedIn: Story<ListBaseProps> = (args) => (
     <BoxBase width={360}>
-        <UserProfileBase
-            variant="logged-in"
-            logoSrc={replyLogoSource}
-            avatarSrc={fcodeAvatarSource}
-        />
+        <UserProfileBase variant="logged-in" logoUrl={replyLogoUrl} avatarUrl={fcodeAvatarUrl} />
         <ListBase {...args}>
             {loggedInListItems.map((item, index) => (
                 <ListItemBase key={index} button>
@@ -95,6 +90,6 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
 
 export const LoggedOut: Story<ListBaseProps> = () => (
     <BoxBase width={360}>
-        <UserProfileBase variant="logged-out" logoSrc={replyLogoSource} />
+        <UserProfileBase variant="logged-out" logoUrl={replyLogoUrl} />
     </BoxBase>
 );

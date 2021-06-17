@@ -13,12 +13,12 @@ import TypographyBase from "src/components/Typography/TypographyBase";
 export interface UserProfileBaseProps {
     width?: number;
     variant?: "logged-in" | "logged-out";
-    logoSrc?: string;
-    avatarSrc?: string;
+    logoUrl?: string;
+    avatarUrl?: string;
 }
 
 const UserProfileBase = (props: UserProfileBaseProps) => {
-    const { width, variant, logoSrc, avatarSrc } = props;
+    const { width, variant, logoUrl, avatarUrl } = props;
 
     let userProfileLoggedIn: JSX.Element = (
         <BoxBase width={width}>
@@ -32,7 +32,7 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
             >
                 <BoxBase display="flex" bgcolor="primary">
                     <ArrowLeftIcon />
-                    <AvatarBase variant="square" src={logoSrc} />
+                    <AvatarBase variant="square" src={logoUrl} />
                     <BoxBase bgcolor="primary" px={1}>
                         <TypographyBase variant="h6">REPLY</TypographyBase>
                     </BoxBase>
@@ -40,7 +40,7 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
 
                 <BoxBase display="flex" justifyContent="flex-end" bgcolor="primary">
                     <BoxBase bgcolor="primary" px={2}>
-                        <AvatarBase src={avatarSrc} />
+                        <AvatarBase src={avatarUrl} />
                     </BoxBase>
                     <SettingsIcon />
                 </BoxBase>
@@ -65,7 +65,7 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
         <BoxBase width={width}>
             <BoxBase display="flex" bgcolor="primary" pt={3} pb={2} px={3}>
                 <ArrowLeftIcon />
-                <AvatarBase variant="square" src={logoSrc} />
+                <AvatarBase variant="square" src={logoUrl} />
                 <BoxBase bgcolor="primary" px={1}>
                     <TypographyBase variant="h6">REPLY</TypographyBase>
                 </BoxBase>
