@@ -20,7 +20,7 @@ export interface UserProfileBaseProps {
 const UserProfileBase = (props: UserProfileBaseProps) => {
     const { width, variant, logoUrl, avatarUrl } = props;
 
-    let userProfileLoggedIn: JSX.Element = (
+    const userProfileLoggedIn: JSX.Element = (
         <BoxBase width={width}>
             <BoxBase
                 display="flex"
@@ -61,7 +61,7 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
         </BoxBase>
     );
 
-    let userProfileLoggedOut: JSX.Element = (
+    const userProfileLoggedOut: JSX.Element = (
         <BoxBase width={width}>
             <BoxBase display="flex" bgcolor="primary" pt={3} pb={2} px={3}>
                 <ArrowLeftIcon />
