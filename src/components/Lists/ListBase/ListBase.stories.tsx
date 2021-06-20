@@ -60,7 +60,7 @@ const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
 const loggedInListItems = [
-    { icon: <InboxIcon />, text: "Inbox", highlighted: false },
+    { icon: <InboxIcon />, text: "Inbox", highlighted: true },
     { icon: <StarIcon />, text: "Starred", highlighted: false },
     { icon: <SendIcon />, text: "Sent", highlighted: false },
     { icon: <DeleteIcon />, text: "Trash", highlighted: false },
