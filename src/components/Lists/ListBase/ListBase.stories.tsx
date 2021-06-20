@@ -34,25 +34,19 @@ export default {
 };
 
 const simpleListItems = [
-    { icon: <StarIcon />, text: "Starred" },
-    { icon: <SendIcon />, text: "Sent" },
-    { icon: <DeleteIcon />, text: "Trash" },
-    { icon: <ReportIcon />, text: "Spam" },
-    { icon: <DraftsIcon />, text: "Drafts" },
+    { icon: <InboxIcon />, text: "Inbox", highlighted: true },
+    { icon: <StarIcon />, text: "Starred", highlighted: false },
+    { icon: <SendIcon />, text: "Sent", highlighted: false },
+    { icon: <DeleteIcon />, text: "Trash", highlighted: false },
+    { icon: <ReportIcon />, text: "Spam", highlighted: false },
+    { icon: <DraftsIcon />, text: "Drafts", highlighted: false },
 ];
 
 export const SimpleList: Story<ListBaseProps> = (args) => (
     <BoxBase width={360}>
         <ListBase {...args}>
-            <ListItemBase button highlighted>
-                <ListItemIconBase>
-                    <InboxIcon />
-                </ListItemIconBase>
-                <ListItemTextBase primary="Inbox" />
-            </ListItemBase>
-
             {simpleListItems.map((item, index) => (
-                <ListItemBase key={index} button>
+                <ListItemBase key={index} button highlighted={item.highlighted}>
                     <ListItemIconBase>{item.icon}</ListItemIconBase>
                     <ListItemTextBase primary={item.text} />
                 </ListItemBase>
@@ -66,12 +60,12 @@ const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
 const loggedInListItems = [
-    { icon: <InboxIcon />, text: "Inbox" },
-    { icon: <StarIcon />, text: "Starred" },
-    { icon: <SendIcon />, text: "Sent" },
-    { icon: <DeleteIcon />, text: "Trash" },
-    { icon: <ReportIcon />, text: "Spam" },
-    { icon: <DraftsIcon />, text: "Drafts" },
+    { icon: <InboxIcon />, text: "Inbox", highlighted: false },
+    { icon: <StarIcon />, text: "Starred", highlighted: false },
+    { icon: <SendIcon />, text: "Sent", highlighted: false },
+    { icon: <DeleteIcon />, text: "Trash", highlighted: false },
+    { icon: <ReportIcon />, text: "Spam", highlighted: false },
+    { icon: <DraftsIcon />, text: "Drafts", highlighted: false },
 ];
 
 export const LoggedIn: Story<ListBaseProps> = (args) => (
@@ -79,7 +73,7 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
         <UserProfileBase variant="logged-in" logoUrl={replyLogoUrl} avatarUrl={fcodeAvatarUrl} />
         <ListBase {...args}>
             {loggedInListItems.map((item, index) => (
-                <ListItemBase key={index} button>
+                <ListItemBase key={index} button highlighted={item.highlighted}>
                     <ListItemIconBase>{item.icon}</ListItemIconBase>
                     <ListItemTextBase primary={item.text} />
                 </ListItemBase>
