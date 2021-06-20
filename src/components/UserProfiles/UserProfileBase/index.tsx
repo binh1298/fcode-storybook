@@ -17,10 +17,10 @@ export interface UserProfileBaseProps {
     avatarUrl?: string;
 }
 
-const UserProfileBase = (props: UserProfileBaseProps) => {
-    const { width, variant, logoUrl, avatarUrl } = props;
+const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
+    const { width, logoUrl, avatarUrl } = props;
 
-    const userProfileLoggedIn: JSX.Element = (
+    return (
         <BoxBase width={width}>
             <BoxBase
                 display="flex"
@@ -60,8 +60,12 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
             </BoxBase>
         </BoxBase>
     );
+};
 
-    const userProfileLoggedOut: JSX.Element = (
+const UserProfileLoggedOut: React.FC<UserProfileBaseProps> = (props) => {
+    const { width, logoUrl } = props;
+
+    return (
         <BoxBase width={width}>
             <BoxBase display="flex" bgcolor="primary" pt={3} pb={2} px={3}>
                 <ArrowLeftIcon />
@@ -92,14 +96,18 @@ const UserProfileBase = (props: UserProfileBaseProps) => {
             </BoxBase>
         </BoxBase>
     );
+};
+
+const UserProfileBase = (props: UserProfileBaseProps) => {
+    const { variant, ...rest } = props;
 
     switch (variant) {
         case "logged-in":
-            return userProfileLoggedIn;
+            return <UserProfileLoggedIn {...rest} />;
         case "logged-out":
-            return userProfileLoggedOut;
+            return <UserProfileLoggedOut {...rest} />;
         default:
-            return userProfileLoggedIn;
+            return <UserProfileLoggedIn {...rest} />;
     }
 };
 
