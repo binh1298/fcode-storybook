@@ -1,7 +1,7 @@
-import { CSSProperties } from "react";
+import clsx from "clsx";
 
 import { Drawer as MaterialDrawer, DrawerProps as MaterialDrawerProps } from "@material-ui/core";
-import { useTheme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 import BoxBase from "../../Boxs/BoxBase";
 
@@ -10,73 +10,57 @@ export interface DrawerBaseProps extends MaterialDrawerProps {
     width?: number;
 }
 
-const DrawerBase = (props: DrawerBaseProps) => {
-    const theme = useTheme();
-    const { open, width } = props;
-    let drawerBaseStyle: CSSProperties = {};
-    let drawerPaperStyle: CSSProperties = {};
+let drawerWidth: number = 360;
 
-    let drawerWidth: number = 360;
+const useStyles = makeStyles((theme) => ({
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+        whiteSpace: "nowrap",
+    },
+    drawerOpen: {
+        width: drawerWidth,
+        transition: theme.transitions.create("width", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    drawerClose: {
+        width: theme.spacing(10),
+        overflowX: "hidden",
+        transition: theme.transitions.create("width", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+}));
+
+const DrawerBase = (props: DrawerBaseProps) => {
+    const { open, width, ...rest } = props;
+
     if (width) {
         drawerWidth = width;
     }
 
-    drawerBaseStyle = {
-        width: drawerWidth,
-        flexShrink: 0,
-        whiteSpace: "nowrap",
-    };
-    if (open) {
-        drawerBaseStyle = {
-            ...drawerBaseStyle,
-            transition: theme.transitions.create("width", {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.enteringScreen,
-            }),
-        };
-    } else {
-        drawerBaseStyle = {
-            ...drawerBaseStyle,
-            width: theme.spacing(9),
-            overflowX: "hidden",
-            transition: theme.transitions.create("width", {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.leavingScreen,
-            }),
-        };
-    }
-
-    drawerPaperStyle = {
-        width: drawerWidth,
-        backgroundColor: theme.palette.primary.main,
-    };
-    if (open) {
-        drawerPaperStyle = {
-            ...drawerPaperStyle,
-            transition: theme.transitions.create("width", {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.enteringScreen,
-            }),
-        };
-    } else {
-        drawerPaperStyle = {
-            ...drawerPaperStyle,
-            width: theme.spacing(9),
-            overflowX: "hidden",
-            transition: theme.transitions.create("width", {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.leavingScreen,
-            }),
-        };
-    }
+    const classes = useStyles();
 
     return (
-        <BoxBase style={drawerBaseStyle}>
+        <BoxBase
+            className={clsx(classes.drawer, {
+                [classes.drawerOpen]: open,
+                [classes.drawerClose]: !open,
+            })}
+            data-testid="DrawerBase__box"
+        >
             <MaterialDrawer
-                PaperProps={{
-                    style: drawerPaperStyle,
+                classes={{
+                    paper: clsx({
+                        [classes.drawerOpen]: open,
+                        [classes.drawerClose]: !open,
+                    }),
                 }}
-                {...props}
+                data-testid="DrawerBase__root"
+                {...rest}
             />
         </BoxBase>
     );
