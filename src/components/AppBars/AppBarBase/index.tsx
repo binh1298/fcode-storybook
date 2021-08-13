@@ -1,7 +1,7 @@
-import { CSSProperties } from "react";
+import clsx from "clsx";
 
 import { AppBar as MaterialAppBar, AppBarProps as MaterialAppBarProps } from "@material-ui/core";
-import { useTheme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 import BoxBase from "../../Boxs/BoxBase";
 
@@ -10,17 +10,10 @@ export interface AppBarBaseProps extends MaterialAppBarProps {
     width?: number;
 }
 
-const AppBarBase = (props: AppBarBaseProps) => {
-    const { open, width } = props;
-    const theme = useTheme();
-    let AppBarBaseStyle: CSSProperties = {};
+let drawerWidth: number = 360;
 
-    let drawerWidth: number = 360;
-    if (width) {
-        drawerWidth = width;
-    }
-
-    AppBarBaseStyle = {
+const useStyles = makeStyles((theme) => ({
+    appBar: {
         position: "fixed",
         width: "100%",
         top: 0,
@@ -31,20 +24,34 @@ const AppBarBase = (props: AppBarBaseProps) => {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-    };
-
-    if (open) {
-        AppBarBaseStyle.marginLeft = drawerWidth;
-        AppBarBaseStyle.width = `calc(100% - ${drawerWidth}px)`;
-        AppBarBaseStyle.transition = theme.transitions.create(["width", "margin"], {
+    },
+    appBarShift: {
+        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(["width", "margin"], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
-        });
+        }),
+    },
+}));
+
+const AppBarBase = (props: AppBarBaseProps) => {
+    const { open, width, ...rest } = props;
+
+    if (width) {
+        drawerWidth = width;
     }
 
+    const classes = useStyles();
+
     return (
-        <BoxBase style={AppBarBaseStyle} data-testid="AppBarBase__box">
-            <MaterialAppBar position="relative" {...props} />
+        <BoxBase
+            className={clsx(classes.appBar, {
+                [classes.appBarShift]: open,
+            })}
+            data-testid="AppBarBase__box"
+        >
+            <MaterialAppBar position="relative" {...rest} />
         </BoxBase>
     );
 };

@@ -29,20 +29,20 @@ describe("<AppBarBase />", () => {
     });
 
     it("should exist children with custom style when drawer opened", () => {
-        const appBarWidth: number = 400;
+        const drawerWidth: number = 400;
         props = {
-            width: appBarWidth,
+            width: drawerWidth,
             open: true,
         };
         render(<AppBarBaseTest {...props} />);
         const appBarBaseBox = screen.getByTestId("AppBarBase__box");
         expect(appBarBaseBox).toHaveStyle(`
         position: fixed;
-        width: calc(100% - ${appBarWidth}px);
+        width: calc(100% - ${drawerWidth}px);
         top: 0;
         left: auto;
         right: 0;
-        margin-left: ${appBarWidth}px;
+        margin-left: ${drawerWidth}px;
         zIndex: ${theme.zIndex.drawer + 1} ;
         transition: ${theme.transitions.create(["width", "margin"], {
             easing: theme.transitions.easing.sharp,
