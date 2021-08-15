@@ -6,7 +6,7 @@ import {
     OutlinedInputProps,
 } from "@material-ui/core";
 
-export interface TexfieldBaseProps extends MaterialTextFieldProps {
+export interface TextfieldBaseProps extends MaterialTextFieldProps {
     label: string;
     name?: string;
     type?: string;
@@ -72,7 +72,7 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
     error: {},
 }));
 
-const TextFieldBase = (props: TexfieldBaseProps) => {
+const TextFieldBase = (props: TextfieldBaseProps) => {
     const { errorMessage, InputLabelProps, InputProps, ...rest } = props;
 
     const classes = useStyles({ color: !errorMessage ? "primary" : "error" });

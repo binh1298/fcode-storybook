@@ -3,7 +3,7 @@ import GoogleButton, { GoogleButtonProps } from ".";
 import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/GoogleButton",
+    title: "Components/Buttons/GoogleButton",
     component: GoogleButton,
 };
 

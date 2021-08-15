@@ -1,7 +1,7 @@
 import { InputAdornment } from "@material-ui/core";
-import TextFieldBase, { TexfieldBaseProps } from "src/components/Textfields/TextFieldBase";
+import TextFieldBase, { TextfieldBaseProps } from "src/components/Textfields/TextFieldBase";
 
-export interface NormalTextFieldProps extends TexfieldBaseProps {
+export interface NormalTextFieldProps extends TextfieldBaseProps {
     icon?: React.ReactNode;
 }
 

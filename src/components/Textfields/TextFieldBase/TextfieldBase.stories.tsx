@@ -1,4 +1,4 @@
-import TextfieldBase, { TexfieldBaseProps } from ".";
+import TextfieldBase, { TextfieldBaseProps } from ".";
 
 import { Story, Meta } from "@storybook/react";
 
@@ -15,7 +15,7 @@ export default {
     },
 } as Meta;
 
-const Template: Story<TexfieldBaseProps> = (args) => {
+const Template: Story<TextfieldBaseProps> = (args) => {
     return <TextfieldBase {...args} />;
 };
 

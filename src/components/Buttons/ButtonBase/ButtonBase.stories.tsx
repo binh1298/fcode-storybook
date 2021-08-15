@@ -6,7 +6,7 @@ import { Story } from "@storybook/react";
 
 //👇 This default export determines where your story goes in the story list
 export default {
-    title: "Components/Button/ButtonBase",
+    title: "Components/Buttons/ButtonBase",
     component: ButtonBase,
 };
 

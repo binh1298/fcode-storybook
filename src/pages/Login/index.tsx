@@ -1,20 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import { useHistory } from "react-router";
 import { API_ROOT_URL } from "src/configuration";
 
 import { Grid, Hidden } from "@material-ui/core";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
-import AlertBase from "src/components/Alerts/AlertBase";
+// import AlertBase from "src/components/Alerts/AlertBase";
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
-import SnackbarBase from "src/components/SnackBars/SnackbarBase";
+// import SnackbarBase from "src/components/SnackBars/SnackbarBase";
+import useSnackbar from "src/components/SnackBars/useSnackbar";
 import NormalTextField from "src/components/Textfields/NormalTextField";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 import fcodeImage from "src/assets/fcode.png";
-import SnackbarProvider from "src/context/SnackbarContext";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 interface ApiResponse<T> {
@@ -22,13 +22,13 @@ interface ApiResponse<T> {
     message: string;
     success: boolean;
 }
-
 const Login = () => {
     const [redirectUrl, setRedirectUrl] = useState<string>("");
     const [isError, setIsError] = useState<boolean>(false);
     const apiEndpoint = API_ROOT_URL;
     const redirectRouteAfterLogin = "/";
     const history = useHistory();
+    const snackbar = useSnackbar();
     const handleClose = () => {
         setIsError(false);
     };
@@ -67,14 +67,18 @@ const Login = () => {
                     LocalStorageUtils.setItem("token", resultObject.data);
                     history.push(redirectRouteAfterLogin);
                 } else if (resultObject.data.code === 401) {
-                    setIsError(true);
+                    // setIsError(true);
+                    snackbar({
+                        children: "This is an error alert — check it out!",
+                        severity: "error",
+                    });
                 }
             } catch (error) {
                 // eslint-disable-next-line no-console
                 console.log("error", error);
             }
         },
-        [apiEndpoint, history]
+        [apiEndpoint, history, snackbar]
     );
 
     useEffect(() => {
@@ -96,12 +100,12 @@ const Login = () => {
     };
 
     return (
-        <SnackbarProvider>
-            <SnackbarBase open={isError} autoHideDuration={6000} onClose={handleClose}>
+        <React.Fragment>
+            {/* <SnackbarBase open={isError} autoHideDuration={6000} onClose={handleClose}>
                 <AlertBase severity="error" variant="filled" onClose={handleClose}>
                     Invalid credential!
                 </AlertBase>
-            </SnackbarBase>
+            </SnackbarBase> */}
             <Grid container style={{ minHeight: "100vh" }}>
                 <Hidden only="xs">
                     <Grid item xs={12} sm={6}>
@@ -196,7 +200,7 @@ const Login = () => {
                     <BoxBase />
                 </Grid>
             </Grid>
-        </SnackbarProvider>
+        </React.Fragment>
     );
 };
 
