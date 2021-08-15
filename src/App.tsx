@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 
+import { QueryClient, QueryClientProvider } from "react-query";
 import { RelayEnvironmentProvider } from "react-relay/hooks";
 import { BrowserRouter } from "react-router-dom";
 
@@ -8,24 +9,26 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 import "./App.css";
 import RelayEnvironment from "./RelayEnvironment";
+import GraphQLQueryClientContextProvider from "./context/QueryClientContext";
 import { Routes } from "./routes";
 import replyTheme from "./theme/replyTheme";
 
-// The above component needs to know how to access the Relay environment, and we
-// need to specify a fallback in case it suspends:
-// - <RelayEnvironmentProvider> tells child components how to talk to the current
-//   Relay Environment instance
-// - <Suspense> specifies a fallback in case a child suspends.
+const queryClient = new QueryClient();
+
 function AppRoot() {
     return (
         <React.StrictMode>
             <ThemeProvider theme={replyTheme}>
                 <RelayEnvironmentProvider environment={RelayEnvironment}>
-                    <Suspense fallback={<CircularProgress />}>
-                        <BrowserRouter>
-                            <Routes />
-                        </BrowserRouter>
-                    </Suspense>
+                    <QueryClientProvider client={queryClient}>
+                        <GraphQLQueryClientContextProvider>
+                            <Suspense fallback={<CircularProgress />}>
+                                <BrowserRouter>
+                                    <Routes />
+                                </BrowserRouter>
+                            </Suspense>
+                        </GraphQLQueryClientContextProvider>
+                    </QueryClientProvider>
                 </RelayEnvironmentProvider>
             </ThemeProvider>
         </React.StrictMode>

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es2015",
+        "target": "es5",
         "module": "esnext",
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
@@ -15,7 +15,7 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
-        "baseUrl": "."
+        "baseUrl": "./"
     },
     "include": ["src"]
 }

@@ -9,6 +9,7 @@ import PublicRoute from "./PublicRoute";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
+import Demo from "src/pages/Users";
 
 const publicRoutes: RouteCustom[] = [
     {
@@ -20,14 +21,9 @@ const publicRoutes: RouteCustom[] = [
 
 const privateRoutes: RouteCustom[] = [
     {
-        path: "/",
-        name: "home",
-        component: Home,
-        queryInfo: {
-            query: HomeUserGraphQL,
-            preloadedQuery: loadQuery(RelayEnvironment, HomeUserGraphQL, {}),
-            queryObject: Object,
-        },
+        path: "/demo",
+        name: "demo",
+        component: Demo,
     },
     {
         path: "/posts",
@@ -38,6 +34,16 @@ const privateRoutes: RouteCustom[] = [
         path: "/posts/:id",
         name: "postDetail",
         component: Post,
+    },
+    {
+        path: "/",
+        name: "home",
+        component: Home,
+        queryInfo: {
+            query: HomeUserGraphQL,
+            preloadedQuery: loadQuery(RelayEnvironment, HomeUserGraphQL, {}),
+            queryObject: Object,
+        },
     },
 ];
 
