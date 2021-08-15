@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     drawerClose: {
-        width: theme.spacing(10),
+        width: theme.spacing(8),
         overflowX: "hidden",
         transition: theme.transitions.create("width", {
             easing: theme.transitions.easing.sharp,
