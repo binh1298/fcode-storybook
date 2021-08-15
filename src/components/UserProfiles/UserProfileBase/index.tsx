@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 import {
     ArrowLeft as ArrowLeftIcon,
     Settings as SettingsIcon,
@@ -7,6 +9,7 @@ import {
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
+import IconButtonBase from "src/components/Buttons/IconButtonBase";
 import DividerBase from "src/components/Dividers/DividerBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
@@ -15,10 +18,11 @@ export interface UserProfileBaseProps {
     variant?: "logged-in" | "logged-out";
     logoUrl?: string;
     avatarUrl?: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
-    const { width, logoUrl, avatarUrl } = props;
+    const { width, logoUrl, avatarUrl, onClick } = props;
 
     return (
         <BoxBase width={width}>
@@ -28,10 +32,12 @@ const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
                 bgcolor="primary"
                 px={3}
                 pt={3}
-                pb={2}
+                pb={1}
             >
                 <BoxBase display="flex" bgcolor="primary">
-                    <ArrowLeftIcon />
+                    <IconButtonBase color="inherit" edge="start" onClick={onClick}>
+                        <ArrowLeftIcon />
+                    </IconButtonBase>
                     <AvatarBase variant="square" src={logoUrl} />
                     <BoxBase bgcolor="primary" px={1}>
                         <TypographyBase variant="h6">REPLY</TypographyBase>
@@ -45,7 +51,7 @@ const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
                     <SettingsIcon />
                 </BoxBase>
             </BoxBase>
-            <BoxBase bgcolor="primary" textAlign="center">
+            <BoxBase bgcolor="primary" textAlign="center" pl={3} pb={2}>
                 <ButtonBase
                     color="secondary"
                     variant="contained"
@@ -63,12 +69,14 @@ const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
 };
 
 const UserProfileLoggedOut: React.FC<UserProfileBaseProps> = (props) => {
-    const { width, logoUrl } = props;
+    const { width, logoUrl, onClick } = props;
 
     return (
         <BoxBase width={width}>
-            <BoxBase display="flex" bgcolor="primary" pt={3} pb={2} px={3}>
-                <ArrowLeftIcon />
+            <BoxBase display="flex" bgcolor="primary" pt={3} px={3} pb={1}>
+                <IconButtonBase color="inherit" edge="start" onClick={onClick}>
+                    <ArrowLeftIcon />
+                </IconButtonBase>
                 <AvatarBase variant="square" src={logoUrl} />
                 <BoxBase bgcolor="primary" px={1}>
                     <TypographyBase variant="h6">REPLY</TypographyBase>

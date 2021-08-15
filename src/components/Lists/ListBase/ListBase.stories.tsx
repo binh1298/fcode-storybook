@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
     InboxRounded as InboxIcon,
     StarBorderRounded as StarIcon,
