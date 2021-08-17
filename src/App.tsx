@@ -3,13 +3,11 @@ import React, { Suspense } from "react";
 import { RelayEnvironmentProvider } from "react-relay/hooks";
 import { BrowserRouter } from "react-router-dom";
 
-import useSnackbar from "./components/SnackBars/useSnackbar";
 import { CircularProgress } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import "./App.css";
 import RelayEnvironment from "./RelayEnvironment";
-import SnackbarProvider from "./context/SnackbarContext";
 import { Routes } from "./routes";
 import replyTheme from "./theme/replyTheme";
 
@@ -19,16 +17,13 @@ import replyTheme from "./theme/replyTheme";
 //   Relay Environment instance
 // - <Suspense> specifies a fallback in case a child suspends.
 function AppRoot() {
-    const showSnackbar = useSnackbar();
     return (
         <React.StrictMode>
             <ThemeProvider theme={replyTheme}>
                 <RelayEnvironmentProvider environment={RelayEnvironment}>
                     <Suspense fallback={<CircularProgress />}>
                         <BrowserRouter>
-                            <SnackbarProvider>
-                                <Routes />
-                            </SnackbarProvider>
+                            <Routes />
                         </BrowserRouter>
                     </Suspense>
                 </RelayEnvironmentProvider>

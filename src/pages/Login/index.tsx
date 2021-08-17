@@ -8,11 +8,12 @@ import { AccountCircle, LockRounded } from "@material-ui/icons";
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
-import useSnackbar from "src/components/SnackBars/useSnackbar";
 import NormalTextField from "src/components/Textfields/NormalTextField";
+import ThematicBreak from "src/components/ThematicBreak";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 import fcodeImage from "src/assets/fcode.png";
+import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 // import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
@@ -27,10 +28,6 @@ const Login = () => {
     const apiEndpoint = API_ROOT_URL;
     const redirectRouteAfterLogin = "/";
     const history = useHistory();
-    const snackbar = useSnackbar();
-    const handleClose = () => {
-        setIsError(false);
-    };
     const fetchLoginUri = useCallback(async () => {
         try {
             const result = await fetch(
@@ -63,21 +60,18 @@ const Login = () => {
                 // eslint-disable-next-line no-console
                 console.log("fetchToken", resultObject);
                 if (resultObject.success) {
-                    // LocalStorageUtils.setItem("token", resultObject.data);
+                    LocalStorageUtils.setItem("token", resultObject.data);
                     history.push(redirectRouteAfterLogin);
                 } else if (resultObject.data.code === 401) {
-                    // setIsError(true);
-                    snackbar({
-                        children: "This is an error alert — check it out!",
-                        severity: "error",
-                    });
+                    fetchLoginUri();
+                    setIsError(true);
                 }
             } catch (error) {
                 // eslint-disable-next-line no-console
                 console.log("error", error);
             }
         },
-        [apiEndpoint, history, snackbar]
+        [apiEndpoint, history, fetchLoginUri]
     );
 
     useEffect(() => {
@@ -95,16 +89,11 @@ const Login = () => {
     }, [fetchLoginUri, fetchToken]);
 
     const startLogin = () => {
-        window.open(redirectUrl);
+        window.location.href = redirectUrl;
     };
 
     return (
         <React.Fragment>
-            {/* <SnackbarBase open={isError} autoHideDuration={6000} onClose={handleClose}>
-                <AlertBase severity="error" variant="filled" onClose={handleClose}>
-                    Invalid credential!
-                </AlertBase>
-            </SnackbarBase> */}
             <Grid container style={{ minHeight: "100vh" }}>
                 <Hidden only="xs">
                     <Grid item xs={12} sm={6}>
@@ -132,70 +121,50 @@ const Login = () => {
                     style={{ padding: 10 }}
                 >
                     <BoxBase />
-                    <div>
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                minWidth: 300,
-                                maxWidth: 400,
-                            }}
-                        >
-                            <TypographyBase variant="h3" color="primary">
-                                Sign in
+                    <BoxBase
+                        display="flex"
+                        alignItems="center"
+                        flexDirection="column"
+                        minWidth={300}
+                        maxWidth={400}
+                    >
+                        <TypographyBase variant="h3" color="primary">
+                            Sign in
+                        </TypographyBase>
+                        <BoxBase height={20} />
+                        <NormalTextField
+                            label="Username or Email"
+                            margin="normal"
+                            icon={<AccountCircle />}
+                            fullWidth
+                        />
+                        <NormalTextField
+                            label="Password"
+                            margin="normal"
+                            type="password"
+                            icon={<LockRounded />}
+                            fullWidth
+                        />
+                        {!isError && <BoxBase height={20} />}
+                        {isError && (
+                            <TypographyBase variant="subtitle2" color="error">
+                                Invalid credential
                             </TypographyBase>
-                            <div style={{ height: 20 }} />
-                            <NormalTextField
-                                label="Username or Email"
-                                margin="normal"
-                                icon={<AccountCircle />}
-                                fullWidth
-                            />
-                            <NormalTextField
-                                label="Password"
-                                margin="normal"
-                                type="password"
-                                icon={<LockRounded />}
-                                fullWidth
-                            />
-                            <div style={{ height: 20 }} />
-                            <ButtonBase color="primary" variant="contained" fullWidth>
-                                <b>Sign in</b>
-                            </ButtonBase>
-                            <BoxBase
-                                display="flex"
-                                flexDirection="row"
-                                alignItems="center"
-                                justifyContent="center"
-                            >
-                                <hr
-                                    style={{
-                                        border: "solid 1px",
-                                        margin: "auto 20px",
-                                        width: "70px",
-                                    }}
-                                />
-                                <p>or</p>
-                                <hr
-                                    style={{
-                                        border: "solid 1px",
-                                        margin: "auto 20px",
-                                        width: "70px",
-                                    }}
-                                />
-                            </BoxBase>
-                            <GoogleButton
-                                color="default"
-                                variant="outlined"
-                                onClick={startLogin}
-                                fullWidth
-                            >
-                                Login With Google
-                            </GoogleButton>
-                        </div>
-                    </div>
+                        )}
+                        <ButtonBase color="primary" variant="contained" fullWidth>
+                            <TypographyBase variant="button">Sign in</TypographyBase>
+                        </ButtonBase>
 
+                        <ThematicBreak caption="or" width={70} height={40} />
+                        <GoogleButton
+                            color="default"
+                            variant="outlined"
+                            onClick={startLogin}
+                            fullWidth
+                        >
+                            Login With Google
+                        </GoogleButton>
+                    </BoxBase>
                     <BoxBase />
                 </Grid>
             </Grid>
