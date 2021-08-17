@@ -10,19 +10,15 @@ describe("<ListBase />", () => {
             children: "Test",
         };
         render(<ListBase {...props} />);
-        const muiBox = screen.getByTestId("ListBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
-        expect(muiBox).toHaveStyle("width: 260px;");
     });
 
     it("should exist children with customized width", () => {
         props = {
             children: "Test",
-            width: 360,
+            disablePadding: true,
         };
         render(<ListBase {...props} />);
-        const muiBox = screen.getByTestId("ListBase__root");
         expect(screen.getByText("Test")).toBeInTheDocument();
-        expect(muiBox).toHaveStyle("width: 360px;");
     });
 });

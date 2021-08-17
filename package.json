@@ -14,9 +14,11 @@
         "@types/node": "^12.0.0",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
+        "draft-js": "^0.11.7",
         "jwt-decode": "^3.1.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-draft-wysiwyg": "^1.14.7",
         "react-relay": "^11.0.2",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.3",
@@ -26,9 +28,10 @@
         "web-vitals": "^1.0.1"
     },
     "scripts": {
-        "start": "yarn run relay --watch && react-scripts start",
+        "start": "react-scripts start",
         "build": "yarn run relay && react-scripts build",
         "relay": "yarn run relay-compiler --src ./src/ --schema ./schema.graphql --extensions=tsx --language typescript",
+        "relay:watch": "yarn run relay-compiler --watch --src ./src/ --schema ./schema.graphql --extensions=tsx --language typescript",
         "test": "react-scripts --expose-gc test --verbose --logHeapUsage",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
@@ -36,7 +39,8 @@
         "test:unit-ci": "cross-env CI=true yarn test --coverage --bail --watchAll=false",
         "test:unit": "yarn test --watchAll",
         "prepare": "husky install",
-        "generate-schema": "dotenv -- cross-var \"get-graphql-schema --header x-hasura-admin-secret=%REACT_APP_HASURA_ADMIN_SECRET% %REACT_APP_HASURA_END_POINT% > schema.graphql\""
+        "generate-schema": "dotenv -- cross-var \"get-graphql-schema --header x-hasura-admin-secret=%REACT_APP_HASURA_ADMIN_SECRET% %REACT_APP_HASURA_END_POINT% > schema.graphql\"",
+        "generate-interface": "graphql-codegen --config codegen.yml"
     },
     "husky": {
         "hooks": {
@@ -78,6 +82,13 @@
         ]
     },
     "devDependencies": {
+        "@graphql-codegen/cli": "^1.21.6",
+        "@graphql-codegen/introspection": "^1.18.2",
+        "@graphql-codegen/typescript": "^1.22.4",
+        "@graphql-codegen/typescript-document-nodes": "1.17.15",
+        "@graphql-codegen/typescript-graphql-files-modules": "1.18.1",
+        "@graphql-codegen/typescript-graphql-request": "^3.2.4",
+        "@graphql-codegen/typescript-operations": "^1.18.3",
         "@storybook/addon-actions": "^6.2.8",
         "@storybook/addon-essentials": "^6.2.8",
         "@storybook/addon-links": "^6.2.8",
@@ -85,6 +96,8 @@
         "@storybook/preset-create-react-app": "^3.1.7",
         "@storybook/react": "^6.2.8",
         "@trivago/prettier-plugin-sort-imports": "^2.0.2",
+        "@types/draft-js": "^0.11.3",
+        "@types/react-draft-wysiwyg": "^1.13.2",
         "@types/react-relay": "^11.0.1",
         "@types/react-router-dom": "^5.1.7",
         "@typescript-eslint/eslint-plugin": "^4.22.0",
@@ -126,7 +139,7 @@
             "text-summary"
         ],
         "collectCoverageFrom": [
-            "src/components/**/*.{js,jsx,ts,tsx}",
+            "src/**/*.{js,jsx,ts,tsx}",
             "!<rootDir>/src/**/*.stories.component.{js,jsx,ts,tsx}",
             "!<rootDir>/src/**/*.stories.{js,jsx,ts,tsx}",
             "!<rootDir>/src/stories/**/*",

@@ -12,6 +12,8 @@ export const HomeUserGraphQL = graphql`
             userId
             email
             name
+            avatar
+            role
         }
     }
 `;
