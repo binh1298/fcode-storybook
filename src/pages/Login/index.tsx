@@ -5,17 +5,16 @@ import { API_ROOT_URL } from "src/configuration";
 
 import { Grid, Hidden } from "@material-ui/core";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
-// import AlertBase from "src/components/Alerts/AlertBase";
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
-// import SnackbarBase from "src/components/SnackBars/SnackbarBase";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
 import NormalTextField from "src/components/Textfields/NormalTextField";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 import fcodeImage from "src/assets/fcode.png";
-import LocalStorageUtils from "src/utils/LocalStorageUtils";
+
+// import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 interface ApiResponse<T> {
     data: T;
@@ -64,7 +63,7 @@ const Login = () => {
                 // eslint-disable-next-line no-console
                 console.log("fetchToken", resultObject);
                 if (resultObject.success) {
-                    LocalStorageUtils.setItem("token", resultObject.data);
+                    // LocalStorageUtils.setItem("token", resultObject.data);
                     history.push(redirectRouteAfterLogin);
                 } else if (resultObject.data.code === 401) {
                     // setIsError(true);
@@ -96,7 +95,7 @@ const Login = () => {
     }, [fetchLoginUri, fetchToken]);
 
     const startLogin = () => {
-        window.location.href = redirectUrl;
+        window.open(redirectUrl);
     };
 
     return (

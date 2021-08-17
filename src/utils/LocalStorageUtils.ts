@@ -15,7 +15,7 @@ class LocalStorageUtils {
     }
 
     setItem(key: string, value = "") {
-        if (typeof localStorage !== "undefined") {
+        if (typeof localStorage !== "undefined" && value !== "") {
             localStorage.setItem(key, JSON.stringify(value));
         }
     }
