@@ -13,7 +13,6 @@ const Demo = () => {
             name: "Kien gui link di mau len",
         });
     };
-
     return (
         <div>
             {data?.users.map((user) => {

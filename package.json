@@ -139,7 +139,7 @@
             "text-summary"
         ],
         "collectCoverageFrom": [
-            "src/**/*.{js,jsx,ts,tsx}",
+            "src/components/**/*.{js,jsx,ts,tsx}",
             "!<rootDir>/src/**/*.stories.component.{js,jsx,ts,tsx}",
             "!<rootDir>/src/**/*.stories.{js,jsx,ts,tsx}",
             "!<rootDir>/src/stories/**/*",
