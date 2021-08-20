@@ -9,7 +9,7 @@ import PublicRoute from "./PublicRoute";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
-import Demo from "src/pages/Users";
+import User from "src/pages/Users";
 
 const publicRoutes: RouteCustom[] = [
     {
@@ -17,14 +17,14 @@ const publicRoutes: RouteCustom[] = [
         name: "login",
         component: Login,
     },
+    {
+        path: "/user",
+        name: "user",
+        component: User,
+    },
 ];
 
 const privateRoutes: RouteCustom[] = [
-    {
-        path: "/demo",
-        name: "demo",
-        component: Demo,
-    },
     {
         path: "/posts",
         name: "posts",

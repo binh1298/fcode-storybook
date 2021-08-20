@@ -1158,28 +1158,60 @@ export type HomeUserQueryQuery = (
   )> }
 );
 
-export type InsertUserOneMutationMutationVariables = Exact<{
-  avatar: Scalars['String'];
+export type GetSpecificUserQueryQueryVariables = Exact<{
+  _eq: Scalars['uuid'];
+}>;
+
+
+export type GetSpecificUserQueryQuery = (
+  { __typename?: 'query_root' }
+  & { users: Array<(
+    { __typename?: 'users' }
+    & Pick<Users, 'userId' | 'role' | 'name' | 'isActive' | 'email' | 'avatar'>
+  )> }
+);
+
+export type GetUsersWithPagingQueryQueryVariables = Exact<{
+  offset?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type GetUsersWithPagingQueryQuery = (
+  { __typename?: 'query_root' }
+  & { users: Array<(
+    { __typename?: 'users' }
+    & Pick<Users, 'email' | 'name' | 'avatar' | 'role' | 'userId'>
+  )> }
+);
+
+export type InsertUserMutationMutationVariables = Exact<{
   email: Scalars['String'];
+  avatar?: Maybe<Scalars['String']>;
   name: Scalars['String'];
 }>;
 
 
-export type InsertUserOneMutationMutation = (
+export type InsertUserMutationMutation = (
   { __typename?: 'mutation_root' }
   & { insert_users_one?: Maybe<(
     { __typename?: 'users' }
-    & Pick<Users, 'email' | 'userId' | 'name' | 'avatar'>
+    & Pick<Users, 'userId' | 'name' | 'email'>
   )> }
 );
 
-export type UsersListQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type UpdateUserMutaionMutationVariables = Exact<{
+  avatar: Scalars['String'];
+  name: Scalars['String'];
+  userId: Scalars['uuid'];
+  isActive?: Maybe<Scalars['Boolean']>;
+}>;
 
 
-export type UsersListQueryQuery = (
-  { __typename?: 'query_root' }
-  & { users: Array<(
+export type UpdateUserMutaionMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_users_by_pk?: Maybe<(
     { __typename?: 'users' }
-    & Pick<Users, 'name' | 'email' | 'role' | 'userId'>
+    & Pick<Users, 'avatar' | 'email' | 'name' | 'userId' | 'role' | 'isActive'>
   )> }
 );

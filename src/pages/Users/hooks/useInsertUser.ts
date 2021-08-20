@@ -1,37 +1,33 @@
 import { gql } from "graphql-request";
 import { useMutation } from "react-query";
 import {
-    InsertUserOneMutationMutation,
-    InsertUserOneMutationMutationVariables,
+    InsertUserMutationMutation,
+    InsertUserMutationMutationVariables,
 } from "src/generated/graphql";
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useInsertUser = (refetchUsers: () => void) => {
+const useInsertUser = (refreshUsers: () => void) => {
     const queryClient = useQueryClient();
-
     const result = useMutation<
-        InsertUserOneMutationMutation,
+        InsertUserMutationMutation,
         unknown,
-        InsertUserOneMutationMutationVariables
+        InsertUserMutationMutationVariables
     >(
-        ["InsertUserOneMutation"],
+        ["InsertUserMutation"],
         async (variable) => {
             const result = await queryClient.request<
-                InsertUserOneMutationMutation,
-                InsertUserOneMutationMutationVariables
+                InsertUserMutationMutation,
+                InsertUserMutationMutationVariables
             >(
                 gql`
-                    mutation InsertUserOneMutation(
-                        $avatar: String!
-                        $email: String!
-                        $name: String!
-                    ) {
-                        insert_users_one(object: { avatar: $avatar, email: $email, name: $name }) {
-                            email
+                    mutation InsertUserMutation($email: String!, $avatar: String, $name: String!) {
+                        insert_users_one(
+                            object: { isActive: true, email: $email, avatar: $avatar, name: $name }
+                        ) {
                             userId
                             name
-                            avatar
+                            email
                         }
                     }
                 `,
@@ -41,7 +37,7 @@ const useInsertUser = (refetchUsers: () => void) => {
         },
         {
             onSuccess: () => {
-                refetchUsers();
+                refreshUsers();
             },
         }
     );
