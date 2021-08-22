@@ -8,6 +8,7 @@ import { AccountCircle, LockRounded } from "@material-ui/icons";
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
+import useSnackbar from "src/components/SnackBars/useSnackbar";
 import NormalTextField from "src/components/Textfields/NormalTextField";
 import ThematicBreak from "src/components/ThematicBreak";
 import TypographyBase from "src/components/Typography/TypographyBase";
@@ -24,10 +25,10 @@ interface ApiResponse<T> {
 }
 const Login = () => {
     const [redirectUrl, setRedirectUrl] = useState<string>("");
-    const [isError, setIsError] = useState<boolean>(false);
     const apiEndpoint = API_ROOT_URL;
     const redirectRouteAfterLogin = "/";
     const history = useHistory();
+    const snackbar = useSnackbar();
     const fetchLoginUri = useCallback(async () => {
         try {
             const result = await fetch(
@@ -64,14 +65,14 @@ const Login = () => {
                     history.push(redirectRouteAfterLogin);
                 } else if (resultObject.data.code === 401) {
                     fetchLoginUri();
-                    setIsError(true);
+                    snackbar({ children: "Invalid credential!!", severity: "error" });
                 }
             } catch (error) {
                 // eslint-disable-next-line no-console
                 console.log("error", error);
             }
         },
-        [apiEndpoint, history, fetchLoginUri]
+        [apiEndpoint, history, fetchLoginUri, snackbar]
     );
 
     useEffect(() => {
@@ -145,12 +146,7 @@ const Login = () => {
                             icon={<LockRounded />}
                             fullWidth
                         />
-                        {!isError && <BoxBase height={20} />}
-                        {isError && (
-                            <TypographyBase variant="subtitle2" color="error">
-                                Invalid credential
-                            </TypographyBase>
-                        )}
+                        <BoxBase height={20} />
                         <ButtonBase color="primary" variant="contained" fullWidth>
                             <TypographyBase variant="button">Sign in</TypographyBase>
                         </ButtonBase>
