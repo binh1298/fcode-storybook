@@ -1,12 +1,27 @@
+import { CSSProperties } from "react";
+
 import {
     Divider as MaterialDivider,
     DividerProps as MaterialDividerProps,
+    useTheme,
 } from "@material-ui/core";
 
-export interface DividerBaseProps extends MaterialDividerProps {}
+export interface DividerBaseProps extends MaterialDividerProps {
+    highlighted?: boolean;
+}
 
 const DividerBase = (props: DividerBaseProps) => {
-    return <MaterialDivider {...props} />;
+    const theme = useTheme();
+    const { highlighted, ...rest } = props;
+    let DividerBaseStyle: CSSProperties = {};
+
+    if (highlighted) {
+        DividerBaseStyle.backgroundColor = theme.palette.secondary.main;
+    } else {
+        DividerBaseStyle.backgroundColor = theme.palette.common.white;
+    }
+
+    return <MaterialDivider data-testid="DividerBase__root" style={DividerBaseStyle} {...rest} />;
 };
 
 export default DividerBase;
