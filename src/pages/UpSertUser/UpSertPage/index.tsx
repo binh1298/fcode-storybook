@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
@@ -113,7 +113,7 @@ const UpSertPage = (props: IUpSertPageProps) => {
                 <BoxBase width={1 / 10}></BoxBase>
                 <BoxBase borderRadius="50%" width={300} boxSizing="border-box" height={300}>
                     <img
-                        onError={(e: { target: any }) => {
+                        onError={(e: BaseSyntheticEvent) => {
                             e.target.onerror = null;
                             e.target.src = anonymousAvatarLink;
                         }}
