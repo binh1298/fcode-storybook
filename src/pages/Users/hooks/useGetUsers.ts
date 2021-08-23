@@ -7,25 +7,30 @@ import {
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useGetUser = (limit: number = 1, offset: number = 0) => {
+const useGetUser = (limit: number = 1, offset: number = 0, _ilike: string = "%%") => {
     const queryClient = useQueryClient();
-    const result = useQuery(["GetUsersWithPagingQuery", { limit, offset }], async () => {
+    const result = useQuery(["GetUsersWithPagingQuery", { limit, offset, _ilike }], async () => {
         const result = await queryClient.request<
             GetUsersWithPagingQueryQuery,
             GetUsersWithPagingQueryQueryVariables
         >(
             gql`
-                query GetUsersWithPagingQuery($offset: Int = 0, $limit: Int = 10) {
-                    users(where: { isActive: { _eq: true } }, offset: $offset, limit: $limit) {
+                query GetUsersWithPagingQuery(
+                    $offset: Int = 0
+                    $limit: Int = 10
+                    $_ilike: String = ""
+                ) {
+                    users(offset: $offset, limit: $limit, where: { email: { _ilike: $_ilike } }) {
                         email
                         name
                         avatar
                         role
                         userId
+                        isActive
                     }
                 }
             `,
-            { limit, offset }
+            { limit, offset, _ilike }
         );
         return result;
     });

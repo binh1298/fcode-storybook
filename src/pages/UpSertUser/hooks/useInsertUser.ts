@@ -7,7 +7,7 @@ import {
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useInsertUser = (refreshUsers: () => void) => {
+const useInsertUser = (backToListPage: () => void, showError: () => void) => {
     const queryClient = useQueryClient();
     const result = useMutation<
         InsertUserMutationMutation,
@@ -37,7 +37,10 @@ const useInsertUser = (refreshUsers: () => void) => {
         },
         {
             onSuccess: () => {
-                refreshUsers();
+                backToListPage();
+            },
+            onError: () => {
+                showError();
             },
         }
     );

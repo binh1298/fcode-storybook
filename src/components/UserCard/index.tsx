@@ -1,16 +1,26 @@
+import { Maybe } from "src/generated/graphql";
+
 import AvatarBase from "../Avatars/AvatarBase";
 import BoxBase from "../Boxs/BoxBase";
 import ButtonBase from "../Buttons/ButtonBase";
 import DividerBase from "../Dividers/DividerBase";
 import TypographyBase from "../Typography/TypographyBase";
 
-export interface IUserProps {
+export interface IUser {
+    name?: string;
+    email?: string;
+    isActive?: boolean;
+    avatar?: Maybe<string>;
+    userId?: string;
+}
+export interface IUserProps extends IUser {
     name: string;
     email: string;
     isActive: boolean;
-    avatar?: string;
-    onUpdate: () => void;
-    onChangeStatus: () => void;
+    avatar?: Maybe<string>;
+    onUpdate: (userId: string) => void;
+    onChangeStatus: (userId: string) => void;
+    userId: string;
 }
 
 export const anonymousAvatarLink =
@@ -19,7 +29,8 @@ const UserCard = (userProps: IUserProps) => {
     return (
         <BoxBase
             shouldHaveBorder={true}
-            maxWidth={400}
+            minWidth={350}
+            maxWidth={500}
             minHeight={100}
             boxSizing="border-box"
             p={2}
@@ -36,12 +47,12 @@ const UserCard = (userProps: IUserProps) => {
             </BoxBase>
             <BoxBase width={7 / 10}>
                 <TypographyBase variant="h6">{userProps.name}</TypographyBase>
-                <TypographyBase variant="body1">{userProps.email}</TypographyBase>
+                <TypographyBase variant="body2">{userProps.email}</TypographyBase>
                 <DividerBase variant="fullWidth"></DividerBase>
                 <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
                     <BoxBase mr={1}>
                         <ButtonBase
-                            onClick={userProps.onUpdate}
+                            onClick={() => userProps.onUpdate(userProps.userId)}
                             variant="contained"
                             color="primary"
                             size="small"
@@ -51,7 +62,7 @@ const UserCard = (userProps: IUserProps) => {
                     </BoxBase>
                     <BoxBase>
                         <ButtonBase
-                            onClick={userProps.onChangeStatus}
+                            onClick={() => userProps.onChangeStatus(userProps.userId)}
                             variant="contained"
                             color="secondary"
                             size="small"

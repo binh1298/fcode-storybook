@@ -9,6 +9,7 @@ describe("<UserCard /> has", () => {
         onUpdate: () => {},
         onChangeStatus: () => {},
         isActive: true,
+        userId: "1",
     };
     it("avatar should is anonymous link when avatar is undefined", () => {
         const { getByAltText } = render(<UserCard {...reuseProps} />);
