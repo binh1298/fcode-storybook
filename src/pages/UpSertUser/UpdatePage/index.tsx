@@ -1,5 +1,6 @@
 import { useHistory, useParams } from "react-router-dom";
 
+import { CircularProgress } from "@material-ui/core";
 import { IUser } from "src/components/UserCard";
 
 import UpSertPage from "../UpSertPage";
@@ -28,7 +29,7 @@ const UpdatePage = () => {
         });
     };
     if (isLoading) {
-        return <div>abc</div>;
+        return <CircularProgress />;
     }
     return (
         <UpSertPage

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import { useMediaQuery } from "@material-ui/core";
+import { CircularProgress, useMediaQuery } from "@material-ui/core";
 import { Add, ArrowLeft, ArrowRight } from "@material-ui/icons";
 import BoxBase from "src/components/Boxs/BoxBase";
 import IconButtonBase from "src/components/Buttons/FabBase";
@@ -56,7 +56,7 @@ const User = () => {
 
     let userList = null;
     if (isLoading) {
-        userList = <div>Loading</div>;
+        userList = <CircularProgress />;
     } else {
         userList = (
             <BoxBase mt={1} width={1} display="flex" flexWrap="wrap">
