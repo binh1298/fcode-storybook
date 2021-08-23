@@ -13,18 +13,12 @@ describe("<CircularProgressBase />", () => {
     };
 
     it("should exist children with default color", () => {
-        render(<CircularProgressBaseTest {...props} />);
-        const muiCircularProgress = screen.getByTestId("CircularProgressBase__root");
-        expect(muiCircularProgress).toHaveStyle(`color: ${theme.palette.primary.main};`);
-    });
-
-    it("should exist children with secondary color", () => {
         props = {
-            color: "secondary",
+            color: "primary",
         };
 
         render(<CircularProgressBaseTest {...props} />);
         const muiCircularProgress = screen.getByTestId("CircularProgressBase__root");
-        expect(muiCircularProgress).toHaveStyle(`color: ${theme.palette.secondary.main};`);
+        expect(muiCircularProgress).toHaveStyle(`color: ${theme.palette.primary.main};`);
     });
 });

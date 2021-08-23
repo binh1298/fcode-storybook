@@ -3,20 +3,10 @@ import {
     CircularProgressProps as MaterialCircularProgressProps,
 } from "@material-ui/core";
 
-export interface CircularProgressBaseProps extends MaterialCircularProgressProps {
-    color?: "primary" | "secondary";
-}
+export interface CircularProgressBaseProps extends MaterialCircularProgressProps {}
 
 const CircularProgressBase = (props: CircularProgressBaseProps) => {
-    const { color, ...rest } = props;
-
-    return (
-        <MaterialCircularProgress
-            color={color ? color : "primary"}
-            data-testid="CircularProgressBase__root"
-            {...rest}
-        />
-    );
+    return <MaterialCircularProgress data-testid="CircularProgressBase__root" {...props} />;
 };
 
 export default CircularProgressBase;
