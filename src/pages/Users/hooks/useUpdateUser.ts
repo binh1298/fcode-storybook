@@ -7,7 +7,7 @@ import {
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useUpdateUser = (userRefresh: () => void) => {
+const useUpdateUser = (success: () => void) => {
     const queryClient = useQueryClient();
     const result = useMutation<
         UpdateUserMutaionMutation,
@@ -46,7 +46,7 @@ const useUpdateUser = (userRefresh: () => void) => {
         },
         {
             onSuccess: () => {
-                userRefresh();
+                success();
             },
         }
     );

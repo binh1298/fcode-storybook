@@ -15,11 +15,11 @@ const InsertPage = () => {
         history.push("/user");
     };
 
-    const showError = () => {
+    const showError = (message: string, type: "error" | "success") => {
         showSnackbar({
-            color: "error",
+            color: type,
             variant: "filled",
-            children: "Error",
+            children: message,
         });
     };
 

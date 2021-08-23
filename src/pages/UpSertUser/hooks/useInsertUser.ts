@@ -7,11 +7,14 @@ import {
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useInsertUser = (backToListPage: () => void, showError: () => void) => {
+const useInsertUser = (
+    backToListPage: () => void,
+    showError: (message: string, type: "error" | "success") => void
+) => {
     const queryClient = useQueryClient();
     const result = useMutation<
         InsertUserMutationMutation,
-        unknown,
+        { response: any },
         InsertUserMutationMutationVariables
     >(
         ["InsertUserMutation"],
@@ -39,8 +42,16 @@ const useInsertUser = (backToListPage: () => void, showError: () => void) => {
             onSuccess: () => {
                 backToListPage();
             },
-            onError: () => {
-                showError();
+            onError: (err) => {
+                let errorCode = err.response.errors[0].extensions.code;
+                switch (errorCode) {
+                    case "constraint-violation":
+                        showError("Email is duplicated!", "error");
+                        break;
+                    default:
+                        showError("Server Error", "error");
+                        break;
+                }
             },
         }
     );
