@@ -4,8 +4,8 @@ import { Alert as MaterialAlert, AlertProps as MaterialAlertProps } from "@mater
 
 export interface AlertBaseProps extends MaterialAlertProps {}
 
-const AlertBase = (props: AlertBaseProps) => {
-    return <MaterialAlert {...props} />;
-};
+const AlertBase = React.forwardRef(function AlertBase(props: AlertBaseProps, ref) {
+    return <MaterialAlert {...props} ref={ref} />;
+});
 
 export default AlertBase;
