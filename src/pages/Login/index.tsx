@@ -16,7 +16,6 @@ import TypographyBase from "src/components/Typography/TypographyBase";
 import fcodeImage from "src/assets/fcode.png";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
-// import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 interface ApiResponse<T> {
     data: T;
