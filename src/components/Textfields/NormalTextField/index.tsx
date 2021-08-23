@@ -1,11 +1,11 @@
 import { InputAdornment } from "@material-ui/core";
 import TextFieldBase, { TextfieldBaseProps } from "src/components/Textfields/TextFieldBase";
 
-export interface NormalTextFieldProps extends TextfieldBaseProps {
+export interface IconTextFieldProps extends TextfieldBaseProps {
     icon?: React.ReactNode;
 }
 
-const NormalTextField = (props: NormalTextFieldProps) => {
+const IconTextField = (props: IconTextFieldProps) => {
     const { icon } = props;
     return (
         <TextFieldBase
@@ -19,4 +19,4 @@ const NormalTextField = (props: NormalTextFieldProps) => {
     );
 };
 
-export default NormalTextField;
+export default IconTextField;
