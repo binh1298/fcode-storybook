@@ -10,14 +10,16 @@ const useCommentsList = (postId: string) => {
     const result = useQuery<GetCommentsQuery, unknown>(["GetComments"], async () => {
         const result = await queryClient.request<GetCommentsQuery, GetCommentsQueryVariables>(
             gql`
-                query GetComments($postId: uuid = "") {
-                    comments(where: { postId: { _eq: $postId } }, order_by: { createdAt: asc }) {
-                        commentId
-                        content
-                        createdAt
-                        user {
-                            avatar
-                            name
+                query GetComments($postId: uuid!) {
+                    posts_by_pk(postId: $postId) {
+                        comments(order_by: { createdAt: asc }) {
+                            commentId
+                            content
+                            createdAt
+                            user {
+                                avatar
+                                name
+                            }
                         }
                     }
                 }

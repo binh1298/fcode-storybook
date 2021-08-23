@@ -1148,32 +1148,35 @@ export type Uuid_Comparison_Exp = {
 };
 
 export type GetCommentsQueryVariables = Exact<{
-  postId?: Maybe<Scalars['uuid']>;
+  postId: Scalars['uuid'];
 }>;
 
 
 export type GetCommentsQuery = (
   { __typename?: 'query_root' }
-  & { comments: Array<(
-    { __typename?: 'comments' }
-    & Pick<Comments, 'commentId' | 'content' | 'createdAt'>
-    & { user?: Maybe<(
-      { __typename?: 'users' }
-      & Pick<Users, 'avatar' | 'name'>
+  & { posts_by_pk?: Maybe<(
+    { __typename?: 'posts' }
+    & { comments: Array<(
+      { __typename?: 'comments' }
+      & Pick<Comments, 'commentId' | 'content' | 'createdAt'>
+      & { user?: Maybe<(
+        { __typename?: 'users' }
+        & Pick<Users, 'avatar' | 'name'>
+      )> }
     )> }
   )> }
 );
 
 export type DeleteCommentMutationVariables = Exact<{
-  commentId?: Maybe<Scalars['uuid']>;
+  commentId: Scalars['uuid'];
 }>;
 
 
 export type DeleteCommentMutation = (
   { __typename?: 'mutation_root' }
-  & { delete_comments?: Maybe<(
-    { __typename?: 'comments_mutation_response' }
-    & Pick<Comments_Mutation_Response, 'affected_rows'>
+  & { delete_comments_by_pk?: Maybe<(
+    { __typename?: 'comments' }
+    & Pick<Comments, 'postId'>
   )> }
 );
 
@@ -1210,16 +1213,16 @@ export type GetPostDetailQuery = (
 );
 
 export type UpdateCommentMutationVariables = Exact<{
-  commentId?: Maybe<Scalars['uuid']>;
+  commentId: Scalars['uuid'];
   content?: Maybe<Scalars['String']>;
 }>;
 
 
 export type UpdateCommentMutation = (
   { __typename?: 'mutation_root' }
-  & { update_comments?: Maybe<(
-    { __typename?: 'comments_mutation_response' }
-    & Pick<Comments_Mutation_Response, 'affected_rows'>
+  & { update_comments_by_pk?: Maybe<(
+    { __typename?: 'comments' }
+    & Pick<Comments, 'postId'>
   )> }
 );
 

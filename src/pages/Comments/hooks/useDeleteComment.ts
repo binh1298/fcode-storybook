@@ -15,9 +15,9 @@ const useDeleteComment = (refetchComments: () => void) => {
                 DeleteCommentMutationVariables
             >(
                 gql`
-                    mutation DeleteComment($commentId: uuid = "") {
-                        delete_comments(where: { commentId: { _eq: $commentId } }) {
-                            affected_rows
+                    mutation DeleteComment($commentId: uuid!) {
+                        delete_comments_by_pk(commentId: $commentId) {
+                            postId
                         }
                     }
                 `,

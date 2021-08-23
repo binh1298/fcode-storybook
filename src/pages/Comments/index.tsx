@@ -37,7 +37,7 @@ const Comments = () => {
     const post = postDetailData?.posts[0];
     const author = post?.user;
     const createdDate = new Date(post?.createdAt);
-    const comments = commentsData?.comments;
+    const comments = commentsData?.posts_by_pk?.comments;
 
     const insertComment = (content: string) => {
         insertCommentQuery({ authorId: user.userId, content, postId });
