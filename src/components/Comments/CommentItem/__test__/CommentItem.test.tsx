@@ -2,7 +2,7 @@ import CommentItem, { CommentItemProps } from "..";
 import { defaultAvatarSrc } from "..";
 
 import { render, screen, fireEvent } from "@testing-library/react";
-import convertLocateTime from "src/utils/convertLocateTime";
+import convertLocateTime from "src/utils/convertLocalTime";
 
 describe("<CommentItem />", () => {
     let props: CommentItemProps;
@@ -41,11 +41,7 @@ describe("<CommentItem />", () => {
         const CommentItemAuthor = screen.getByTestId("CommentItem__author");
         expect(CommentItemAuthor.innerHTML).toBe(authorName);
 
-        const createdTime = convertLocateTime(new Date(createdAt));
-        const commentCreatedTime =
-            createdTime.toLocaleString("en-US", { dateStyle: "short" }) +
-            " AT " +
-            createdTime.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
+        const commentCreatedTime = convertLocateTime({ time: createdAt });
         const CommentItemCreateAt = screen.getByTestId("CommentItem__createdAt");
         expect(CommentItemCreateAt.innerHTML).toBe(commentCreatedTime);
 
@@ -94,11 +90,7 @@ describe("<CommentItem />", () => {
         const CommentItemAuthor = screen.getByTestId("CommentItem__author");
         expect(CommentItemAuthor.innerHTML).toBe(authorName);
 
-        const createdTime = convertLocateTime(new Date(createdAt));
-        const commentCreatedTime =
-            createdTime.toLocaleString("en-US", { dateStyle: "short" }) +
-            " AT " +
-            createdTime.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
+        const commentCreatedTime = convertLocateTime({ time: createdAt });
         const CommentItemCreateAt = screen.getByTestId("CommentItem__createdAt");
         expect(CommentItemCreateAt.innerHTML).toBe(commentCreatedTime);
 

@@ -10,7 +10,7 @@ import DividerBase from "../../Dividers/DividerBase";
 import TypographyBase from "../../Typography/TypographyBase";
 import CommentForm from "../CommentForm";
 
-import convertLocateTime from "src/utils/convertLocateTime";
+import convertLocateTime from "src/utils/convertLocalTime";
 
 export interface CommentItemProps {
     commentId: string;
@@ -50,11 +50,7 @@ const CommentItem = (props: CommentItemProps) => {
         setIsEdit(false);
     };
 
-    const createdTime = convertLocateTime(new Date(createdAt));
-    const commentCreatedTime =
-        createdTime.toLocaleString("en-US", { dateStyle: "short" }) +
-        " AT " +
-        createdTime.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
+    const commentCreatedTime = convertLocateTime({ time: createdAt });
 
     return (
         <Grid container alignItems="center">
