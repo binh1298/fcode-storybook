@@ -9,7 +9,7 @@ import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
-import NormalTextField from "src/components/Textfields/NormalTextField";
+import IconTextField from "src/components/Textfields/IconTextField";
 import ThematicBreak from "src/components/ThematicBreak";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
@@ -130,13 +130,13 @@ const Login = () => {
                             Sign in
                         </TypographyBase>
                         <BoxBase height={20} />
-                        <NormalTextField
+                        <IconTextField
                             label="Username or Email"
                             margin="normal"
                             icon={<AccountCircle />}
                             fullWidth
                         />
-                        <NormalTextField
+                        <IconTextField
                             label="Password"
                             margin="normal"
                             type="password"
