@@ -24,6 +24,9 @@ const BoxConvertDraftjsToHtml = (props: BoxConverterProps) => {
     useEffect(() => {
         if (IsJsonString(props.input) !== "") {
             setEditor(() => EditorState.createWithContent(convertFromRaw(JSON.parse(props.input))));
+        } else {
+            let content = `{"blocks":[{"key":"6mmg7","text":"${props.input}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`;
+            setEditor(() => EditorState.createWithContent(convertFromRaw(JSON.parse(content))));
         }
     }, [props.input]);
     return (
