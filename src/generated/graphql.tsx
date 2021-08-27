@@ -45,219 +45,9 @@ export type String_Comparison_Exp = {
   _similar?: Maybe<Scalars['String']>;
 };
 
-/** columns and relationships of "comments" */
-export type Comments = {
-  __typename?: 'comments';
-  authorId?: Maybe<Scalars['uuid']>;
-  commentId: Scalars['uuid'];
-  content: Scalars['String'];
-  createdAt: Scalars['timestamp'];
-  deletedAt?: Maybe<Scalars['timestamp']>;
-  /** An object relationship */
-  post?: Maybe<Posts>;
-  postId?: Maybe<Scalars['uuid']>;
-  /** An object relationship */
-  user?: Maybe<Users>;
-};
-
-/** aggregated selection of "comments" */
-export type Comments_Aggregate = {
-  __typename?: 'comments_aggregate';
-  aggregate?: Maybe<Comments_Aggregate_Fields>;
-  nodes: Array<Comments>;
-};
-
-/** aggregate fields of "comments" */
-export type Comments_Aggregate_Fields = {
-  __typename?: 'comments_aggregate_fields';
-  count?: Maybe<Scalars['Int']>;
-  max?: Maybe<Comments_Max_Fields>;
-  min?: Maybe<Comments_Min_Fields>;
-};
-
-
-/** aggregate fields of "comments" */
-export type Comments_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Comments_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
-
-/** order by aggregate values of table "comments" */
-export type Comments_Aggregate_Order_By = {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Comments_Max_Order_By>;
-  min?: Maybe<Comments_Min_Order_By>;
-};
-
-/** input type for inserting array relation for remote table "comments" */
-export type Comments_Arr_Rel_Insert_Input = {
-  data: Array<Comments_Insert_Input>;
-  on_conflict?: Maybe<Comments_On_Conflict>;
-};
-
-/** Boolean expression to filter rows from the table "comments". All fields are combined with a logical 'AND'. */
-export type Comments_Bool_Exp = {
-  _and?: Maybe<Array<Maybe<Comments_Bool_Exp>>>;
-  _not?: Maybe<Comments_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Comments_Bool_Exp>>>;
-  authorId?: Maybe<Uuid_Comparison_Exp>;
-  commentId?: Maybe<Uuid_Comparison_Exp>;
-  content?: Maybe<String_Comparison_Exp>;
-  createdAt?: Maybe<Timestamp_Comparison_Exp>;
-  deletedAt?: Maybe<Timestamp_Comparison_Exp>;
-  post?: Maybe<Posts_Bool_Exp>;
-  postId?: Maybe<Uuid_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-};
-
-/** unique or primary key constraints on table "comments" */
-export enum Comments_Constraint {
-  /** unique or primary key constraint */
-  PkB302f2e474ce2a6cbacd7981aa5 = 'PK_b302f2e474ce2a6cbacd7981aa5'
-}
-
-/** input type for inserting data into table "comments" */
-export type Comments_Insert_Input = {
-  authorId?: Maybe<Scalars['uuid']>;
-  commentId?: Maybe<Scalars['uuid']>;
-  content?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['timestamp']>;
-  deletedAt?: Maybe<Scalars['timestamp']>;
-  post?: Maybe<Posts_Obj_Rel_Insert_Input>;
-  postId?: Maybe<Scalars['uuid']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-};
-
-/** aggregate max on columns */
-export type Comments_Max_Fields = {
-  __typename?: 'comments_max_fields';
-  authorId?: Maybe<Scalars['uuid']>;
-  commentId?: Maybe<Scalars['uuid']>;
-  content?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['timestamp']>;
-  deletedAt?: Maybe<Scalars['timestamp']>;
-  postId?: Maybe<Scalars['uuid']>;
-};
-
-/** order by max() on columns of table "comments" */
-export type Comments_Max_Order_By = {
-  authorId?: Maybe<Order_By>;
-  commentId?: Maybe<Order_By>;
-  content?: Maybe<Order_By>;
-  createdAt?: Maybe<Order_By>;
-  deletedAt?: Maybe<Order_By>;
-  postId?: Maybe<Order_By>;
-};
-
-/** aggregate min on columns */
-export type Comments_Min_Fields = {
-  __typename?: 'comments_min_fields';
-  authorId?: Maybe<Scalars['uuid']>;
-  commentId?: Maybe<Scalars['uuid']>;
-  content?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['timestamp']>;
-  deletedAt?: Maybe<Scalars['timestamp']>;
-  postId?: Maybe<Scalars['uuid']>;
-};
-
-/** order by min() on columns of table "comments" */
-export type Comments_Min_Order_By = {
-  authorId?: Maybe<Order_By>;
-  commentId?: Maybe<Order_By>;
-  content?: Maybe<Order_By>;
-  createdAt?: Maybe<Order_By>;
-  deletedAt?: Maybe<Order_By>;
-  postId?: Maybe<Order_By>;
-};
-
-/** response of any mutation on the table "comments" */
-export type Comments_Mutation_Response = {
-  __typename?: 'comments_mutation_response';
-  /** number of affected rows by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
-  returning: Array<Comments>;
-};
-
-/** input type for inserting object relation for remote table "comments" */
-export type Comments_Obj_Rel_Insert_Input = {
-  data: Comments_Insert_Input;
-  on_conflict?: Maybe<Comments_On_Conflict>;
-};
-
-/** on conflict condition type for table "comments" */
-export type Comments_On_Conflict = {
-  constraint: Comments_Constraint;
-  update_columns: Array<Comments_Update_Column>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-/** ordering options when selecting data from "comments" */
-export type Comments_Order_By = {
-  authorId?: Maybe<Order_By>;
-  commentId?: Maybe<Order_By>;
-  content?: Maybe<Order_By>;
-  createdAt?: Maybe<Order_By>;
-  deletedAt?: Maybe<Order_By>;
-  post?: Maybe<Posts_Order_By>;
-  postId?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-};
-
-/** primary key columns input for table: "comments" */
-export type Comments_Pk_Columns_Input = {
-  commentId: Scalars['uuid'];
-};
-
-/** select columns of table "comments" */
-export enum Comments_Select_Column {
-  /** column name */
-  AuthorId = 'authorId',
-  /** column name */
-  CommentId = 'commentId',
-  /** column name */
-  Content = 'content',
-  /** column name */
-  CreatedAt = 'createdAt',
-  /** column name */
-  DeletedAt = 'deletedAt',
-  /** column name */
-  PostId = 'postId'
-}
-
-/** input type for updating data in table "comments" */
-export type Comments_Set_Input = {
-  authorId?: Maybe<Scalars['uuid']>;
-  commentId?: Maybe<Scalars['uuid']>;
-  content?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['timestamp']>;
-  deletedAt?: Maybe<Scalars['timestamp']>;
-  postId?: Maybe<Scalars['uuid']>;
-};
-
-/** update columns of table "comments" */
-export enum Comments_Update_Column {
-  /** column name */
-  AuthorId = 'authorId',
-  /** column name */
-  CommentId = 'commentId',
-  /** column name */
-  Content = 'content',
-  /** column name */
-  CreatedAt = 'createdAt',
-  /** column name */
-  DeletedAt = 'deletedAt',
-  /** column name */
-  PostId = 'postId'
-}
-
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
-  /** delete data from the table: "comments" */
-  delete_comments?: Maybe<Comments_Mutation_Response>;
-  /** delete single row from the table: "comments" */
-  delete_comments_by_pk?: Maybe<Comments>;
   /** delete data from the table: "posts" */
   delete_posts?: Maybe<Posts_Mutation_Response>;
   /** delete single row from the table: "posts" */
@@ -266,10 +56,6 @@ export type Mutation_Root = {
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
   delete_users_by_pk?: Maybe<Users>;
-  /** insert data into the table: "comments" */
-  insert_comments?: Maybe<Comments_Mutation_Response>;
-  /** insert a single row into the table: "comments" */
-  insert_comments_one?: Maybe<Comments>;
   /** insert data into the table: "posts" */
   insert_posts?: Maybe<Posts_Mutation_Response>;
   /** insert a single row into the table: "posts" */
@@ -278,10 +64,6 @@ export type Mutation_Root = {
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
   insert_users_one?: Maybe<Users>;
-  /** update data of the table: "comments" */
-  update_comments?: Maybe<Comments_Mutation_Response>;
-  /** update single row of the table: "comments" */
-  update_comments_by_pk?: Maybe<Comments>;
   /** update data of the table: "posts" */
   update_posts?: Maybe<Posts_Mutation_Response>;
   /** update single row of the table: "posts" */
@@ -290,18 +72,6 @@ export type Mutation_Root = {
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
   update_users_by_pk?: Maybe<Users>;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_CommentsArgs = {
-  where: Comments_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Comments_By_PkArgs = {
-  commentId: Scalars['uuid'];
 };
 
 
@@ -330,20 +100,6 @@ export type Mutation_RootDelete_Users_By_PkArgs = {
 
 
 /** mutation root */
-export type Mutation_RootInsert_CommentsArgs = {
-  objects: Array<Comments_Insert_Input>;
-  on_conflict?: Maybe<Comments_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Comments_OneArgs = {
-  object: Comments_Insert_Input;
-  on_conflict?: Maybe<Comments_On_Conflict>;
-};
-
-
-/** mutation root */
 export type Mutation_RootInsert_PostsArgs = {
   objects: Array<Posts_Insert_Input>;
   on_conflict?: Maybe<Posts_On_Conflict>;
@@ -368,20 +124,6 @@ export type Mutation_RootInsert_UsersArgs = {
 export type Mutation_RootInsert_Users_OneArgs = {
   object: Users_Insert_Input;
   on_conflict?: Maybe<Users_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_CommentsArgs = {
-  _set?: Maybe<Comments_Set_Input>;
-  where: Comments_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Comments_By_PkArgs = {
-  _set?: Maybe<Comments_Set_Input>;
-  pk_columns: Comments_Pk_Columns_Input;
 };
 
 
@@ -432,38 +174,12 @@ export enum Order_By {
 export type Posts = {
   __typename?: 'posts';
   authorId?: Maybe<Scalars['uuid']>;
-  /** An array relationship */
-  comments: Array<Comments>;
-  /** An aggregated array relationship */
-  comments_aggregate: Comments_Aggregate;
   content: Scalars['String'];
   createdAt: Scalars['timestamp'];
   deletedAt?: Maybe<Scalars['timestamp']>;
   postId: Scalars['uuid'];
   title: Scalars['String'];
   updatedAt: Scalars['timestamp'];
-  /** An object relationship */
-  user?: Maybe<Users>;
-};
-
-
-/** columns and relationships of "posts" */
-export type PostsCommentsArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-
-/** columns and relationships of "posts" */
-export type PostsComments_AggregateArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
 };
 
 /** aggregated selection of "posts" */
@@ -507,14 +223,12 @@ export type Posts_Bool_Exp = {
   _not?: Maybe<Posts_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Posts_Bool_Exp>>>;
   authorId?: Maybe<Uuid_Comparison_Exp>;
-  comments?: Maybe<Comments_Bool_Exp>;
   content?: Maybe<String_Comparison_Exp>;
   createdAt?: Maybe<Timestamp_Comparison_Exp>;
   deletedAt?: Maybe<Timestamp_Comparison_Exp>;
   postId?: Maybe<Uuid_Comparison_Exp>;
   title?: Maybe<String_Comparison_Exp>;
   updatedAt?: Maybe<Timestamp_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "posts" */
@@ -526,14 +240,12 @@ export enum Posts_Constraint {
 /** input type for inserting data into table "posts" */
 export type Posts_Insert_Input = {
   authorId?: Maybe<Scalars['uuid']>;
-  comments?: Maybe<Comments_Arr_Rel_Insert_Input>;
   content?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['timestamp']>;
   deletedAt?: Maybe<Scalars['timestamp']>;
   postId?: Maybe<Scalars['uuid']>;
   title?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['timestamp']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -607,14 +319,12 @@ export type Posts_On_Conflict = {
 /** ordering options when selecting data from "posts" */
 export type Posts_Order_By = {
   authorId?: Maybe<Order_By>;
-  comments_aggregate?: Maybe<Comments_Aggregate_Order_By>;
   content?: Maybe<Order_By>;
   createdAt?: Maybe<Order_By>;
   deletedAt?: Maybe<Order_By>;
   postId?: Maybe<Order_By>;
   title?: Maybe<Order_By>;
   updatedAt?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
 };
 
 /** primary key columns input for table: "posts" */
@@ -672,12 +382,6 @@ export enum Posts_Update_Column {
 /** query root */
 export type Query_Root = {
   __typename?: 'query_root';
-  /** fetch data from the table: "comments" */
-  comments: Array<Comments>;
-  /** fetch aggregated fields from the table: "comments" */
-  comments_aggregate: Comments_Aggregate;
-  /** fetch data from the table: "comments" using primary key columns */
-  comments_by_pk?: Maybe<Comments>;
   /** fetch data from the table: "posts" */
   posts: Array<Posts>;
   /** fetch aggregated fields from the table: "posts" */
@@ -690,32 +394,6 @@ export type Query_Root = {
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
-};
-
-
-/** query root */
-export type Query_RootCommentsArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-
-/** query root */
-export type Query_RootComments_AggregateArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-
-/** query root */
-export type Query_RootComments_By_PkArgs = {
-  commentId: Scalars['uuid'];
 };
 
 
@@ -773,12 +451,6 @@ export type Query_RootUsers_By_PkArgs = {
 /** subscription root */
 export type Subscription_Root = {
   __typename?: 'subscription_root';
-  /** fetch data from the table: "comments" */
-  comments: Array<Comments>;
-  /** fetch aggregated fields from the table: "comments" */
-  comments_aggregate: Comments_Aggregate;
-  /** fetch data from the table: "comments" using primary key columns */
-  comments_by_pk?: Maybe<Comments>;
   /** fetch data from the table: "posts" */
   posts: Array<Posts>;
   /** fetch aggregated fields from the table: "posts" */
@@ -791,32 +463,6 @@ export type Subscription_Root = {
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
-};
-
-
-/** subscription root */
-export type Subscription_RootCommentsArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-
-/** subscription root */
-export type Subscription_RootComments_AggregateArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-
-/** subscription root */
-export type Subscription_RootComments_By_PkArgs = {
-  commentId: Scalars['uuid'];
 };
 
 
@@ -889,59 +535,11 @@ export type Timestamp_Comparison_Exp = {
 export type Users = {
   __typename?: 'users';
   avatar?: Maybe<Scalars['String']>;
-  /** An array relationship */
-  comments: Array<Comments>;
-  /** An aggregated array relationship */
-  comments_aggregate: Comments_Aggregate;
   email: Scalars['String'];
   isActive: Scalars['Boolean'];
   name: Scalars['String'];
-  /** An array relationship */
-  posts: Array<Posts>;
-  /** An aggregated array relationship */
-  posts_aggregate: Posts_Aggregate;
   role: Scalars['String'];
   userId: Scalars['uuid'];
-};
-
-
-/** columns and relationships of "users" */
-export type UsersCommentsArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersComments_AggregateArgs = {
-  distinct_on?: Maybe<Array<Comments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Comments_Order_By>>;
-  where?: Maybe<Comments_Bool_Exp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersPostsArgs = {
-  distinct_on?: Maybe<Array<Posts_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Posts_Order_By>>;
-  where?: Maybe<Posts_Bool_Exp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersPosts_AggregateArgs = {
-  distinct_on?: Maybe<Array<Posts_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Posts_Order_By>>;
-  where?: Maybe<Posts_Bool_Exp>;
 };
 
 /** aggregated selection of "users" */
@@ -985,11 +583,9 @@ export type Users_Bool_Exp = {
   _not?: Maybe<Users_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Users_Bool_Exp>>>;
   avatar?: Maybe<String_Comparison_Exp>;
-  comments?: Maybe<Comments_Bool_Exp>;
   email?: Maybe<String_Comparison_Exp>;
   isActive?: Maybe<Boolean_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
-  posts?: Maybe<Posts_Bool_Exp>;
   role?: Maybe<String_Comparison_Exp>;
   userId?: Maybe<Uuid_Comparison_Exp>;
 };
@@ -1005,11 +601,9 @@ export enum Users_Constraint {
 /** input type for inserting data into table "users" */
 export type Users_Insert_Input = {
   avatar?: Maybe<Scalars['String']>;
-  comments?: Maybe<Comments_Arr_Rel_Insert_Input>;
   email?: Maybe<Scalars['String']>;
   isActive?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
-  posts?: Maybe<Posts_Arr_Rel_Insert_Input>;
   role?: Maybe<Scalars['String']>;
   userId?: Maybe<Scalars['uuid']>;
 };
@@ -1077,11 +671,9 @@ export type Users_On_Conflict = {
 /** ordering options when selecting data from "users" */
 export type Users_Order_By = {
   avatar?: Maybe<Order_By>;
-  comments_aggregate?: Maybe<Comments_Aggregate_Order_By>;
   email?: Maybe<Order_By>;
   isActive?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
-  posts_aggregate?: Maybe<Posts_Aggregate_Order_By>;
   role?: Maybe<Order_By>;
   userId?: Maybe<Order_By>;
 };
@@ -1155,6 +747,20 @@ export type HomeUserQueryQuery = (
   & { users: Array<(
     { __typename?: 'users' }
     & Pick<Users, 'userId' | 'email' | 'name' | 'avatar' | 'role'>
+  )> }
+);
+
+export type GetAllPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllPostsQuery = (
+  { __typename?: 'query_root' }
+  & { posts: Array<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'authorId' | 'content' | 'createdAt' | 'postId' | 'title'>
+  )>, users: Array<(
+    { __typename?: 'users' }
+    & Pick<Users, 'avatar' | 'name' | 'userId'>
   )> }
 );
 
