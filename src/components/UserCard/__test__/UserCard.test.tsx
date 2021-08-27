@@ -1,6 +1,6 @@
 import UserCard, { anonymousAvatarLink, IUserProps } from "..";
 
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("<UserCard /> has", () => {
     const reuseProps: IUserProps = {
@@ -11,7 +11,7 @@ describe("<UserCard /> has", () => {
         isActive: true,
         userId: "1",
     };
-    it("avatar should is anonymous link when avatar is undefined", () => {
+    it("avatar should is anonymous link when avatar is undefine", () => {
         const { getByAltText } = render(<UserCard {...reuseProps} />);
 
         const image = getByAltText(reuseProps.email);
@@ -43,5 +43,39 @@ describe("<UserCard /> has", () => {
             name: /ACTIVE/i,
         });
         expect(btnTest).toBeInTheDocument();
+    });
+
+    it("action when click UPDATE button", () => {
+        let updatedId: string = "";
+        let userId = "user1";
+        let props: IUserProps = {
+            ...reuseProps,
+            userId: userId,
+            onUpdate: (userId) => {
+                updatedId = userId;
+            },
+        };
+        render(<UserCard {...props} />);
+        const UserCardButtons = screen.getByTestId("UserCard__buttons").querySelectorAll("button");
+        const UpdateButton = UserCardButtons[0];
+        fireEvent.click(UpdateButton!);
+        expect(updatedId).toBe(userId);
+    });
+
+    it("action when click CHANGE STATUS button", () => {
+        let updatedId: string = "";
+        let userId = "user1";
+        let props: IUserProps = {
+            ...reuseProps,
+            userId: userId,
+            onChangeStatus: (userId) => {
+                updatedId = userId;
+            },
+        };
+        render(<UserCard {...props} />);
+        const UserCardButtons = screen.getByTestId("UserCard__buttons").querySelectorAll("button");
+        const ChangeStatusButton = UserCardButtons[1];
+        fireEvent.click(ChangeStatusButton!);
+        expect(updatedId).toBe(userId);
     });
 });

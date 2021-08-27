@@ -1,4 +1,4 @@
-import { unstable_createMuiStrictModeTheme, ThemeOptions } from "@material-ui/core";
+import { createMuiTheme, ThemeOptions } from "@material-ui/core";
 import createBreakpoint from "@material-ui/core/styles/createBreakpoints";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
@@ -170,5 +170,5 @@ const themeObject: Readonly<ThemeOptions> = {
     },
 };
 
-const replyTheme = unstable_createMuiStrictModeTheme(themeObject);
+const replyTheme = createMuiTheme(themeObject);
 export default replyTheme;

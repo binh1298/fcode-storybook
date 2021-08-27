@@ -49,7 +49,13 @@ const UserCard = (userProps: IUserProps) => {
                 <TypographyBase variant="h6">{userProps.name}</TypographyBase>
                 <TypographyBase variant="body2">{userProps.email}</TypographyBase>
                 <DividerBase variant="fullWidth"></DividerBase>
-                <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
+                <BoxBase
+                    pt={2}
+                    data-testid="UserCard__buttons"
+                    width={1}
+                    display="flex"
+                    justifyContent="flex-end"
+                >
                     <BoxBase mr={1}>
                         <ButtonBase
                             onClick={() => userProps.onUpdate(userProps.userId)}
