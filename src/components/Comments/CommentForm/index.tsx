@@ -15,7 +15,7 @@ export interface CommentFormProps {
 
 const CommentForm = (props: CommentFormProps) => {
     const { isLoading, value, submit } = props;
-    const [content, setContent] = useState(value ? value : "");
+    const [content, setContent] = useState<string>(value ? value : "");
 
     const changeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setContent(event.target.value);

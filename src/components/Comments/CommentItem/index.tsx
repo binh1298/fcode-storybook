@@ -40,7 +40,7 @@ const CommentItem = (props: CommentItemProps) => {
         isUpdateCommentLoading,
     } = props;
 
-    const [isEdit, setIsEdit] = useState(false);
+    const [isEdit, setIsEdit] = useState<boolean>(false);
 
     const deleteHandler = () => {
         deleteCommentHandler({ commentId });
