@@ -9,7 +9,7 @@ import { anonymousAvatarLink, IUser } from "src/components/UserCard";
 interface IUpSertPageProps {
     userProps?: IUser;
     isUpdate: boolean;
-    sendDatatoServer: (user: IUser) => void;
+    sendDataToServer: (user: IUser) => void;
 }
 const UpSertPage = (props: IUpSertPageProps) => {
     const generateDefaultValue = (userProps?: IUser) => {
@@ -36,7 +36,7 @@ const UpSertPage = (props: IUpSertPageProps) => {
     };
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        props.sendDatatoServer(user);
+        props.sendDataToServer(user);
     };
 
     const avatarStyle = {
@@ -119,6 +119,7 @@ const UpSertPage = (props: IUpSertPageProps) => {
                         }}
                         src={user.avatar || anonymousAvatarLink}
                         style={avatarStyle}
+                        alt={user.avatar || anonymousAvatarLink}
                     />
                 </BoxBase>
             </BoxBase>

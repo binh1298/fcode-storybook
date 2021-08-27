@@ -33,7 +33,7 @@ const UpdatePage = () => {
     }
     return (
         <UpSertPage
-            sendDatatoServer={sendDataToServer}
+            sendDataToServer={sendDataToServer}
             userProps={data?.users[0]}
             isUpdate={true}
         />

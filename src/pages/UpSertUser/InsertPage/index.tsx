@@ -33,7 +33,7 @@ const InsertPage = () => {
         });
     };
 
-    return <UpSertPage sendDatatoServer={sendDataToServer} isUpdate={false} />;
+    return <UpSertPage sendDataToServer={sendDataToServer} isUpdate={false} />;
 };
 
 export default InsertPage;
