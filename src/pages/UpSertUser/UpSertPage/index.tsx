@@ -1,7 +1,8 @@
-import { BaseSyntheticEvent, useState } from "react";
+import { useState } from "react";
 
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
+import ImageBase from "src/components/Images/ImageBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 import { anonymousAvatarLink, IUser } from "src/components/UserCard";
@@ -37,11 +38,6 @@ const UpSertPage = (props: IUpSertPageProps) => {
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         props.sendDataToServer(user);
-    };
-
-    const avatarStyle = {
-        width: "inherit",
-        height: "inherit",
     };
 
     return (
@@ -111,17 +107,13 @@ const UpSertPage = (props: IUpSertPageProps) => {
                     </BoxBase>
                 </BoxBase>
                 <BoxBase width={1 / 10}></BoxBase>
-                <BoxBase borderRadius="50%" width={300} boxSizing="border-box" height={300}>
-                    <img
-                        onError={(e: BaseSyntheticEvent) => {
-                            e.target.onerror = null;
-                            e.target.src = anonymousAvatarLink;
-                        }}
-                        src={user.avatar || anonymousAvatarLink}
-                        style={avatarStyle}
-                        alt={user.avatar || anonymousAvatarLink}
-                    />
-                </BoxBase>
+                <ImageBase
+                    width={300}
+                    boxSizing="border-box"
+                    height={300}
+                    src={user.avatar || anonymousAvatarLink}
+                    onErrorSrc={anonymousAvatarLink}
+                />
             </BoxBase>
         </BoxBase>
     );
