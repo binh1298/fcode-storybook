@@ -43,6 +43,7 @@ const useUpdatePost = (refetchPosts: () => void, successUpdate: () => void) => {
         {
             onSuccess: () => {
                 refetchPosts();
+                successUpdate();
             },
         }
     );

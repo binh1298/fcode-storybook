@@ -26,7 +26,7 @@ export interface PostCardProps {
     content: string;
     createdAt: string;
     onUpdate: (props: { postId: string; content: string; title: string }) => void;
-    onDelete?: () => void;
+    onDelete: (props: { postId: string }) => void;
 }
 const PostCard = (props: PostCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -34,6 +34,10 @@ const PostCard = (props: PostCardProps) => {
     const { postId } = props;
     const updateHandler = (content: string, title: string) => {
         props.onUpdate({ postId, content, title });
+        setIsOpen(false);
+    };
+    const handleDelete = () => {
+        props.onDelete({ postId });
         setIsOpen(false);
     };
     const postCreatedTime =
@@ -104,7 +108,7 @@ const PostCard = (props: PostCardProps) => {
                                 variant="round"
                                 size="small"
                                 color="secondary"
-                                onClick={props.onDelete}
+                                onClick={handleDelete}
                             >
                                 <DeleteIcon />
                             </IconButtonBase>

@@ -750,6 +750,19 @@ export type HomeUserQueryQuery = (
   )> }
 );
 
+export type DeletePostMutationVariables = Exact<{
+  postId: Scalars['uuid'];
+}>;
+
+
+export type DeletePostMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_posts_by_pk?: Maybe<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'authorId'>
+  )> }
+);
+
 export type InsertPostMutationVariables = Exact<{
   authorId: Scalars['uuid'];
   content: Scalars['String'];

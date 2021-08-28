@@ -4,6 +4,7 @@ import BoxBase from "src/components/Boxs/BoxBase";
 import PostCard from "src/components/PostCard";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
 
+import useDeletePost from "./hooks/useDeletePost";
 import usePostsList from "./hooks/usePostList";
 import useUpdatePost from "./hooks/useUpdatePost";
 
@@ -17,6 +18,7 @@ const Post = () => {
         refetchPosts,
         handleSuccess
     );
+    const { isLoading: isPostDeletem, mutate: deletePost } = useDeletePost(refetchPosts);
     if (isLoading) return <h1>Loading</h1>;
     return (
         <BoxBase>
@@ -33,6 +35,7 @@ const Post = () => {
                         avatar={user?.avatar}
                         createdAt={post.createdAt}
                         onUpdate={updatePost}
+                        onDelete={deletePost}
                     />
                 );
             })}
