@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Maybe } from "src/generated/graphql";
+
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
@@ -16,17 +18,24 @@ import PostEditor from "./PostEditor";
 const anonymousAvatarLink =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 export interface PostCardProps {
+    authorId: Maybe<string> | undefined;
+    postId: string;
     name: string | undefined;
     avatar?: string | null;
     title: string;
     content: string;
     createdAt: string;
-    onChange?: () => void;
+    onUpdate: (props: { postId: string; content: string; title: string }) => void;
     onDelete?: () => void;
 }
 const PostCard = (props: PostCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const createdTime = new Date(props.createdAt);
+    const { postId } = props;
+    const updateHandler = (content: string, title: string) => {
+        props.onUpdate({ postId, content, title });
+        setIsOpen(false);
+    };
     const postCreatedTime =
         createdTime.toLocaleString("en-US", { dateStyle: "medium" }) +
         " at " +
@@ -73,7 +82,7 @@ const PostCard = (props: PostCardProps) => {
                         <PostEditor
                             title={props.title}
                             content={props.content}
-                            onSave={() => console.log("Save!")}
+                            onSave={updateHandler}
                             onCancel={() => setIsOpen(false)}
                         />
                     )}

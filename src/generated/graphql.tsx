@@ -750,6 +750,21 @@ export type HomeUserQueryQuery = (
   )> }
 );
 
+export type InsertPostMutationVariables = Exact<{
+  authorId: Scalars['uuid'];
+  content: Scalars['String'];
+  title: Scalars['String'];
+}>;
+
+
+export type InsertPostMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_posts_one?: Maybe<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'postId'>
+  )> }
+);
+
 export type GetAllPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -761,6 +776,21 @@ export type GetAllPostsQuery = (
   )>, users: Array<(
     { __typename?: 'users' }
     & Pick<Users, 'avatar' | 'name' | 'userId'>
+  )> }
+);
+
+export type UpdatePostByIdMutationMutationVariables = Exact<{
+  postId: Scalars['uuid'];
+  content: Scalars['String'];
+  title: Scalars['String'];
+}>;
+
+
+export type UpdatePostByIdMutationMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_posts_by_pk?: Maybe<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'postId'>
   )> }
 );
 

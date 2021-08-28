@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { convertFromRaw, EditorState } from "draft-js";
+import { ContentState, convertFromRaw, EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 
 import BoxBase from "../BoxBase";
@@ -25,8 +25,8 @@ const BoxConvertDraftjsToHtml = (props: BoxConverterProps) => {
         if (IsJsonString(props.input) !== "") {
             setEditor(() => EditorState.createWithContent(convertFromRaw(JSON.parse(props.input))));
         } else {
-            let content = `{"blocks":[{"key":"6mmg7","text":"${props.input}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`;
-            setEditor(() => EditorState.createWithContent(convertFromRaw(JSON.parse(content))));
+            let content = ContentState.createFromText(props.input);
+            setEditor(() => EditorState.createWithContent(content));
         }
     }, [props.input]);
     return (
