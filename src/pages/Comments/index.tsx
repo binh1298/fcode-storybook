@@ -152,7 +152,7 @@ const Comments = () => {
                                         />
                                     </BoxBase>
                                     <BoxBase mt={5} mb={10} pl={3} pr={3}>
-                                        <TypographyBase component="div" variant="h6">
+                                        <TypographyBase component="p" variant="h6">
                                             <BoxBase fontWeight="fontWeightMedium" mb={1}>
                                                 LEAVE A REPLY
                                             </BoxBase>
