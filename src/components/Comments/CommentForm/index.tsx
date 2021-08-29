@@ -11,10 +11,11 @@ export interface CommentFormProps {
     isLoading?: boolean;
     value?: string;
     submit: (content: string) => void;
+    validate?: (content: string) => boolean;
 }
 
 const CommentForm = (props: CommentFormProps) => {
-    const { isLoading, value, submit } = props;
+    const { isLoading, value, submit, validate } = props;
     const [content, setContent] = useState<string>(value ? value : "");
 
     const changeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
@@ -22,8 +23,10 @@ const CommentForm = (props: CommentFormProps) => {
     };
 
     const submitHandler = () => {
-        submit(content);
-        setContent("");
+        if (!validate || validate(content)) {
+            submit(content);
+            setContent("");
+        }
     };
 
     return (

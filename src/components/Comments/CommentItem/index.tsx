@@ -22,6 +22,7 @@ export interface CommentItemProps {
     isDeleteCommentLoading?: boolean;
     updateCommentHandler: (props: { commentId: string; content: string }) => void;
     isUpdateCommentLoading?: boolean;
+    validateCommentHandler: (content: string) => boolean;
 }
 
 export const defaultAvatarSrc =
@@ -38,6 +39,7 @@ const CommentItem = (props: CommentItemProps) => {
         isDeleteCommentLoading,
         updateCommentHandler,
         isUpdateCommentLoading,
+        validateCommentHandler,
     } = props;
 
     const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -124,8 +126,9 @@ const CommentItem = (props: CommentItemProps) => {
                             <BoxBase data-testid="CommentItem__commentForm">
                                 <CommentForm
                                     isLoading={isUpdateCommentLoading}
-                                    submit={updateHandler}
                                     value={content}
+                                    submit={updateHandler}
+                                    validate={validateCommentHandler}
                                 />
                             </BoxBase>
                         ) : (

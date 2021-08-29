@@ -13,10 +13,11 @@ export interface CommentListProps {
     isLoading: boolean;
     data?: GetCommentsQuery;
     refetchCommentsHandler: () => void;
+    validateCommentHandler: (content: string) => boolean;
 }
 
 const CommentList = (props: CommentListProps) => {
-    const { isLoading, data, refetchCommentsHandler } = props;
+    const { isLoading, data, refetchCommentsHandler, validateCommentHandler } = props;
     const comments = data?.posts_by_pk?.comments ? data.posts_by_pk.comments : [];
 
     const { isLoading: isDeleteCommentLoading, mutate: deleteComment } = useDeleteComment(
@@ -43,6 +44,7 @@ const CommentList = (props: CommentListProps) => {
                             isDeleteCommentLoading={isDeleteCommentLoading}
                             updateCommentHandler={updateComment}
                             isUpdateCommentLoading={isUpdateCommentLoading}
+                            validateCommentHandler={validateCommentHandler}
                         />
                     </BoxBase>
                 ))

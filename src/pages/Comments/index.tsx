@@ -14,7 +14,7 @@ import TypographyBase from "src/components/Typography/TypographyBase";
 
 import useCommentsList from "./hooks/useCommentsList";
 import useInsertComment from "./hooks/useInsertComment";
-import usePostDetail from "./hooks/usePostDetail";
+import usePostDetailPage from "./hooks/usePostDetailPage";
 
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
@@ -23,10 +23,10 @@ const Comments = () => {
     const postId = "727624bd-a537-4d37-8429-b9b8be310e1c";
 
     const {
-        data: postDetailData,
-        isLoading: isPostDetailLoading,
-        isError: isPostDetailError,
-    } = usePostDetail(postId);
+        data: postDetailPageData,
+        isLoading: isPostDetailPageLoading,
+        isError: isPostDetailPageError,
+    } = usePostDetailPage(postId);
     const {
         data: commentsData,
         isLoading: isCommentsLoading,
@@ -34,13 +34,20 @@ const Comments = () => {
     } = useCommentsList(postId);
     const { isLoading, mutate: insertCommentQuery } = useInsertComment(refetchComments);
 
-    const post = postDetailData?.posts[0];
+    const post = postDetailPageData?.posts[0];
     const author = post?.user;
     const createdDate = new Date(post?.createdAt);
     const comments = commentsData?.posts_by_pk?.comments;
 
     const insertComment = (content: string) => {
         insertCommentQuery({ authorId: user.userId, content, postId });
+    };
+
+    const validateComment = (content: string): boolean => {
+        if (content.length > 0) {
+            return true;
+        }
+        return false;
     };
 
     return (
@@ -60,9 +67,9 @@ const Comments = () => {
                         bgcolor="common"
                         style={{ minHeight: "100vh" }}
                     >
-                        {isPostDetailLoading ? (
+                        {isPostDetailPageLoading ? (
                             <CircularProgressBase color="secondary" />
-                        ) : isPostDetailError ? (
+                        ) : isPostDetailPageError ? (
                             <BoxBase ml={2} mr={2}>
                                 <TypographyBase align="center" variant="h6" color="error">
                                     Fail to fetch Post Detail
@@ -141,6 +148,7 @@ const Comments = () => {
                                             isLoading={isCommentsLoading}
                                             data={commentsData}
                                             refetchCommentsHandler={refetchComments}
+                                            validateCommentHandler={validateComment}
                                         />
                                     </BoxBase>
                                     <BoxBase mt={5} mb={10} pl={3} pr={3}>
@@ -149,7 +157,11 @@ const Comments = () => {
                                                 LEAVE A REPLY
                                             </BoxBase>
                                         </TypographyBase>
-                                        <CommentForm isLoading={isLoading} submit={insertComment} />
+                                        <CommentForm
+                                            isLoading={isLoading}
+                                            submit={insertComment}
+                                            validate={validateComment}
+                                        />
                                     </BoxBase>
                                 </Grid>
                             </Grid>

@@ -1181,9 +1181,9 @@ export type DeleteCommentMutation = (
 );
 
 export type InsertCommentMutationVariables = Exact<{
-  authorId?: Maybe<Scalars['uuid']>;
-  postId?: Maybe<Scalars['uuid']>;
-  content?: Maybe<Scalars['String']>;
+  authorId: Scalars['uuid'];
+  postId: Scalars['uuid'];
+  content: Scalars['String'];
 }>;
 
 
@@ -1195,12 +1195,12 @@ export type InsertCommentMutation = (
   )> }
 );
 
-export type GetPostDetailQueryVariables = Exact<{
-  postId?: Maybe<Scalars['uuid']>;
+export type GetPostDetailPageQueryVariables = Exact<{
+  postId: Scalars['uuid'];
 }>;
 
 
-export type GetPostDetailQuery = (
+export type GetPostDetailPageQuery = (
   { __typename?: 'query_root' }
   & { posts: Array<(
     { __typename?: 'posts' }
@@ -1214,7 +1214,7 @@ export type GetPostDetailQuery = (
 
 export type UpdateCommentMutationVariables = Exact<{
   commentId: Scalars['uuid'];
-  content?: Maybe<Scalars['String']>;
+  content: Scalars['String'];
 }>;
 
 

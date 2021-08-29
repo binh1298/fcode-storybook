@@ -15,11 +15,7 @@ const useInsertComment = (refetchComments: () => void) => {
                 InsertCommentMutationVariables
             >(
                 gql`
-                    mutation InsertComment(
-                        $authorId: uuid = ""
-                        $postId: uuid = ""
-                        $content: String = ""
-                    ) {
+                    mutation InsertComment($authorId: uuid!, $postId: uuid!, $content: String!) {
                         insert_comments_one(
                             object: { authorId: $authorId, postId: $postId, content: $content }
                         ) {

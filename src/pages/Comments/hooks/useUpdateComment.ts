@@ -15,7 +15,7 @@ const useUpdateComment = (refetchComments: () => void) => {
                 UpdateCommentMutationVariables
             >(
                 gql`
-                    mutation UpdateComment($commentId: uuid!, $content: String = "") {
+                    mutation UpdateComment($commentId: uuid!, $content: String!) {
                         update_comments_by_pk(
                             pk_columns: { commentId: $commentId }
                             _set: { content: $content }
