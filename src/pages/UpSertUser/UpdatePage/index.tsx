@@ -1,7 +1,8 @@
 import { useHistory, useParams } from "react-router-dom";
 
 import { CircularProgress } from "@material-ui/core";
-import { IUser } from "src/components/UserCard";
+import useSnackbar from "src/components/SnackBars/useSnackbar";
+import { IUser } from "src/pages/Users/components/UserCard";
 
 import UpSertPage from "../UpSertPage";
 import useGetSpecificUser from "../hooks/useGetSpecificUser";
@@ -14,6 +15,8 @@ const UpdatePage = () => {
 
     const history = useHistory();
 
+    const showSnackbar = useSnackbar();
+
     const backToListPage = () => {
         history.push("/user");
     };
@@ -21,12 +24,20 @@ const UpdatePage = () => {
     const { mutate } = useUpdateUser(backToListPage);
 
     const sendDataToServer = (user: IUser) => {
-        mutate({
-            name: user.name || "",
-            isActive: user.isActive,
-            avatar: user.avatar,
-            userId: user.userId || "",
-        });
+        if (user.name) {
+            mutate({
+                name: user.name,
+                isActive: user.isActive,
+                avatar: user.avatar,
+                userId: id,
+            });
+        } else {
+            showSnackbar({
+                color: "error",
+                variant: "filled",
+                children: "Name is not empty!",
+            });
+        }
     };
     if (isLoading) {
         return <CircularProgress />;

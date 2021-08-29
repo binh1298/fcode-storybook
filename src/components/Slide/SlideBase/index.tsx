@@ -4,7 +4,7 @@ import { Slide as MaterialSlide, SlideProps as MaterialSlideProps } from "@mater
 
 export interface SlideBaseProps extends MaterialSlideProps {}
 
-const SlideBase = React.forwardRef((props: SlideBaseProps, ref) => {
+const SlideBase = React.forwardRef<unknown, SlideBaseProps>((props, ref) => {
     return <MaterialSlide ref={ref} {...props} mountOnEnter unmountOnExit />;
 });
 

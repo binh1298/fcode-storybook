@@ -9,7 +9,7 @@ import useQueryClient from "src/hooks/useQueryClient";
 
 const useGetUser = (limit: number = 1, offset: number = 0, _ilike: string = "%%") => {
     const queryClient = useQueryClient();
-    const result = useQuery(["GetUsersWithPagingQuery", { limit, offset, _ilike }], async () => {
+    const result = useQuery(["GetUsersWithPagingQuery", limit, offset, _ilike], async () => {
         const result = await queryClient.request<
             GetUsersWithPagingQueryQuery,
             GetUsersWithPagingQueryQueryVariables

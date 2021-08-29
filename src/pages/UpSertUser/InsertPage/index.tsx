@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 
 import useSnackbar from "src/components/SnackBars/useSnackbar";
-import { IUser } from "src/components/UserCard";
+import { IUser } from "src/pages/Users/components/UserCard";
 
 import UpSertPage from "../UpSertPage";
 import useInsertUser from "../hooks/useInsertUser";
@@ -26,11 +26,19 @@ const InsertPage = () => {
     const { mutate } = useInsertUser(backToListPage, showError);
 
     const sendDataToServer = (user: IUser) => {
-        mutate({
-            name: user.name || "",
-            avatar: user.avatar,
-            email: user.email || "",
-        });
+        if (user.name && user.email) {
+            mutate({
+                name: user.name,
+                avatar: user.avatar,
+                email: user.email,
+            });
+        } else {
+            showSnackbar({
+                variant: "filled",
+                color: "error",
+                children: "Name and Email is not empty!",
+            });
+        }
     };
 
     return <UpSertPage sendDataToServer={sendDataToServer} isUpdate={false} />;

@@ -9,7 +9,7 @@ import IconButtonBase from "src/components/Buttons/FabBase";
 import DividerBase from "src/components/Dividers/DividerBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
-import UserCard from "src/components/UserCard";
+import UserCard from "src/pages/Users/components/UserCard";
 
 import useGetUser from "./hooks/useGetUsers";
 import useUpdateUser from "./hooks/useUpdateUser";
@@ -51,7 +51,12 @@ const User = () => {
 
     const filterUsers = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-        setFilter({ ...filter, search: `%${e.target.value}%` });
+        setFilter({ ...filter, offset: 0, search: `%${e.target.value}%` });
+    };
+
+    const changePage = (type: "next" | "previous") => {
+        let offset = filter.offset;
+        setFilter({ ...filter, offset: type === "next" ? offset + 1 : offset - 1 });
     };
 
     let userList = null;
@@ -123,6 +128,7 @@ const User = () => {
                             <IconButtonBase
                                 disabled={filter.offset === 0 || data?.users.length === 0}
                                 color="secondary"
+                                onClick={() => changePage("previous")}
                             >
                                 <ArrowLeft />
                             </IconButtonBase>
@@ -131,6 +137,7 @@ const User = () => {
                             <IconButtonBase
                                 disabled={data && data?.users.length < filter.limit}
                                 color="secondary"
+                                onClick={() => changePage("next")}
                             >
                                 <ArrowRight />
                             </IconButtonBase>

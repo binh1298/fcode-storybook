@@ -1,10 +1,10 @@
 import { Maybe } from "src/generated/graphql";
 
-import AvatarBase from "../Avatars/AvatarBase";
-import BoxBase from "../Boxs/BoxBase";
-import ButtonBase from "../Buttons/ButtonBase";
-import DividerBase from "../Dividers/DividerBase";
-import TypographyBase from "../Typography/TypographyBase";
+import AvatarBase from "../../../../components/Avatars/AvatarBase";
+import BoxBase from "../../../../components/Boxs/BoxBase";
+import ButtonBase from "../../../../components/Buttons/ButtonBase";
+import DividerBase from "../../../../components/Dividers/DividerBase";
+import TypographyBase from "../../../../components/Typography/TypographyBase";
 
 export interface IUser {
     name?: string;

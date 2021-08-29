@@ -2,7 +2,7 @@ import { BaseSyntheticEvent, CSSProperties } from "react";
 
 import BoxBase, { BoxBaseProps } from "src/components/Boxs/BoxBase";
 
-export interface ImageBaseProps extends BoxBaseProps {
+export interface ImageBaseProps extends Omit<BoxBaseProps, "sizeWidth" | "sizeHeight"> {
     onErrorSrc: string;
     src: string;
     alt?: string;
@@ -10,15 +10,7 @@ export interface ImageBaseProps extends BoxBaseProps {
 }
 
 const ImageBase = (props: ImageBaseProps) => {
-    const {
-        onErrorSrc,
-        styleImage,
-        src,
-        alt,
-        sizeWidth = null,
-        sizeHeight = null,
-        ...rest
-    } = props;
+    const { onErrorSrc, styleImage, src, alt, ...rest } = props;
 
     const imageStyle: CSSProperties = {
         width: "inherit",
