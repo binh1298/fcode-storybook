@@ -1,6 +1,6 @@
 import React from "react";
 
-import { GetCommentsQuery } from "src/generated/graphql";
+import { GetCommentsListQuery } from "src/generated/graphql";
 
 import BoxBase from "src/components/Boxs/BoxBase";
 import CommentItem from "src/components/Comments/CommentItem";
@@ -11,7 +11,7 @@ import useUpdateComment from "../../hooks/useUpdateComment";
 
 export interface CommentListProps {
     isLoading: boolean;
-    data?: GetCommentsQuery;
+    data?: GetCommentsListQuery;
     refetchCommentsHandler: () => void;
     validateCommentHandler: (content: string) => boolean;
 }

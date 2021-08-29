@@ -1147,12 +1147,12 @@ export type Uuid_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['uuid']>>;
 };
 
-export type GetCommentsQueryVariables = Exact<{
+export type GetCommentsListQueryVariables = Exact<{
   postId: Scalars['uuid'];
 }>;
 
 
-export type GetCommentsQuery = (
+export type GetCommentsListQuery = (
   { __typename?: 'query_root' }
   & { posts_by_pk?: Maybe<(
     { __typename?: 'posts' }

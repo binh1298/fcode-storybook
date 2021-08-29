@@ -1,16 +1,19 @@
 import { gql } from "graphql-request";
 import { useQuery } from "react-query";
-import { GetCommentsQuery, GetCommentsQueryVariables } from "src/generated/graphql";
+import { GetCommentsListQuery, GetCommentsListQueryVariables } from "src/generated/graphql";
 
 import useQueryClient from "src/hooks/useQueryClient";
 
 const useCommentsList = (postId: string) => {
     const queryClient = useQueryClient();
 
-    const result = useQuery<GetCommentsQuery, unknown>(["GetComments"], async () => {
-        const result = await queryClient.request<GetCommentsQuery, GetCommentsQueryVariables>(
+    const result = useQuery<GetCommentsListQuery, unknown>(["GetCommentsList"], async () => {
+        const result = await queryClient.request<
+            GetCommentsListQuery,
+            GetCommentsListQueryVariables
+        >(
             gql`
-                query GetComments($postId: uuid!) {
+                query GetCommentsList($postId: uuid!) {
                     posts_by_pk(postId: $postId) {
                         comments(order_by: { createdAt: asc }) {
                             commentId
