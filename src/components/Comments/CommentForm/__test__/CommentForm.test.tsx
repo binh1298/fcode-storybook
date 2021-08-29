@@ -37,10 +37,10 @@ describe("<CommentForm />", () => {
         const CommentFormRoot = screen.getByTestId("CommentForm__root");
         const CommentFormTextField = CommentFormRoot.querySelector("textarea");
         expect(CommentFormTextField?.value).toBe(initialValue);
-        expect(CommentFormTextField?.disabled).toBeTruthy();
+        expect(CommentFormTextField?.disabled).toBe(true);
 
         const CommentFormButton = CommentFormRoot.querySelector("button");
-        expect(CommentFormButton?.disabled).toBeTruthy();
+        expect(CommentFormButton?.disabled).toBe(true);
 
         expect(screen.getByText("Submit...")).toBeInTheDocument();
     });
