@@ -8,7 +8,7 @@ import {
 import BoxBase from "src/components/Boxs/BoxBase";
 import CommentForm from "src/components/Comments/CommentForm";
 import DividerBase from "src/components/Dividers/DividerBase";
-import FooterBase from "src/components/Footers/FooterBase";
+import Footer from "src/components/Footers/Footer";
 import CircularProgressBase from "src/components/Progress/CircularProgressBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
@@ -170,7 +170,7 @@ const Comments = () => {
                 </Grid>
             </Grid>
 
-            <FooterBase bgcolor="secondary" />
+            <Footer bgcolor="secondary" />
         </BoxBase>
     );
 };

@@ -1,11 +1,11 @@
 import BoxBase from "src/components/Boxs/BoxBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
-export interface FooterBaseProps {
+export interface FooterProps {
     bgcolor?: "primary" | "secondary";
 }
 
-const FooterBase = (props: FooterBaseProps) => {
+const Footer = (props: FooterProps) => {
     const { bgcolor } = props;
 
     return (
@@ -17,7 +17,7 @@ const FooterBase = (props: FooterBaseProps) => {
             pb={1}
             pl={2}
             pr={2}
-            data-testid="FooterBase__root"
+            data-testid="Footer__root"
         >
             <TypographyBase variant="subtitle2">F-Blog</TypographyBase>
             <TypographyBase variant="subtitle2">
@@ -27,4 +27,4 @@ const FooterBase = (props: FooterBaseProps) => {
     );
 };
 
-export default FooterBase;
+export default Footer;

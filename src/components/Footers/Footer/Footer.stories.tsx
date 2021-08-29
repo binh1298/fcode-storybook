@@ -1,13 +1,13 @@
-import FooterBase, { FooterBaseProps } from ".";
+import Footer, { FooterProps } from ".";
 
 import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/FooterBase",
-    component: FooterBase,
+    title: "Components/Footer",
+    component: Footer,
 };
 
-const Template: Story<FooterBaseProps> = (args) => <FooterBase {...args} />;
+const Template: Story<FooterProps> = (args) => <Footer {...args} />;
 
 export const Primary = Template.bind({});
 
