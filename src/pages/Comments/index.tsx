@@ -1,3 +1,4 @@
+import CommentList from "./components/CommentList";
 import { Grid } from "@material-ui/core";
 import {
     AccessTime as AccessTimeIcon,
@@ -15,7 +16,6 @@ import useCommentsList from "./hooks/useCommentsList";
 import useInsertComment from "./hooks/useInsertComment";
 import usePostDetail from "./hooks/usePostDetail";
 
-import CommentList from "src/pages/Comments/CommentsList";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 const Comments = () => {

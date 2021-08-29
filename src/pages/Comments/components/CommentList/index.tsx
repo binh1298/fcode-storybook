@@ -6,8 +6,8 @@ import BoxBase from "src/components/Boxs/BoxBase";
 import CommentItem from "src/components/Comments/CommentItem";
 import CircularProgress from "src/components/Progress/CircularProgressBase";
 
-import useDeleteComment from "./hooks/useDeleteComment";
-import useUpdateComment from "./hooks/useUpdateComment";
+import useDeleteComment from "../../hooks/useDeleteComment";
+import useUpdateComment from "../../hooks/useUpdateComment";
 
 export interface CommentListProps {
     isLoading: boolean;
