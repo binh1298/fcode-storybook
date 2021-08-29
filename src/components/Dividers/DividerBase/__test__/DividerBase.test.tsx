@@ -20,7 +20,7 @@ describe("<DividerBase />", () => {
 
     it("should exist children with hightlighted color", () => {
         props = {
-            highlighted: true,
+            isHighlighted: true,
         };
 
         render(<DividerBaseTest {...props} />);

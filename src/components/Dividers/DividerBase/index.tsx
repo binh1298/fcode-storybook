@@ -7,15 +7,15 @@ import {
 } from "@material-ui/core";
 
 export interface DividerBaseProps extends MaterialDividerProps {
-    highlighted?: boolean;
+    isHighlighted?: boolean;
 }
 
 const DividerBase = (props: DividerBaseProps) => {
     const theme = useTheme();
-    const { highlighted, ...rest } = props;
+    const { isHighlighted, ...rest } = props;
     let DividerBaseStyle: CSSProperties = {};
 
-    if (highlighted) {
+    if (isHighlighted) {
         DividerBaseStyle.backgroundColor = theme.palette.secondary.main;
     } else {
         DividerBaseStyle.backgroundColor = theme.palette.common.white;

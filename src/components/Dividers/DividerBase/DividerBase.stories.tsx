@@ -40,5 +40,5 @@ export const Primary = Template.bind({});
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-    highlighted: true,
+    isHighlighted: true,
 };

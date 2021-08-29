@@ -55,9 +55,9 @@ const CommentItem = (props: CommentItemProps) => {
     return (
         <Grid container alignItems="center">
             <Grid item xs={11} sm={10} md={9}>
-                <DividerBase highlighted />
+                <DividerBase isHighlighted />
                 <BoxBase display="flex">
-                    <DividerBase orientation="vertical" flexItem highlighted />
+                    <DividerBase orientation="vertical" flexItem isHighlighted />
                     <BoxBase
                         flexGrow={1}
                         display="flex"
