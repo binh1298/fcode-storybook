@@ -7,7 +7,7 @@ import useQueryClient from "src/hooks/useQueryClient";
 const useInsertComment = (refetchComments: () => void) => {
     const queryClient = useQueryClient();
 
-    const result = useMutation<InsertCommentMutation, Error, InsertCommentMutationVariables>(
+    const result = useMutation<InsertCommentMutation, unknown, InsertCommentMutationVariables>(
         ["InsertComment"],
         async (variable) => {
             const result = await queryClient.request<

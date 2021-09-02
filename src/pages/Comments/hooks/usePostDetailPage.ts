@@ -7,7 +7,7 @@ import useQueryClient from "src/hooks/useQueryClient";
 const usePostDetailPage = (postId: string) => {
     const queryClient = useQueryClient();
 
-    const result = useQuery<GetPostDetailPageQuery, { message: string }>(
+    const result = useQuery<GetPostDetailPageQuery>(
         ["GetPostDetailPage"],
         async () => {
             const result = await queryClient.request<
