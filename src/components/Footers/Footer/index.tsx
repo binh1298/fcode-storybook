@@ -13,10 +13,8 @@ const Footer = (props: FooterProps) => {
             display="flex"
             justifyContent="space-between"
             bgcolor={bgcolor ? bgcolor : "primary"}
-            pt={1}
-            pb={1}
-            pl={2}
-            pr={2}
+            py={1}
+            px={2}
             data-testid="Footer__root"
         >
             <TypographyBase variant="subtitle2">F-Blog</TypographyBase>
