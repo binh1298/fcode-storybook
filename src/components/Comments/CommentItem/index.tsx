@@ -20,7 +20,7 @@ export interface CommentItemProps {
     isDeleteCommentLoading?: boolean;
     updateCommentHandler: (props: { commentId: string; content: string }) => void;
     isUpdateCommentLoading?: boolean;
-    validateCommentHandler: (content: string) => boolean;
+    validateCommentHandler?: (content: string) => boolean;
 }
 
 export const defaultAvatarSrc =
