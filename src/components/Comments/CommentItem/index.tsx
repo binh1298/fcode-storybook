@@ -86,14 +86,20 @@ const CommentItem = (props: CommentItemProps) => {
                                     />
                                 </BoxBase>
                                 <BoxBase display="flex" flexDirection="column">
-                                    <TypographyBase component="div" variant="body2">
+                                    <TypographyBase variant="body2">
                                         <BoxBase
                                             fontWeight="fontWeightBold"
                                             data-testid="CommentItem__author"
+                                            component="span"
+                                            display="block"
                                         >
                                             {authorName}
                                         </BoxBase>
-                                        <BoxBase data-testid="CommentItem__createdAt">
+                                        <BoxBase
+                                            data-testid="CommentItem__createdAt"
+                                            component="span"
+                                            display="block"
+                                        >
                                             {commentCreatedTime}
                                         </BoxBase>
                                     </TypographyBase>
