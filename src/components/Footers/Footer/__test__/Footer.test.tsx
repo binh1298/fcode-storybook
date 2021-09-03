@@ -1,21 +1,22 @@
-import { Theme, useTheme } from "@material-ui/core";
-
 import Footer, { FooterProps } from "..";
 
 import { render, screen } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
 describe("<Footer />", () => {
     let props: FooterProps;
-    let theme: Theme;
-    const FooterTest = (props: FooterProps) => {
-        theme = useTheme();
-        return <Footer {...props} />;
-    };
+    const primaryColor = "#344955";
+    const secondaryColor = "#F9AA33";
 
     it("should exist children with default color", () => {
-        render(<FooterTest {...props} />);
+        render(
+            <TestThemeProvider>
+                <Footer {...props} />
+            </TestThemeProvider>
+        );
         const footer = screen.getByTestId("Footer__root");
-        expect(footer).toHaveStyle(`background-color: ${theme.palette.primary.main};`);
+
+        expect(footer).toHaveStyle(`background-color: ${primaryColor};`);
     });
 
     it("should exist children with secondary color", () => {
@@ -23,8 +24,12 @@ describe("<Footer />", () => {
             bgcolor: "secondary",
         };
 
-        render(<FooterTest {...props} />);
+        render(
+            <TestThemeProvider>
+                <Footer {...props} />
+            </TestThemeProvider>
+        );
         const footer = screen.getByTestId("Footer__root");
-        expect(footer).toHaveStyle(`background-color: ${theme.palette.secondary.main};`);
+        expect(footer).toHaveStyle(`background-color: ${secondaryColor};`);
     });
 });

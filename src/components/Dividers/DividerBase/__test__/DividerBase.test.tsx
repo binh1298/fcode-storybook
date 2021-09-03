@@ -1,21 +1,21 @@
-import { Theme, useTheme } from "@material-ui/core";
-
 import DividerBase, { DividerBaseProps } from "..";
 
 import { render, screen } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
 describe("<DividerBase />", () => {
     let props: DividerBaseProps;
-    let theme: Theme;
-    const DividerBaseTest = (props: DividerBaseProps) => {
-        theme = useTheme();
-        return <DividerBase {...props} />;
-    };
+    const primaryColor = "#344955";
+    const secondaryColor = "#F9AA33";
 
     it("should exist children with default color", () => {
-        render(<DividerBaseTest {...props} />);
+        render(
+            <TestThemeProvider>
+                <DividerBase {...props} />
+            </TestThemeProvider>
+        );
         const muiDivider = screen.getByTestId("DividerBase__root");
-        expect(muiDivider).toHaveStyle(`background-color: ${theme.palette.common.white};`);
+        expect(muiDivider).toHaveStyle(`background-color: ${primaryColor};`);
     });
 
     it("should exist children with hightlighted color", () => {
@@ -23,8 +23,12 @@ describe("<DividerBase />", () => {
             isHighlighted: true,
         };
 
-        render(<DividerBaseTest {...props} />);
+        render(
+            <TestThemeProvider>
+                <DividerBase {...props} />
+            </TestThemeProvider>
+        );
         const muiDivider = screen.getByTestId("DividerBase__root");
-        expect(muiDivider).toHaveStyle(`background-color: ${theme.palette.secondary.main};`);
+        expect(muiDivider).toHaveStyle(`background-color: ${secondaryColor};`);
     });
 });
