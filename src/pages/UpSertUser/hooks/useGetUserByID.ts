@@ -1,21 +1,18 @@
 import { gql } from "graphql-request";
 import { useQuery } from "react-query";
-import {
-    GetSpecificUserQueryQuery,
-    GetSpecificUserQueryQueryVariables,
-} from "src/generated/graphql";
+import { GetUserByIdQueryQuery, GetUserByIdQueryQueryVariables } from "src/generated/graphql";
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useGetSpecificUser = (userId: string) => {
+const useGetUserByID = (userId: string) => {
     const queryClient = useQueryClient();
-    const result = useQuery(["GetSpecificUserQuery", { _eq: userId }], async () => {
+    const result = useQuery(["GetUserByIDQuery", { _eq: userId }], async () => {
         const result = await queryClient.request<
-            GetSpecificUserQueryQuery,
-            GetSpecificUserQueryQueryVariables
+            GetUserByIdQueryQuery,
+            GetUserByIdQueryQueryVariables
         >(
             gql`
-                query GetSpecificUserQuery($_eq: uuid!) {
+                query GetUserByIDQuery($_eq: uuid!) {
                     users(where: { userId: { _eq: $_eq } }) {
                         userId
                         role
@@ -33,4 +30,4 @@ const useGetSpecificUser = (userId: string) => {
     return result;
 };
 
-export default useGetSpecificUser;
+export default useGetUserByID;

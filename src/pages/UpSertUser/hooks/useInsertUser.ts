@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
 import { useMutation } from "react-query";
+import { ErrorResponse } from "src/common/types";
 import {
     InsertUserMutationMutation,
     InsertUserMutationMutationVariables,
@@ -7,14 +8,11 @@ import {
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useInsertUser = (
-    backToListPage: () => void,
-    showError: (message: string, type: "error" | "success") => void
-) => {
+const useInsertUser = (backToListPage: () => void, showError: (message: string) => void) => {
     const queryClient = useQueryClient();
     const result = useMutation<
         InsertUserMutationMutation,
-        { response: any },
+        ErrorResponse,
         InsertUserMutationMutationVariables
     >(
         ["InsertUserMutation"],
@@ -46,10 +44,10 @@ const useInsertUser = (
                 let errorCode = err.response.errors[0].extensions.code;
                 switch (errorCode) {
                     case "constraint-violation":
-                        showError("Email is duplicated!", "error");
+                        showError("Email is duplicated!");
                         break;
                     default:
-                        showError("Server Error", "error");
+                        showError("Server Error");
                         break;
                 }
             },

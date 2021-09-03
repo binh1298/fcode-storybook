@@ -15,10 +15,9 @@ const InsertPage = () => {
         history.push("/user");
     };
 
-    const showError = (message: string, type: "error" | "success") => {
+    const showError = (message: string) => {
         showSnackbar({
-            color: type,
-            variant: "filled",
+            severity: "error",
             children: message,
         });
     };
@@ -33,11 +32,7 @@ const InsertPage = () => {
                 email: user.email,
             });
         } else {
-            showSnackbar({
-                variant: "filled",
-                color: "error",
-                children: "Name and Email is not empty!",
-            });
+            showError("Name and Email is empty!");
         }
     };
 

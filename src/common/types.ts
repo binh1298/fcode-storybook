@@ -20,3 +20,17 @@ export type RouteCustom = {
     component: ComponentType<any>;
     queryInfo?: QueryInfo;
 };
+
+export type ErrorResponse = {
+    response: {
+        errors: Error[];
+    };
+};
+
+export type Error = {
+    extensions: {
+        path: string;
+        code: string;
+    };
+    message: string;
+};

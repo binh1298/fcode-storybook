@@ -1108,11 +1108,11 @@ export type HomeUserQueryQuery = { __typename?: "query_root" } & {
     >;
 };
 
-export type GetSpecificUserQueryQueryVariables = Exact<{
+export type GetUserByIdQueryQueryVariables = Exact<{
     _eq: Scalars["uuid"];
 }>;
 
-export type GetSpecificUserQueryQuery = { __typename?: "query_root" } & {
+export type GetUserByIdQueryQuery = { __typename?: "query_root" } & {
     users: Array<
         { __typename?: "users" } & Pick<
             Users,

@@ -5,13 +5,13 @@ import useSnackbar from "src/components/SnackBars/useSnackbar";
 import { IUser } from "src/pages/Users/components/UserCard";
 
 import UpSertPage from "../UpSertPage";
-import useGetSpecificUser from "../hooks/useGetSpecificUser";
+import useGetUserByID from "../hooks/useGetUserByID";
 
 import useUpdateUser from "src/pages/Users/hooks/useUpdateUser";
 
 const UpdatePage = () => {
     const { id } = useParams<{ id: string }>();
-    const { data, isLoading } = useGetSpecificUser(id);
+    const { data, isLoading } = useGetUserByID(id);
 
     const history = useHistory();
 
@@ -34,8 +34,7 @@ const UpdatePage = () => {
         } else {
             showSnackbar({
                 color: "error",
-                variant: "filled",
-                children: "Name is not empty!",
+                children: "Name is empty!",
             });
         }
     };

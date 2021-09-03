@@ -11,7 +11,11 @@ const SnackbarProvider: React.FC = ({ children }) => {
     const [open, setOpen] = useState<boolean>(false);
 
     const showSnackbar = (newAlert: AlertBaseProps) => {
-        setAlert(newAlert);
+        setAlert({
+            variant: "filled",
+            severity: "success",
+            ...newAlert,
+        });
         setOpen(true);
     };
 

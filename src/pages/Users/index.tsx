@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import { CircularProgress, useMediaQuery } from "@material-ui/core";
+import { CircularProgress, useMediaQuery, useTheme } from "@material-ui/core";
 import { Add, ArrowLeft, ArrowRight } from "@material-ui/icons";
 import BoxBase from "src/components/Boxs/BoxBase";
 import IconButtonBase from "src/components/Buttons/FabBase";
@@ -24,6 +24,7 @@ const User = () => {
     });
 
     const history = useHistory();
+    const theme = useTheme();
     const { data, isLoading, refetch: userRefresh } = useGetUser(
         filter.limit,
         filter.offset,
@@ -31,7 +32,7 @@ const User = () => {
     );
     const { mutate } = useUpdateUser(userRefresh);
 
-    const matches = useMediaQuery("(max-width:600px)");
+    const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
     const onUpdate = (userId: string) => {
         history.push(`/users/${userId}`);
@@ -98,7 +99,7 @@ const User = () => {
                 </BoxBase>
             </BoxBase>
             <BoxBase mt={5} width={1} display="flex" justifyContent="center">
-                <BoxBase width={matches ? 0.9 : 0.8}>
+                <BoxBase width={0.8}>
                     <BoxBase
                         width={1}
                         display="flex"
