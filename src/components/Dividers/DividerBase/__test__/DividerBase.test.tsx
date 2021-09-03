@@ -5,7 +5,7 @@ import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
 describe("<DividerBase />", () => {
     let props: DividerBaseProps;
-    const primaryColor = "#344955";
+    const commonWhiteColor = "#fff";
     const secondaryColor = "#F9AA33";
 
     it("should exist children with default color", () => {
@@ -15,7 +15,7 @@ describe("<DividerBase />", () => {
             </TestThemeProvider>
         );
         const muiDivider = screen.getByTestId("DividerBase__root");
-        expect(muiDivider).toHaveStyle(`background-color: ${primaryColor};`);
+        expect(muiDivider).toHaveStyle(`background-color: ${commonWhiteColor};`);
     });
 
     it("should exist children with hightlighted color", () => {
