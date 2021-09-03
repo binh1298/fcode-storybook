@@ -6,7 +6,7 @@ import {
 } from "@material-ui/core";
 
 export interface TypographyBaseProps extends MaterialTypographyProps {
-    component?: ElementType<unknown>;
+    component?: ElementType;
 }
 
 const TypographyBase = (props: TypographyBaseProps) => {
