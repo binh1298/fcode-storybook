@@ -6,7 +6,7 @@ import useQueryClient from "src/hooks/useQueryClient";
 
 const useGetUserByID = (userId: string) => {
     const queryClient = useQueryClient();
-    const result = useQuery(["GetUserByIDQuery", { _eq: userId }], async () => {
+    const result = useQuery(["GetUserByIDQuery", userId], async () => {
         const result = await queryClient.request<
             GetUserByIdQueryQuery,
             GetUserByIdQueryQueryVariables

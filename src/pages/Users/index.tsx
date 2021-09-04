@@ -14,8 +14,6 @@ import UserCard from "src/pages/Users/components/UserCard";
 import useGetUser from "./hooks/useGetUsers";
 import useUpdateUser from "./hooks/useUpdateUser";
 
-// import useGetUser from "./hooks/useGetUsers";
-
 const User = () => {
     const [filter, setFilter] = useState<{ offset: number; limit: number; search: string }>({
         offset: 0,
