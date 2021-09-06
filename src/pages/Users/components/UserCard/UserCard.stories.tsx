@@ -3,7 +3,7 @@ import UserCard, { IUserProps } from ".";
 import { Story, Meta } from "@storybook/react";
 
 export default {
-    title: "Components/UserCard",
+    title: "Components/UserCard/UserCard",
     component: UserCard,
 } as Meta;
 

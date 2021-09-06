@@ -1,10 +1,12 @@
 import { Maybe } from "src/generated/graphql";
 
+import { Card, CardActions, CardContent, Grid } from "@material-ui/core";
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxs/BoxBase";
-import ButtonBase from "src/components/Buttons/ButtonBase";
 import DividerBase from "src/components/Dividers/DividerBase";
-import TypographyBase from "src/components/Typography/TypographyBase";
+
+import ButtonGroups from "../ButtonsGroup";
+import Content from "../Content";
 
 export interface IUser {
     name?: string;
@@ -27,57 +29,34 @@ export const anonymousAvatarLink =
     "https://cdn1.vectorstock.com/i/thumb-large/22/05/male-profile-picture-vector-1862205.jpg";
 const UserCard = (userProps: IUserProps) => {
     return (
-        <BoxBase
-            shouldHaveBorder={true}
-            minWidth={350}
-            maxWidth={500}
-            minHeight={100}
-            boxSizing="border-box"
-            p={2}
-            display="flex"
-            alignItems="center"
-            borderRadius={5}
-        >
-            <BoxBase display="flex" alignItems="center" justifyContent="center" width={3 / 10}>
-                <AvatarBase
-                    size="large"
-                    src={userProps.avatar || anonymousAvatarLink}
-                    alt={userProps.email}
-                />
-            </BoxBase>
-            <BoxBase width={7 / 10}>
-                <TypographyBase variant="h6">{userProps.name}</TypographyBase>
-                <TypographyBase variant="body2">{userProps.email}</TypographyBase>
-                <DividerBase variant="fullWidth"></DividerBase>
-                <BoxBase
-                    pt={2}
-                    data-testid="UserCard__buttons"
-                    width={1}
-                    display="flex"
-                    justifyContent="flex-end"
-                >
-                    <BoxBase mr={1}>
-                        <ButtonBase
-                            onClick={() => userProps.onUpdate(userProps.userId)}
-                            variant="contained"
-                            color="primary"
-                            size="small"
-                        >
-                            UPDATE
-                        </ButtonBase>
-                    </BoxBase>
-                    <BoxBase>
-                        <ButtonBase
-                            onClick={() => userProps.onChangeStatus(userProps.userId)}
-                            variant="contained"
-                            color="secondary"
-                            size="small"
-                        >
-                            {userProps.isActive ? "DEACTIVE" : "ACTIVE"}
-                        </ButtonBase>
-                    </BoxBase>
-                </BoxBase>
-            </BoxBase>
+        <BoxBase minWidth={350} maxWidth={500} minHeight={100}>
+            <Card>
+                <Grid container alignItems="center">
+                    <Grid container item justify="center" alignItems="center" sm={3}>
+                        <AvatarBase
+                            size="large"
+                            src={userProps.avatar || anonymousAvatarLink}
+                            alt={userProps.email}
+                        />
+                    </Grid>
+                    <Grid item sm={7}>
+                        <BoxBase>
+                            <CardContent>
+                                <Content name={userProps.name} email={userProps.email} />
+                            </CardContent>
+                            <DividerBase variant="fullWidth"></DividerBase>
+                            <CardActions>
+                                <ButtonGroups
+                                    onUpdate={userProps.onUpdate}
+                                    onChangeStatus={userProps.onChangeStatus}
+                                    userId={userProps.userId}
+                                    isActive={userProps.isActive}
+                                />
+                            </CardActions>
+                        </BoxBase>
+                    </Grid>
+                </Grid>
+            </Card>
         </BoxBase>
     );
 };
