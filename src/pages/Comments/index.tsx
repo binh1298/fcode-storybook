@@ -50,6 +50,10 @@ const Comments = () => {
         return false;
     };
 
+    const createdPostDate = `${createdDate.getDate()}/${
+        createdDate.getMonth() + 1
+    }/${createdDate.getFullYear()}`;
+
     return (
         <BoxBase
             display="flex"
@@ -99,9 +103,7 @@ const Comments = () => {
                                                     >
                                                         <AccessTimeIcon fontSize="small" />
                                                         <TypographyBase variant="subtitle2">
-                                                            {`${createdDate.getDate()}/${
-                                                                createdDate.getMonth() + 1
-                                                            }/${createdDate.getFullYear()}`}
+                                                            {createdPostDate}
                                                         </TypographyBase>
                                                     </BoxBase>
                                                 </Grid>
