@@ -6,13 +6,13 @@ export interface FooterProps {
 }
 
 const Footer = (props: FooterProps) => {
-    const { bgcolor } = props;
+    const { bgcolor = "primary" } = props;
 
     return (
         <BoxBase
             display="flex"
             justifyContent="space-between"
-            bgcolor={bgcolor ? bgcolor : "primary"}
+            bgcolor={bgcolor}
             py={1}
             px={2}
             data-testid="Footer__root"
