@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import { Grid } from "@material-ui/core";
+import { CardContent } from "@material-ui/core";
 import { Edit as EditIcon, Delete as DeleteIcon } from "@material-ui/icons";
+import CardHeaderBase from "src/components/CardHeaders/CardHeaderBase";
+import CardBase from "src/components/Cards/CardBase";
 
 import AvatarBase from "../../Avatars/AvatarBase";
 import BoxBase from "../../Boxs/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
-import DividerBase from "../../Dividers/DividerBase";
 import TypographyBase from "../../Typography/TypographyBase";
 import CommentForm from "../CommentForm";
 
@@ -59,97 +60,61 @@ const CommentItem = (props: CommentItemProps) => {
         timeStamp.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
 
     return (
-        <Grid container alignItems="center">
-            <Grid item xs={11} sm={10} md={9}>
-                <DividerBase isHighlighted />
-                <BoxBase display="flex">
-                    <DividerBase orientation="vertical" flexItem isHighlighted />
+        <CardBase elevation={2}>
+            <CardHeaderBase
+                avatar={
+                    <AvatarBase
+                        data-testid="CommentItem__avatar"
+                        src={authorAvatar || defaultAvatarSrc}
+                    />
+                }
+                title={authorName}
+                subheader={commentCreatedTime}
+                action={
                     <BoxBase
-                        flexGrow={1}
                         display="flex"
-                        flexDirection="column"
-                        ml={4}
-                        mt={3}
-                        mb={1}
+                        flexDirection="row"
+                        px={2}
+                        py={1}
+                        data-testid="CommentItem__buttons"
                     >
-                        <BoxBase
-                            display="flex"
-                            justifyContent="space-between"
-                            alignItems="center"
-                            pb={2}
+                        <ButtonBase
+                            size="small"
+                            color="secondary"
+                            startIcon={<EditIcon />}
+                            variant="contained"
+                            onClick={() => setIsEdit(!isEdit)}
                         >
-                            <BoxBase display="flex" alignItems="center">
-                                <BoxBase mr={1}>
-                                    <AvatarBase
-                                        data-testid="CommentItem__avatar"
-                                        src={authorAvatar ? authorAvatar : defaultAvatarSrc}
-                                    />
-                                </BoxBase>
-                                <BoxBase display="flex" flexDirection="column">
-                                    <TypographyBase variant="body2">
-                                        <BoxBase
-                                            fontWeight="fontWeightBold"
-                                            data-testid="CommentItem__author"
-                                            component="span"
-                                            display="block"
-                                        >
-                                            {authorName}
-                                        </BoxBase>
-                                        <BoxBase
-                                            data-testid="CommentItem__createdAt"
-                                            component="span"
-                                            display="block"
-                                        >
-                                            {commentCreatedTime}
-                                        </BoxBase>
-                                    </TypographyBase>
-                                </BoxBase>
-                            </BoxBase>
-                            <BoxBase
-                                display="flex"
-                                flexDirection="row"
-                                ml={2}
-                                data-testid="CommentItem__buttons"
-                            >
-                                <ButtonBase
-                                    size="small"
-                                    color="secondary"
-                                    startIcon={<EditIcon />}
-                                    variant="contained"
-                                    onClick={() => setIsEdit(!isEdit)}
-                                >
-                                    Edit
-                                </ButtonBase>
-                                <ButtonBase
-                                    size="small"
-                                    color="primary"
-                                    startIcon={<DeleteIcon />}
-                                    variant="contained"
-                                    isLoading={isDeleteCommentLoading}
-                                    onClick={deleteHandler}
-                                >
-                                    Delete
-                                </ButtonBase>
-                            </BoxBase>
-                        </BoxBase>
-                        {isEdit ? (
-                            <BoxBase data-testid="CommentItem__commentForm">
-                                <CommentForm
-                                    isLoading={isUpdateCommentLoading}
-                                    value={content}
-                                    submit={updateHandler}
-                                    validate={validateCommentHandler}
-                                />
-                            </BoxBase>
-                        ) : (
-                            <TypographyBase data-testid="CommentItem__content">
-                                {content}
-                            </TypographyBase>
-                        )}
+                            Edit
+                        </ButtonBase>
+                        <ButtonBase
+                            size="small"
+                            color="primary"
+                            startIcon={<DeleteIcon />}
+                            variant="contained"
+                            isLoading={isDeleteCommentLoading}
+                            onClick={deleteHandler}
+                        >
+                            Delete
+                        </ButtonBase>
                     </BoxBase>
-                </BoxBase>
-            </Grid>
-        </Grid>
+                }
+            />
+            <CardContent>
+                {isEdit ? (
+                    <BoxBase data-testid="CommentItem__commentForm">
+                        <CommentForm
+                            isLoading={isUpdateCommentLoading}
+                            value={content}
+                            submit={updateHandler}
+                            validate={validateCommentHandler}
+                        />
+                    </BoxBase>
+                ) : (
+                    <TypographyBase data-testid="CommentItem__content">{content}</TypographyBase>
+                )}
+            </CardContent>
+        </CardBase>
     );
 };
 

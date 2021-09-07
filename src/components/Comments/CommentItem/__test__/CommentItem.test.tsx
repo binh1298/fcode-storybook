@@ -37,19 +37,6 @@ describe("<CommentItem />", () => {
         const CommentItemContent = screen.getByTestId("CommentItem__content");
         expect(CommentItemContent.innerHTML).toBe(content);
 
-        const CommentItemAuthor = screen.getByTestId("CommentItem__author");
-        expect(CommentItemAuthor.innerHTML).toBe(authorName);
-
-        const timeStamp = new Date(
-            new Date(createdAt).getTime() - new Date(createdAt).getTimezoneOffset() * 60 * 1000
-        );
-        const commentCreatedTime =
-            timeStamp.toLocaleString("en-US", { dateStyle: "short" }) +
-            " AT " +
-            timeStamp.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
-        const CommentItemCreateAt = screen.getByTestId("CommentItem__createdAt");
-        expect(CommentItemCreateAt.innerHTML).toBe(commentCreatedTime);
-
         const CommentItemButtons = screen
             .getByTestId("CommentItem__buttons")
             .querySelectorAll("button");
@@ -91,19 +78,6 @@ describe("<CommentItem />", () => {
 
         const CommentItemContent = screen.getByTestId("CommentItem__content");
         expect(CommentItemContent.innerHTML).toBe(content);
-
-        const CommentItemAuthor = screen.getByTestId("CommentItem__author");
-        expect(CommentItemAuthor.innerHTML).toBe(authorName);
-
-        const timeStamp = new Date(
-            new Date(createdAt).getTime() - new Date(createdAt).getTimezoneOffset() * 60 * 1000
-        );
-        const commentCreatedTime =
-            timeStamp.toLocaleString("en-US", { dateStyle: "short" }) +
-            " AT " +
-            timeStamp.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
-        const CommentItemCreateAt = screen.getByTestId("CommentItem__createdAt");
-        expect(CommentItemCreateAt.innerHTML).toBe(commentCreatedTime);
 
         const CommentItemButtons = screen
             .getByTestId("CommentItem__buttons")

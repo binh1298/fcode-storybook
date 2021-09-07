@@ -33,7 +33,7 @@ const CommentList = (props: CommentListProps) => {
                 <CircularProgress color="secondary" />
             ) : (
                 comments.map((comment) => (
-                    <BoxBase key={comment.commentId} px={3} mt={4}>
+                    <BoxBase key={comment.commentId} px={3} my={3}>
                         <CommentItem
                             commentId={comment.commentId}
                             authorName={comment.user!.name}
