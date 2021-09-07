@@ -14,7 +14,7 @@ import TypographyBase from "src/components/Typography/TypographyBase";
 
 import useCommentsList from "./hooks/useCommentsList";
 import useInsertComment from "./hooks/useInsertComment";
-import usePostDetailPage from "./hooks/usePostDetailPage";
+import usePostDetail from "./hooks/usePostDetail";
 
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
@@ -23,10 +23,10 @@ const Comments = () => {
     const postId = "727624bd-a537-4d37-8429-b9b8be310e1c";
 
     const {
-        data: postDetailPageData,
-        isLoading: isPostDetailPageLoading,
-        isError: isPostDetailPageError,
-    } = usePostDetailPage(postId);
+        data: postDetailData,
+        isLoading: isPostDetailLoading,
+        isError: isPostDetailError,
+    } = usePostDetail(postId);
     const {
         data: commentsData,
         isLoading: isCommentsLoading,
@@ -34,7 +34,7 @@ const Comments = () => {
     } = useCommentsList(postId);
     const { isLoading, mutate: insertCommentQuery } = useInsertComment(refetchComments);
 
-    const post = postDetailPageData?.posts[0];
+    const post = postDetailData?.posts[0];
     const author = post?.user;
     const createdDate = new Date(post?.createdAt);
     const comments = commentsData?.posts_by_pk?.comments;
@@ -71,9 +71,9 @@ const Comments = () => {
                         bgcolor="common"
                         style={{ minHeight: "100vh" }}
                     >
-                        {isPostDetailPageLoading ? (
+                        {isPostDetailLoading ? (
                             <CircularProgressBase color="secondary" />
-                        ) : isPostDetailPageError ? (
+                        ) : isPostDetailError ? (
                             <BoxBase ml={2} mr={2}>
                                 <TypographyBase align="center" variant="h6" color="error">
                                     Fail to fetch Post Detail

@@ -1195,12 +1195,12 @@ export type InsertCommentMutation = (
   )> }
 );
 
-export type GetPostDetailPageQueryVariables = Exact<{
+export type GetPostDetailQueryVariables = Exact<{
   postId: Scalars['uuid'];
 }>;
 
 
-export type GetPostDetailPageQuery = (
+export type GetPostDetailQuery = (
   { __typename?: 'query_root' }
   & { posts: Array<(
     { __typename?: 'posts' }

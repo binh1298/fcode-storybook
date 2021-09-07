@@ -1,19 +1,16 @@
 import { gql } from "graphql-request";
 import { useQuery } from "react-query";
-import { GetPostDetailPageQuery, GetPostDetailPageQueryVariables } from "src/generated/graphql";
+import { GetPostDetailQuery, GetPostDetailQueryVariables } from "src/generated/graphql";
 
 import useQueryClient from "src/hooks/useQueryClient";
 
 const usePostDetailPage = (postId: string) => {
     const queryClient = useQueryClient();
 
-    const result = useQuery<GetPostDetailPageQuery>(["GetPostDetailPage"], async () => {
-        const result = await queryClient.request<
-            GetPostDetailPageQuery,
-            GetPostDetailPageQueryVariables
-        >(
+    const result = useQuery<GetPostDetailQuery>(["GetPostDetail", postId], async () => {
+        const result = await queryClient.request<GetPostDetailQuery, GetPostDetailQueryVariables>(
             gql`
-                query GetPostDetailPage($postId: uuid!) {
+                query GetPostDetail($postId: uuid!) {
                     posts(where: { postId: { _eq: $postId } }) {
                         title
                         postId

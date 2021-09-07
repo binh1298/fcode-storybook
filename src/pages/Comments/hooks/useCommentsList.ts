@@ -7,7 +7,7 @@ import useQueryClient from "src/hooks/useQueryClient";
 const useCommentsList = (postId: string) => {
     const queryClient = useQueryClient();
 
-    const result = useQuery<GetCommentsListQuery>(["GetCommentsList"], async () => {
+    const result = useQuery<GetCommentsListQuery>(["GetCommentsList", postId], async () => {
         const result = await queryClient.request<
             GetCommentsListQuery,
             GetCommentsListQueryVariables
