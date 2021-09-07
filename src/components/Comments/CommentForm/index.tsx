@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChangeEventHandler } from "react";
 
 import { Send as SendIcon } from "@material-ui/icons";
@@ -16,7 +16,7 @@ export interface CommentFormProps {
 
 const CommentForm = (props: CommentFormProps) => {
     const { isLoading, value, submit, validate } = props;
-    const [content, setContent] = useState<string>(value ? value : "");
+    const [content, setContent] = useState<string>(value || "");
 
     const changeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setContent(event.target.value);
@@ -45,13 +45,13 @@ const CommentForm = (props: CommentFormProps) => {
             <BoxBase display="flex" justifyContent="flex-end" mt={2}>
                 <ButtonBase
                     color="primary"
-                    endIcon={isLoading ? null : <SendIcon />}
                     variant="contained"
                     type="submit"
-                    disabled={isLoading}
+                    endIcon={isLoading ? null : <SendIcon />}
+                    isLoading={isLoading}
                     onClick={submitHandler}
                 >
-                    Submit{isLoading ? "..." : null}
+                    Submit
                 </ButtonBase>
             </BoxBase>
         </BoxBase>
