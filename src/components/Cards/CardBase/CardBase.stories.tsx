@@ -18,6 +18,9 @@ export default {
         CardHeaderBase,
         AvatarBase,
         BoxBase,
+        CardContentBase,
+        TypographyBase,
+        IconButtonBase,
     },
 };
 const avatarLink = "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";

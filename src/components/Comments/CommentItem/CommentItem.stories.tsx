@@ -1,3 +1,5 @@
+import BoxBase from "src/components/Boxs/BoxBase";
+
 import CommentItem, { CommentItemProps } from ".";
 
 import { action } from "@storybook/addon-actions";
@@ -6,9 +8,16 @@ import { Story } from "@storybook/react";
 export default {
     title: "Components/CommentItem",
     component: CommentItem,
+    subcomponents: {
+        BoxBase,
+    },
 };
 
-const Template: Story<CommentItemProps> = (args) => <CommentItem {...args} />;
+const Template: Story<CommentItemProps> = (args) => (
+    <BoxBase width={480}>
+        <CommentItem {...args} />
+    </BoxBase>
+);
 
 const fcodeAvatarSrc =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
