@@ -116,7 +116,6 @@ const Login = () => {
                     alignItems="center"
                     direction="column"
                     justify="space-between"
-                    style={{ padding: 10 }}
                 >
                     <BoxBase />
                     <BoxBase
