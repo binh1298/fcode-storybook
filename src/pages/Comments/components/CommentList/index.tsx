@@ -18,7 +18,7 @@ export interface CommentListProps {
 
 const CommentList = (props: CommentListProps) => {
     const { isLoading, data, refetchCommentsHandler, validateCommentHandler } = props;
-    const comments = data?.posts_by_pk?.comments ? data.posts_by_pk.comments : [];
+    const comments = data?.posts_by_pk?.comments || [];
 
     const { isLoading: isDeleteCommentLoading, mutate: deleteComment } = useDeleteComment(
         refetchCommentsHandler
