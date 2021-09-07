@@ -47,7 +47,7 @@ const CommentForm = (props: CommentFormProps) => {
                     color="primary"
                     variant="contained"
                     type="submit"
-                    endIcon={isLoading ? null : <SendIcon />}
+                    startIcon={<SendIcon />}
                     isLoading={isLoading}
                     onClick={submitHandler}
                 >

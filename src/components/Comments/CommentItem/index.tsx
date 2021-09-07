@@ -51,9 +51,7 @@ const CommentItem = (props: CommentItemProps) => {
         setIsEdit(false);
     };
 
-    const timeStamp = new Date(
-        new Date(createdAt).getTime() - new Date(createdAt).getTimezoneOffset() * 60 * 1000
-    );
+    const timeStamp = new Date(createdAt);
     const commentCreatedTime =
         timeStamp.toLocaleString("en-US", { dateStyle: "short" }) +
         " AT " +
