@@ -73,7 +73,5 @@ describe("<CommentForm />", () => {
 
         const CommentFormButton = CommentFormRoot.querySelector("button");
         expect(CommentFormButton?.disabled).toBe(true);
-
-        expect(screen.getByText("Submit...")).toBeInTheDocument();
     });
 });

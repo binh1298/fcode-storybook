@@ -125,8 +125,8 @@ const CommentItem = (props: CommentItemProps) => {
                                     color="primary"
                                     startIcon={<DeleteIcon />}
                                     variant="contained"
+                                    isLoading={isDeleteCommentLoading}
                                     onClick={deleteHandler}
-                                    disabled={isDeleteCommentLoading}
                                 >
                                     Delete
                                 </ButtonBase>
