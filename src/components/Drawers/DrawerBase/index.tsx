@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Drawer as MaterialDrawer, DrawerProps as MaterialDrawerProps } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 
 export interface DrawerBaseProps extends MaterialDrawerProps {
     open?: boolean;

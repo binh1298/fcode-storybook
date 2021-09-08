@@ -9,7 +9,7 @@ import {
 } from "draft-js";
 import { Editor, EditorProps } from "react-draft-wysiwyg";
 
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 

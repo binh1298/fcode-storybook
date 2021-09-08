@@ -9,7 +9,7 @@ import {
 import UserProfileBase from "src/components/UserProfiles/UserProfileBase";
 
 import ListBase, { ListBaseProps } from ".";
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";

@@ -2,17 +2,15 @@ import { useState } from "react";
 
 import { Maybe } from "src/generated/graphql";
 
+import AvatarBase from "../../../components/Avatars/AvatarBase";
+import BoxBase from "../../../components/Boxes/BoxBase";
+import BoxConvertDraftjsToHtml from "../../../components/Boxes/BoxConvertDraftjsToHtml";
+import IconButtonBase from "../../../components/Buttons/FabBase";
+import DividerBase from "../../../components/Dividers/DividerBase";
+import TypographyBase from "../../../components/Typography/TypographyBase";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
-import AvatarBase from "../Avatars/AvatarBase";
-import BoxBase from "../Boxs/BoxBase";
-import BoxConvertDraftjsToHtml from "../Boxs/BoxConvertDraftjsToHtml";
-import IconButtonBase from "../Buttons/FabBase";
-import DividerBase from "../Dividers/DividerBase";
-// import ModalBase from "../Modals/ModalBase";
-// import TextFieldBase from "../Textfields/TextFieldBase";
-import TypographyBase from "../Typography/TypographyBase";
 import PostEditor from "./PostEditor";
 
 const anonymousAvatarLink =
@@ -30,7 +28,7 @@ export interface PostCardProps {
 }
 const PostCard = (props: PostCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const createdTime = new Date(props.createdAt);
+    const createdTime = new Date(props.createdAt).toDateString();
     const { postId } = props;
     const updateHandler = (content: string, title: string) => {
         props.onUpdate({ postId, content, title });
@@ -40,10 +38,10 @@ const PostCard = (props: PostCardProps) => {
         props.onDelete({ postId });
         setIsOpen(false);
     };
-    const postCreatedTime =
-        createdTime.toLocaleString("en-US", { dateStyle: "medium" }) +
-        " at " +
-        createdTime.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
+    // const postCreatedTime =
+    //     createdTime.toLocaleString("en-US", { dateStyle: "medium" }) +
+    //     " at " +
+    //     createdTime.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
     return (
         <BoxBase
             shouldHaveBorder={true}
@@ -73,7 +71,7 @@ const PostCard = (props: PostCardProps) => {
                             {props.name}
                         </TypographyBase>
                         <TypographyBase variant="caption" color="initial">
-                            {postCreatedTime}
+                            {createdTime}
                         </TypographyBase>
                     </BoxBase>
                 </BoxBase>

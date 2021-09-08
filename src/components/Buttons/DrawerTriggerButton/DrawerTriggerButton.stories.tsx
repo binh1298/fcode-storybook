@@ -1,7 +1,7 @@
 import { Menu as MenuIcon } from "@material-ui/icons";
 
 import DrawerTriggerButton, { DrawerTriggerButtonProps } from ".";
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 
 import { Story } from "@storybook/react";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { makeStyles } from "@material-ui/styles";
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 

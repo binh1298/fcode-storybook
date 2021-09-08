@@ -1,6 +1,6 @@
 import { List as MaterialList, ListProps as MaterialListProps } from "@material-ui/core";
 
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 
 export interface ListBaseProps extends MaterialListProps {}
 

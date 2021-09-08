@@ -1,12 +1,13 @@
 import React from "react";
 
-import BoxBase from "src/components/Boxs/BoxBase";
-import PostCard from "src/components/PostCard";
+import BoxBase from "src/components/Boxes/BoxBase";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
 
 import useDeletePost from "./hooks/useDeletePost";
 import usePostsList from "./hooks/usePostList";
 import useUpdatePost from "./hooks/useUpdatePost";
+
+import PostCard from "src/pages/Post/PostCard";
 
 const Post = () => {
     const { data, isLoading, refetch: refetchPosts } = usePostsList();

@@ -1,6 +1,6 @@
 import { ChangeEventHandler, useState } from "react";
 
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import RichEditorBase from "src/components/RichEditor/RichEditorBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";

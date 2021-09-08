@@ -1,5 +1,5 @@
 import DividerBase, { DividerBaseProps } from ".";
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
 import ListItemBase from "../../ListItems/ListItemBase";
 import ListBase from "../../Lists/ListBase";
