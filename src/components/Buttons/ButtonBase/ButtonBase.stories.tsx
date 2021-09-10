@@ -28,3 +28,11 @@ Secondary.args = {
     startIcon: <EditIcon />,
     variant: "contained",
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+    children: "Compose",
+    color: "primary",
+    variant: "contained",
+    isLoading: true,
+};
