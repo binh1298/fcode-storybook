@@ -109,15 +109,7 @@ const Login = () => {
                     </Grid>
                 </Hidden>
 
-                <Grid
-                    container
-                    xs={12}
-                    sm={6}
-                    alignItems="center"
-                    direction="column"
-                    justify="space-between"
-                >
-                    <BoxBase />
+                <Grid container xs={12} sm={6} alignItems="center" direction="row" justify="center">
                     <BoxBase
                         display="flex"
                         alignItems="center"
@@ -157,7 +149,6 @@ const Login = () => {
                             Login With Google
                         </GoogleButton>
                     </BoxBase>
-                    <BoxBase />
                 </Grid>
             </Grid>
         </React.Fragment>
