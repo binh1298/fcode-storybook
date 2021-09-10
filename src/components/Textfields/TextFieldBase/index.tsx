@@ -1,3 +1,5 @@
+import { ChangeEventHandler } from "react";
+
 import {
     TextField as MaterialTextField,
     BaseTextFieldProps as MaterialTextFieldProps,
@@ -16,6 +18,7 @@ export interface TexfieldBaseProps extends MaterialTextFieldProps {
     errorMessage?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
     InputProps?: Partial<OutlinedInputProps>;
+    onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
 interface Color {
