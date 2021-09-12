@@ -12,9 +12,18 @@ import Login from "src/pages/Login";
 import Post from "src/pages/Post";
 import Demo from "src/pages/Users";
 
+//
+
+//
+
 const publicRoutes: RouteCustom[] = [
     {
         path: "/login",
+        name: "login",
+        component: Login,
+    },
+    {
+        path: "/logout",
         name: "login",
         component: Login,
     },
@@ -61,7 +70,7 @@ export const Routes = () => {
             ))}
             {privateRoutes.map((route) => {
                 const { queryInfo, ...rest } = route;
-                return <PrivateRoute key={route.name} routeProps={rest} queryInfo={queryInfo} />;
+                return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;
             })}
         </Switch>
     );

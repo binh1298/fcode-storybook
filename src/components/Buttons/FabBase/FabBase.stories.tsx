@@ -5,7 +5,7 @@ import FabBase, { FabBaseProps } from ".";
 import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/FabBase",
+    title: "Components/Buttons/FabBase",
     component: FabBase,
 };
 

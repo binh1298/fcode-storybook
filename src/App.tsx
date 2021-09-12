@@ -10,6 +10,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 import RelayEnvironment from "./RelayEnvironment";
 import GraphQLQueryClientContextProvider from "./context/QueryClientContext";
+import SnackbarProvider from "./context/SnackbarContext";
 import { Routes } from "./routes";
 import replyTheme from "./theme/replyTheme";
 
@@ -23,9 +24,11 @@ function AppRoot() {
                     <QueryClientProvider client={queryClient}>
                         <GraphQLQueryClientContextProvider>
                             <Suspense fallback={<CircularProgress />}>
-                                <BrowserRouter>
-                                    <Routes />
-                                </BrowserRouter>
+                                <SnackbarProvider>
+                                    <BrowserRouter>
+                                        <Routes />
+                                    </BrowserRouter>
+                                </SnackbarProvider>
                             </Suspense>
                         </GraphQLQueryClientContextProvider>
                     </QueryClientProvider>
