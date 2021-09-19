@@ -5,7 +5,7 @@ export interface IconTextFieldProps extends TextfieldBaseProps {
     icon?: React.ReactNode;
 }
 
-const IconTextField = (props: IconTextFieldProps) => {
+const LoginTextField = (props: IconTextFieldProps) => {
     const { icon } = props;
     return (
         <TextFieldBase
@@ -19,4 +19,4 @@ const IconTextField = (props: IconTextFieldProps) => {
     );
 };
 
-export default IconTextField;
+export default LoginTextField;

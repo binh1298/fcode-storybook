@@ -6,6 +6,7 @@ import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
+import Comments from "src/pages/Comments";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
@@ -29,6 +30,11 @@ const publicRoutes: RouteCustom[] = [
 ];
 
 const privateRoutes: RouteCustom[] = [
+    {
+        path: "/comments",
+        name: "comments",
+        component: Comments,
+    },
     {
         path: "/demo",
         name: "demo",

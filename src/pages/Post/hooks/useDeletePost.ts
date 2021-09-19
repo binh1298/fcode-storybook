@@ -1,18 +1,15 @@
 import { gql } from "graphql-request";
 import { useMutation } from "react-query";
-import { DeletePostMutation, DeletePostMutationVariables } from "src/generated/graphql";
 
+// import { DeletePostMutation, DeletePostMutationVariables } from "src/generated/graphql";
 import useQueryClient from "src/hooks/useQueryClient";
 
 const useDeletePost = (refectPosts: () => void) => {
     const queryClient = useQueryClient();
-    const result = useMutation<DeletePostMutation, unknown, DeletePostMutationVariables>(
+    const result = useMutation(
         ["DeletePost"],
         async (variable) => {
-            const result = await queryClient.request<
-                DeletePostMutation,
-                DeletePostMutationVariables
-            >(
+            const result = await queryClient.request(
                 gql`
                     mutation DeletePost($postId: uuid!) {
                         delete_posts_by_pk(postId: $postId) {

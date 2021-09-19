@@ -9,11 +9,11 @@ import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
-import IconTextField from "src/components/Textfields/IconTextField";
 import ThematicBreak from "src/components/ThematicBreak";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 import fcodeImage from "src/assets/fcode.png";
+import LoginTextField from "src/pages/Login/LoginTextField";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 interface ApiResponse<T> {
@@ -109,16 +109,7 @@ const Login = () => {
                     </Grid>
                 </Hidden>
 
-                <Grid
-                    container
-                    xs={12}
-                    sm={6}
-                    alignItems="center"
-                    direction="column"
-                    justify="space-between"
-                    style={{ padding: 10 }}
-                >
-                    <BoxBase />
+                <Grid container xs={12} sm={6} alignItems="center" direction="row" justify="center">
                     <BoxBase
                         display="flex"
                         alignItems="center"
@@ -130,13 +121,13 @@ const Login = () => {
                             Sign in
                         </TypographyBase>
                         <BoxBase height={20} />
-                        <IconTextField
+                        <LoginTextField
                             label="Username or Email"
                             margin="normal"
                             icon={<AccountCircle />}
                             fullWidth
                         />
-                        <IconTextField
+                        <LoginTextField
                             label="Password"
                             margin="normal"
                             type="password"
@@ -158,7 +149,6 @@ const Login = () => {
                             Login With Google
                         </GoogleButton>
                     </BoxBase>
-                    <BoxBase />
                 </Grid>
             </Grid>
         </React.Fragment>
