@@ -1130,6 +1130,86 @@ export type InsertCommentMutationVariables = Exact<{
     postId: Scalars["uuid"];
     content: Scalars["String"];
 }>;
+export type GetCommentsListQueryVariables = Exact<{
+  postId: Scalars['uuid'];
+}>;
+
+
+export type GetCommentsListQuery = (
+  { __typename?: 'query_root' }
+  & { posts_by_pk?: Maybe<(
+    { __typename?: 'posts' }
+    & { comments: Array<(
+      { __typename?: 'comments' }
+      & Pick<Comments, 'commentId' | 'content' | 'createdAt'>
+      & { user?: Maybe<(
+        { __typename?: 'users' }
+        & Pick<Users, 'avatar' | 'name'>
+      )> }
+    )> }
+  )> }
+);
+
+export type DeleteCommentMutationVariables = Exact<{
+  commentId: Scalars['uuid'];
+}>;
+
+
+export type DeleteCommentMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_comments_by_pk?: Maybe<(
+    { __typename?: 'comments' }
+    & Pick<Comments, 'postId'>
+  )> }
+);
+
+export type InsertCommentMutationVariables = Exact<{
+  authorId: Scalars['uuid'];
+  postId: Scalars['uuid'];
+  content: Scalars['String'];
+}>;
+
+
+export type InsertCommentMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_comments_one?: Maybe<(
+    { __typename?: 'comments' }
+    & Pick<Comments, 'commentId'>
+  )> }
+);
+
+export type GetPostDetailQueryVariables = Exact<{
+  postId: Scalars['uuid'];
+}>;
+
+
+export type GetPostDetailQuery = (
+  { __typename?: 'query_root' }
+  & { posts: Array<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'title' | 'postId' | 'content' | 'createdAt'>
+    & { user?: Maybe<(
+      { __typename?: 'users' }
+      & Pick<Users, 'avatar' | 'name'>
+    )> }
+  )> }
+);
+
+export type UpdateCommentMutationVariables = Exact<{
+  commentId: Scalars['uuid'];
+  content: Scalars['String'];
+}>;
+
+
+export type UpdateCommentMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_comments_by_pk?: Maybe<(
+    { __typename?: 'comments' }
+    & Pick<Comments, 'postId'>
+  )> }
+);
+
+export type HomeUserQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type InsertCommentMutation = { __typename?: "mutation_root" } & {
     insert_comments_one?: Maybe<{ __typename?: "comments" } & Pick<Comments, "commentId">>;
