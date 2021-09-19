@@ -32,7 +32,11 @@ const Comments = () => {
         isLoading: isCommentsLoading,
         refetch: refetchComments,
     } = useCommentsList(postId);
-    const { isLoading, mutate: insertCommentQuery } = useInsertComment(refetchComments);
+    const { isLoading, mutate: insertCommentQuery } = useInsertComment({
+        onSuccess: () => {
+            refetchComments();
+        },
+    });
 
     const post = postDetailData?.posts[0];
     const author = post?.user;
