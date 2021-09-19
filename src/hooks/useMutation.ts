@@ -1,5 +1,5 @@
 import { QueryKey, UseMutationOptions } from "react-query";
-import { useMutation as useReactQueryMutation } from "react-query";
+import { useMutation as useRQMutation } from "react-query";
 
 import useQueryClient from "./useQueryClient";
 
@@ -17,7 +17,7 @@ const useMutation = <TQuery, TVariables>({
 }: useMutationProps<TQuery, TVariables>) => {
     const queryClient = useQueryClient();
 
-    return useReactQueryMutation<TQuery, unknown, TVariables>(
+    return useRQMutation<TQuery, unknown, TVariables>(
         queryKey,
         async (variable) => {
             const result = await queryClient.request<TQuery, TVariables>(query, variable);
