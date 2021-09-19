@@ -6,16 +6,17 @@ import RichEditorBase from "src/components/RichEditor/RichEditorBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 
 interface PostEditorProps {
-    content: string;
-    title: string;
+    content?: string | "";
+    title?: string | "";
     onSave: (content: string, title: string) => void;
-    onCancel: () => void;
+    onCancel?: () => void;
+    type: "update" | "insert";
 }
 
 const PostEditor = (props: PostEditorProps) => {
-    const { content, title, onSave, onCancel } = props;
-    const [value, setValue] = useState<string>(content);
-    const [newTitle, setNewTitle] = useState<string>(title);
+    const { content, title, onSave, onCancel, type } = props;
+    const [value, setValue] = useState<string>(content || "");
+    const [newTitle, setNewTitle] = useState<string>(title || "");
     const getEditorValue = (content: string) => {
         setValue(content);
     };
@@ -27,7 +28,7 @@ const PostEditor = (props: PostEditorProps) => {
         onSave(value, newTitle);
     };
     return (
-        <BoxBase p={1}>
+        <BoxBase p={1} bgcolor="common">
             <TextFieldBase
                 label="Title"
                 fullWidth
@@ -39,14 +40,16 @@ const PostEditor = (props: PostEditorProps) => {
             <RichEditorBase initContent={content} getValue={getEditorValue} />
 
             <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
+                {type == "update" && (
+                    <BoxBase mr={1}>
+                        <ButtonBase variant="contained" color="secondary" onClick={onCancel}>
+                            Cancel
+                        </ButtonBase>
+                    </BoxBase>
+                )}
                 <BoxBase mr={1}>
                     <ButtonBase variant="contained" color="primary" onClick={handleSave}>
-                        Save
-                    </ButtonBase>
-                </BoxBase>
-                <BoxBase>
-                    <ButtonBase variant="contained" color="secondary" onClick={onCancel}>
-                        Cancel
+                        {type == "update" ? "Save" : "Submit"}
                     </ButtonBase>
                 </BoxBase>
             </BoxBase>

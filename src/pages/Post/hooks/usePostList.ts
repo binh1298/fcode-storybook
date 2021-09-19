@@ -1,14 +1,15 @@
 import { gql } from "graphql-request";
 import { useQuery } from "react-query";
-import { GetAllPostsQuery, GetAllPostsQueryVariables } from "src/generated/graphql";
+
+import { GetPostsListQuery, GetPostsListQueryVariables } from "./../../../generated/graphql";
 
 import useQueryClient from "src/hooks/useQueryClient";
 
 const usePostsList = () => {
     const queryClient = useQueryClient();
-    const result = useQuery<GetAllPostsQuery, unknown>(["PostsQuery"], async () => {
-        const result = await queryClient.request<GetAllPostsQuery, GetAllPostsQueryVariables>(gql`
-            query GetAllPosts {
+    const result = useQuery<GetPostsListQuery>(["PostsQuery"], async () => {
+        const result = await queryClient.request<GetPostsListQuery, GetPostsListQueryVariables>(gql`
+            query GetPostsList {
                 posts {
                     authorId
                     content

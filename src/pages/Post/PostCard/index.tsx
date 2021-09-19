@@ -38,15 +38,12 @@ const PostCard = (props: PostCardProps) => {
         props.onDelete({ postId });
         setIsOpen(false);
     };
-    // const postCreatedTime =
-    //     createdTime.toLocaleString("en-US", { dateStyle: "medium" }) +
-    //     " at " +
-    //     createdTime.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" });
+
     return (
         <BoxBase
             shouldHaveBorder={true}
-            minWidth={350}
-            maxWidth={500}
+            minWidth={500}
+            maxWidth={600}
             minHeight={100}
             boxSizing="border-box"
             p={2}
@@ -86,6 +83,7 @@ const PostCard = (props: PostCardProps) => {
                             content={props.content}
                             onSave={updateHandler}
                             onCancel={() => setIsOpen(false)}
+                            type="update"
                         />
                     )}
                 </BoxBase>
@@ -93,7 +91,7 @@ const PostCard = (props: PostCardProps) => {
                     <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
                         <BoxBase mr={1}>
                             <IconButtonBase
-                                variant="round"
+                                variant="circular"
                                 size="small"
                                 color="primary"
                                 onClick={() => setIsOpen(!isOpen)}
@@ -103,7 +101,7 @@ const PostCard = (props: PostCardProps) => {
                         </BoxBase>
                         <BoxBase>
                             <IconButtonBase
-                                variant="round"
+                                variant="circular"
                                 size="small"
                                 color="secondary"
                                 onClick={handleDelete}

@@ -8,7 +8,7 @@ import {
 
 import useQueryClient from "src/hooks/useQueryClient";
 
-const useUpdatePost = (refetchPosts: () => void, successUpdate: () => void) => {
+const useUpdatePost = (successUpdate: () => void) => {
     const queryClient = useQueryClient();
 
     const result = useMutation<
@@ -42,7 +42,6 @@ const useUpdatePost = (refetchPosts: () => void, successUpdate: () => void) => {
         },
         {
             onSuccess: () => {
-                refetchPosts();
                 successUpdate();
             },
         }
