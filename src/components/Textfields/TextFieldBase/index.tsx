@@ -1,3 +1,5 @@
+import { ChangeEventHandler } from "react";
+
 import {
     TextField as MaterialTextField,
     BaseTextFieldProps as MaterialTextFieldProps,
@@ -6,7 +8,7 @@ import {
     OutlinedInputProps,
 } from "@material-ui/core";
 
-export interface TexfieldBaseProps extends MaterialTextFieldProps {
+export interface TextfieldBaseProps extends MaterialTextFieldProps {
     label: string;
     name?: string;
     type?: string;
@@ -16,7 +18,7 @@ export interface TexfieldBaseProps extends MaterialTextFieldProps {
     errorMessage?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
     InputProps?: Partial<OutlinedInputProps>;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
 interface Color {
@@ -73,7 +75,7 @@ const useStyles = makeStyles<Theme, Color>((theme) => ({
     error: {},
 }));
 
-const TextFieldBase = (props: TexfieldBaseProps) => {
+const TextFieldBase = (props: TextfieldBaseProps) => {
     const { errorMessage, InputLabelProps, InputProps, ...rest } = props;
 
     const classes = useStyles({ color: !errorMessage ? "primary" : "error" });

@@ -6,12 +6,17 @@ import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
+import Comments from "src/pages/Comments";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
 import InsertPage from "src/pages/UpSertUser/InsertPage";
 import UpdatePage from "src/pages/UpSertUser/UpdatePage";
 import User from "src/pages/Users";
+
+//
+
+//
 
 const publicRoutes: RouteCustom[] = [
     {
@@ -34,9 +39,19 @@ const publicRoutes: RouteCustom[] = [
         name: "user",
         component: User,
     },
+    {
+        path: "/logout",
+        name: "login",
+        component: Login,
+    },
 ];
 
 const privateRoutes: RouteCustom[] = [
+    {
+        path: "/comments",
+        name: "comments",
+        component: Comments,
+    },
     {
         path: "/posts",
         name: "posts",
@@ -67,7 +82,7 @@ export const Routes = () => {
             ))}
             {privateRoutes.map((route) => {
                 const { queryInfo, ...rest } = route;
-                return <PrivateRoute key={route.name} routeProps={rest} queryInfo={queryInfo} />;
+                return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;
             })}
         </Switch>
     );

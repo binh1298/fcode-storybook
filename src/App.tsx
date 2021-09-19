@@ -21,17 +21,17 @@ function AppRoot() {
         <React.StrictMode>
             <ThemeProvider theme={replyTheme}>
                 <RelayEnvironmentProvider environment={RelayEnvironment}>
-                    <SnackbarProvider>
-                        <QueryClientProvider client={queryClient}>
-                            <GraphQLQueryClientContextProvider>
-                                <Suspense fallback={<CircularProgress />}>
+                    <QueryClientProvider client={queryClient}>
+                        <GraphQLQueryClientContextProvider>
+                            <Suspense fallback={<CircularProgress />}>
+                                <SnackbarProvider>
                                     <BrowserRouter>
                                         <Routes />
                                     </BrowserRouter>
-                                </Suspense>
-                            </GraphQLQueryClientContextProvider>
-                        </QueryClientProvider>
-                    </SnackbarProvider>
+                                </SnackbarProvider>
+                            </Suspense>
+                        </GraphQLQueryClientContextProvider>
+                    </QueryClientProvider>
                 </RelayEnvironmentProvider>
             </ThemeProvider>
         </React.StrictMode>

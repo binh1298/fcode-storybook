@@ -11,7 +11,7 @@ export default {
     component: { DividerBase, ListBase, ListItemBase, BoxBase },
 };
 
-export const ListDividers: Story<DividerBaseProps> = (args) => {
+const Template: Story<DividerBaseProps> = (args) => {
     return (
         <BoxBase width={360}>
             <ListBase>
@@ -34,4 +34,11 @@ export const ListDividers: Story<DividerBaseProps> = (args) => {
             </ListBase>
         </BoxBase>
     );
+};
+
+export const Primary = Template.bind({});
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+    isHighlighted: true,
 };

@@ -2,8 +2,8 @@ import { Fab as MaterialFab, FabProps as MaterialFabProps } from "@material-ui/c
 
 export interface FabBaseProps extends MaterialFabProps {}
 
-const IconButtonBase = (props: FabBaseProps) => {
+const FabBase = (props: FabBaseProps) => {
     return <MaterialFab {...props} />;
 };
 
-export default IconButtonBase;
+export default FabBase;

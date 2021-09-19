@@ -6,7 +6,7 @@ import { Story } from "@storybook/react";
 
 //👇 This default export determines where your story goes in the story list
 export default {
-    title: "Components/ButtonBase",
+    title: "Components/Buttons/ButtonBase",
     component: ButtonBase,
 };
 
@@ -27,4 +27,12 @@ Secondary.args = {
     color: "secondary",
     startIcon: <EditIcon />,
     variant: "contained",
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+    children: "Compose",
+    color: "primary",
+    variant: "contained",
+    isLoading: true,
 };
