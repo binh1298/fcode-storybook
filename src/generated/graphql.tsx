@@ -1109,14 +1109,14 @@ export type HomeUserQueryQuery = { __typename?: "query_root" } & {
 };
 
 export type GetUserByIdQueryQueryVariables = Exact<{
-    _eq: Scalars["uuid"];
+    userId: Scalars["uuid"];
 }>;
 
 export type GetUserByIdQueryQuery = { __typename?: "query_root" } & {
-    users: Array<
+    users_by_pk?: Maybe<
         { __typename?: "users" } & Pick<
             Users,
-            "userId" | "role" | "name" | "isActive" | "email" | "avatar"
+            "avatar" | "email" | "isActive" | "role" | "userId" | "name"
         >
     >;
 };

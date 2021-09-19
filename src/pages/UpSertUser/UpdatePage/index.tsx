@@ -44,7 +44,7 @@ const UpdatePage = () => {
     return (
         <UpSertPage
             sendDataToServer={sendDataToServer}
-            userProps={data?.users[0]}
+            userProps={data?.users_by_pk}
             isUpdate={true}
         />
     );

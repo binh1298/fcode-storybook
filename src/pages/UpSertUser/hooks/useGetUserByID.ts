@@ -12,18 +12,18 @@ const useGetUserByID = (userId: string) => {
             GetUserByIdQueryQueryVariables
         >(
             gql`
-                query GetUserByIDQuery($_eq: uuid!) {
-                    users(where: { userId: { _eq: $_eq } }) {
-                        userId
-                        role
-                        name
-                        isActive
-                        email
+                query GetUserByIDQuery($userId: uuid!) {
+                    users_by_pk(userId: $userId) {
                         avatar
+                        email
+                        isActive
+                        role
+                        userId
+                        name
                     }
                 }
             `,
-            { _eq: userId }
+            { userId: userId }
         );
         return result;
     });
