@@ -1,4 +1,4 @@
-import { Maybe } from "src/generated/graphql";
+import { Maybe, Scalars } from "src/generated/graphql";
 
 import { Card, CardActions, CardContent, Grid } from "@material-ui/core";
 import AvatarBase from "src/components/Avatars/AvatarBase";
@@ -20,8 +20,8 @@ export interface IUserProps extends IUser {
     email: string;
     isActive: boolean;
     avatar?: Maybe<string>;
-    onUpdate: (userId: string) => void;
-    onChangeStatus: (userId: string) => void;
+    onUpdate: (userId: Scalars["uuid"]) => void;
+    onChangeStatus: (userId: Scalars["uuid"]) => void;
     userId: string;
 }
 
@@ -29,7 +29,7 @@ export const anonymousAvatarLink =
     "https://cdn1.vectorstock.com/i/thumb-large/22/05/male-profile-picture-vector-1862205.jpg";
 const UserCard = (userProps: IUserProps) => {
     return (
-        <BoxBase minWidth={350} maxWidth={500} minHeight={100}>
+        <BoxBase minWidth={400} maxWidth={500} minHeight={100}>
             <Card>
                 <Grid container alignItems="center">
                     <Grid container item justify="center" alignItems="center" sm={3}>
