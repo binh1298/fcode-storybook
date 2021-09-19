@@ -1,39 +1,36 @@
 import { gql } from "graphql-request";
-import { useQuery } from "react-query";
+import { UseQueryOptions } from "react-query";
 import { GetCommentsListQuery, GetCommentsListQueryVariables } from "src/generated/graphql";
 
-import useQueryClient from "src/hooks/useQueryClient";
+import useQuery from "src/hooks/useQuery";
 
-const useCommentsList = (postId: string) => {
-    const queryClient = useQueryClient();
-
-    const result = useQuery<GetCommentsListQuery>(["GetCommentsList", postId], async () => {
-        const result = await queryClient.request<
-            GetCommentsListQuery,
-            GetCommentsListQueryVariables
-        >(
-            gql`
-                query GetCommentsList($postId: uuid!) {
-                    posts_by_pk(postId: $postId) {
-                        comments(order_by: { createdAt: asc }) {
-                            commentId
-                            content
-                            createdAt
-                            user {
-                                avatar
-                                name
-                            }
+const useCommentsList = ({
+    options,
+    variables,
+}: {
+    options?: UseQueryOptions<GetCommentsListQuery, unknown>;
+    variables?: GetCommentsListQueryVariables;
+}) => {
+    return useQuery<GetCommentsListQuery, GetCommentsListQueryVariables>({
+        queryKey: ["GetCommentsList", variables],
+        query: gql`
+            query GetCommentsList($postId: uuid!) {
+                posts_by_pk(postId: $postId) {
+                    comments(order_by: { createdAt: asc }) {
+                        commentId
+                        content
+                        createdAt
+                        user {
+                            avatar
+                            name
                         }
                     }
                 }
-            `,
-            { postId }
-        );
-
-        return result;
+            }
+        `,
+        variables,
+        options,
     });
-
-    return result;
 };
 
 export default useCommentsList;

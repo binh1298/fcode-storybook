@@ -26,12 +26,12 @@ const Comments = () => {
         data: postDetailData,
         isLoading: isPostDetailLoading,
         isError: isPostDetailError,
-    } = usePostDetail(postId);
+    } = usePostDetail({ variables: { postId } });
     const {
         data: commentsData,
         isLoading: isCommentsLoading,
         refetch: refetchComments,
-    } = useCommentsList(postId);
+    } = useCommentsList({ variables: { postId } });
     const { isLoading, mutate: insertCommentQuery } = useInsertComment({
         onSuccess: () => {
             refetchComments();
