@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Maybe, Users } from "src/generated/graphql";
+import { GetUserByIdQueryQuery } from "src/generated/graphql";
 
 import BoxBase from "src/components/Boxs/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
@@ -9,19 +9,13 @@ import TextFieldBase from "src/components/Textfields/TextFieldBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 import { anonymousAvatarLink, IUser } from "src/pages/Users/components/UserCard";
 
-type UserByPk = Maybe<
-    { __typename?: "users" } & Pick<
-        Users,
-        "avatar" | "email" | "isActive" | "role" | "userId" | "name"
-    >
->;
 interface IUpSertPageProps {
-    userProps?: UserByPk;
+    userProps?: GetUserByIdQueryQuery["users_by_pk"];
     isUpdate: boolean;
     sendDataToServer: (user: IUser) => void;
 }
 const UpSertPage = (props: IUpSertPageProps) => {
-    const generateDefaultValue = (userProps?: UserByPk) => {
+    const generateDefaultValue = (userProps?: GetUserByIdQueryQuery["users_by_pk"]) => {
         if (!userProps) {
             return {
                 avatar: "",
