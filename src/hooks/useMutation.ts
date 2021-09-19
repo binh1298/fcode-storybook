@@ -19,8 +19,8 @@ const useMutation = <TQuery, TVariables>({
 
     return useRQMutation<TQuery, unknown, TVariables>(
         queryKey,
-        async (variable) => {
-            const result = await queryClient.request<TQuery, TVariables>(query, variable);
+        async (variables) => {
+            const result = await queryClient.request<TQuery, TVariables>(query, variables);
             return result;
         },
         {
