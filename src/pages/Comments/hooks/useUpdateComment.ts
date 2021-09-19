@@ -3,9 +3,14 @@ import { UseMutationOptions } from "react-query";
 import { UpdateCommentMutation, UpdateCommentMutationVariables } from "src/generated/graphql";
 
 import useMutation from "src/hooks/useMutation";
+import { GraphQLErrorType } from "src/types/GraphQLErrorType";
 
 const useUpdateComment = (
-    options?: UseMutationOptions<UpdateCommentMutation, unknown, UpdateCommentMutationVariables>
+    options?: UseMutationOptions<
+        UpdateCommentMutation,
+        GraphQLErrorType,
+        UpdateCommentMutationVariables
+    >
 ) => {
     return useMutation<UpdateCommentMutation, UpdateCommentMutationVariables>({
         queryKey: ["UpdateComment"],

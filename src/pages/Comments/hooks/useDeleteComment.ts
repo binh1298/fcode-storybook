@@ -3,9 +3,14 @@ import { UseMutationOptions } from "react-query";
 import { DeleteCommentMutation, DeleteCommentMutationVariables } from "src/generated/graphql";
 
 import useMutation from "src/hooks/useMutation";
+import { GraphQLErrorType } from "src/types/GraphQLErrorType";
 
 const useDeleteComment = (
-    options?: UseMutationOptions<DeleteCommentMutation, unknown, DeleteCommentMutationVariables>
+    options?: UseMutationOptions<
+        DeleteCommentMutation,
+        GraphQLErrorType,
+        DeleteCommentMutationVariables
+    >
 ) => {
     return useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>({
         queryKey: ["DeleteComment"],

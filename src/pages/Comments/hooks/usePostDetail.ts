@@ -3,12 +3,13 @@ import { UseQueryOptions } from "react-query";
 import { GetPostDetailQuery, GetPostDetailQueryVariables } from "src/generated/graphql";
 
 import useQuery from "src/hooks/useQuery";
+import { GraphQLErrorType } from "src/types/GraphQLErrorType";
 
 const usePostDetailPage = ({
     options,
     variables,
 }: {
-    options?: UseQueryOptions<GetPostDetailQuery, unknown>;
+    options?: UseQueryOptions<GetPostDetailQuery, GraphQLErrorType>;
     variables?: GetPostDetailQueryVariables;
 }) => {
     return useQuery<GetPostDetailQuery, GetPostDetailQueryVariables>({

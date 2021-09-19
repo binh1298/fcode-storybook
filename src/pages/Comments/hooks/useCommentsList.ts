@@ -3,12 +3,13 @@ import { UseQueryOptions } from "react-query";
 import { GetCommentsListQuery, GetCommentsListQueryVariables } from "src/generated/graphql";
 
 import useQuery from "src/hooks/useQuery";
+import { GraphQLErrorType } from "src/types/GraphQLErrorType";
 
 const useCommentsList = ({
     options,
     variables,
 }: {
-    options?: UseQueryOptions<GetCommentsListQuery, unknown>;
+    options?: UseQueryOptions<GetCommentsListQuery, GraphQLErrorType>;
     variables?: GetCommentsListQueryVariables;
 }) => {
     return useQuery<GetCommentsListQuery, GetCommentsListQueryVariables>({
