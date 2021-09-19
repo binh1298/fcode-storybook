@@ -6,7 +6,6 @@ import useQueryClient from "./useQueryClient";
 interface useMutationProps<TQuery, TVariables> {
     queryKey: QueryKey;
     query: string;
-    variables?: TVariables;
     options?: UseMutationOptions<TQuery, unknown, TVariables>;
 }
 
