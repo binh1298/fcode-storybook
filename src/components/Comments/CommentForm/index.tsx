@@ -33,8 +33,8 @@ const CommentForm = (props: CommentFormProps) => {
         <BoxBase data-testid="CommentForm__root">
             <TextFieldBase
                 multiline
-                rows={5}
-                rowsMax={20}
+                minRows={5}
+                maxRows={20}
                 label="Enter your comment here"
                 variant="outlined"
                 fullWidth
