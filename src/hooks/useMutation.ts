@@ -24,9 +24,7 @@ const useMutation = <TQuery, TVariables>({
             const result = await queryClient.request<TQuery, TVariables>(query, variables);
             return result;
         },
-        {
-            ...options,
-        }
+        options
     );
 };
 
