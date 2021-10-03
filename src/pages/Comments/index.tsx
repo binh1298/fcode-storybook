@@ -26,13 +26,17 @@ const Comments = () => {
         data: postDetailData,
         isLoading: isPostDetailLoading,
         isError: isPostDetailError,
-    } = usePostDetail(postId);
+    } = usePostDetail({ variables: { postId } });
     const {
         data: commentsData,
         isLoading: isCommentsLoading,
         refetch: refetchComments,
-    } = useCommentsList(postId);
-    const { isLoading, mutate: insertCommentQuery } = useInsertComment(refetchComments);
+    } = useCommentsList({ variables: { postId } });
+    const { isLoading, mutate: insertCommentQuery } = useInsertComment({
+        onSuccess: () => {
+            refetchComments();
+        },
+    });
 
     const post = postDetailData?.posts[0];
     const author = post?.user;
