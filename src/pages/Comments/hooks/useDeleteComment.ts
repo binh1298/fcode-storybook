@@ -1,37 +1,28 @@
 import { gql } from "graphql-request";
-import { useMutation } from "react-query";
+import { UseMutationOptions } from "react-query";
 import { DeleteCommentMutation, DeleteCommentMutationVariables } from "src/generated/graphql";
 
-import useQueryClient from "src/hooks/useQueryClient";
+import useMutation from "src/hooks/useMutation";
+import { GraphQLErrorType } from "src/types/GraphQLErrorType";
 
-const useDeleteComment = (refetchComments: () => void) => {
-    const queryClient = useQueryClient();
-
-    const result = useMutation<DeleteCommentMutation, unknown, DeleteCommentMutationVariables>(
-        ["DeleteComment"],
-        async (variable) => {
-            const result = await queryClient.request<
-                DeleteCommentMutation,
-                DeleteCommentMutationVariables
-            >(
-                gql`
-                    mutation DeleteComment($commentId: uuid!) {
-                        delete_comments_by_pk(commentId: $commentId) {
-                            postId
-                        }
-                    }
-                `,
-                variable
-            );
-            return result;
-        },
-        {
-            onSuccess: () => {
-                refetchComments();
-            },
-        }
-    );
-    return result;
+const useDeleteComment = (
+    options?: UseMutationOptions<
+        DeleteCommentMutation,
+        GraphQLErrorType,
+        DeleteCommentMutationVariables
+    >
+) => {
+    return useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>({
+        queryKey: ["DeleteComment"],
+        query: gql`
+            mutation DeleteComment($commentId: uuid!) {
+                delete_comments_by_pk(commentId: $commentId) {
+                    postId
+                }
+            }
+        `,
+        options,
+    });
 };
 
 export default useDeleteComment;

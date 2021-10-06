@@ -20,12 +20,16 @@ const CommentList = (props: CommentListProps) => {
     const { isLoading, data, refetchCommentsHandler, validateCommentHandler } = props;
     const comments = data?.posts_by_pk?.comments || [];
 
-    const { isLoading: isDeleteCommentLoading, mutate: deleteComment } = useDeleteComment(
-        refetchCommentsHandler
-    );
-    const { isLoading: isUpdateCommentLoading, mutate: updateComment } = useUpdateComment(
-        refetchCommentsHandler
-    );
+    const { isLoading: isDeleteCommentLoading, mutate: deleteComment } = useDeleteComment({
+        onSuccess: () => {
+            refetchCommentsHandler();
+        },
+    });
+    const { isLoading: isUpdateCommentLoading, mutate: updateComment } = useUpdateComment({
+        onSuccess: () => {
+            refetchCommentsHandler();
+        },
+    });
 
     return (
         <React.Fragment>
