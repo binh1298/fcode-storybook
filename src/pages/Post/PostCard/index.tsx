@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Maybe } from "src/generated/graphql";
+import { Posts, Users } from "src/generated/graphql";
 
 import AvatarBase from "../../../components/Avatars/AvatarBase";
 import BoxBase from "../../../components/Boxes/BoxBase";
@@ -15,14 +15,9 @@ import PostEditor from "./PostEditor";
 
 const anonymousAvatarLink =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
-export interface PostCardProps {
-    authorId: Maybe<string> | undefined;
-    postId: string;
-    name: string | undefined;
-    avatar?: string | null;
-    title: string;
-    content: string;
-    createdAt: string;
+export interface PostCardProps
+    extends Pick<Posts, "authorId" | "content" | "createdAt" | "postId" | "title"> {
+    user?: Pick<Users, "name" | "avatar"> | null;
     onUpdate: (props: { postId: string; content: string; title: string }) => void;
     onDelete: (props: { postId: string }) => void;
 }
@@ -58,14 +53,14 @@ const PostCard = (props: PostCardProps) => {
                     <BoxBase margin={1}>
                         <AvatarBase
                             size="medium"
-                            src={props.avatar || anonymousAvatarLink}
-                            alt={props.name}
+                            src={props.user?.avatar || anonymousAvatarLink}
+                            alt={props.user?.name}
                         />
                     </BoxBase>
 
                     <BoxBase display="inline">
                         <TypographyBase variant="subtitle2" color="primary">
-                            {props.name}
+                            {props.user?.name}
                         </TypographyBase>
                         <TypographyBase variant="caption" color="initial">
                             {createdTime}
