@@ -6,8 +6,8 @@ import RichEditorBase from "src/components/RichEditor/RichEditorBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 
 interface PostEditorProps {
-    content?: string | "";
-    title?: string | "";
+    content?: string;
+    title?: string;
     onSave: (content: string, title: string) => void;
     onCancel?: () => void;
     type: "update" | "insert";

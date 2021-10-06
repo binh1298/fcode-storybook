@@ -20,10 +20,21 @@ const Post = () => {
         refetchPosts();
         snackbar({ severity: "success", children: "Success!" });
     };
-
-    const { isLoading: isPostUpdate, mutate: updatePost } = useUpdatePost(onSuccessUpdate);
-    const { isLoading: isInsert, mutate: insertPost } = useInsertPost(refetchPosts);
-    const { isLoading: isPostDelete, mutate: deletePost } = useDeletePost(refetchPosts);
+    const { isLoading: isPostUpdate, mutate: updatePost } = useUpdatePost({
+        onSuccess: () => {
+            onSuccessUpdate;
+        },
+    });
+    const { isLoading: isInsert, mutate: insertPost } = useInsertPost({
+        onSuccess: () => {
+            onSuccessUpdate;
+        },
+    });
+    const { isLoading: isPostDelete, mutate: deletePost } = useDeletePost({
+        onSuccess: () => {
+            onSuccessUpdate();
+        },
+    });
 
     const insertPostHandler = (content: string, title: string) => {
         if (content.trim() == "" && title.trim() == "") {
@@ -52,17 +63,11 @@ const Post = () => {
                         flexDirection="column"
                     >
                         {data?.posts.map((post) => {
-                            let user = data.users.find((e) => e.userId === post.authorId);
                             return (
                                 <PostCard
                                     key={post.postId}
-                                    postId={post.postId}
-                                    authorId={post.authorId}
-                                    name={user?.name}
-                                    title={post.title}
-                                    content={post.content}
-                                    avatar={user?.avatar}
-                                    createdAt={post.createdAt}
+                                    post={post}
+                                    user={post.user}
                                     onUpdate={updatePost}
                                     onDelete={deletePost}
                                 />

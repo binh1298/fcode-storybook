@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Maybe } from "src/generated/graphql";
+import { Posts, Users } from "src/generated/graphql";
 
 import AvatarBase from "../../../components/Avatars/AvatarBase";
 import BoxBase from "../../../components/Boxes/BoxBase";
@@ -16,26 +16,21 @@ import PostEditor from "./PostEditor";
 const anonymousAvatarLink =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 export interface PostCardProps {
-    authorId: Maybe<string> | undefined;
-    postId: string;
-    name: string | undefined;
-    avatar?: string | null;
-    title: string;
-    content: string;
-    createdAt: string;
+    post: Pick<Posts, "authorId" | "content" | "createdAt" | "postId" | "title">;
+    user?: Pick<Users, "name" | "avatar"> | null;
     onUpdate: (props: { postId: string; content: string; title: string }) => void;
     onDelete: (props: { postId: string }) => void;
 }
 const PostCard = (props: PostCardProps) => {
+    const { post, user, onUpdate, onDelete } = props;
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const createdTime = new Date(props.createdAt).toDateString();
-    const { postId } = props;
+    const createdTime = new Date(post.createdAt).toDateString();
     const updateHandler = (content: string, title: string) => {
-        props.onUpdate({ postId, content, title });
+        onUpdate({ postId: post.postId, content, title });
         setIsOpen(false);
     };
     const handleDelete = () => {
-        props.onDelete({ postId });
+        onDelete({ postId: post.postId });
         setIsOpen(false);
     };
 
@@ -58,14 +53,14 @@ const PostCard = (props: PostCardProps) => {
                     <BoxBase margin={1}>
                         <AvatarBase
                             size="medium"
-                            src={props.avatar || anonymousAvatarLink}
-                            alt={props.name}
+                            src={props.user?.avatar || anonymousAvatarLink}
+                            alt={props.user?.name}
                         />
                     </BoxBase>
 
                     <BoxBase display="inline">
                         <TypographyBase variant="subtitle2" color="primary">
-                            {props.name}
+                            {user?.name}
                         </TypographyBase>
                         <TypographyBase variant="caption" color="initial">
                             {createdTime}
@@ -74,13 +69,13 @@ const PostCard = (props: PostCardProps) => {
                 </BoxBase>
                 <DividerBase variant="fullWidth"></DividerBase>
                 <BoxBase>
-                    <TypographyBase variant="h5">{props.title}</TypographyBase>
+                    <TypographyBase variant="h5">{post.title}</TypographyBase>
                     {!isOpen ? (
-                        <BoxConvertDraftjsToHtml input={props.content} />
+                        <BoxConvertDraftjsToHtml input={post.content} />
                     ) : (
                         <PostEditor
-                            title={props.title}
-                            content={props.content}
+                            title={post.title}
+                            content={post.content}
                             onSave={updateHandler}
                             onCancel={() => setIsOpen(false)}
                             type="update"

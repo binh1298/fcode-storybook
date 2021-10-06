@@ -1246,7 +1246,7 @@ export type DeletePostMutation = (
   { __typename?: 'mutation_root' }
   & { delete_posts_by_pk?: Maybe<(
     { __typename?: 'posts' }
-    & Pick<Posts, 'authorId'>
+    & Pick<Posts, 'deletedAt'>
   )> }
 );
 
@@ -1272,21 +1272,22 @@ export type GetPostsListQuery = (
   { __typename?: 'query_root' }
   & { posts: Array<(
     { __typename?: 'posts' }
-    & Pick<Posts, 'authorId' | 'content' | 'createdAt' | 'postId' | 'title'>
-  )>, users: Array<(
-    { __typename?: 'users' }
-    & Pick<Users, 'avatar' | 'name' | 'userId'>
+    & Pick<Posts, 'authorId' | 'postId' | 'title' | 'createdAt' | 'content'>
+    & { user?: Maybe<(
+      { __typename?: 'users' }
+      & Pick<Users, 'avatar' | 'name'>
+    )> }
   )> }
 );
 
-export type UpdatePostByIdMutationMutationVariables = Exact<{
+export type UpdatePostByIdMutationVariables = Exact<{
   postId: Scalars['uuid'];
   content: Scalars['String'];
   title: Scalars['String'];
 }>;
 
 
-export type UpdatePostByIdMutationMutation = (
+export type UpdatePostByIdMutation = (
   { __typename?: 'mutation_root' }
   & { update_posts_by_pk?: Maybe<(
     { __typename?: 'posts' }
