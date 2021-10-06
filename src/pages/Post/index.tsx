@@ -20,11 +20,19 @@ const Post = () => {
         refetchPosts();
         snackbar({ severity: "success", children: "Success!" });
     };
-    const { isLoading: isPostUpdate, mutate: updatePost } = useUpdatePost(onSuccessUpdate);
-    const { isLoading: isInsert, mutate: insertPost } = useInsertPost(refetchPosts);
+    const { isLoading: isPostUpdate, mutate: updatePost } = useUpdatePost({
+        onSuccess: () => {
+            onSuccessUpdate;
+        },
+    });
+    const { isLoading: isInsert, mutate: insertPost } = useInsertPost({
+        onSuccess: () => {
+            onSuccessUpdate;
+        },
+    });
     const { isLoading: isPostDelete, mutate: deletePost } = useDeletePost({
         onSuccess: () => {
-            refetchPosts();
+            onSuccessUpdate();
         },
     });
 

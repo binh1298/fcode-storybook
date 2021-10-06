@@ -1,38 +1,27 @@
 import { gql } from "graphql-request";
-import { useMutation } from "react-query";
+import { UseMutationOptions } from "react-query";
+import { InsertPostMutation, InsertPostMutationVariables } from "src/generated/graphql";
 
-import { InsertPostMutation, InsertPostMutationVariables } from "./../../../generated/graphql";
+import useMutation from "src/hooks/useMutation";
+import { GraphQLErrorType } from "src/types/GraphQLErrorType";
 
-import useQueryClient from "src/hooks/useQueryClient";
-
-const useInsertPost = (refectPosts: () => void) => {
-    const queryClient = useQueryClient();
-    const result = useMutation<InsertPostMutation, unknown, InsertPostMutationVariables>(
-        ["InsertPost"],
-        async (variable) => {
-            const result = await queryClient.request<
-                InsertPostMutation,
-                InsertPostMutationVariables
-            >(
-                gql`
-                    mutation InsertPost($authorId: uuid!, $content: String!, $title: String!) {
-                        insert_posts_one(
-                            object: { authorId: $authorId, content: $content, title: $title }
-                        ) {
-                            postId
-                        }
-                    }
-                `,
-                variable
-            );
-            return result;
-        },
-        {
-            onSuccess: () => {
-                refectPosts();
-            },
-        }
-    );
-    return result;
+const useInsertPost = (
+    options?: UseMutationOptions<InsertPostMutation, GraphQLErrorType, InsertPostMutationVariables>,
+    variables?: InsertPostMutationVariables
+) => {
+    return useMutation<InsertPostMutation, InsertPostMutationVariables>({
+        queryKey: ["InsertPost", variables],
+        query: gql`
+            mutation InsertPost($authorId: uuid!, $content: String!, $title: String!) {
+                insert_posts_one(
+                    object: { authorId: $authorId, content: $content, title: $title }
+                ) {
+                    postId
+                }
+            }
+        `,
+        options,
+    });
 };
+
 export default useInsertPost;

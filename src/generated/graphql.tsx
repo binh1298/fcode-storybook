@@ -1280,14 +1280,14 @@ export type GetPostsListQuery = (
   )> }
 );
 
-export type UpdatePostByIdMutationMutationVariables = Exact<{
+export type UpdatePostByIdMutationVariables = Exact<{
   postId: Scalars['uuid'];
   content: Scalars['String'];
   title: Scalars['String'];
 }>;
 
 
-export type UpdatePostByIdMutationMutation = (
+export type UpdatePostByIdMutation = (
   { __typename?: 'mutation_root' }
   & { update_posts_by_pk?: Maybe<(
     { __typename?: 'posts' }
