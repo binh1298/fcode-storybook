@@ -66,11 +66,7 @@ const Post = () => {
                             return (
                                 <PostCard
                                     key={post.postId}
-                                    postId={post.postId}
-                                    authorId={post.authorId}
-                                    title={post.title}
-                                    content={post.content}
-                                    createdAt={post.createdAt}
+                                    post={post}
                                     user={post.user}
                                     onUpdate={updatePost}
                                     onDelete={deletePost}
