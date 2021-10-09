@@ -27,11 +27,6 @@ const publicRoutes: RouteCustom[] = [
         name: "login",
         component: Login,
     },
-    {
-        path: "/posts",
-        name: "posts",
-        component: Post,
-    },
 ];
 
 const privateRoutes: RouteCustom[] = [
@@ -46,7 +41,7 @@ const privateRoutes: RouteCustom[] = [
         component: Demo,
     },
     {
-        path: "/postss",
+        path: "/posts",
         name: "posts",
         component: Post,
     },
