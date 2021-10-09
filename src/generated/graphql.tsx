@@ -1237,6 +1237,64 @@ export type HomeUserQueryQuery = (
   )> }
 );
 
+export type DeletePostMutationVariables = Exact<{
+  postId: Scalars['uuid'];
+}>;
+
+
+export type DeletePostMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_posts_by_pk?: Maybe<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'deletedAt'>
+  )> }
+);
+
+export type InsertPostMutationVariables = Exact<{
+  authorId: Scalars['uuid'];
+  content: Scalars['String'];
+  title: Scalars['String'];
+}>;
+
+
+export type InsertPostMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_posts_one?: Maybe<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'postId'>
+  )> }
+);
+
+export type GetPostsListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPostsListQuery = (
+  { __typename?: 'query_root' }
+  & { posts: Array<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'authorId' | 'postId' | 'title' | 'createdAt' | 'content'>
+    & { user?: Maybe<(
+      { __typename?: 'users' }
+      & Pick<Users, 'avatar' | 'name'>
+    )> }
+  )> }
+);
+
+export type UpdatePostByIdMutationVariables = Exact<{
+  postId: Scalars['uuid'];
+  content: Scalars['String'];
+  title: Scalars['String'];
+}>;
+
+
+export type UpdatePostByIdMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_posts_by_pk?: Maybe<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'postId'>
+  )> }
+);
+
 export type InsertUserOneMutationMutationVariables = Exact<{
   avatar: Scalars['String'];
   email: Scalars['String'];

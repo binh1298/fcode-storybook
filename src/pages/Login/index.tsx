@@ -5,7 +5,7 @@ import { API_ROOT_URL } from "src/configuration";
 
 import { Grid, Hidden } from "@material-ui/core";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
 import useSnackbar from "src/components/SnackBars/useSnackbar";

@@ -15,12 +15,12 @@ export const Primary = Template.bind({});
 Primary.args = {
     children: <AddIcon />,
     color: "primary",
-    variant: "round",
+    variant: "circular",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     children: <EditIcon />,
     color: "secondary",
-    variant: "round",
+    variant: "circular",
 };

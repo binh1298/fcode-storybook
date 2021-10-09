@@ -27,7 +27,7 @@ const Home = (props: PagePropsWithQuery<HomeUserQuery>) => {
             </ButtonBase>
             <br />
             <ButtonBase variant="contained" color="primary">
-                The first user is {data.users[0].name}
+                The first user is {data.users[0]?.name}
             </ButtonBase>
         </header>
     );

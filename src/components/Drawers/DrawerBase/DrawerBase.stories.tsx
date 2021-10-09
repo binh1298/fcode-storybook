@@ -16,7 +16,7 @@ import {
 import DrawerBase, { DrawerBaseProps } from ".";
 import replyTheme from "../../../theme/replyTheme";
 import AppBarBase from "../../AppBars/AppBarBase";
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 import DrawerTriggerButton from "../../Buttons/DrawerTriggerButton";
 import CssBaselineBase from "../../CssBaselines/CssBaselineBase";
 import DividerBase from "../../Dividers/DividerBase";

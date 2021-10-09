@@ -5,7 +5,7 @@ import {
     Person as PersonIcon,
     QuestionAnswer as QuestionAnswerIcon,
 } from "@material-ui/icons";
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 import CommentForm from "src/components/Comments/CommentForm";
 import DividerBase from "src/components/Dividers/DividerBase";
 import Footer from "src/components/Footers/Footer";

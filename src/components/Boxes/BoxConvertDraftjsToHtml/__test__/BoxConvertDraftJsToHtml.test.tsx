@@ -13,6 +13,6 @@ describe("<BoxConvertDraftjsToHtml />", () => {
 
     it("should show text when input data is not right format", () => {
         wrapper = render(<BoxConvertDraftjsToHtml input={"abc"} />);
-        expect(screen.queryByText("abc")).not.toBeInTheDocument();
+        expect(screen.queryByText("abc")).toBeInTheDocument();
     });
 });

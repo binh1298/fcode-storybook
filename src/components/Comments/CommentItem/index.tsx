@@ -6,7 +6,7 @@ import CardHeaderBase from "src/components/CardHeaders/CardHeaderBase";
 import CardBase from "src/components/Cards/CardBase";
 
 import AvatarBase from "../../Avatars/AvatarBase";
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
 import TypographyBase from "../../Typography/TypographyBase";
 import CommentForm from "../CommentForm";

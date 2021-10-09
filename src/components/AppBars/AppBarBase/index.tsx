@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { AppBar as MaterialAppBar, AppBarProps as MaterialAppBarProps } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 
 export interface AppBarBaseProps extends MaterialAppBarProps {
     open?: boolean;

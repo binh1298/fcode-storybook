@@ -5,7 +5,7 @@ import {
     IconButtonProps as MaterialIconButtonProps,
 } from "@material-ui/core";
 
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 
 export interface DrawerTriggerButtonProps extends MaterialIconButtonProps {
     open?: boolean;

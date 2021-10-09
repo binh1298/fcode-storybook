@@ -7,7 +7,7 @@ import {
     Edit as EditIcon,
 } from "@material-ui/icons";
 import AvatarBase from "src/components/Avatars/AvatarBase";
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import IconButtonBase from "src/components/Buttons/IconButtonBase";
 import DividerBase from "src/components/Dividers/DividerBase";

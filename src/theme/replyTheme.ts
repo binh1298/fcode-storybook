@@ -1,4 +1,4 @@
-import { createMuiTheme, ThemeOptions } from "@material-ui/core";
+import { createTheme, ThemeOptions } from "@material-ui/core";
 import createBreakpoint from "@material-ui/core/styles/createBreakpoints";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
@@ -170,5 +170,5 @@ const themeObject: Readonly<ThemeOptions> = {
     },
 };
 
-const replyTheme = createMuiTheme(themeObject);
+const replyTheme = createTheme(themeObject);
 export default replyTheme;
