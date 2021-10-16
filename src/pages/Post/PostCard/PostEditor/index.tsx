@@ -25,6 +25,10 @@ const PostEditor = (props: PostEditorProps) => {
         setNewTitle(event.target.value);
     };
     const handleSave = () => {
+        // if (type === "insert") {
+        //     setValue("");
+        //     setNewTitle("");
+        // }
         onSave(value, newTitle);
     };
     return (
