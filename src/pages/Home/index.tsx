@@ -6,6 +6,9 @@ import ButtonBase from "src/components/Buttons/ButtonBase";
 
 import { HomeUserQuery } from "./__generated__/HomeUserQuery.graphql";
 
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "src/i18n/LanguageSwitcher";
+
 export const HomeUserGraphQL = graphql`
     query HomeUserQuery {
         users {
@@ -20,14 +23,18 @@ export const HomeUserGraphQL = graphql`
 
 const Home = (props: PagePropsWithQuery<HomeUserQuery>) => {
     const data = usePreloadedQuery<HomeUserQuery>(HomeUserGraphQL, props.queryReference);
+
+    const { t } = useTranslation(["home"]);
+
     return (
         <header className="App-header">
             <ButtonBase variant="contained" color="primary">
-                Welcome FCode Storybook Team. <br /> Run yarn storybook
+                {t("home:description.welcome")}
             </ButtonBase>
+            <LanguageSwitcher />
             <br />
             <ButtonBase variant="contained" color="primary">
-                The first user is {data.users[0]?.name}
+                {t("home:description.firstUser")} {data.users[0]?.name}
             </ButtonBase>
         </header>
     );
