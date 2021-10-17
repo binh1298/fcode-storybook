@@ -1,12 +1,12 @@
-import { FlexDirectionProperty, FlexWrapProperty, BoxSizingProperty } from "csstype";
+import { Property } from "csstype";
 
-import { Box as MaterialBox, BoxProps as MaterialBoxProps } from "@material-ui/core";
+import { Box as MaterialBox, BoxProps as MaterialBoxProps } from "@mui/material";
 
 export interface BoxBaseProps extends MaterialBoxProps {
     display?: "flex" | "inline" | "block" | "inline-block";
     flexBasis?: number;
-    flexDirection?: FlexDirectionProperty;
-    flexWrap?: FlexWrapProperty;
+    flexDirection?: Property.FlexDirection;
+    flexWrap?: Property.FlexWrap;
     justifyContent?:
         | "flex-start"
         | "flex-end"
@@ -78,7 +78,7 @@ export interface BoxBaseProps extends MaterialBoxProps {
         | "unset";
     bgcolor?: "primary" | "secondary" | "info" | "error" | "warning" | "success" | "common";
     colorProps?: "main" | "light" | "dark";
-    boxSizing?: BoxSizingProperty;
+    boxSizing?: Property.BoxSizing;
     m?: number;
     p?: number;
     mt?: number;

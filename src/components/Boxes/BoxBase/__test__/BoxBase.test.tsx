@@ -1,9 +1,7 @@
-import { ThemeProvider } from "@material-ui/core/styles";
-
 import BoxBase, { BoxBaseProps } from "..";
-import replyTheme from "../../../../theme/replyTheme";
 
 import { render, RenderResult, screen } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
 describe("Structure of <BoxBase />", () => {
     let wrapper: RenderResult;
@@ -14,36 +12,36 @@ describe("Structure of <BoxBase />", () => {
 
     it("should have children", () => {
         wrapper = render(
-            <ThemeProvider theme={replyTheme}>
+            <TestThemeProvider>
                 <BoxBase {...props} />
-            </ThemeProvider>
+            </TestThemeProvider>
         );
         expect(screen.getByText("Value")).toBeInTheDocument();
     });
 
     it("color should be onA of backgroundColorA", () => {
         wrapper = render(
-            <ThemeProvider theme={replyTheme}>
+            <TestThemeProvider>
                 <BoxBase {...props} bgcolor="primary" />
-            </ThemeProvider>
+            </TestThemeProvider>
         );
         expect(screen.getByText("Value")).toHaveStyle("color: #fff");
     });
 
     it("overrideColor should override the color", () => {
         wrapper = render(
-            <ThemeProvider theme={replyTheme}>
+            <TestThemeProvider>
                 <BoxBase {...props} bgcolor="info" overrideColor="primary" />
-            </ThemeProvider>
+            </TestThemeProvider>
         );
         expect(screen.getByText("Value")).toHaveStyle("color: #344955");
     });
 
     it("backgroundColor is white when bgcolor is none", () => {
         wrapper = render(
-            <ThemeProvider theme={replyTheme}>
+            <TestThemeProvider>
                 <BoxBase data-testid="box-none" {...props} bgcolor="common" />
-            </ThemeProvider>
+            </TestThemeProvider>
         );
         expect(screen.getByTestId("box-none")).toHaveStyle("backgroundColor: #fff");
     });

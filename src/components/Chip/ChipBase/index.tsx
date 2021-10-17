@@ -1,4 +1,4 @@
-import { Chip as MaterialChip, ChipProps as MaterialChipProps } from "@material-ui/core";
+import { Chip as MaterialChip, ChipProps as MaterialChipProps } from "@mui/material";
 
 export interface ChipBaseProps extends MaterialChipProps {}
 

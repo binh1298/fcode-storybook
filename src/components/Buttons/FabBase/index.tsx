@@ -1,4 +1,4 @@
-import { Fab as MaterialFab, FabProps as MaterialFabProps } from "@material-ui/core";
+import { Fab as MaterialFab, FabProps as MaterialFabProps } from "@mui/material";
 
 export interface FabBaseProps extends MaterialFabProps {}
 

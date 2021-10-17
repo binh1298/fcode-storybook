@@ -1,6 +1,5 @@
-import React from "react";
-
-import { Alert as MaterialAlert, AlertProps as MaterialAlertProps } from "@material-ui/lab";
+import { AlertProps as MaterialAlertProps } from "@mui/lab";
+import { Alert as MaterialAlert } from "@mui/material";
 
 export interface AlertBaseProps extends MaterialAlertProps {}
 

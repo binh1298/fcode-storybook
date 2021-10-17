@@ -10,7 +10,7 @@ describe("<ButtonBase />", () => {
     };
 
     beforeEach(() => {
-        wrapper = render(<IconButton {...props} />);
+        wrapper = render(<IconButton {...props} size="large" />);
     });
 
     it("should exist children", () => {

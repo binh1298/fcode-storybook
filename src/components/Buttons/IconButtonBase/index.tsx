@@ -1,7 +1,7 @@
 import {
     IconButton as MaterialIconButton,
     IconButtonProps as MaterialIconButtonProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface IconButtonBaseProps extends MaterialIconButtonProps {}
 

@@ -1,4 +1,4 @@
-import { MoreVert as MoreVertIcon } from "@material-ui/icons";
+import { MoreVert as MoreVertIcon } from "@mui/icons-material";
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
 import IconButtonBase from "src/components/Buttons/IconButtonBase";

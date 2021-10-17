@@ -3,7 +3,7 @@ import { ElementType } from "react";
 import {
     Typography as MaterialTypography,
     TypographyProps as MaterialTypographyProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface TypographyBaseProps extends MaterialTypographyProps {
     component?: ElementType;

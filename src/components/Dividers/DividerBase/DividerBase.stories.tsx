@@ -1,35 +1,36 @@
 import DividerBase, { DividerBaseProps } from ".";
 import BoxBase from "../../Boxes/BoxBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
-import ListItemBase from "../../ListItems/ListItemBase";
+import ListItemButtonBase from "../../ListItems/ListItemButtonBase";
 import ListBase from "../../Lists/ListBase";
 
 import { Story } from "@storybook/react";
 
 export default {
     title: "Components/DividerBase",
-    component: { DividerBase, ListBase, ListItemBase, BoxBase },
+    component: { DividerBase, ListBase, ListItemBase: ListItemButtonBase, BoxBase },
 };
 
+// @kien-tran please help me check this and the ListItemButtonBase component
 const Template: Story<DividerBaseProps> = (args) => {
     return (
         <BoxBase width={360}>
             <ListBase>
-                <ListItemBase button disableGutters>
+                <ListItemButtonBase disableGutters>
                     <ListItemTextBase primary="Inbox" />
-                </ListItemBase>
+                </ListItemButtonBase>
                 <DividerBase {...args} />
-                <ListItemBase button disableGutters>
+                <ListItemButtonBase disableGutters>
                     <ListItemTextBase primary="Drafts" />
-                </ListItemBase>
+                </ListItemButtonBase>
                 <DividerBase {...args} />
-                <ListItemBase button disableGutters>
+                <ListItemButtonBase disableGutters>
                     <ListItemTextBase primary="Trash" />
-                </ListItemBase>
+                </ListItemButtonBase>
                 <DividerBase {...args} />
-                <ListItemBase button disableGutters>
+                <ListItemButtonBase disableGutters>
                     <ListItemTextBase primary="Spam" />
-                </ListItemBase>
+                </ListItemButtonBase>
                 <DividerBase {...args} />
             </ListBase>
         </BoxBase>

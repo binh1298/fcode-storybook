@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { CardContent } from "@material-ui/core";
-import { Edit as EditIcon, Delete as DeleteIcon } from "@material-ui/icons";
+import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
+import { CardContent } from "@mui/material";
 import CardHeaderBase from "src/components/CardHeaders/CardHeaderBase";
 import CardBase from "src/components/Cards/CardBase";
 

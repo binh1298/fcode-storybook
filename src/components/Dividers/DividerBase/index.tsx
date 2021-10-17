@@ -4,7 +4,7 @@ import {
     Divider as MaterialDivider,
     DividerProps as MaterialDividerProps,
     useTheme,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface DividerBaseProps extends MaterialDividerProps {
     isHighlighted?: boolean;
