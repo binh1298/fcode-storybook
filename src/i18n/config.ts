@@ -1,5 +1,7 @@
+import enCommon from "./en/common.json";
 import enHome from "./en/home.json";
 import enLogin from "./en/login.json";
+import jaCommon from "./ja/common.json";
 import jaHome from "./ja/home.json";
 import jaLogin from "./ja/login.json";
 
@@ -11,8 +13,9 @@ export const resources = {
     en: {
         home: enHome,
         login: enLogin,
+        common: enCommon,
     },
-    ja: { home: jaHome, login: jaLogin },
+    ja: { home: jaHome, login: jaLogin, common: jaCommon },
 } as const;
 
 i18n.use(LanguageDetector)
@@ -20,6 +23,6 @@ i18n.use(LanguageDetector)
     .init({
         debug: true,
         fallbackLng: "en",
-        ns: ["home", "login"],
+        ns: ["home", "login", "common"],
         resources,
     });
