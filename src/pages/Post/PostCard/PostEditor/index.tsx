@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useRef, useState } from "react";
 
 import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
@@ -15,6 +15,7 @@ interface PostEditorProps {
 
 const PostEditor = (props: PostEditorProps) => {
     const { content, title, onSave, onCancel, type } = props;
+    const textInput = useRef(null);
     const [value, setValue] = useState<string>(content || "");
     const [newTitle, setNewTitle] = useState<string>(title || "");
     const getEditorValue = (content: string) => {
@@ -25,10 +26,12 @@ const PostEditor = (props: PostEditorProps) => {
         setNewTitle(event.target.value);
     };
     const handleSave = () => {
-        // if (type === "insert") {
-        //     setValue("");
-        //     setNewTitle("");
-        // }
+        if (type === "insert") {
+            console.log("hi");
+            setValue("");
+            setNewTitle("");
+            console.log(value);
+        }
         onSave(value, newTitle);
     };
     return (
@@ -36,6 +39,7 @@ const PostEditor = (props: PostEditorProps) => {
             <TextFieldBase
                 label="Title"
                 fullWidth
+                inputRef={textInput}
                 variant="outlined"
                 defaultValue={title}
                 onChange={changeHandler}

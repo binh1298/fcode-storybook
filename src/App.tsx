@@ -14,6 +14,8 @@ import SnackbarProvider from "./context/SnackbarContext";
 import { Routes } from "./routes";
 import replyTheme from "./theme/replyTheme";
 
+import "src/i18n/config";
+
 const queryClient = new QueryClient();
 
 function AppRoot() {

@@ -7,10 +7,10 @@ import {
     convertFromRaw,
     ContentState,
 } from "draft-js";
-import { Editor, EditorProps } from "react-draft-wysiwyg";
 
 import BoxBase from "src/components/Boxes/BoxBase";
 
+import { Editor, EditorProps } from "@nick4fake/react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export interface RichEditorBaseProps extends EditorProps {

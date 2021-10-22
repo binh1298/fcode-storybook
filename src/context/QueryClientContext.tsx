@@ -11,7 +11,6 @@ interface QueryClientContextProps {
 }
 
 export const GraphQLQueryClientContext = createContext({} as QueryClientContextProps);
-
 const GraphQLQueryClientContextProvider = ({ children }: { children: ReactNode }) => {
     const defaultQueryClient = useMemo(() => {
         const queryClient = new GraphQLClient(REACT_APP_HASURA_END_POINT, {

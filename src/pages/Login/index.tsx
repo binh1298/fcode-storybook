@@ -12,6 +12,7 @@ import useSnackbar from "src/components/SnackBars/useSnackbar";
 import ThematicBreak from "src/components/ThematicBreak";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
+import { useTranslation } from "react-i18next";
 import fcodeImage from "src/assets/fcode.png";
 import LoginTextField from "src/pages/Login/LoginTextField";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
@@ -91,6 +92,7 @@ const Login = () => {
         window.location.href = redirectUrl;
     };
 
+    const { t } = useTranslation(["login"]);
     return (
         <React.Fragment>
             <Grid container style={{ minHeight: "100vh" }}>
@@ -118,17 +120,17 @@ const Login = () => {
                         maxWidth={400}
                     >
                         <TypographyBase variant="h3" color="primary">
-                            Sign in
+                            {t("login:loginPage")}
                         </TypographyBase>
                         <BoxBase height={20} />
                         <LoginTextField
-                            label="Username or Email"
+                            label={t("login:usernameOrEmail")}
                             margin="normal"
                             icon={<AccountCircle />}
                             fullWidth
                         />
                         <LoginTextField
-                            label="Password"
+                            label={t("login:password")}
                             margin="normal"
                             type="password"
                             icon={<LockRounded />}
@@ -136,17 +138,17 @@ const Login = () => {
                         />
                         <BoxBase height={20} />
                         <ButtonBase color="primary" variant="contained" fullWidth>
-                            <TypographyBase variant="button">Sign in</TypographyBase>
+                            {t("login:login")}
                         </ButtonBase>
 
-                        <ThematicBreak caption="or" width={70} height={40} />
+                        <ThematicBreak caption={t("login:or")} width={70} height={40} />
                         <GoogleButton
                             color="default"
                             variant="outlined"
                             onClick={startLogin}
                             fullWidth
                         >
-                            Login With Google
+                            {t("login:loginWithGoogle")}
                         </GoogleButton>
                     </BoxBase>
                 </Grid>
