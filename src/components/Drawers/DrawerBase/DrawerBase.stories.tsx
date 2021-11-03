@@ -30,10 +30,6 @@ import UserProfileBase from "../../UserProfiles/UserProfileBase";
 
 import { Story, Meta } from "@storybook/react";
 
-declare module "@mui/styles/defaultTheme" {
-    interface DefaultTheme extends Theme {}
-}
-
 export default {
     title: "Components/DrawerBase",
     subcomponents: {

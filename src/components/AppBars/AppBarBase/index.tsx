@@ -12,6 +12,7 @@ export interface AppBarBaseProps extends MaterialAppBarProps {
 
 let drawerWidth: number = 360;
 
+//@kien123456k please help me refactor this to use "@mui/material/styles" instead
 const useStyles = makeStyles((theme) => ({
     appBar: {
         position: "fixed",
