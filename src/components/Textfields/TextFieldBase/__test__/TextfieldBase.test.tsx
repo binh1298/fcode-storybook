@@ -1,6 +1,17 @@
 import TextfieldBase, { TexfieldBaseProps } from "../";
 
 import { render, RenderResult } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
+
+const TestComponent = (props: TexfieldBaseProps) => (
+    <TestThemeProvider>
+        <TextfieldBase {...props} />
+    </TestThemeProvider>
+);
+
+// TODO
+//@binhTT please refactor this test so that we have one "describe" and many "it"s
+//You can have multiple describes, however, the current describes are not meaningful to other people
 
 describe("Structure of <TextfieldBase />", () => {
     const props: TexfieldBaseProps = {
@@ -10,7 +21,7 @@ describe("Structure of <TextfieldBase />", () => {
     };
 
     it("should have the label for the input", () => {
-        const { getByRole } = render(<TextfieldBase {...props} />);
+        const { getByRole } = render(<TestComponent {...props} />);
         expect(getByRole("textbox", { name: "Test" })).not.toBeUndefined();
     });
 });
@@ -25,7 +36,7 @@ describe("<TextfieldBase />", () => {
     };
 
     it("should show error color when errorMessage is available", () => {
-        wrapper = render(<TextfieldBase {...propsWithErrorMessage} />);
+        wrapper = render(<TestComponent {...propsWithErrorMessage} />);
         expect(wrapper.container).toMatchSnapshot();
     });
 });
@@ -40,7 +51,7 @@ describe("<TextfieldBase />", () => {
     };
 
     it("should not show error color when not have any error message", () => {
-        wrapper = render(<TextfieldBase {...propsWithNoErrorMessage} />);
+        wrapper = render(<TestComponent {...propsWithNoErrorMessage} />);
         expect(wrapper.container).toMatchSnapshot();
     });
 });

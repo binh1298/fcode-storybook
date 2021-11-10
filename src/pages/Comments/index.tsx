@@ -1,10 +1,10 @@
 import CommentList from "./components/CommentList";
-import { Grid } from "@material-ui/core";
 import {
     AccessTime as AccessTimeIcon,
     Person as PersonIcon,
     QuestionAnswer as QuestionAnswerIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
+import { Grid } from "@mui/material";
 import BoxBase from "src/components/Boxes/BoxBase";
 import CommentForm from "src/components/Comments/CommentForm";
 import DividerBase from "src/components/Dividers/DividerBase";
@@ -66,7 +66,7 @@ const Comments = () => {
             bgcolor="primary"
             style={{ minHeight: "100vh" }}
         >
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
                 <Grid item xs={12} sm={11} md={9} lg={8}>
                     <BoxBase
                         display="flex"
@@ -87,7 +87,7 @@ const Comments = () => {
                                 </TypographyBase>
                             </BoxBase>
                         ) : (
-                            <Grid container justify="center">
+                            <Grid container justifyContent="center">
                                 <Grid item xs={12} sm={10}>
                                     <BoxBase
                                         pt={3}
@@ -99,7 +99,7 @@ const Comments = () => {
                                             {post?.title}
                                         </TypographyBase>
                                         <BoxBase mb={1} mt={1}>
-                                            <Grid container justify="center">
+                                            <Grid container justifyContent="center">
                                                 <Grid item xs={4} sm={5}>
                                                     <BoxBase
                                                         display="flex"

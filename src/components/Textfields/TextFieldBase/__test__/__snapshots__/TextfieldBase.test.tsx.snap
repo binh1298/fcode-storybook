@@ -3,23 +3,35 @@
 exports[`<TextfieldBase /> should not show error color when not have any error message 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root makeStyles-root-17 makeStyles-root-21"
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-17 makeStyles-root-21 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-15 makeStyles-cssLabel-19 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+      class="makeStyles-cssLabel-15 makeStyles-cssLabel-19 MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1sagrvw-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink="true"
     >
       Test
     </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-16 makeStyles-fontColor-20 MuiInputBase-formControl MuiInput-formControl"
+      class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl makeStyles-fontColor-16 makeStyles-fontColor-20 css-1u1j92g-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
         aria-invalid="false"
-        class="MuiInputBase-input MuiInput-input"
+        class="MuiOutlinedInput-input MuiInputBase-input css-1trjin0-MuiInputBase-input-MuiOutlinedInput-input"
         type="text"
         value="Value"
       />
+      <fieldset
+        aria-hidden="true"
+        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+      >
+        <legend
+          class="css-186xcr5"
+        >
+          <span>
+            Test
+          </span>
+        </legend>
+      </fieldset>
     </div>
   </div>
 </div>
@@ -28,26 +40,38 @@ exports[`<TextfieldBase /> should not show error color when not have any error m
 exports[`<TextfieldBase /> should show error color when errorMessage is available 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root makeStyles-root-10 makeStyles-root-14"
+    class="MuiFormControl-root MuiTextField-root makeStyles-root-10 makeStyles-root-14 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root makeStyles-cssLabel-8 makeStyles-cssLabel-12 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink Mui-error Mui-error MuiFormLabel-filled"
+      class="makeStyles-cssLabel-8 makeStyles-cssLabel-12 MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-error MuiFormLabel-filled css-1sagrvw-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink="true"
     >
       Test
     </label>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-fontColor-9 makeStyles-fontColor-13 Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
+      class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary Mui-error MuiInputBase-formControl makeStyles-fontColor-9 makeStyles-fontColor-13 css-1u1j92g-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
         aria-invalid="true"
-        class="MuiInputBase-input MuiInput-input"
+        class="MuiOutlinedInput-input MuiInputBase-input css-1trjin0-MuiInputBase-input-MuiOutlinedInput-input"
         type="text"
         value="Value"
       />
+      <fieldset
+        aria-hidden="true"
+        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+      >
+        <legend
+          class="css-186xcr5"
+        >
+          <span>
+            Test
+          </span>
+        </legend>
+      </fieldset>
     </div>
     <p
-      class="MuiFormHelperText-root Mui-error MuiFormHelperText-filled"
+      class="MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-1id7my8-MuiFormHelperText-root"
     >
       error message
     </p>

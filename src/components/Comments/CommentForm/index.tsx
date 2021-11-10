@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChangeEventHandler } from "react";
 
-import { Send as SendIcon } from "@material-ui/icons";
+import { Send as SendIcon } from "@mui/icons-material";
 
 import BoxBase from "../../Boxes/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";

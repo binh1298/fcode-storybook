@@ -10,7 +10,7 @@
     "importOrder": [
         "^react$",
         "^[a-z\\-/]*$",
-        "(^@material-ui|components|providers)",
+        "(^@mui|components|providers)",
         "(^[src/]*$|^[./]|^[../])",
         ""
     ],

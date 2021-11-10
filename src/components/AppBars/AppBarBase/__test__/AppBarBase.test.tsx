@@ -1,8 +1,9 @@
-import { useTheme, Theme } from "@material-ui/core";
+import { useTheme, Theme } from "@mui/material";
 
 import AppBarBase, { AppBarBaseProps } from "..";
 
 import { render, screen } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
 describe("<AppBarBase />", () => {
     let props: AppBarBaseProps;
@@ -12,8 +13,14 @@ describe("<AppBarBase />", () => {
         return <AppBarBase {...props} />;
     };
 
+    const TestComponent = (props: AppBarBaseProps) => (
+        <TestThemeProvider>
+            <AppBarBaseTest {...props} />
+        </TestThemeProvider>
+    );
+
     it("should exist children with default style when drawer closed", () => {
-        render(<AppBarBaseTest />);
+        render(<TestComponent />);
         const appBarBaseBox = screen.getByTestId("AppBarBase__box");
         expect(appBarBaseBox).toHaveStyle(`
         position: fixed;
@@ -34,7 +41,7 @@ describe("<AppBarBase />", () => {
             width: drawerWidth,
             open: true,
         };
-        render(<AppBarBaseTest {...props} />);
+        render(<TestComponent {...props} />);
         const appBarBaseBox = screen.getByTestId("AppBarBase__box");
         expect(appBarBaseBox).toHaveStyle(`
         position: fixed;

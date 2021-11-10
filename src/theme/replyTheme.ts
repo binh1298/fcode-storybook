@@ -1,6 +1,5 @@
-import { createTheme, ThemeOptions } from "@material-ui/core";
-import createBreakpoint from "@material-ui/core/styles/createBreakpoints";
-import { PaletteOptions } from "@material-ui/core/styles/createPalette";
+import { createTheme } from "@mui/material";
+import { PaletteOptions, ThemeOptions } from "@mui/material/styles";
 
 const common = {
     white: "#fff",
@@ -61,19 +60,17 @@ const palette: PaletteOptions = {
     contrastThreshold: 500,
 };
 
-const breakpoints = createBreakpoint({
-    values: {
-        xs: 0,
-        sm: 600,
-        md: 960,
-        lg: 1440,
-        xl: 1920,
-    },
-});
-
 const themeObject: Readonly<ThemeOptions> = {
     palette,
-    breakpoints,
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 960,
+            lg: 1440,
+            xl: 1920,
+        },
+    },
     typography: {
         fontSize: 16,
         fontFamily: "Work Sans, sans-serif",

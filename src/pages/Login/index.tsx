@@ -3,8 +3,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { API_ROOT_URL } from "src/configuration";
 
-import { Grid, Hidden } from "@material-ui/core";
-import { AccountCircle, LockRounded } from "@material-ui/icons";
+import { AccountCircle, LockRounded } from "@mui/icons-material";
+import { Grid, Hidden } from "@mui/material";
 import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
@@ -111,7 +111,14 @@ const Login = () => {
                     </Grid>
                 </Hidden>
 
-                <Grid container xs={12} sm={6} alignItems="center" direction="row" justify="center">
+                <Grid
+                    container
+                    xs={12}
+                    sm={6}
+                    alignItems="center"
+                    direction="row"
+                    justifyContent="center"
+                >
                     <BoxBase
                         display="flex"
                         alignItems="center"
@@ -120,7 +127,7 @@ const Login = () => {
                         maxWidth={400}
                     >
                         <TypographyBase variant="h3" color="primary">
-                            {t("login:loginPage")}
+                            Sign in
                         </TypographyBase>
                         <BoxBase height={20} />
                         <LoginTextField
@@ -141,13 +148,8 @@ const Login = () => {
                             {t("login:login")}
                         </ButtonBase>
 
-                        <ThematicBreak caption={t("login:or")} width={70} height={40} />
-                        <GoogleButton
-                            color="default"
-                            variant="outlined"
-                            onClick={startLogin}
-                            fullWidth
-                        >
+                        <ThematicBreak caption="or" width={70} height={40} />
+                        <GoogleButton variant="outlined" onClick={startLogin} fullWidth>
                             {t("login:loginWithGoogle")}
                         </GoogleButton>
                     </BoxBase>

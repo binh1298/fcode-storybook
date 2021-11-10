@@ -1,4 +1,4 @@
-import { List as MaterialList, ListProps as MaterialListProps } from "@material-ui/core";
+import { List as MaterialList, ListProps as MaterialListProps } from "@mui/material";
 
 import BoxBase from "../../Boxes/BoxBase";
 

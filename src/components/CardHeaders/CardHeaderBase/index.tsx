@@ -1,7 +1,7 @@
 import {
     CardHeader as MaterialCardHeader,
     CardHeaderProps as MaterialCardHeaderProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface CardHeaderBaseProps extends MaterialCardHeaderProps {}
 

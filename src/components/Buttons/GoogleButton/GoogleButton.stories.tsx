@@ -12,6 +12,5 @@ const Template: Story<GoogleButtonProps> = (args) => <GoogleButton {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     children: "Login With Google",
-    color: "default",
     variant: "contained",
 };

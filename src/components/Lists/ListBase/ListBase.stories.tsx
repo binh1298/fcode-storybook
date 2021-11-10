@@ -5,7 +5,7 @@ import {
     DeleteOutline as DeleteIcon,
     ReportOutlined as ReportIcon,
     DraftsRounded as DraftsIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import UserProfileBase from "src/components/UserProfiles/UserProfileBase";
 
 import ListBase, { ListBaseProps } from ".";
@@ -13,7 +13,7 @@ import BoxBase from "../../Boxes/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
-import ListItemBase from "../../ListItems/ListItemBase";
+import ListItemButtonBase from "../../ListItems/ListItemButtonBase";
 import TypographyBase from "../../Typography/TypographyBase";
 
 import { Story } from "@storybook/react";
@@ -21,7 +21,7 @@ import { Story } from "@storybook/react";
 export default {
     title: "Components/ListBase",
     subcomponents: {
-        ListItemBase,
+        ListItemBase: ListItemButtonBase,
         ListItemIconBase,
         ListItemTextBase,
         TypographyBase,
@@ -44,10 +44,10 @@ export const SimpleList: Story<ListBaseProps> = (args) => (
     <BoxBase width={360}>
         <ListBase {...args}>
             {simpleListItems.map((item, index) => (
-                <ListItemBase key={index} button highlighted={item.highlighted}>
+                <ListItemButtonBase key={index} highlighted={item.highlighted}>
                     <ListItemIconBase>{item.icon}</ListItemIconBase>
                     <ListItemTextBase primary={item.text} />
-                </ListItemBase>
+                </ListItemButtonBase>
             ))}
         </ListBase>
     </BoxBase>
@@ -71,10 +71,10 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
         <UserProfileBase variant="logged-in" logoUrl={replyLogoUrl} avatarUrl={fcodeAvatarUrl} />
         <ListBase {...args}>
             {loggedInListItems.map((item, index) => (
-                <ListItemBase key={index} button highlighted={item.highlighted}>
+                <ListItemButtonBase key={index} highlighted={item.highlighted}>
                     <ListItemIconBase>{item.icon}</ListItemIconBase>
                     <ListItemTextBase primary={item.text} />
-                </ListItemBase>
+                </ListItemButtonBase>
             ))}
         </ListBase>
     </BoxBase>

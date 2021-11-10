@@ -1,5 +1,3 @@
-import { ComponentType } from "react";
-
 import { PreloadedQuery, UseQueryLoaderLoadQueryOptions } from "react-relay";
 import { GraphQLTaggedNode, OperationType, VariablesOf } from "relay-runtime";
 
@@ -12,11 +10,4 @@ export type QueryInfo = {
     query: GraphQLTaggedNode;
     preloadedQuery: PreloadedQuery<OperationType>;
     queryObject: any;
-};
-
-export type RouteCustom = {
-    path: string;
-    name: string;
-    component: ComponentType<any>;
-    queryInfo?: QueryInfo;
 };
