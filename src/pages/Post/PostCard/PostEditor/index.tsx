@@ -21,16 +21,13 @@ const PostEditor = (props: PostEditorProps) => {
     const getEditorValue = (content: string) => {
         setValue(content);
     };
-
     const changeHandler: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setNewTitle(event.target.value);
     };
     const handleSave = () => {
         if (type === "insert") {
-            console.log("hi");
             setValue("");
             setNewTitle("");
-            console.log(value);
         }
         onSave(value, newTitle);
     };
@@ -43,9 +40,10 @@ const PostEditor = (props: PostEditorProps) => {
                 variant="outlined"
                 defaultValue={title}
                 onChange={changeHandler}
+                value={newTitle}
             />
 
-            <RichEditorBase initContent={content} getValue={getEditorValue} />
+            <RichEditorBase initContent={value} getValue={getEditorValue} />
 
             <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
                 {type == "update" && (
