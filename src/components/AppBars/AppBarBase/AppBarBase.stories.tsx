@@ -1,4 +1,4 @@
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { Menu as MenuIcon } from "@mui/icons-material";
 
 import AppBarBase, { AppBarBaseProps } from ".";
 import DrawerTriggerButton from "../../Buttons/DrawerTriggerButton";

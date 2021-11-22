@@ -1,5 +1,5 @@
-import { useTheme, Theme } from "@material-ui/core";
-import { Add as AddIcon, Edit as EditIcon } from "@material-ui/icons";
+import { Add as AddIcon, Edit as EditIcon } from "@mui/icons-material";
+import { useTheme, Theme } from "@mui/material";
 
 import IconButtonBase, { IconButtonBaseProps } from "..";
 

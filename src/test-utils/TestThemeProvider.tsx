@@ -1,11 +1,15 @@
 import { PropsWithChildren } from "react";
 
-import { ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
 
 import replyTheme from "src/theme/replyTheme";
 
 const TestThemeProvider = (props: { children: PropsWithChildren<{}> }) => {
-    return <ThemeProvider theme={replyTheme}>{props.children}</ThemeProvider>;
+    return (
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={replyTheme}>{props.children}</ThemeProvider>
+        </StyledEngineProvider>
+    );
 };
 
 export default TestThemeProvider;

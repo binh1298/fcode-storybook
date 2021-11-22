@@ -3,7 +3,7 @@ import { CSSProperties } from "react";
 import {
     IconButton as MaterialIconButton,
     IconButtonProps as MaterialIconButtonProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import BoxBase from "../../Boxes/BoxBase";
 

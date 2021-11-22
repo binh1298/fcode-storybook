@@ -3,10 +3,10 @@ import { ChangeEventHandler } from "react";
 import {
     TextField as MaterialTextField,
     BaseTextFieldProps as MaterialTextFieldProps,
-    makeStyles,
     Theme,
     OutlinedInputProps,
-} from "@material-ui/core";
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 
 export interface TextfieldBaseProps extends MaterialTextFieldProps {
     label: string;
@@ -25,6 +25,9 @@ interface Color {
     color: "primary" | "error";
 }
 
+// TODO
+// @binhtt please help me remove makestyles and use this instead:
+// https://mui.com/customization/how-to-customize/#2-reusable-style-overrides
 const useStyles = makeStyles<Theme, Color>((theme) => ({
     cssLabel: {
         color: ({ color }) => theme.palette[color].main,

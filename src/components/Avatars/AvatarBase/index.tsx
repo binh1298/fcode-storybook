@@ -5,7 +5,7 @@ import {
     AvatarProps as MaterialAvatarProps,
     Box as MaterialBox,
     useTheme,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface AvatarBaseProps extends MaterialAvatarProps {
     size?: "small" | "medium" | "large" | undefined;

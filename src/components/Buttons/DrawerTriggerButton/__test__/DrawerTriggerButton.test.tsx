@@ -1,5 +1,5 @@
-import { useTheme, Theme } from "@material-ui/core";
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { Menu as MenuIcon } from "@mui/icons-material";
+import { useTheme, Theme } from "@mui/material";
 
 import DrawerTriggerButton, { DrawerTriggerButtonProps } from "..";
 

@@ -1,7 +1,7 @@
 import {
     ListItemIcon as MaterialListItemIcon,
     ListItemIconProps as MaterialListItemIconProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface ListItemIconBaseProps extends MaterialListItemIconProps {}
 

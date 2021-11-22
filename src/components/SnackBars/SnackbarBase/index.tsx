@@ -1,7 +1,7 @@
 import {
     Snackbar as MaterialSnackbar,
     SnackbarProps as MaterialSnackbarProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface SnackbarBaseProps extends MaterialSnackbarProps {}
 

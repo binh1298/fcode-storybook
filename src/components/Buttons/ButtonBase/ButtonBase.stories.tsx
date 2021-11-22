@@ -1,4 +1,4 @@
-import { Add as AddIcon, Edit as EditIcon } from "@material-ui/icons";
+import { Add as AddIcon, Edit as EditIcon } from "@mui/icons-material";
 
 import ButtonBase, { ButtonBaseProps } from ".";
 

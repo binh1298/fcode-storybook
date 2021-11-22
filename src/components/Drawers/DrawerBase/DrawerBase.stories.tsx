@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { ThemeProvider, useTheme } from "@material-ui/core";
 import {
     Menu as MenuIcon,
     Inbox as InboxIcon,
@@ -11,7 +10,8 @@ import {
     DraftsRounded as DraftsIcon,
     HelpOutlineRounded as HelpIcon,
     ExitToAppOutlined as LogoutIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
+import { ThemeProvider, Theme, StyledEngineProvider, useTheme } from "@mui/material";
 
 import DrawerBase, { DrawerBaseProps } from ".";
 import replyTheme from "../../../theme/replyTheme";
@@ -22,7 +22,7 @@ import CssBaselineBase from "../../CssBaselines/CssBaselineBase";
 import DividerBase from "../../Dividers/DividerBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
-import ListItemBase from "../../ListItems/ListItemBase";
+import ListItemButtonBase from "../../ListItems/ListItemButtonBase";
 import ListBase from "../../Lists/ListBase";
 import ToolbarBase from "../../Toolbars/ToolbarBase";
 import TypographyBase from "../../Typography/TypographyBase";
@@ -45,9 +45,11 @@ export default {
     decorators: [
         (Story) => {
             return (
-                <ThemeProvider theme={replyTheme}>
-                    <Story />
-                </ThemeProvider>
+                <StyledEngineProvider injectFirst>
+                    <ThemeProvider theme={replyTheme}>
+                        <Story />
+                    </ThemeProvider>
+                </StyledEngineProvider>
             );
         },
     ],
@@ -106,19 +108,19 @@ export const MiniVariant: Story<DrawerBaseProps> = (args) => {
                 <DividerBase />
                 <ListBase disablePadding>
                     {navigationFeatureItems.map((item, index) => (
-                        <ListItemBase key={index} button highlighted={item.highlighted}>
+                        <ListItemButtonBase key={index} highlighted={item.highlighted}>
                             <ListItemIconBase>{item.icon}</ListItemIconBase>
                             <ListItemTextBase primary={item.text} />
-                        </ListItemBase>
+                        </ListItemButtonBase>
                     ))}
                 </ListBase>
                 <DividerBase />
                 <ListBase disablePadding>
                     {navigationSupportItems.map((item, index) => (
-                        <ListItemBase key={index} button highlighted={item.highlighted}>
+                        <ListItemButtonBase key={index} highlighted={item.highlighted}>
                             <ListItemIconBase>{item.icon}</ListItemIconBase>
                             <ListItemTextBase primary={item.text} />
-                        </ListItemBase>
+                        </ListItemButtonBase>
                     ))}
                 </ListBase>
             </DrawerBase>

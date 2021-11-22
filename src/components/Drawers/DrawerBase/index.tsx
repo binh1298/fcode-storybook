@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
-import { Drawer as MaterialDrawer, DrawerProps as MaterialDrawerProps } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
+import { Drawer as MaterialDrawer, DrawerProps as MaterialDrawerProps } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 
 import BoxBase from "../../Boxes/BoxBase";
 

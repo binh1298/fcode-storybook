@@ -1,17 +1,22 @@
-
-import { muiTheme } from 'storybook-addon-material-ui';
 import replyTheme from "../src/theme/replyTheme";
 
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+
 export const decorators = [
-  muiTheme([replyTheme])
+    (Story) => (
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={replyTheme}>
+                <Story />
+            </ThemeProvider>
+        </StyledEngineProvider>
+    ),
 ];
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    controls: {
+        matchers: {
+            date: /Date$/,
+        },
     },
-  },
-}
+};

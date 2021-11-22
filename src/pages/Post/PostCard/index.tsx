@@ -8,8 +8,8 @@ import BoxConvertDraftjsToHtml from "../../../components/Boxes/BoxConvertDraftjs
 import IconButtonBase from "../../../components/Buttons/FabBase";
 import DividerBase from "../../../components/Dividers/DividerBase";
 import TypographyBase from "../../../components/Typography/TypographyBase";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 import PostEditor from "./PostEditor";
 

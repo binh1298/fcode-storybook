@@ -2,9 +2,16 @@ import CommentItem, { CommentItemProps } from "..";
 import { defaultAvatarSrc } from "..";
 
 import { render, screen, fireEvent } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
 describe("<CommentItem />", () => {
     let props: CommentItemProps;
+
+    const TestComponent = (props: CommentItemProps) => (
+        <TestThemeProvider>
+            <CommentItem {...props} />
+        </TestThemeProvider>
+    );
 
     it("should exist children with default props", () => {
         let deletedCommentId = "";
@@ -30,7 +37,7 @@ describe("<CommentItem />", () => {
             },
         };
 
-        render(<CommentItem {...props} />);
+        render(<TestComponent {...props} />);
         const CommentItemAvatar = screen.getByTestId("CommentItem__avatar");
         expect(CommentItemAvatar.querySelector("img")?.src).toBe(defaultAvatarSrc);
 
@@ -72,7 +79,7 @@ describe("<CommentItem />", () => {
             isUpdateCommentLoading: true,
         };
 
-        render(<CommentItem {...props} />);
+        render(<TestComponent {...props} />);
         const CommentItemAvatar = screen.getByTestId("CommentItem__avatar");
         expect(CommentItemAvatar.querySelector("img")?.src).toBe(authorAvatar);
 

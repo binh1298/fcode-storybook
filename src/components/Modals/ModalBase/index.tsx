@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Modal as MaterialModal, ModalProps as MaterialModalProps } from "@material-ui/core";
+import { Modal as MaterialModal, ModalProps as MaterialModalProps } from "@mui/material";
 
 export interface ModalBaseProps extends MaterialModalProps {}
 

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
-import { AppBar as MaterialAppBar, AppBarProps as MaterialAppBarProps } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
+import { AppBar as MaterialAppBar, AppBarProps as MaterialAppBarProps } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 
 import BoxBase from "../../Boxes/BoxBase";
 
@@ -12,6 +12,7 @@ export interface AppBarBaseProps extends MaterialAppBarProps {
 
 let drawerWidth: number = 360;
 
+//@kien123456k please help me refactor this to use "@mui/material/styles" instead
 const useStyles = makeStyles((theme) => ({
     appBar: {
         position: "fixed",
