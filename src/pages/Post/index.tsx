@@ -10,15 +10,17 @@ import useInsertPost from "./hooks/useInsertPost";
 import usePostsList from "./hooks/usePostList";
 import useUpdatePost from "./hooks/useUpdatePost";
 
+import { useTranslation } from "react-i18next";
 import PostCard from "src/pages/Post/PostCard";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 const Post = () => {
     const { data, isLoading, refetch: refetchPosts } = usePostsList();
+    const { t } = useTranslation(["posts"]);
     const snackbar = useSnackbar();
     const onSuccessUpdate = () => {
         refetchPosts();
-        snackbar({ severity: "success", children: "Success!" });
+        snackbar({ severity: "success", children: t("posts:successfulMessage") });
     };
     const { isLoading: isPostUpdate, mutate: updatePost } = useUpdatePost({
         onSuccess: () => {
@@ -38,7 +40,7 @@ const Post = () => {
 
     const insertPostHandler = (content: string, title: string) => {
         if (content.trim() == "" && title.trim() == "") {
-            snackbar({ severity: "error", children: "Content and title must not be blank!" });
+            snackbar({ severity: "error", children: t("posts:errorMessage") });
         } else {
             const userId = LocalStorageUtils.getUser().userId;
             insertPost({ authorId: userId, content, title });
