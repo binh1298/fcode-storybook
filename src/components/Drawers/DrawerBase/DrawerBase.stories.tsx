@@ -11,7 +11,7 @@ import {
     HelpOutlineRounded as HelpIcon,
     ExitToAppOutlined as LogoutIcon,
 } from "@mui/icons-material";
-import { ThemeProvider, Theme, StyledEngineProvider, useTheme } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, useTheme } from "@mui/material";
 
 import DrawerBase, { DrawerBaseProps } from ".";
 import replyTheme from "../../../theme/replyTheme";
