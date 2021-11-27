@@ -11,9 +11,10 @@ import UserProfileBase from "src/components/UserProfiles/UserProfileBase";
 import ListBase, { ListBaseProps } from ".";
 import BoxBase from "../../Boxes/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
+import ListItemButtonBase from "../../ListItemButtons/ListItemButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
-import ListItemButtonBase from "../../ListItems/ListItemButtonBase";
+import ListItemBase from "../../ListItems/ListItemBase";
 import TypographyBase from "../../Typography/TypographyBase";
 
 import { Story } from "@storybook/react";
@@ -21,7 +22,8 @@ import { Story } from "@storybook/react";
 export default {
     title: "Components/ListBase",
     subcomponents: {
-        ListItemBase: ListItemButtonBase,
+        ListItemBase,
+        ListItemButtonBase,
         ListItemIconBase,
         ListItemTextBase,
         TypographyBase,
@@ -31,23 +33,25 @@ export default {
     component: ListBase,
 };
 
-const simpleListItems = [
-    { icon: <InboxIcon />, text: "Inbox", highlighted: true },
-    { icon: <StarIcon />, text: "Starred", highlighted: false },
-    { icon: <SendIcon />, text: "Sent", highlighted: false },
-    { icon: <DeleteIcon />, text: "Trash", highlighted: false },
-    { icon: <ReportIcon />, text: "Spam", highlighted: false },
-    { icon: <DraftsIcon />, text: "Drafts", highlighted: false },
+const basicListItems = [
+    { icon: <InboxIcon />, text: "Inbox", isHighlighted: true },
+    { icon: <StarIcon />, text: "Starred", isHighlighted: false },
+    { icon: <SendIcon />, text: "Sent", isHighlighted: false },
+    { icon: <DeleteIcon />, text: "Trash", isHighlighted: false },
+    { icon: <ReportIcon />, text: "Spam", isHighlighted: false },
+    { icon: <DraftsIcon />, text: "Drafts", isHighlighted: false },
 ];
 
-export const SimpleList: Story<ListBaseProps> = (args) => (
+export const BasicList: Story<ListBaseProps> = (args) => (
     <BoxBase width={360}>
         <ListBase {...args}>
-            {simpleListItems.map((item, index) => (
-                <ListItemButtonBase key={index} highlighted={item.highlighted}>
-                    <ListItemIconBase>{item.icon}</ListItemIconBase>
-                    <ListItemTextBase primary={item.text} />
-                </ListItemButtonBase>
+            {basicListItems.map((item, index) => (
+                <ListItemBase key={index} disablePadding>
+                    <ListItemButtonBase isHighlighted={item.isHighlighted}>
+                        <ListItemIconBase>{item.icon}</ListItemIconBase>
+                        <ListItemTextBase primary={item.text} />
+                    </ListItemButtonBase>
+                </ListItemBase>
             ))}
         </ListBase>
     </BoxBase>
@@ -58,12 +62,12 @@ const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
 const loggedInListItems = [
-    { icon: <InboxIcon />, text: "Inbox", highlighted: true },
-    { icon: <StarIcon />, text: "Starred", highlighted: false },
-    { icon: <SendIcon />, text: "Sent", highlighted: false },
-    { icon: <DeleteIcon />, text: "Trash", highlighted: false },
-    { icon: <ReportIcon />, text: "Spam", highlighted: false },
-    { icon: <DraftsIcon />, text: "Drafts", highlighted: false },
+    { icon: <InboxIcon />, text: "Inbox", isHighlighted: true },
+    { icon: <StarIcon />, text: "Starred", isHighlighted: false },
+    { icon: <SendIcon />, text: "Sent", isHighlighted: false },
+    { icon: <DeleteIcon />, text: "Trash", isHighlighted: false },
+    { icon: <ReportIcon />, text: "Spam", isHighlighted: false },
+    { icon: <DraftsIcon />, text: "Drafts", isHighlighted: false },
 ];
 
 export const LoggedIn: Story<ListBaseProps> = (args) => (
@@ -71,10 +75,12 @@ export const LoggedIn: Story<ListBaseProps> = (args) => (
         <UserProfileBase variant="logged-in" logoUrl={replyLogoUrl} avatarUrl={fcodeAvatarUrl} />
         <ListBase {...args}>
             {loggedInListItems.map((item, index) => (
-                <ListItemButtonBase key={index} highlighted={item.highlighted}>
-                    <ListItemIconBase>{item.icon}</ListItemIconBase>
-                    <ListItemTextBase primary={item.text} />
-                </ListItemButtonBase>
+                <ListItemBase key={index} disablePadding>
+                    <ListItemButtonBase isHighlighted={item.isHighlighted}>
+                        <ListItemIconBase>{item.icon}</ListItemIconBase>
+                        <ListItemTextBase primary={item.text} />
+                    </ListItemButtonBase>
+                </ListItemBase>
             ))}
         </ListBase>
     </BoxBase>
