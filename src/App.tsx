@@ -12,7 +12,7 @@ import RelayEnvironment from "./RelayEnvironment";
 import GraphQLQueryClientContextProvider from "./context/QueryClientContext";
 import SnackbarProvider from "./context/SnackbarContext";
 import { ErrorBoundary } from "./hoc/ErrorBoundary";
-import Error from "./pages/Error";
+import ErrorPage from "./pages/Error";
 import { Routes } from "./routes";
 import replyTheme from "./theme/replyTheme";
 
@@ -30,7 +30,7 @@ function AppRoot() {
             <StyledEngineProvider injectFirst>
                 <ThemeProvider theme={replyTheme}>
                     <RelayEnvironmentProvider environment={RelayEnvironment}>
-                        <ErrorBoundary FallbackComponent={Error}>
+                        <ErrorBoundary FallbackComponent={ErrorPage}>
                             <QueryClientProvider client={queryClient}>
                                 <GraphQLQueryClientContextProvider>
                                     <Suspense fallback={<CircularProgress />}>

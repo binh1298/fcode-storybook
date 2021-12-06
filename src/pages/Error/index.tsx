@@ -14,7 +14,7 @@ const Error = () => {
             alignItems="center"
             style={{ minHeight: "100vh" }}
         >
-            <img src={errorImage} width="50%" />
+            <img src={errorImage} width="30%" />
             <ErrorIcon color="secondary" fontSize="large" />
             <TypographyBase color="secondary">
                 Something went wrong, please try again later!!
