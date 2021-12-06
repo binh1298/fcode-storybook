@@ -24,9 +24,7 @@ export const Basic: Story<AppBarBaseProps> = (args) => {
                 <DrawerTriggerButton>
                     <MenuIcon />
                 </DrawerTriggerButton>
-                <TypographyBase variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Basic App Bar
-                </TypographyBase>
+                <TypographyBase variant="h6">Basic App Bar</TypographyBase>
             </ToolbarBase>
         </AppBarBase>
     );
