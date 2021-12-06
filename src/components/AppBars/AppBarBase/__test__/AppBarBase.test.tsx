@@ -21,8 +21,8 @@ describe("<AppBarBase />", () => {
 
     it("should exist children with default style when drawer closed", () => {
         render(<TestComponent />);
-        const appBarBaseBox = screen.getByTestId("AppBarBase__box");
-        expect(appBarBaseBox).toHaveStyle(`
+        const appBarBaseRoot = screen.getByTestId("AppBarBase__root");
+        expect(appBarBaseRoot).toHaveStyle(`
         position: fixed;
         width: 100%;
         top: 0;
@@ -42,8 +42,8 @@ describe("<AppBarBase />", () => {
             open: true,
         };
         render(<TestComponent {...props} />);
-        const appBarBaseBox = screen.getByTestId("AppBarBase__box");
-        expect(appBarBaseBox).toHaveStyle(`
+        const appBarBaseRoot = screen.getByTestId("AppBarBase__root");
+        expect(appBarBaseRoot).toHaveStyle(`
         position: fixed;
         width: calc(100% - ${drawerWidth}px);
         top: 0;
