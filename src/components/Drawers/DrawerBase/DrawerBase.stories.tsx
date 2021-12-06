@@ -20,9 +20,10 @@ import BoxBase from "../../Boxes/BoxBase";
 import DrawerTriggerButton from "../../Buttons/DrawerTriggerButton";
 import CssBaselineBase from "../../CssBaselines/CssBaselineBase";
 import DividerBase from "../../Dividers/DividerBase";
+import ListItemButtonBase from "../../ListItemButtons/ListItemButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
-import ListItemButtonBase from "../../ListItems/ListItemButtonBase";
+import ListItemBase from "../../ListItems/ListItemBase";
 import ListBase from "../../Lists/ListBase";
 import ToolbarBase from "../../Toolbars/ToolbarBase";
 import TypographyBase from "../../Typography/TypographyBase";
@@ -38,6 +39,11 @@ export default {
         BoxBase,
         DrawerTriggerButton,
         CssBaselineBase,
+        ListBase,
+        ListItemBase,
+        ListItemButtonBase,
+        ListItemIconBase,
+        ListItemTextBase,
         ToolbarBase,
         TypographyBase,
     },
@@ -60,17 +66,17 @@ const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
 const navigationFeatureItems = [
-    { icon: <InboxIcon />, text: "Inbox", highlighted: true },
-    { icon: <StarIcon />, text: "Starred", highlighted: false },
-    { icon: <SendIcon />, text: "Sent", highlighted: false },
-    { icon: <DeleteIcon />, text: "Trash", highlighted: false },
-    { icon: <ReportIcon />, text: "Spam", highlighted: false },
-    { icon: <DraftsIcon />, text: "Drafts", highlighted: false },
+    { icon: <InboxIcon />, text: "Inbox", isHighlighted: true },
+    { icon: <StarIcon />, text: "Starred", isHighlighted: false },
+    { icon: <SendIcon />, text: "Sent", isHighlighted: false },
+    { icon: <DeleteIcon />, text: "Trash", isHighlighted: false },
+    { icon: <ReportIcon />, text: "Spam", isHighlighted: false },
+    { icon: <DraftsIcon />, text: "Drafts", isHighlighted: false },
 ];
 
 const navigationSupportItems = [
-    { icon: <HelpIcon />, text: "Help", highlighted: false },
-    { icon: <LogoutIcon />, text: "Logout", highlighted: false },
+    { icon: <HelpIcon />, text: "Help", isHighlighted: false },
+    { icon: <LogoutIcon />, text: "Logout", isHighlighted: false },
 ];
 
 export const MiniVariant: Story<DrawerBaseProps> = (args) => {
@@ -108,19 +114,23 @@ export const MiniVariant: Story<DrawerBaseProps> = (args) => {
                 <DividerBase />
                 <ListBase disablePadding>
                     {navigationFeatureItems.map((item, index) => (
-                        <ListItemButtonBase key={index} highlighted={item.highlighted}>
-                            <ListItemIconBase>{item.icon}</ListItemIconBase>
-                            <ListItemTextBase primary={item.text} />
-                        </ListItemButtonBase>
+                        <ListItemBase key={index} disablePadding>
+                            <ListItemButtonBase isHighlighted={item.isHighlighted}>
+                                <ListItemIconBase>{item.icon}</ListItemIconBase>
+                                <ListItemTextBase primary={item.text} />
+                            </ListItemButtonBase>
+                        </ListItemBase>
                     ))}
                 </ListBase>
                 <DividerBase />
                 <ListBase disablePadding>
                     {navigationSupportItems.map((item, index) => (
-                        <ListItemButtonBase key={index} highlighted={item.highlighted}>
-                            <ListItemIconBase>{item.icon}</ListItemIconBase>
-                            <ListItemTextBase primary={item.text} />
-                        </ListItemButtonBase>
+                        <ListItemBase key={index} disablePadding>
+                            <ListItemButtonBase key={index} isHighlighted={item.isHighlighted}>
+                                <ListItemIconBase>{item.icon}</ListItemIconBase>
+                                <ListItemTextBase primary={item.text} />
+                            </ListItemButtonBase>
+                        </ListItemBase>
                     ))}
                 </ListBase>
             </DrawerBase>
