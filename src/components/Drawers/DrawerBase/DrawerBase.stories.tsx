@@ -11,7 +11,7 @@ import {
     HelpOutlineRounded as HelpIcon,
     ExitToAppOutlined as LogoutIcon,
 } from "@mui/icons-material";
-import { ThemeProvider, Theme, StyledEngineProvider, useTheme } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, useTheme } from "@mui/material";
 
 import DrawerBase, { DrawerBaseProps } from ".";
 import replyTheme from "../../../theme/replyTheme";
@@ -55,7 +55,7 @@ export default {
     ],
 } as Meta;
 
-const replyLogoUrl = "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
+const replyLogoUrl = "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Relay_Logo.png";
 const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
@@ -88,7 +88,7 @@ export const MiniVariant: Story<DrawerBaseProps> = (args) => {
     return (
         <BoxBase display="flex">
             <CssBaselineBase />
-            <AppBarBase open={open}>
+            <AppBarBase position="fixed" open={open}>
                 <ToolbarBase>
                     <DrawerTriggerButton onClick={handleDrawerOpen} open={open}>
                         <MenuIcon />

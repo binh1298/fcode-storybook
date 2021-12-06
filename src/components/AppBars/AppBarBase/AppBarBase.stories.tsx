@@ -17,17 +17,19 @@ export default {
     },
 };
 
-export const Simple: Story<AppBarBaseProps> = (args) => {
+export const Basic: Story<AppBarBaseProps> = (args) => {
     return (
         <AppBarBase {...args}>
             <ToolbarBase>
                 <DrawerTriggerButton>
                     <MenuIcon />
                 </DrawerTriggerButton>
-                <TypographyBase variant="h6" noWrap>
-                    Simple App Bar Drawer
-                </TypographyBase>
+                <TypographyBase variant="h6">Basic App Bar</TypographyBase>
             </ToolbarBase>
         </AppBarBase>
     );
+};
+
+Basic.args = {
+    position: "static",
 };

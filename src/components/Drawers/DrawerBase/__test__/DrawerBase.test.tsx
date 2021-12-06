@@ -25,9 +25,9 @@ describe("<DrawerBase />", () => {
             variant: "permanent",
         };
         render(<TestComponent {...props} />);
-        const drawerBaseBox = screen.getByTestId("DrawerBase__box");
-        expect(drawerBaseBox).toHaveStyle(`
-        width: ${theme.spacing(8)};
+        const drawerBaseRoot = screen.getByTestId("DrawerBase__root");
+        expect(drawerBaseRoot).toHaveStyle(`
+        width: calc(${theme.spacing(8)} + 1px);
         flexShrink: 0;
         whiteSpace: nowrap;
         transition: ${theme.transitions.create("width", {
@@ -36,10 +36,9 @@ describe("<DrawerBase />", () => {
         })};
         overflowX: hidden;`);
 
-        const drawerBaseRoot = screen.getByTestId("DrawerBase__root");
         const drawerBasePaper = drawerBaseRoot.firstChild;
         expect(drawerBasePaper).toHaveStyle(`
-        width: ${theme.spacing(8)};
+        width: calc(${theme.spacing(8)} + 1px);
         overflowX: hidden;
         left: 0;
         right: auto;
@@ -55,8 +54,8 @@ describe("<DrawerBase />", () => {
             open: true,
         };
         render(<TestComponent {...props} />);
-        const drawerBaseBox = screen.getByTestId("DrawerBase__box");
-        expect(drawerBaseBox).toHaveStyle(`
+        const drawerBaseRoot = screen.getByTestId("DrawerBase__root");
+        expect(drawerBaseRoot).toHaveStyle(`
         flexShrink: 0;
         whiteSpace: nowrap;
         transition: ${theme.transitions.create("width", {
@@ -64,7 +63,6 @@ describe("<DrawerBase />", () => {
             duration: theme.transitions.duration.enteringScreen,
         })};`);
 
-        const drawerBaseRoot = screen.getByTestId("DrawerBase__root");
         const drawerBasePaper = drawerBaseRoot.firstChild;
         expect(drawerBasePaper).toHaveStyle(`
         width: ${drawerWidth}px;`);
