@@ -15,7 +15,7 @@ describe("<DividerBase />", () => {
             </TestThemeProvider>
         );
         const muiDivider = screen.getByTestId("DividerBase__root");
-        expect(muiDivider).toHaveStyle(`background-color: ${commonWhiteColor};`);
+        expect(muiDivider).toHaveStyle(`border-color: ${commonWhiteColor};`);
     });
 
     it("should exist children with hightlighted color", () => {
@@ -29,6 +29,6 @@ describe("<DividerBase />", () => {
             </TestThemeProvider>
         );
         const muiDivider = screen.getByTestId("DividerBase__root");
-        expect(muiDivider).toHaveStyle(`background-color: ${secondaryColor};`);
+        expect(muiDivider).toHaveStyle(`border-color: ${secondaryColor};`);
     });
 });

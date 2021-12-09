@@ -6,7 +6,7 @@ import BoxBase from "../../Boxes/BoxBase";
 import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/DrawerTriggerButton",
+    title: "Components/Buttons/DrawerTriggerButton",
     component: DrawerTriggerButton,
 };
 
