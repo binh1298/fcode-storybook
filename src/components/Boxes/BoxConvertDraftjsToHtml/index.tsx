@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { ContentState, convertFromRaw, EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
 
 import BoxBase from "../BoxBase";
+
+import { Editor } from "@nick4fake/react-draft-wysiwyg";
 
 export interface BoxConverterProps {
     input: string;

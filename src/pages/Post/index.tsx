@@ -10,24 +10,26 @@ import useInsertPost from "./hooks/useInsertPost";
 import usePostsList from "./hooks/usePostList";
 import useUpdatePost from "./hooks/useUpdatePost";
 
+import { useTranslation } from "react-i18next";
 import PostCard from "src/pages/Post/PostCard";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 const Post = () => {
     const { data, isLoading, refetch: refetchPosts } = usePostsList();
+    const { t } = useTranslation(["posts"]);
     const snackbar = useSnackbar();
     const onSuccessUpdate = () => {
         refetchPosts();
-        snackbar({ severity: "success", children: "Success!" });
+        snackbar({ severity: "success", children: t("posts:successfulMessage") });
     };
     const { isLoading: isPostUpdate, mutate: updatePost } = useUpdatePost({
         onSuccess: () => {
-            onSuccessUpdate;
+            onSuccessUpdate();
         },
     });
     const { isLoading: isInsert, mutate: insertPost } = useInsertPost({
         onSuccess: () => {
-            onSuccessUpdate;
+            onSuccessUpdate();
         },
     });
     const { isLoading: isPostDelete, mutate: deletePost } = useDeletePost({
@@ -38,7 +40,7 @@ const Post = () => {
 
     const insertPostHandler = (content: string, title: string) => {
         if (content.trim() == "" && title.trim() == "") {
-            snackbar({ severity: "error", children: "Content and title must not be blank!" });
+            snackbar({ severity: "error", children: t("posts:errorMessage") });
         } else {
             const userId = LocalStorageUtils.getUser().userId;
             insertPost({ authorId: userId, content, title });
@@ -53,16 +55,16 @@ const Post = () => {
             flexDirection="column"
         >
             <Grid container justifyContent="center">
-                {isLoading || isPostDelete || isPostUpdate || isInsert ? (
-                    <CircularProgressBase color="secondary" />
-                ) : (
-                    <BoxBase
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                        flexDirection="column"
-                    >
-                        {data?.posts.map((post) => {
+                <BoxBase
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    flexDirection="column"
+                >
+                    {isLoading || isPostDelete || isPostUpdate || isInsert ? (
+                        <CircularProgressBase color="secondary" />
+                    ) : (
+                        data?.posts.map((post) => {
                             return (
                                 <PostCard
                                     key={post.postId}
@@ -72,24 +74,23 @@ const Post = () => {
                                     onDelete={deletePost}
                                 />
                             );
-                        })}
-                        <BoxBase
-                            shouldHaveBorder={true}
-                            minWidth={500}
-                            maxWidth={600}
-                            minHeight={100}
-                            boxSizing="border-box"
-                            p={2}
-                            display="flex"
-                            alignItems="center"
-                            borderRadius={5}
-                            margin={2}
-                            bgcolor="common"
-                        >
-                            <PostEditor onSave={insertPostHandler} type="insert" />
-                        </BoxBase>
+                        })
+                    )}
+                    <BoxBase
+                        shouldHaveBorder={true}
+                        width={600}
+                        minHeight={100}
+                        boxSizing="border-box"
+                        p={2}
+                        display="flex"
+                        alignItems="center"
+                        borderRadius={5}
+                        margin={2}
+                        bgcolor="common"
+                    >
+                        <PostEditor onSave={insertPostHandler} type="insert" />
                     </BoxBase>
-                )}
+                </BoxBase>
             </Grid>
             <Footer bgcolor="secondary" />
         </BoxBase>

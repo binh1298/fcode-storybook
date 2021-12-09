@@ -37,8 +37,7 @@ const PostCard = (props: PostCardProps) => {
     return (
         <BoxBase
             shouldHaveBorder={true}
-            minWidth={500}
-            maxWidth={600}
+            width={600}
             minHeight={100}
             boxSizing="border-box"
             p={2}
@@ -69,7 +68,7 @@ const PostCard = (props: PostCardProps) => {
                 </BoxBase>
                 <DividerBase variant="fullWidth"></DividerBase>
                 <BoxBase>
-                    <TypographyBase variant="h5">{post.title}</TypographyBase>
+                    {!isOpen && <TypographyBase variant="h5">{post.title}</TypographyBase>}
                     {!isOpen ? (
                         <BoxConvertDraftjsToHtml input={post.content} />
                     ) : (
