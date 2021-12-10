@@ -1,9 +1,9 @@
 import { MoreVert as MoreVertIcon } from "@mui/icons-material";
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
-import IconButtonBase from "src/components/Buttons/IconButtonBase";
 import CardContentBase from "src/components/CardContents/CardContentBase";
 import CardHeaderBase from "src/components/CardHeaders/CardHeaderBase";
+import IconButtonBase from "src/components/IconButtons/IconButtonBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 import CardBase, { CardBaseProps } from ".";
@@ -25,7 +25,7 @@ export default {
 };
 const avatarLink = "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
-export const SimpleCard: Story<CardBaseProps> = (args) => (
+export const BasicCard: Story<CardBaseProps> = (args) => (
     <BoxBase width={360}>
         <CardBase {...args}>
             <CardHeaderBase
