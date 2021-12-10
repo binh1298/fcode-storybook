@@ -17,9 +17,9 @@ import DrawerBase, { DrawerBaseProps } from ".";
 import replyTheme from "../../../theme/replyTheme";
 import AppBarBase from "../../AppBars/AppBarBase";
 import BoxBase from "../../Boxes/BoxBase";
-import DrawerTriggerButton from "../../Buttons/DrawerTriggerButton";
 import CssBaselineBase from "../../CssBaselines/CssBaselineBase";
 import DividerBase from "../../Dividers/DividerBase";
+import DrawerTriggerButton from "../../IconButtons/DrawerTriggerButton";
 import ListItemButtonBase from "../../ListItemButtons/ListItemButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
@@ -27,7 +27,7 @@ import ListItemBase from "../../ListItems/ListItemBase";
 import ListBase from "../../Lists/ListBase";
 import ToolbarBase from "../../Toolbars/ToolbarBase";
 import TypographyBase from "../../Typography/TypographyBase";
-import UserProfileBase from "../../UserProfiles/UserProfileBase";
+import UserProfileBase from "../../UserProfiles/UserProfile";
 
 import { Story, Meta } from "@storybook/react";
 
