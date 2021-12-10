@@ -9,11 +9,11 @@ import {
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
-import IconButtonBase from "src/components/Buttons/IconButtonBase";
 import DividerBase from "src/components/Dividers/DividerBase";
+import IconButtonBase from "src/components/IconButtons/IconButtonBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
-export interface UserProfileBaseProps {
+export interface UserProfileProps {
     width?: number;
     variant?: "logged-in" | "logged-out";
     logoUrl?: string;
@@ -21,7 +21,7 @@ export interface UserProfileBaseProps {
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
+const UserProfileLoggedIn: React.FC<UserProfileProps> = (props) => {
     const { width, logoUrl, avatarUrl, onClick } = props;
 
     return (
@@ -33,6 +33,7 @@ const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
                 px={3}
                 pt={3}
                 pb={1}
+                data-testid="UserProfile__root"
             >
                 <BoxBase display="flex" bgcolor="primary">
                     <IconButtonBase color="inherit" edge="start" onClick={onClick}>
@@ -68,12 +69,19 @@ const UserProfileLoggedIn: React.FC<UserProfileBaseProps> = (props) => {
     );
 };
 
-const UserProfileLoggedOut: React.FC<UserProfileBaseProps> = (props) => {
+const UserProfileLoggedOut: React.FC<UserProfileProps> = (props) => {
     const { width, logoUrl, onClick } = props;
 
     return (
         <BoxBase width={width}>
-            <BoxBase display="flex" bgcolor="primary" pt={3} px={3} pb={1}>
+            <BoxBase
+                display="flex"
+                bgcolor="primary"
+                pt={3}
+                px={3}
+                pb={1}
+                data-testid="UserProfile__root"
+            >
                 <IconButtonBase color="inherit" edge="start" onClick={onClick}>
                     <ArrowLeftIcon />
                 </IconButtonBase>
@@ -106,7 +114,7 @@ const UserProfileLoggedOut: React.FC<UserProfileBaseProps> = (props) => {
     );
 };
 
-const UserProfileBase = (props: UserProfileBaseProps) => {
+const UserProfileBase = (props: UserProfileProps) => {
     const { variant, ...rest } = props;
 
     switch (variant) {
