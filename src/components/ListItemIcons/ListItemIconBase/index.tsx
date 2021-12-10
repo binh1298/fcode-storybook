@@ -6,7 +6,7 @@ import {
 export interface ListItemIconBaseProps extends MaterialListItemIconProps {}
 
 const ListItemIconBase = (props: ListItemIconBaseProps) => {
-    return <MaterialListItemIcon style={{ color: "inherit" }} {...props} />;
+    return <MaterialListItemIcon sx={{ color: "inherit" }} {...props} />;
 };
 
 export default ListItemIconBase;

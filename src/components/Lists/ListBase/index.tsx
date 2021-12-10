@@ -1,17 +1,16 @@
 import { List as MaterialList, ListProps as MaterialListProps } from "@mui/material";
-
-import BoxBase from "../../Boxes/BoxBase";
+import { styled } from "@mui/material/styles";
 
 export interface ListBaseProps extends MaterialListProps {}
 
-const ListBase = (props: ListBaseProps) => {
-    const { disablePadding } = props;
+const List = styled(MaterialList)<ListBaseProps>(({ theme }) => ({
+    backgroundColor: theme.palette.primary.main,
+    paddingLeft: "1rem",
+    paddingRight: "1rem",
+}));
 
-    return (
-        <BoxBase bgcolor="primary" px={disablePadding ? 0 : 2}>
-            <MaterialList {...props} />
-        </BoxBase>
-    );
+const ListBase = (props: ListBaseProps) => {
+    return <List {...props} />;
 };
 
 export default ListBase;

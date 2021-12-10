@@ -1,14 +1,14 @@
-import ListBase, { ListBaseProps } from "..";
+import ListItemBase, { ListItemBaseProps } from "..";
 
 import { render, screen } from "@testing-library/react";
 
-describe("<ListBase />", () => {
-    let props: ListBaseProps = {
+describe("<ListItemBase />", () => {
+    let props: ListItemBaseProps = {
         children: "Test",
     };
 
     beforeEach(() => {
-        render(<ListBase {...props} />);
+        render(<ListItemBase {...props} />);
     });
 
     it("should exist children", () => {

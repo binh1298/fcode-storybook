@@ -1,35 +1,30 @@
-import { useTheme, Theme } from "@mui/material";
-
 import ListItemButtonBase, { ListItemButtonBaseProps } from "..";
 
 import { render, screen } from "@testing-library/react";
 import TestThemeProvider from "src/test-utils/TestThemeProvider";
+import replyTheme from "src/theme/replyTheme";
 
 describe("<ListItemButtonBase />", () => {
     let props: ListItemButtonBaseProps;
-    let theme: Theme;
-    const ListItemButtonBaseTest = (props: ListItemButtonBaseProps) => {
-        theme = useTheme();
-        return <ListItemButtonBase {...props} />;
-    };
 
-    const TestComponent = (props: ListItemButtonBaseProps) => {
-        return (
-            <TestThemeProvider>
-                <ListItemButtonBaseTest {...props} />
-            </TestThemeProvider>
-        );
-    };
+    const TestComponent = (props: ListItemButtonBaseProps) => (
+        <TestThemeProvider>
+            <ListItemButtonBase {...props} />
+        </TestThemeProvider>
+    );
 
     it("should exist children with default variant and color", () => {
         props = {
             children: "Test",
         };
         render(<TestComponent {...props} />);
-        const muiListItem = screen.getByTestId("ListItemButtonBase__root");
-        expect(muiListItem).toHaveStyle("justify-content: flex-start;");
-        expect(muiListItem).toHaveStyle(`color: ${theme.palette.primary.contrastText};`);
+        const listItemButtonBaseRoot = screen.getByTestId("ListItemButtonBase__root");
+
         expect(screen.getByText("Test")).toBeInTheDocument();
+        expect(listItemButtonBaseRoot).toHaveStyle(`
+            justify-content: flex-start;
+            color: ${replyTheme.palette.primary.contrastText};
+        `);
     });
 
     it("should exist children with default variant and hightlight color", () => {
@@ -38,9 +33,12 @@ describe("<ListItemButtonBase />", () => {
             isHighlighted: true,
         };
         render(<TestComponent {...props} />);
-        const muiListItem = screen.getByTestId("ListItemButtonBase__root");
-        expect(muiListItem).toHaveStyle("justify-content: flex-start;");
-        expect(muiListItem).toHaveStyle(`color: ${theme.palette.secondary.main};`);
+        const listItemButtonBaseRoot = screen.getByTestId("ListItemButtonBase__root");
+
         expect(screen.getByText("Test")).toBeInTheDocument();
+        expect(listItemButtonBaseRoot).toHaveStyle(`
+            justify-content: flex-start;
+            color: ${replyTheme.palette.secondary.main};
+        `);
     });
 });
