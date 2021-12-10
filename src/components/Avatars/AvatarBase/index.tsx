@@ -1,47 +1,39 @@
-import { CSSProperties } from "react";
-
-import {
-    Avatar as MaterialAvatar,
-    AvatarProps as MaterialAvatarProps,
-    Box as MaterialBox,
-    useTheme,
-} from "@mui/material";
+import { Avatar as MaterialAvatar, AvatarProps as MaterialAvatarProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 export interface AvatarBaseProps extends MaterialAvatarProps {
     size?: "small" | "medium" | "large" | undefined;
 }
 
-const avatarStyle = {
-    width: "inherit",
-    height: "inherit",
-};
+const Avatar = styled(MaterialAvatar, {
+    shouldForwardProp: (prop) => prop !== "size",
+})<AvatarBaseProps>(({ theme, size }) => {
+    let width: number;
 
-const AvatarBase = (props: AvatarBaseProps) => {
-    const theme = useTheme();
-    let avatarBaseStyle: CSSProperties = {
-        borderRadius: "50%",
-        borderColor: theme.palette.primary.light,
-        borderWidth: "1px",
-    };
-    switch (props.size) {
+    switch (size) {
         case "small":
-            avatarBaseStyle.width = 24;
+            width = 24;
             break;
         case "medium":
-            avatarBaseStyle.width = 36;
+            width = 36;
             break;
         case "large":
-            avatarBaseStyle.width = 56;
+            width = 56;
             break;
         default:
-            avatarBaseStyle.width = 36;
+            width = 36;
     }
 
-    return (
-        <MaterialBox data-testid="muiBox" style={avatarBaseStyle}>
-            <MaterialAvatar data-testid="muiAvatar" {...props} style={avatarStyle} />
-        </MaterialBox>
-    );
+    return {
+        width,
+        height: width,
+        borderWidth: "1px",
+        borderColor: theme.palette.primary.light,
+    };
+});
+
+const AvatarBase = (props: AvatarBaseProps) => {
+    return <Avatar data-testid="AvatarBase_root" {...props} />;
 };
 
 export default AvatarBase;
