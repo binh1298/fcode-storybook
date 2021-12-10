@@ -1,7 +1,7 @@
 import { Menu as MenuIcon } from "@mui/icons-material";
 
 import AppBarBase, { AppBarBaseProps } from ".";
-import DrawerTriggerButton from "../../Buttons/DrawerTriggerButton";
+import DrawerTriggerButton from "../../IconButtons/DrawerTriggerButton";
 import ToolbarBase from "../../Toolbars/ToolbarBase";
 import TypographyBase from "../../Typography/TypographyBase";
 
