@@ -5,7 +5,7 @@ import IconButtonBase, { IconButtonBaseProps } from ".";
 import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/IconButtonBase",
+    title: "Components/IconButtons/IconButtonBase",
     component: IconButtonBase,
 };
 
