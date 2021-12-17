@@ -11,6 +11,8 @@ import "./App.css";
 import RelayEnvironment from "./RelayEnvironment";
 import GraphQLQueryClientContextProvider from "./context/QueryClientContext";
 import SnackbarProvider from "./context/SnackbarContext";
+import { ErrorBoundary } from "./hoc/ErrorBoundary";
+import ErrorPage from "./pages/Error";
 import { Routes } from "./routes";
 import replyTheme from "./theme/replyTheme";
 
@@ -28,17 +30,19 @@ function AppRoot() {
             <StyledEngineProvider injectFirst>
                 <ThemeProvider theme={replyTheme}>
                     <RelayEnvironmentProvider environment={RelayEnvironment}>
-                        <QueryClientProvider client={queryClient}>
-                            <GraphQLQueryClientContextProvider>
-                                <Suspense fallback={<CircularProgress />}>
-                                    <SnackbarProvider>
-                                        <BrowserRouter>
-                                            <Routes />
-                                        </BrowserRouter>
-                                    </SnackbarProvider>
-                                </Suspense>
-                            </GraphQLQueryClientContextProvider>
-                        </QueryClientProvider>
+                        <ErrorBoundary FallbackComponent={ErrorPage}>
+                            <QueryClientProvider client={queryClient}>
+                                <GraphQLQueryClientContextProvider>
+                                    <Suspense fallback={<CircularProgress />}>
+                                        <SnackbarProvider>
+                                            <BrowserRouter>
+                                                <Routes />
+                                            </BrowserRouter>
+                                        </SnackbarProvider>
+                                    </Suspense>
+                                </GraphQLQueryClientContextProvider>
+                            </QueryClientProvider>
+                        </ErrorBoundary>
                     </RelayEnvironmentProvider>
                 </ThemeProvider>
             </StyledEngineProvider>

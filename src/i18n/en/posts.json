@@ -1,0 +1,8 @@
+{
+    "submit": "Submit",
+    "title": "Title",
+    "successfulMessage": "Success!",
+    "errorMessage": "Content and title must not be blank!",
+    "save": "Save",
+    "cancel": "Cancel"
+}
