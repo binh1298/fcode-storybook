@@ -1,21 +1,15 @@
-import { useTheme, Theme } from "@mui/material";
-
 import DrawerBase, { DrawerBaseProps } from "..";
 
 import { render, screen } from "@testing-library/react";
 import TestThemeProvider from "src/test-utils/TestThemeProvider";
+import replyTheme from "src/theme/replyTheme";
 
 describe("<DrawerBase />", () => {
     let props: DrawerBaseProps;
-    let theme: Theme;
-    const DrawerBaseTest = (props: DrawerBaseProps) => {
-        theme = useTheme();
-        return <DrawerBase {...props} />;
-    };
 
     const TestComponent = (props: DrawerBaseProps) => (
         <TestThemeProvider>
-            <DrawerBaseTest {...props} />
+            <DrawerBase {...props} />
         </TestThemeProvider>
     );
 
@@ -27,18 +21,18 @@ describe("<DrawerBase />", () => {
         render(<TestComponent {...props} />);
         const drawerBaseRoot = screen.getByTestId("DrawerBase__root");
         expect(drawerBaseRoot).toHaveStyle(`
-        width: calc(${theme.spacing(8)} + 1px);
+        width: calc(${replyTheme.spacing(8)} + 1px);
         flexShrink: 0;
         whiteSpace: nowrap;
-        transition: ${theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
+        transition: ${replyTheme.transitions.create("width", {
+            easing: replyTheme.transitions.easing.sharp,
+            duration: replyTheme.transitions.duration.leavingScreen,
         })};
         overflowX: hidden;`);
 
         const drawerBasePaper = drawerBaseRoot.firstChild;
         expect(drawerBasePaper).toHaveStyle(`
-        width: calc(${theme.spacing(8)} + 1px);
+        width: calc(${replyTheme.spacing(8)} + 1px);
         overflowX: hidden;
         left: 0;
         right: auto;
@@ -58,13 +52,12 @@ describe("<DrawerBase />", () => {
         expect(drawerBaseRoot).toHaveStyle(`
         flexShrink: 0;
         whiteSpace: nowrap;
-        transition: ${theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
+        transition: ${replyTheme.transitions.create("width", {
+            easing: replyTheme.transitions.easing.sharp,
+            duration: replyTheme.transitions.duration.enteringScreen,
         })};`);
 
         const drawerBasePaper = drawerBaseRoot.firstChild;
-        expect(drawerBasePaper).toHaveStyle(`
-        width: ${drawerWidth}px;`);
+        expect(drawerBasePaper).toHaveStyle(`width: ${drawerWidth}px;`);
     });
 });

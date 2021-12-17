@@ -6,7 +6,7 @@ import {
     ReportOutlined as ReportIcon,
     DraftsRounded as DraftsIcon,
 } from "@mui/icons-material";
-import UserProfileBase from "src/components/UserProfiles/UserProfileBase";
+import UserProfileBase from "src/components/UserProfiles/UserProfile";
 
 import ListBase, { ListBaseProps } from ".";
 import BoxBase from "../../Boxes/BoxBase";
@@ -57,7 +57,7 @@ export const BasicList: Story<ListBaseProps> = (args) => (
     </BoxBase>
 );
 
-const replyLogoUrl = "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
+const replyLogoUrl = "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Relay_Logo.png";
 const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 

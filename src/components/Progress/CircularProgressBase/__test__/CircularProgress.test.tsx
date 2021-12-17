@@ -2,18 +2,21 @@ import CircularProgressBase, { CircularProgressBaseProps } from "..";
 
 import { render, screen } from "@testing-library/react";
 import TestThemeProvider from "src/test-utils/TestThemeProvider";
+import replyTheme from "src/theme/replyTheme";
 
 describe("<CircularProgressBase />", () => {
     let props: CircularProgressBaseProps;
-    const primaryColor = "#344955";
 
-    it("should exist children with default color", () => {
+    beforeEach(() => {
         render(
             <TestThemeProvider>
                 <CircularProgressBase {...props} />
             </TestThemeProvider>
         );
-        const muiCircularProgress = screen.getByTestId("CircularProgressBase__root");
-        expect(muiCircularProgress).toHaveStyle(`color: ${primaryColor};`);
+    });
+
+    it("should exist children with default color", () => {
+        const CircularProgressBaseRoot = screen.getByTestId("CircularProgressBase__root");
+        expect(CircularProgressBaseRoot).toHaveStyle(`color: ${replyTheme.palette.primary.main};`);
     });
 });
