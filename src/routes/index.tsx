@@ -57,7 +57,7 @@ const privateRoutes: RouteCustom[] = [
         component: Post,
     },
     {
-        path: "/",
+        path: "/home",
         name: "home",
         component: Home,
         queryInfo: {

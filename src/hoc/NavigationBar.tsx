@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, useLocation } from "react-router-dom";
 
 import { Menu as MenuIcon } from "@mui/icons-material";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
@@ -28,13 +28,14 @@ import LocalStorageUtils from "../utils/LocalStorageUtils";
 import LanguageSwitcher from "src/i18n/LanguageSwitcher";
 
 const navigationFeatureItems = [
-    { icon: <HomeIcon />, text: "Home", isHighlighted: true, path: "/home" },
-    { icon: <PeopleIcon />, text: "User", isHighlighted: false, path: "/users" },
-    { icon: <AllInboxIcon />, text: "Post", isHighlighted: false, path: "/posts" },
-    { icon: <CommentIcon />, text: "Comment", isHighlighted: false, path: "/comments" },
+    { icon: <HomeIcon />, text: "Home", path: "/home" },
+    { icon: <PeopleIcon />, text: "User", path: "/users" },
+    { icon: <AllInboxIcon />, text: "Post", path: "/posts" },
+    { icon: <CommentIcon />, text: "Comment", path: "/comments" },
 ];
 const NavigationBar: React.FC = () => {
     const [open, setOpen] = useState(false);
+    const location = useLocation();
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -78,7 +79,10 @@ const NavigationBar: React.FC = () => {
                 <ListBase disablePadding bgcolor="primary">
                     {navigationFeatureItems.map((item, index) => (
                         <NavLink to={item.path} style={{ textDecoration: "none" }} key={index}>
-                            <ListItemButtonBase key={index} highlighted={item.isHighlighted}>
+                            <ListItemButtonBase
+                                key={index}
+                                highlighted={location.pathname === item.path}
+                            >
                                 <ListItemIconBase>{item.icon}</ListItemIconBase>
                                 <ListItemTextBase primary={item.text} />
                             </ListItemButtonBase>
