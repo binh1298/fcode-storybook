@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
     },
+    paper: {
+        background: theme.palette.primary.main,
+    },
 }));
 
 const DrawerBase = (props: DrawerBaseProps) => {
@@ -54,7 +57,7 @@ const DrawerBase = (props: DrawerBaseProps) => {
         >
             <MaterialDrawer
                 classes={{
-                    paper: clsx({
+                    paper: clsx(classes.paper, {
                         [classes.drawerOpen]: open,
                         [classes.drawerClose]: !open,
                     }),

@@ -8,6 +8,7 @@ import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
+import NavigationBar from "src/hoc/NavigationBar";
 import Comments from "src/pages/Comments";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
@@ -73,10 +74,13 @@ export const Routes = () => {
             {publicRoutes.map((route) => (
                 <PublicRoute key={route.name} exact={true} {...route} />
             ))}
-            {privateRoutes.map((route) => {
-                const { queryInfo, ...rest } = route;
-                return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;
-            })}
+            <>
+                <NavigationBar />
+                {privateRoutes.map((route) => {
+                    const { queryInfo, ...rest } = route;
+                    return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;
+                })}
+            </>
         </Switch>
     );
 };

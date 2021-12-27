@@ -49,10 +49,11 @@ const Post = () => {
     return (
         <BoxBase
             display="flex"
-            bgcolor="primary"
+            bgcolor="common"
             style={{ minHeight: "100vh" }}
             justifyContent="flex-end"
             flexDirection="column"
+            paddingTop={20}
         >
             <Grid container justifyContent="center">
                 <BoxBase
