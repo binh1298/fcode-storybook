@@ -15,7 +15,7 @@ type ErrorBoundaryState = { error: Error | null };
 
 const initialState: ErrorBoundaryState = { error: null };
 
-class ErrorBoundary extends React.Component<
+class ErrorBoundary extends React.PureComponent<
     React.PropsWithRef<React.PropsWithChildren<ErrorBoundaryProps>>,
     ErrorBoundaryState
 > {
@@ -34,12 +34,12 @@ class ErrorBoundary extends React.Component<
     }
 
     componentDidCatch(error: Error, info: React.ErrorInfo) {
+        this.setState({ error });
         this.props.onError?.(error, info);
     }
 
     render() {
         const { error } = this.state;
-
         const { FallbackComponent } = this.props;
 
         if (error !== null) {

@@ -1,32 +1,67 @@
-import { MenuItem, Select } from "@mui/material";
+import { useState } from "react";
+
+import TranslateIcon from "@mui/icons-material/Translate";
+import { MenuItem, Menu } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import BoxBase from "src/components/Boxes/BoxBase";
+import IconButtonBase from "src/components/Buttons/IconButtonBase";
+import DividerBase from "src/components/Dividers/DividerBase";
+
+import { LANGUAGES_LABEL } from "./config";
 
 import { useTranslation } from "react-i18next";
 
-const languages: {
-    en: { nativeName: string };
-    ja: { nativeName: string };
-} = {
-    en: { nativeName: "English" },
-    ja: { nativeName: "Japanese" },
-};
-
 const LanguageSwitcher = () => {
+    const [languageMenu, setLanguageMenu] = useState(null);
+    const handleLanguageIconClick = (event: any) => {
+        setLanguageMenu(event.currentTarget);
+    };
+    const handleLanguageMenuClose = (event: any) => {
+        const value = event.currentTarget.lang;
+        if (!(value === "en" || value === "ja")) return;
+        i18n.changeLanguage(value);
+        setLanguageMenu(null);
+    };
+
     const { i18n } = useTranslation();
     return (
-        <Select
-            labelId="label"
-            id="select"
-            onChange={(event) => {
-                const value = event.target.value;
-                if (!(value === "en" || value === "ja")) return;
-
-                i18n.changeLanguage(value);
-            }}
-            value={i18n.language}
-        >
-            <MenuItem value={"en"}>{languages["en"].nativeName}</MenuItem>
-            <MenuItem value={"ja"}>{languages["ja"].nativeName}</MenuItem>
-        </Select>
+        <>
+            <Tooltip title="Change language" enterDelay={200}>
+                <IconButtonBase color="inherit" onClick={handleLanguageIconClick}>
+                    <TranslateIcon />
+                </IconButtonBase>
+            </Tooltip>
+            <Menu
+                id="language-menu"
+                anchorEl={languageMenu}
+                open={Boolean(languageMenu)}
+                onClose={handleLanguageMenuClose}
+                PaperProps={{
+                    variant: "outlined",
+                    elevation: 0,
+                    sx: {
+                        mt: 0.5,
+                        minWidth: 180,
+                        backgroundImage: "none",
+                    },
+                }}
+            >
+                {LANGUAGES_LABEL.map((item, index) => (
+                    <MenuItem
+                        key={index}
+                        value={item.code}
+                        onClick={handleLanguageMenuClose}
+                        lang={item.code}
+                        selected={i18n.language === item.code}
+                    >
+                        {item.text}
+                    </MenuItem>
+                ))}
+                <BoxBase sx={{ my: 1 }}>
+                    <DividerBase />
+                </BoxBase>
+            </Menu>
+        </>
     );
 };
 
