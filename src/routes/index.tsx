@@ -4,11 +4,12 @@ import { loadQuery } from "react-relay";
 import { Switch } from "react-router-dom";
 import { QueryInfo } from "src/common/types";
 
+import NavigationBar from "src/components/NavigationBar";
+
 import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
-import NavigationBar from "src/hoc/NavigationBar";
 import Comments from "src/pages/Comments";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";

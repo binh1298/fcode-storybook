@@ -4,8 +4,8 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import { MenuItem, Menu } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import BoxBase from "src/components/Boxes/BoxBase";
-import IconButtonBase from "src/components/Buttons/IconButtonBase";
 import DividerBase from "src/components/Dividers/DividerBase";
+import IconButtonBase from "src/components/IconButtons/IconButtonBase";
 
 import { LANGUAGES_LABEL } from "./config";
 
@@ -40,7 +40,7 @@ const LanguageSwitcher = () => {
                     variant: "outlined",
                     elevation: 0,
                     sx: {
-                        mt: 0.5,
+                        mt: 1,
                         minWidth: 180,
                         backgroundImage: "none",
                     },
