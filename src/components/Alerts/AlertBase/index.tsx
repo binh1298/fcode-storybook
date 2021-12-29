@@ -7,7 +7,14 @@ export interface AlertBaseProps extends MaterialAlertProps {}
 
 const AlertBase = React.forwardRef((props: AlertBaseProps, ref: React.Ref<HTMLDivElement>) => {
     const { variant, ...rest } = props;
-    return <MaterialAlert variant={variant || "filled"} {...rest} ref={ref} />;
+    return (
+        <MaterialAlert
+            data-testid="AlertBase__root"
+            variant={variant || "filled"}
+            {...rest}
+            ref={ref}
+        />
+    );
 });
 
 export default AlertBase;
