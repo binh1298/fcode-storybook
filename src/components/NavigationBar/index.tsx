@@ -5,7 +5,6 @@ import { NavLink, withRouter, useLocation } from "react-router-dom";
 import { ArrowLeft as ArrowLeftIcon } from "@mui/icons-material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
-import CommentIcon from "@mui/icons-material/Comment";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
 import Tooltip from "@mui/material/Tooltip";
@@ -29,10 +28,9 @@ import LanguageSwitcher from "src/i18n/LanguageSwitcher";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 const navigationFeatureItems = [
-    { icon: <HomeIcon />, text: "Home", path: "/home" },
+    { icon: <HomeIcon />, text: "Home", path: "/" },
     { icon: <PeopleIcon />, text: "User", path: "/users" },
     { icon: <AllInboxIcon />, text: "Post", path: "/posts" },
-    { icon: <CommentIcon />, text: "Comment", path: "/comments" },
 ];
 const NavigationBar: React.FC = () => {
     const [open, setOpen] = useState(false);

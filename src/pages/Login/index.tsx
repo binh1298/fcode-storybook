@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import { useHistory } from "react-router";
 import { API_ROOT_URL } from "src/configuration";
@@ -14,6 +14,7 @@ import TypographyBase from "src/components/Typography/TypographyBase";
 
 import { useTranslation } from "react-i18next";
 import fcodeImage from "src/assets/fcode.png";
+import { GraphQLQueryClientContext } from "src/context/QueryClientContext";
 import LoginTextField from "src/pages/Login/LoginTextField";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
@@ -24,6 +25,7 @@ interface ApiResponse<T> {
 }
 const Login = () => {
     const [redirectUrl, setRedirectUrl] = useState<string>("");
+    const { updateQueryClient } = useContext(GraphQLQueryClientContext);
     const apiEndpoint = API_ROOT_URL;
     const redirectRouteAfterLogin = "/";
     const history = useHistory();
@@ -61,6 +63,7 @@ const Login = () => {
                 console.log("fetchToken", resultObject);
                 if (resultObject.success) {
                     LocalStorageUtils.setItem("token", resultObject.data);
+                    updateQueryClient(LocalStorageUtils.getToken());
                     history.push(redirectRouteAfterLogin);
                 } else if (resultObject.data.code === 401) {
                     fetchLoginUri();
@@ -71,7 +74,7 @@ const Login = () => {
                 console.log("error", error);
             }
         },
-        [apiEndpoint, history, fetchLoginUri, snackbar]
+        [apiEndpoint, history, fetchLoginUri, snackbar, updateQueryClient]
     );
 
     useEffect(() => {

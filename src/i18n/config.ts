@@ -33,6 +33,7 @@ i18n.use(LanguageDetector)
     .use(initReactI18next)
     .init({
         debug: true,
+        lng: "en",
         fallbackLng: "en",
         ns: ["home", "login", "common", "posts"],
         resources,

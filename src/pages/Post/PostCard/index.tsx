@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { Link } from "react-router-dom";
 import { Posts, Users } from "src/generated/graphql";
 
 import AvatarBase from "../../../components/Avatars/AvatarBase";
@@ -8,8 +9,10 @@ import BoxConvertDraftjsToHtml from "../../../components/Boxes/BoxConvertDraftjs
 import IconButtonBase from "../../../components/Buttons/FabBase";
 import DividerBase from "../../../components/Dividers/DividerBase";
 import TypographyBase from "../../../components/Typography/TypographyBase";
+import CommentIcon from "@mui/icons-material/Comment";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import ButtonBase from "src/components/Buttons/ButtonBase";
 
 import PostEditor from "./PostEditor";
 
@@ -83,6 +86,13 @@ const PostCard = (props: PostCardProps) => {
                 </BoxBase>
                 {!isOpen && (
                     <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
+                        <BoxBase mr={1}>
+                            <Link to={`/posts/${post.postId}`} style={{ textDecoration: "none" }}>
+                                <ButtonBase variant="contained" startIcon={<CommentIcon />}>
+                                    Comment
+                                </ButtonBase>
+                            </Link>
+                        </BoxBase>
                         <BoxBase mr={1}>
                             <IconButtonBase
                                 variant="circular"

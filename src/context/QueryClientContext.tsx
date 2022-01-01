@@ -22,7 +22,6 @@ const GraphQLQueryClientContextProvider = ({ children }: { children: ReactNode }
     }, []);
 
     const [queryClient, setQueryClient] = useState<GraphQLClient>(defaultQueryClient);
-
     const updateQueryClient = useCallback((token: string) => {
         const queryClient = new GraphQLClient(REACT_APP_HASURA_END_POINT, {
             headers: {

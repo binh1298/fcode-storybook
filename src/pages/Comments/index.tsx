@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom";
+
 import CommentList from "./components/CommentList";
 import {
     AccessTime as AccessTimeIcon,
@@ -18,9 +20,12 @@ import usePostDetail from "./hooks/usePostDetail";
 
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
+type Param = {
+    id: string;
+};
 const Comments = () => {
     const user = LocalStorageUtils.getUser();
-    const postId = "727624bd-a537-4d37-8429-b9b8be310e1c";
+    const postId = useParams<Param>().id;
 
     const {
         data: postDetailData,
