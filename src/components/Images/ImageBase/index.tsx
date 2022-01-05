@@ -1,6 +1,6 @@
 import { BaseSyntheticEvent, CSSProperties } from "react";
 
-import BoxBase, { BoxBaseProps } from "src/components/Boxs/BoxBase";
+import BoxBase, { BoxBaseProps } from "src/components/Boxes/BoxBase";
 
 export interface ImageBaseProps extends Omit<BoxBaseProps, "sizeWidth" | "sizeHeight"> {
     onErrorSrc: string;

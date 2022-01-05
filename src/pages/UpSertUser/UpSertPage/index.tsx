@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { GetUserByIdQueryQuery } from "src/generated/graphql";
 
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import ImageBase from "src/components/Images/ImageBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
