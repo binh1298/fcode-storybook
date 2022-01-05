@@ -3,19 +3,15 @@
 exports[`<ButtonBase /> should match snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiFab-root"
+    class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge css-a8igs1-MuiButtonBase-root-MuiFab-root"
     tabindex="0"
     type="button"
   >
+    <div>
+      Test
+    </div>
     <span
-      class="MuiFab-label"
-    >
-      <div>
-        Test
-      </div>
-    </span>
-    <span
-      class="MuiTouchRipple-root"
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
 </div>

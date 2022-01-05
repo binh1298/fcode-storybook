@@ -1,10 +1,16 @@
 import CommentForm, { CommentFormProps } from "..";
 
 import { render, screen, fireEvent } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
 describe("<CommentForm />", () => {
     let props: CommentFormProps;
 
+    const TestComponent = (props: CommentFormProps) => (
+        <TestThemeProvider>
+            <CommentForm {...props} />
+        </TestThemeProvider>
+    );
     it("should exist children with default props", () => {
         let comment = "";
         props = {
@@ -19,7 +25,7 @@ describe("<CommentForm />", () => {
             },
         };
 
-        render(<CommentForm {...props} />);
+        render(<TestComponent {...props} />);
         const CommentFormRoot = screen.getByTestId("CommentForm__root");
         const CommentFormTextField = CommentFormRoot.querySelector("textarea");
         const legalValue = "test comment form";
@@ -44,7 +50,7 @@ describe("<CommentForm />", () => {
             },
         };
 
-        render(<CommentForm {...props} />);
+        render(<TestComponent {...props} />);
         const CommentFormRoot = screen.getByTestId("CommentForm__root");
         const CommentFormTextField = CommentFormRoot.querySelector("textarea");
 
@@ -65,7 +71,7 @@ describe("<CommentForm />", () => {
             submit: () => {},
         };
 
-        render(<CommentForm {...props} />);
+        render(<TestComponent {...props} />);
         const CommentFormRoot = screen.getByTestId("CommentForm__root");
         const CommentFormTextField = CommentFormRoot.querySelector("textarea");
         expect(CommentFormTextField?.value).toBe(initialValue);

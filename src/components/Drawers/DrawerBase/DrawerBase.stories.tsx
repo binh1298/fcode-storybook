@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { ThemeProvider, useTheme } from "@material-ui/core";
 import {
     Menu as MenuIcon,
     Inbox as InboxIcon,
@@ -11,22 +10,24 @@ import {
     DraftsRounded as DraftsIcon,
     HelpOutlineRounded as HelpIcon,
     ExitToAppOutlined as LogoutIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
+import { ThemeProvider, StyledEngineProvider, useTheme } from "@mui/material";
 
 import DrawerBase, { DrawerBaseProps } from ".";
 import replyTheme from "../../../theme/replyTheme";
 import AppBarBase from "../../AppBars/AppBarBase";
-import BoxBase from "../../Boxs/BoxBase";
-import DrawerTriggerButton from "../../Buttons/DrawerTriggerButton";
+import BoxBase from "../../Boxes/BoxBase";
 import CssBaselineBase from "../../CssBaselines/CssBaselineBase";
 import DividerBase from "../../Dividers/DividerBase";
+import DrawerTriggerButton from "../../IconButtons/DrawerTriggerButton";
+import ListItemButtonBase from "../../ListItemButtons/ListItemButtonBase";
 import ListItemIconBase from "../../ListItemIcons/ListItemIconBase";
 import ListItemTextBase from "../../ListItemTexts/ListItemTextBase";
 import ListItemBase from "../../ListItems/ListItemBase";
 import ListBase from "../../Lists/ListBase";
 import ToolbarBase from "../../Toolbars/ToolbarBase";
 import TypographyBase from "../../Typography/TypographyBase";
-import UserProfileBase from "../../UserProfiles/UserProfileBase";
+import UserProfileBase from "../../UserProfiles/UserProfile";
 
 import { Story, Meta } from "@storybook/react";
 
@@ -38,6 +39,11 @@ export default {
         BoxBase,
         DrawerTriggerButton,
         CssBaselineBase,
+        ListBase,
+        ListItemBase,
+        ListItemButtonBase,
+        ListItemIconBase,
+        ListItemTextBase,
         ToolbarBase,
         TypographyBase,
     },
@@ -45,30 +51,32 @@ export default {
     decorators: [
         (Story) => {
             return (
-                <ThemeProvider theme={replyTheme}>
-                    <Story />
-                </ThemeProvider>
+                <StyledEngineProvider injectFirst>
+                    <ThemeProvider theme={replyTheme}>
+                        <Story />
+                    </ThemeProvider>
+                </StyledEngineProvider>
             );
         },
     ],
 } as Meta;
 
-const replyLogoUrl = "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Reply_Logo.png";
+const replyLogoUrl = "https://res.cloudinary.com/dq7l8216n/image/upload/v1621347887/Relay_Logo.png";
 const fcodeAvatarUrl =
     "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
 
 const navigationFeatureItems = [
-    { icon: <InboxIcon />, text: "Inbox", highlighted: true },
-    { icon: <StarIcon />, text: "Starred", highlighted: false },
-    { icon: <SendIcon />, text: "Sent", highlighted: false },
-    { icon: <DeleteIcon />, text: "Trash", highlighted: false },
-    { icon: <ReportIcon />, text: "Spam", highlighted: false },
-    { icon: <DraftsIcon />, text: "Drafts", highlighted: false },
+    { icon: <InboxIcon />, text: "Inbox", isHighlighted: true },
+    { icon: <StarIcon />, text: "Starred", isHighlighted: false },
+    { icon: <SendIcon />, text: "Sent", isHighlighted: false },
+    { icon: <DeleteIcon />, text: "Trash", isHighlighted: false },
+    { icon: <ReportIcon />, text: "Spam", isHighlighted: false },
+    { icon: <DraftsIcon />, text: "Drafts", isHighlighted: false },
 ];
 
 const navigationSupportItems = [
-    { icon: <HelpIcon />, text: "Help", highlighted: false },
-    { icon: <LogoutIcon />, text: "Logout", highlighted: false },
+    { icon: <HelpIcon />, text: "Help", isHighlighted: false },
+    { icon: <LogoutIcon />, text: "Logout", isHighlighted: false },
 ];
 
 export const MiniVariant: Story<DrawerBaseProps> = (args) => {
@@ -86,7 +94,7 @@ export const MiniVariant: Story<DrawerBaseProps> = (args) => {
     return (
         <BoxBase display="flex">
             <CssBaselineBase />
-            <AppBarBase open={open}>
+            <AppBarBase position="fixed" open={open}>
                 <ToolbarBase>
                     <DrawerTriggerButton onClick={handleDrawerOpen} open={open}>
                         <MenuIcon />
@@ -106,18 +114,22 @@ export const MiniVariant: Story<DrawerBaseProps> = (args) => {
                 <DividerBase />
                 <ListBase disablePadding>
                     {navigationFeatureItems.map((item, index) => (
-                        <ListItemBase key={index} button highlighted={item.highlighted}>
-                            <ListItemIconBase>{item.icon}</ListItemIconBase>
-                            <ListItemTextBase primary={item.text} />
+                        <ListItemBase key={index} disablePadding>
+                            <ListItemButtonBase isHighlighted={item.isHighlighted}>
+                                <ListItemIconBase>{item.icon}</ListItemIconBase>
+                                <ListItemTextBase primary={item.text} />
+                            </ListItemButtonBase>
                         </ListItemBase>
                     ))}
                 </ListBase>
                 <DividerBase />
                 <ListBase disablePadding>
                     {navigationSupportItems.map((item, index) => (
-                        <ListItemBase key={index} button highlighted={item.highlighted}>
-                            <ListItemIconBase>{item.icon}</ListItemIconBase>
-                            <ListItemTextBase primary={item.text} />
+                        <ListItemBase key={index} disablePadding>
+                            <ListItemButtonBase key={index} isHighlighted={item.isHighlighted}>
+                                <ListItemIconBase>{item.icon}</ListItemIconBase>
+                                <ListItemTextBase primary={item.text} />
+                            </ListItemButtonBase>
                         </ListItemBase>
                     ))}
                 </ListBase>

@@ -1,11 +1,11 @@
 import CommentList from "./components/CommentList";
-import { Grid } from "@material-ui/core";
 import {
     AccessTime as AccessTimeIcon,
     Person as PersonIcon,
     QuestionAnswer as QuestionAnswerIcon,
-} from "@material-ui/icons";
-import BoxBase from "src/components/Boxs/BoxBase";
+} from "@mui/icons-material";
+import { Grid } from "@mui/material";
+import BoxBase from "src/components/Boxes/BoxBase";
 import CommentForm from "src/components/Comments/CommentForm";
 import DividerBase from "src/components/Dividers/DividerBase";
 import Footer from "src/components/Footers/Footer";
@@ -26,13 +26,17 @@ const Comments = () => {
         data: postDetailData,
         isLoading: isPostDetailLoading,
         isError: isPostDetailError,
-    } = usePostDetail(postId);
+    } = usePostDetail({ variables: { postId } });
     const {
         data: commentsData,
         isLoading: isCommentsLoading,
         refetch: refetchComments,
-    } = useCommentsList(postId);
-    const { isLoading, mutate: insertCommentQuery } = useInsertComment(refetchComments);
+    } = useCommentsList({ variables: { postId } });
+    const { isLoading, mutate: insertCommentQuery } = useInsertComment({
+        onSuccess: () => {
+            refetchComments();
+        },
+    });
 
     const post = postDetailData?.posts[0];
     const author = post?.user;
@@ -62,7 +66,7 @@ const Comments = () => {
             bgcolor="primary"
             style={{ minHeight: "100vh" }}
         >
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
                 <Grid item xs={12} sm={11} md={9} lg={8}>
                     <BoxBase
                         display="flex"
@@ -83,7 +87,7 @@ const Comments = () => {
                                 </TypographyBase>
                             </BoxBase>
                         ) : (
-                            <Grid container justify="center">
+                            <Grid container justifyContent="center">
                                 <Grid item xs={12} sm={10}>
                                     <BoxBase
                                         pt={3}
@@ -95,7 +99,7 @@ const Comments = () => {
                                             {post?.title}
                                         </TypographyBase>
                                         <BoxBase mb={1} mt={1}>
-                                            <Grid container justify="center">
+                                            <Grid container justifyContent="center">
                                                 <Grid item xs={4} sm={5}>
                                                     <BoxBase
                                                         display="flex"

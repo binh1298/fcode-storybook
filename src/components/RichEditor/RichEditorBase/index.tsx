@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
-import { EditorState, convertToRaw, RawDraftContentState, convertFromRaw } from "draft-js";
-import { Editor, EditorProps } from "react-draft-wysiwyg";
+import {
+    EditorState,
+    convertToRaw,
+    RawDraftContentState,
+    convertFromRaw,
+    ContentState,
+} from "draft-js";
 
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 
+import { Editor, EditorProps } from "@nick4fake/react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export interface RichEditorBaseProps extends EditorProps {
@@ -18,6 +24,14 @@ export interface RichEditorBaseProps extends EditorProps {
 const RichEditorBase = (props: RichEditorBaseProps) => {
     const editorRef = useRef<HTMLInputElement>();
 
+    function IsJsonString(str: string) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
     useEffect(() => {
         if (editorRef.current && props.focus) {
             editorRef.current.focus();
@@ -27,9 +41,9 @@ const RichEditorBase = (props: RichEditorBaseProps) => {
     const setDefaultValue = (initString?: string) => {
         if (!initString) {
             return () => EditorState.createEmpty();
-        } else {
+        } else if (IsJsonString(initString)) {
             return () => EditorState.createWithContent(convertFromRaw(JSON.parse(initString)));
-        }
+        } else return () => EditorState.createWithContent(ContentState.createFromText(initString));
     };
     const [editorState, setEditorState] = useState<EditorState>(setDefaultValue(props.initContent));
 

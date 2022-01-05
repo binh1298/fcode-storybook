@@ -1,4 +1,4 @@
-import { Add as AddIcon, Edit as EditIcon } from "@material-ui/icons";
+import { Add as AddIcon, Edit as EditIcon } from "@mui/icons-material";
 
 import FabBase, { FabBaseProps } from ".";
 
@@ -15,12 +15,12 @@ export const Primary = Template.bind({});
 Primary.args = {
     children: <AddIcon />,
     color: "primary",
-    variant: "round",
+    variant: "circular",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
     children: <EditIcon />,
     color: "secondary",
-    variant: "round",
+    variant: "circular",
 };

@@ -1,30 +1,33 @@
-import { useTheme, Theme } from "@material-ui/core";
-
 import AppBarBase, { AppBarBaseProps } from "..";
 
 import { render, screen } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
+import replyTheme from "src/theme/replyTheme";
 
 describe("<AppBarBase />", () => {
     let props: AppBarBaseProps;
-    let theme: Theme;
-    const AppBarBaseTest = (props: AppBarBaseProps) => {
-        theme = useTheme();
-        return <AppBarBase {...props} />;
-    };
+
+    const TestComponent = (props: AppBarBaseProps) => (
+        <TestThemeProvider>
+            <AppBarBase {...props} />
+        </TestThemeProvider>
+    );
 
     it("should exist children with default style when drawer closed", () => {
-        render(<AppBarBaseTest />);
-        const appBarBaseBox = screen.getByTestId("AppBarBase__box");
-        expect(appBarBaseBox).toHaveStyle(`
+        render(<TestComponent />);
+        const appBarBaseRoot = screen.getByTestId("AppBarBase__root");
+
+        expect(appBarBaseRoot).toHaveStyle(`
+        backgroundColor: ${replyTheme.palette.primary.main};
         position: fixed;
         width: 100%;
         top: 0;
         left: auto;
         right: 0;
-        zIndex: ${theme.zIndex.drawer + 1} ;
-        transition: ${theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
+        zIndex: ${replyTheme.zIndex.drawer + 1} ;
+        transition: ${replyTheme.transitions.create(["width", "margin"], {
+            easing: replyTheme.transitions.easing.sharp,
+            duration: replyTheme.transitions.duration.leavingScreen,
         })};`);
     });
 
@@ -34,19 +37,20 @@ describe("<AppBarBase />", () => {
             width: drawerWidth,
             open: true,
         };
-        render(<AppBarBaseTest {...props} />);
-        const appBarBaseBox = screen.getByTestId("AppBarBase__box");
-        expect(appBarBaseBox).toHaveStyle(`
+        render(<TestComponent {...props} />);
+        const appBarBaseRoot = screen.getByTestId("AppBarBase__root");
+        expect(appBarBaseRoot).toHaveStyle(`
+        backgroundColor: ${replyTheme.palette.primary.main};
         position: fixed;
         width: calc(100% - ${drawerWidth}px);
         top: 0;
         left: auto;
         right: 0;
         margin-left: ${drawerWidth}px;
-        zIndex: ${theme.zIndex.drawer + 1} ;
-        transition: ${theme.transitions.create(["width", "margin"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
+        zIndex: ${replyTheme.zIndex.drawer + 1} ;
+        transition: ${replyTheme.transitions.create(["width", "margin"], {
+            easing: replyTheme.transitions.easing.sharp,
+            duration: replyTheme.transitions.duration.enteringScreen,
         })};
         `);
     });

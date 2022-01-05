@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Icon as MaterialIcon, IconProps as MaterialIconProps } from "@material-ui/core";
+import { Icon as MaterialIcon, IconProps as MaterialIconProps } from "@mui/material";
 
 export interface IconBaseProps extends MaterialIconProps {
     icon?: React.ReactNode;

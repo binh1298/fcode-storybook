@@ -1,4 +1,4 @@
-import { Switch as MaterialSwitch, SwitchProps as MaterialSwitchProps } from "@material-ui/core";
+import { Switch as MaterialSwitch, SwitchProps as MaterialSwitchProps } from "@mui/material";
 
 export interface SwitchBaseProps extends MaterialSwitchProps {}
 

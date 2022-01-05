@@ -1,5 +1,5 @@
-import { Avatar } from "@material-ui/core";
-import SchoolIcon from "@material-ui/icons/School";
+import SchoolIcon from "@mui/icons-material/School";
+import { Avatar } from "@mui/material";
 
 import ChipBase, { ChipBaseProps } from ".";
 

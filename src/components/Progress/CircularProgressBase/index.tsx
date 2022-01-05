@@ -1,7 +1,7 @@
 import {
     CircularProgress as MaterialCircularProgress,
     CircularProgressProps as MaterialCircularProgressProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface CircularProgressBaseProps extends MaterialCircularProgressProps {}
 

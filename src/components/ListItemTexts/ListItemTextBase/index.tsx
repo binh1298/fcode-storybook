@@ -1,7 +1,7 @@
 import {
     ListItemText as MaterialListItemText,
     ListItemTextProps as MaterialListItemTextProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface ListItemTextBaseProps extends MaterialListItemTextProps {}
 

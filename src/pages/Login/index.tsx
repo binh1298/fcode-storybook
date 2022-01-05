@@ -3,15 +3,16 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { API_ROOT_URL } from "src/configuration";
 
-import { Grid, Hidden } from "@material-ui/core";
-import { AccountCircle, LockRounded } from "@material-ui/icons";
-import BoxBase from "src/components/Boxs/BoxBase";
+import { AccountCircle, LockRounded } from "@mui/icons-material";
+import { Grid, Hidden } from "@mui/material";
+import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 import GoogleButton from "src/components/Buttons/GoogleButton";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
 import ThematicBreak from "src/components/ThematicBreak";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
+import { useTranslation } from "react-i18next";
 import fcodeImage from "src/assets/fcode.png";
 import LoginTextField from "src/pages/Login/LoginTextField";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
@@ -91,6 +92,7 @@ const Login = () => {
         window.location.href = redirectUrl;
     };
 
+    const { t } = useTranslation(["login"]);
     return (
         <React.Fragment>
             <Grid container style={{ minHeight: "100vh" }}>
@@ -109,7 +111,14 @@ const Login = () => {
                     </Grid>
                 </Hidden>
 
-                <Grid container xs={12} sm={6} alignItems="center" direction="row" justify="center">
+                <Grid
+                    container
+                    xs={12}
+                    sm={6}
+                    alignItems="center"
+                    direction="row"
+                    justifyContent="center"
+                >
                     <BoxBase
                         display="flex"
                         alignItems="center"
@@ -122,13 +131,13 @@ const Login = () => {
                         </TypographyBase>
                         <BoxBase height={20} />
                         <LoginTextField
-                            label="Username or Email"
+                            label={t("login:usernameOrEmail")}
                             margin="normal"
                             icon={<AccountCircle />}
                             fullWidth
                         />
                         <LoginTextField
-                            label="Password"
+                            label={t("login:password")}
                             margin="normal"
                             type="password"
                             icon={<LockRounded />}
@@ -136,17 +145,12 @@ const Login = () => {
                         />
                         <BoxBase height={20} />
                         <ButtonBase color="primary" variant="contained" fullWidth>
-                            <TypographyBase variant="button">Sign in</TypographyBase>
+                            {t("login:login")}
                         </ButtonBase>
 
                         <ThematicBreak caption="or" width={70} height={40} />
-                        <GoogleButton
-                            color="default"
-                            variant="outlined"
-                            onClick={startLogin}
-                            fullWidth
-                        >
-                            Login With Google
+                        <GoogleButton variant="outlined" onClick={startLogin} fullWidth>
+                            {t("login:loginWithGoogle")}
                         </GoogleButton>
                     </BoxBase>
                 </Grid>

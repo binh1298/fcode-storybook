@@ -1,8 +1,7 @@
-import { ThemeProvider } from "@material-ui/core";
-
 import AlertBase, { AlertBaseProps } from "../";
 
 import { render, screen } from "@testing-library/react";
+import TestThemeProvider from "src/test-utils/TestThemeProvider";
 import replyTheme from "src/theme/replyTheme";
 
 describe("<AlertBase />", () => {
@@ -11,28 +10,32 @@ describe("<AlertBase />", () => {
         severity: "success",
     };
 
-    const AlertBaseTest = (props: AlertBaseProps) => {
-        return (
-            <ThemeProvider theme={replyTheme}>
-                <AlertBase {...props} />;
-            </ThemeProvider>
-        );
-    };
+    const TestComponent = (props: AlertBaseProps) => (
+        <TestThemeProvider>
+            <AlertBase {...props} />
+        </TestThemeProvider>
+    );
 
     it("should exist children", () => {
-        render(<AlertBaseTest {...props} />);
+        render(<TestComponent {...props} />);
         expect(screen.getByText("Test")).toBeInTheDocument();
     });
 
     it("should display filled when variant is undefined", () => {
-        render(<AlertBaseTest {...props} />);
-        const container = screen.getByTestId("AlertBase__root");
-        expect(container).toHaveClass("MuiAlert-filledSuccess");
+        render(<TestComponent {...props} />);
+        const AlertBaseRoot = screen.getByTestId("AlertBase__root");
+
+        expect(AlertBaseRoot).toHaveStyle(`
+        backgroundColor: ${replyTheme.palette.success.main};`);
+        expect(AlertBaseRoot).toHaveClass("MuiAlert-filledSuccess");
     });
 
     it("should display another variant when select this", () => {
-        render(<AlertBaseTest {...props} variant="outlined" />);
-        const container = screen.getByTestId("AlertBase__root");
-        expect(container).toHaveClass("MuiAlert-outlinedSuccess");
+        render(<TestComponent {...props} variant="outlined" />);
+        const AlertBaseRoot = screen.getByTestId("AlertBase__root");
+
+        expect(AlertBaseRoot).toHaveStyle(`
+        backgroundColor: ${replyTheme.palette.success.main};`);
+        expect(AlertBaseRoot).toHaveClass("MuiAlert-outlinedSuccess");
     });
 });

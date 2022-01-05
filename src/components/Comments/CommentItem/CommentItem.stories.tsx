@@ -1,4 +1,4 @@
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 
 import CommentItem, { CommentItemProps } from ".";
 

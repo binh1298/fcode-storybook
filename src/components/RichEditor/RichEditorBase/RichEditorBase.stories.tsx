@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import BoxBase from "src/components/Boxs/BoxBase";
-import BoxConvertDraftjsToHtml from "src/components/Boxs/BoxConvertDraftjsToHtml";
+import BoxBase from "src/components/Boxes/BoxBase";
+import BoxConvertDraftjsToHtml from "src/components/Boxes/BoxConvertDraftjsToHtml";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
 import RichEditorBase, { RichEditorBaseProps } from ".";

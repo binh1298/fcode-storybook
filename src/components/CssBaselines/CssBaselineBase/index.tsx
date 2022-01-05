@@ -1,7 +1,7 @@
 import {
     CssBaseline as MaterialCssBaseline,
     CssBaselineProps as MaterialCssBaselineProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface CssBaselineBaseProps extends MaterialCssBaselineProps {}
 

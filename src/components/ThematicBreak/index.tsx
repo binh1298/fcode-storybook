@@ -1,4 +1,4 @@
-import BoxBase from "../Boxs/BoxBase";
+import BoxBase from "../Boxes/BoxBase";
 import TypographyBase from "../Typography/TypographyBase";
 
 export interface ThematicBreakProps {

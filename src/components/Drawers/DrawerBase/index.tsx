@@ -1,9 +1,5 @@
-import clsx from "clsx";
-
-import { Drawer as MaterialDrawer, DrawerProps as MaterialDrawerProps } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
-
-import BoxBase from "../../Boxs/BoxBase";
+import { Drawer as MaterialDrawer, DrawerProps as MaterialDrawerProps } from "@mui/material";
+import { styled, Theme } from "@mui/material/styles";
 
 export interface DrawerBaseProps extends MaterialDrawerProps {
     open?: boolean;
@@ -12,58 +8,57 @@ export interface DrawerBaseProps extends MaterialDrawerProps {
 
 let drawerWidth: number = 360;
 
-const useStyles = makeStyles((theme) => ({
-    drawer: {
+const openedMixin = (theme: Theme) => ({
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+    }),
+});
+
+const closedMixin = (theme: Theme) => ({
+    transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: `calc(${theme.spacing(8)} + 1px)`,
+    [theme.breakpoints.up("sm")]: {
+        width: `calc(${theme.spacing(9)} + 1px)`,
+    },
+});
+
+const Drawer = styled(MaterialDrawer, {
+    shouldForwardProp: (prop) => prop !== "open",
+})<DrawerBaseProps>(({ theme, width, open }) => {
+    drawerWidth = width ? width : drawerWidth;
+
+    return {
         width: drawerWidth,
         flexShrink: 0,
         whiteSpace: "nowrap",
-    },
-    drawerOpen: {
-        width: drawerWidth,
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    drawerClose: {
-        width: theme.spacing(8),
+        boxSizing: "border-box",
         overflowX: "hidden",
-        transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
+        ...(open && {
+            ...openedMixin(theme),
+            "& .MuiDrawer-paper": {
+                ...openedMixin(theme),
+                backgroundColor: theme.palette.primary.main,
+                overflowX: "hidden",
+            },
         }),
-    },
-}));
+        ...(!open && {
+            ...closedMixin(theme),
+            "& .MuiDrawer-paper": {
+                ...closedMixin(theme),
+                backgroundColor: theme.palette.primary.main,
+                overflowX: "hidden",
+            },
+        }),
+    };
+});
 
 const DrawerBase = (props: DrawerBaseProps) => {
-    const { open, width, ...rest } = props;
-
-    if (width) {
-        drawerWidth = width;
-    }
-
-    const classes = useStyles();
-
-    return (
-        <BoxBase
-            className={clsx(classes.drawer, {
-                [classes.drawerOpen]: open,
-                [classes.drawerClose]: !open,
-            })}
-            data-testid="DrawerBase__box"
-        >
-            <MaterialDrawer
-                classes={{
-                    paper: clsx({
-                        [classes.drawerOpen]: open,
-                        [classes.drawerClose]: !open,
-                    }),
-                }}
-                data-testid="DrawerBase__root"
-                {...rest}
-            />
-        </BoxBase>
-    );
+    return <Drawer data-testid="DrawerBase__root" {...props} />;
 };
 
 export default DrawerBase;

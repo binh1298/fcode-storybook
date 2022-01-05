@@ -1,4 +1,4 @@
-import { Grid as MaterialGrid, GridProps as MaterialGridProps } from "@material-ui/core";
+import { Grid as MaterialGrid, GridProps as MaterialGridProps } from "@mui/material";
 
 export interface GridBaseProps extends MaterialGridProps {}
 
