@@ -1,7 +1,9 @@
 import { ReactNode, useCallback, useState, useMemo, createContext } from "react";
 
 import { GraphQLClient } from "graphql-request";
-import { REACT_APP_HASURA_ADMIN_SECRET, REACT_APP_HASURA_END_POINT } from "src/configuration";
+import { REACT_APP_HASURA_END_POINT } from "src/configuration";
+
+import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 interface QueryClientContextProps {
     queryClient: GraphQLClient;
@@ -9,13 +11,11 @@ interface QueryClientContextProps {
 }
 
 export const GraphQLQueryClientContext = createContext({} as QueryClientContextProps);
-
 const GraphQLQueryClientContextProvider = ({ children }: { children: ReactNode }) => {
     const defaultQueryClient = useMemo(() => {
         const queryClient = new GraphQLClient(REACT_APP_HASURA_END_POINT, {
             headers: {
-                // Authorization: `Bearer ${localStorageUtils.getToken()}`,
-                "x-hasura-admin-secret": REACT_APP_HASURA_ADMIN_SECRET,
+                Authorization: `Bearer ${LocalStorageUtils.getToken()}`,
             },
         });
         return queryClient;
@@ -27,7 +27,6 @@ const GraphQLQueryClientContextProvider = ({ children }: { children: ReactNode }
         const queryClient = new GraphQLClient(REACT_APP_HASURA_END_POINT, {
             headers: {
                 Authorization: `Bearer ${token}`,
-                "x-hasura-admin-secret": REACT_APP_HASURA_ADMIN_SECRET,
             },
         });
         setQueryClient(queryClient);

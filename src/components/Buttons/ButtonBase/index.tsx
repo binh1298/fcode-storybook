@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Button as MaterialButton, ButtonProps as MaterialButtonProps } from "@material-ui/core";
+import { Button as MaterialButton, ButtonProps as MaterialButtonProps } from "@mui/material";
 import CircularProgressBase from "src/components/Progress/CircularProgressBase";
 
 export interface ButtonBaseProps extends MaterialButtonProps {

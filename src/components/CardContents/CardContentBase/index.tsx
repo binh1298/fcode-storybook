@@ -1,7 +1,7 @@
 import {
     CardContent as MaterialCardContent,
     CardContentProps as MaterialCardContentProps,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export interface CardContentBaseProps extends MaterialCardContentProps {}
 

@@ -1,4 +1,4 @@
-import { Card as MaterialCard, CardProps as MaterialCardProps } from "@material-ui/core";
+import { Card as MaterialCard, CardProps as MaterialCardProps } from "@mui/material";
 
 export interface CardBaseProps extends MaterialCardProps {}
 

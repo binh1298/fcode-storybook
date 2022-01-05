@@ -1,6 +1,8 @@
+import { ComponentType } from "react";
+
 import { loadQuery } from "react-relay";
 import { Switch } from "react-router-dom";
-import { RouteCustom } from "src/common/types";
+import { QueryInfo } from "src/common/types";
 
 import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
@@ -14,9 +16,12 @@ import InsertPage from "src/pages/UpSertUser/InsertPage";
 import UpdatePage from "src/pages/UpSertUser/UpdatePage";
 import User from "src/pages/Users";
 
-//
-
-//
+type RouteCustom = {
+    path: string;
+    name: string;
+    component: ComponentType<any>;
+    queryInfo?: QueryInfo;
+};
 
 const publicRoutes: RouteCustom[] = [
     {

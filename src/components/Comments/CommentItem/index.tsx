@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { CardContent } from "@material-ui/core";
-import { Edit as EditIcon, Delete as DeleteIcon } from "@material-ui/icons";
+import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
+import { CardContent } from "@mui/material";
 import CardHeaderBase from "src/components/CardHeaders/CardHeaderBase";
 import CardBase from "src/components/Cards/CardBase";
 
 import AvatarBase from "../../Avatars/AvatarBase";
-import BoxBase from "../../Boxs/BoxBase";
+import BoxBase from "../../Boxes/BoxBase";
 import ButtonBase from "../../Buttons/ButtonBase";
 import TypographyBase from "../../Typography/TypographyBase";
 import CommentForm from "../CommentForm";

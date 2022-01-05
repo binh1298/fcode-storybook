@@ -1,7 +1,7 @@
 import {
     Autocomplete as MaterialAutocomplete,
     AutocompleteProps as MaterialAutocompleteProps,
-} from "@material-ui/lab";
+} from "@mui/material";
 
 export interface AutocompleteBaseProps<
     T extends {},

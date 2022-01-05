@@ -1,7 +1,7 @@
-import { GridSize } from "@material-ui/core";
+import { GridSize } from "@mui/material";
 
 import GridBase, { GridBaseProps } from ".";
-import BoxBase from "../Boxs/BoxBase";
+import BoxBase from "../Boxes/BoxBase";
 
 import { Story } from "@storybook/react";
 
