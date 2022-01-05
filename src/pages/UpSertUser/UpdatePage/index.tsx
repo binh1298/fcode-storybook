@@ -1,6 +1,6 @@
 import { useHistory, useParams } from "react-router-dom";
 
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@mui/material";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
 import { IUser } from "src/pages/Users/components/UserCard";
 

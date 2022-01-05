@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Slide as MaterialSlide, SlideProps as MaterialSlideProps } from "@material-ui/core";
+import { Slide as MaterialSlide, SlideProps as MaterialSlideProps } from "@mui/material";
 
 export interface SlideBaseProps extends MaterialSlideProps {
     unmountOnExit?: boolean;

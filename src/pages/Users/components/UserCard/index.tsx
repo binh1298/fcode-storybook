@@ -1,8 +1,8 @@
 import { Maybe, Scalars } from "src/generated/graphql";
 
-import { Card, CardActions, CardContent, Grid } from "@material-ui/core";
+import { Card, CardActions, CardContent, Grid } from "@mui/material";
 import AvatarBase from "src/components/Avatars/AvatarBase";
-import BoxBase from "src/components/Boxs/BoxBase";
+import BoxBase from "src/components/Boxes/BoxBase";
 import DividerBase from "src/components/Dividers/DividerBase";
 
 import ButtonGroups from "../ButtonsGroup";

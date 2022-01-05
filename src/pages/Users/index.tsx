@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import { CircularProgress, useMediaQuery, useTheme } from "@material-ui/core";
-import { Add, ArrowLeft, ArrowRight } from "@material-ui/icons";
+import { Add, ArrowLeft, ArrowRight } from "@mui/icons-material";
+import { CircularProgress, useMediaQuery, useTheme } from "@mui/material";
 import BoxBase from "src/components/Boxs/BoxBase";
 import IconButtonBase from "src/components/Buttons/FabBase";
 import DividerBase from "src/components/Dividers/DividerBase";
