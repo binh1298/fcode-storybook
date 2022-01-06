@@ -1,5 +1,6 @@
 import { BaseSyntheticEvent, CSSProperties } from "react";
 
+import { styled } from "@mui/material/styles";
 import BoxBase, { BoxBaseProps } from "src/components/Boxes/BoxBase";
 
 export interface ImageBaseProps extends Omit<BoxBaseProps, "sizeWidth" | "sizeHeight"> {
@@ -9,23 +10,38 @@ export interface ImageBaseProps extends Omit<BoxBaseProps, "sizeWidth" | "sizeHe
     styleImage?: CSSProperties;
 }
 
-const ImageBase = (props: ImageBaseProps) => {
-    const { onErrorSrc, styleImage, src, alt, ...rest } = props;
+interface ImageProps extends Omit<BoxBaseProps, "sizeWidth" | "sizeHeight"> {
+    src: string;
+    alt?: string;
+    styleImage?: CSSProperties;
+    onError: (e: BaseSyntheticEvent) => void;
+}
 
-    const imageStyle: CSSProperties = {
+const Image = styled("img", { shouldForwardProp: (prop) => prop !== "styleImage" })<ImageProps>(
+    ({ styleImage }) => ({
         width: "inherit",
         height: "inherit",
         ...styleImage,
-    };
+    })
+);
+
+const ImageBase = (props: ImageBaseProps) => {
+    const { onErrorSrc, styleImage, src, alt, ...rest } = props;
 
     const handleErrorWhenLoadImageFail = (e: BaseSyntheticEvent) => {
         e.target.onError = null;
         e.target.src = onErrorSrc;
         e.target.alt = "error";
     };
+
     return (
         <BoxBase {...rest}>
-            <img src={src} alt={alt} style={imageStyle} onError={handleErrorWhenLoadImageFail} />
+            <Image
+                src={src}
+                alt={alt}
+                styleImage={styleImage}
+                onError={handleErrorWhenLoadImageFail}
+            />
         </BoxBase>
     );
 };
