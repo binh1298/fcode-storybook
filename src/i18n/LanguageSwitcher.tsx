@@ -23,7 +23,7 @@ const LanguageSwitcher = () => {
         setLanguageMenu(null);
     };
 
-    const { i18n } = useTranslation();
+    const { i18n } = useTranslation("common");
     return (
         <>
             <Tooltip title="Change language" enterDelay={200}>

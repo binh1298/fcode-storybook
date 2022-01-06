@@ -25,7 +25,7 @@ type Param = {
 };
 const Comments = () => {
     const user = LocalStorageUtils.getUser();
-    const postId = useParams<Param>().id;
+    const postId = useParams<Param>().id!;
 
     const {
         data: postDetailData,

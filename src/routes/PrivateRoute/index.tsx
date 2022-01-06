@@ -9,6 +9,7 @@ import LocalStorageUtils from "src/utils/LocalStorageUtils";
 interface CustomRouteProps extends Omit<RouteProps, "component"> {
     component: ComponentType<PagePropsWithQuery<any>>;
     queryInfo?: QueryInfo;
+    exact: boolean | undefined;
 }
 const PrivateRoute = (props: CustomRouteProps) => {
     const user = LocalStorageUtils.getUser();
@@ -18,9 +19,9 @@ const PrivateRoute = (props: CustomRouteProps) => {
 
     const { component, ...rest } = props;
     const { queryObject, query, preloadedQuery } = props.queryInfo;
-    const finalComponent = !props.queryInfo
+    const FinalComponent = !props.queryInfo
         ? component
         : component && withQuery<typeof queryObject>(component, query, preloadedQuery);
-    return <Route {...rest} component={finalComponent} />;
+    return <Route>{withQuery<typeof queryObject>(component, query, preloadedQuery)}</Route>;
 };
 export default PrivateRoute;

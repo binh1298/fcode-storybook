@@ -54,7 +54,18 @@ const privateRoutes: RouteCustom[] = [
     {
         path: "/",
         name: "home",
-        exact: true,
+        exact: false,
+        component: Home,
+        queryInfo: {
+            query: HomeUserGraphQL,
+            preloadedQuery: loadQuery(RelayEnvironment, HomeUserGraphQL, {}),
+            queryObject: Object,
+        },
+    },
+    {
+        path: "/home",
+        name: "ja",
+        exact: false,
         component: Home,
         queryInfo: {
             query: HomeUserGraphQL,
@@ -74,14 +85,7 @@ export const Routes = () => {
                 <NavigationBar />
                 {privateRoutes.map((route) => {
                     const { queryInfo, ...rest } = route;
-                    return (
-                        <PrivateRoute
-                            key={route.name}
-                            queryInfo={queryInfo}
-                            {...rest}
-                            exact={route.exact}
-                        />
-                    );
+                    return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;
                 })}
             </>
         </Switch>
