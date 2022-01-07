@@ -1,5 +1,5 @@
 import { Drawer as MaterialDrawer, DrawerProps as MaterialDrawerProps } from "@mui/material";
-import { styled, Theme } from "@mui/material/styles";
+import { Theme, useTheme } from "@mui/material/styles";
 
 export interface DrawerBaseProps extends MaterialDrawerProps {
     open?: boolean;
@@ -27,38 +27,40 @@ const closedMixin = (theme: Theme) => ({
     },
 });
 
-const Drawer = styled(MaterialDrawer, {
-    shouldForwardProp: (prop) => prop !== "open",
-})<DrawerBaseProps>(({ theme, width, open }) => {
+const DrawerBase = (props: DrawerBaseProps) => {
+    const { open, width } = props;
+    const theme = useTheme();
     drawerWidth = width ? width : drawerWidth;
 
-    return {
-        width: drawerWidth,
-        flexShrink: 0,
-        whiteSpace: "nowrap",
-        boxSizing: "border-box",
-        overflowX: "hidden",
-        ...(open && {
-            ...openedMixin(theme),
-            "& .MuiDrawer-paper": {
-                ...openedMixin(theme),
-                backgroundColor: theme.palette.primary.main,
+    return (
+        <MaterialDrawer
+            sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                whiteSpace: "nowrap",
+                boxSizing: "border-box",
                 overflowX: "hidden",
-            },
-        }),
-        ...(!open && {
-            ...closedMixin(theme),
-            "& .MuiDrawer-paper": {
-                ...closedMixin(theme),
-                backgroundColor: theme.palette.primary.main,
-                overflowX: "hidden",
-            },
-        }),
-    };
-});
-
-const DrawerBase = (props: DrawerBaseProps) => {
-    return <Drawer data-testid="DrawerBase__root" {...props} />;
+                ...(open && {
+                    ...openedMixin(theme),
+                    "& .MuiDrawer-paper": {
+                        ...openedMixin(theme),
+                        backgroundColor: theme.palette.primary.main,
+                        overflowX: "hidden",
+                    },
+                }),
+                ...(!open && {
+                    ...closedMixin(theme),
+                    "& .MuiDrawer-paper": {
+                        ...closedMixin(theme),
+                        backgroundColor: theme.palette.primary.main,
+                        overflowX: "hidden",
+                    },
+                }),
+            }}
+            data-testid="DrawerBase__root"
+            {...props}
+        />
+    );
 };
 
 export default DrawerBase;

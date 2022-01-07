@@ -10,10 +10,7 @@ export interface ImageBaseProps extends Omit<BoxBaseProps, "sizeWidth" | "sizeHe
     styleImage?: CSSProperties;
 }
 
-interface ImageProps extends Omit<BoxBaseProps, "sizeWidth" | "sizeHeight"> {
-    src: string;
-    alt?: string;
-    styleImage?: CSSProperties;
+interface ImageProps extends Omit<ImageBaseProps, "onErrorSrc"> {
     onError: (e: BaseSyntheticEvent) => void;
 }
 
