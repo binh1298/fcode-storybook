@@ -1,9 +1,12 @@
 import { Maybe, Scalars } from "src/generated/graphql";
 
-import { Card, CardActions, CardContent, Grid } from "@mui/material";
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
+import CardActionsBase from "src/components/CardActions";
+import CardContentBase from "src/components/CardContents/CardContentBase";
+import CardBase from "src/components/Cards/CardBase";
 import DividerBase from "src/components/Dividers/DividerBase";
+import GridBase from "src/components/Grids";
 
 import ButtonGroups from "../ButtonsGroup";
 import Content from "../Content";
@@ -29,34 +32,34 @@ export const anonymousAvatarLink =
     "https://cdn1.vectorstock.com/i/thumb-large/22/05/male-profile-picture-vector-1862205.jpg";
 const UserCard = (userProps: IUserProps) => {
     return (
-        <BoxBase minWidth={400} maxWidth={500} minHeight={100}>
-            <Card>
-                <Grid container alignItems="center">
-                    <Grid container item justify="center" alignItems="center" sm={3}>
+        <BoxBase minWidth={380} maxWidth={600} minHeight={100}>
+            <CardBase>
+                <GridBase container alignItems="center">
+                    <GridBase container item justifyContent="center" alignItems="center" sm={3}>
                         <AvatarBase
                             size="large"
                             src={userProps.avatar || anonymousAvatarLink}
                             alt={userProps.email}
                         />
-                    </Grid>
-                    <Grid item sm={7}>
+                    </GridBase>
+                    <GridBase item sm={7}>
                         <BoxBase>
-                            <CardContent>
+                            <CardContentBase>
                                 <Content name={userProps.name} email={userProps.email} />
-                            </CardContent>
+                            </CardContentBase>
                             <DividerBase variant="fullWidth"></DividerBase>
-                            <CardActions>
+                            <CardActionsBase>
                                 <ButtonGroups
                                     onUpdate={userProps.onUpdate}
                                     onChangeStatus={userProps.onChangeStatus}
                                     userId={userProps.userId}
                                     isActive={userProps.isActive}
                                 />
-                            </CardActions>
+                            </CardActionsBase>
                         </BoxBase>
-                    </Grid>
-                </Grid>
-            </Card>
+                    </GridBase>
+                </GridBase>
+            </CardBase>
         </BoxBase>
     );
 };
