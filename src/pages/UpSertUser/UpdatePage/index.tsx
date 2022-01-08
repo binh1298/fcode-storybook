@@ -5,23 +5,25 @@ import useSnackbar from "src/components/SnackBars/useSnackbar";
 import { IUser } from "src/pages/Users/components/UserCard";
 
 import UpSertPage from "../UpSertPage";
-import useGetUserByID from "../hooks/useGetUserByID";
+import useGetUserDetail from "../hooks/useGetUserDetail";
 
 import useUpdateUser from "src/pages/Users/hooks/useUpdateUser";
 
 const UpdatePage = () => {
     const { id } = useParams<{ id: string }>();
-    const { data, isLoading } = useGetUserByID(id);
+    const { data, isLoading } = useGetUserDetail({ variables: { userId: id } });
 
     const history = useHistory();
 
     const showSnackbar = useSnackbar();
 
     const backToListPage = () => {
-        history.push("/user");
+        history.push("/users");
     };
 
-    const { mutate } = useUpdateUser(backToListPage);
+    const { mutate } = useUpdateUser({
+        onSuccess: () => backToListPage(),
+    });
 
     const sendDataToServer = (user: IUser) => {
         if (user.name) {
@@ -41,6 +43,7 @@ const UpdatePage = () => {
     if (isLoading) {
         return <CircularProgress />;
     }
+
     return (
         <UpSertPage
             sendDataToServer={sendDataToServer}

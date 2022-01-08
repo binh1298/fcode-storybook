@@ -12,7 +12,7 @@ const InsertPage = () => {
     const showSnackbar = useSnackbar();
 
     const backToListPage = () => {
-        history.push("/user");
+        history.push("/users");
     };
 
     const showError = (message: string) => {
@@ -22,7 +22,20 @@ const InsertPage = () => {
         });
     };
 
-    const { mutate } = useInsertUser(backToListPage, showError);
+    const { mutate } = useInsertUser({
+        onSuccess: () => backToListPage(),
+        onError: (err) => {
+            let errorCode = err.response.errors[0].extensions.code;
+            switch (errorCode) {
+                case "constraint-violation":
+                    showError("Email is duplicated!");
+                    break;
+                default:
+                    showError("Server Error");
+                    break;
+            }
+        },
+    });
 
     const sendDataToServer = (user: IUser) => {
         if (user.name && user.email) {

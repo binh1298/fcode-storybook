@@ -3,15 +3,16 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Add, ArrowLeft, ArrowRight } from "@mui/icons-material";
-import { CircularProgress, useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import BoxBase from "src/components/Boxes/BoxBase";
 import IconButtonBase from "src/components/Buttons/FabBase";
 import DividerBase from "src/components/Dividers/DividerBase";
+import CircularProgressBase from "src/components/Progress/CircularProgressBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 import UserCard from "src/pages/Users/components/UserCard";
 
-import useGetUser from "./hooks/useGetUsers";
+import useGetUsersList from "./hooks/useGetUsersList";
 import useUpdateUser from "./hooks/useUpdateUser";
 
 const User = () => {
@@ -23,12 +24,19 @@ const User = () => {
 
     const history = useHistory();
     const theme = useTheme();
-    const { data, isLoading, refetch: userRefresh } = useGetUser(
-        filter.limit,
-        filter.offset,
-        filter.search
-    );
-    const { mutate } = useUpdateUser(userRefresh);
+    const { data, isLoading, refetch: refetchUsers } = useGetUsersList({
+        variables: {
+            offset: filter.offset,
+            limit: filter.limit,
+            _ilike: filter.search,
+        },
+    });
+
+    const { mutate } = useUpdateUser({
+        onSuccess: () => {
+            refetchUsers();
+        },
+    });
 
     const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -60,10 +68,10 @@ const User = () => {
 
     let userList = null;
     if (isLoading) {
-        userList = <CircularProgress />;
+        userList = <CircularProgressBase />;
     } else {
         userList = (
-            <BoxBase mt={1} width={1} display="flex" flexWrap="wrap">
+            <BoxBase mt={1} width={1} display="flex" justifyContent="space-between" flexWrap="wrap">
                 {data?.users.map((user) => {
                     return (
                         <BoxBase minHeight={100} boxSizing="border-box" p={1} key={user.email}>

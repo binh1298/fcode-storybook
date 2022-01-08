@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { GetUserByIdQueryQuery } from "src/generated/graphql";
+import { GetUserDetailQuery } from "src/generated/graphql";
 
 import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
@@ -10,12 +10,13 @@ import TypographyBase from "src/components/Typography/TypographyBase";
 import { anonymousAvatarLink, IUser } from "src/pages/Users/components/UserCard";
 
 interface IUpSertPageProps {
-    userProps?: GetUserByIdQueryQuery["users_by_pk"];
+    userProps?: GetUserDetailQuery["users_by_pk"];
     isUpdate: boolean;
     sendDataToServer: (user: IUser) => void;
 }
+
 const UpSertPage = (props: IUpSertPageProps) => {
-    const generateDefaultValue = (userProps?: GetUserByIdQueryQuery["users_by_pk"]) => {
+    const generateDefaultValue = (userProps?: GetUserDetailQuery["users_by_pk"]) => {
         if (!userProps) {
             return {
                 avatar: "",
