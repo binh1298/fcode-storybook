@@ -1,4 +1,4 @@
-import { Maybe, Scalars } from "src/generated/graphql";
+import { Maybe } from "src/generated/graphql";
 
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
@@ -18,13 +18,14 @@ export interface IUser {
     avatar?: Maybe<string>;
     userId?: string;
 }
+
 export interface IUserProps extends IUser {
     name: string;
     email: string;
     isActive: boolean;
     avatar?: Maybe<string>;
-    onUpdate: (userId: Scalars["uuid"]) => void;
-    onChangeStatus: (userId: Scalars["uuid"]) => void;
+    onUpdate: (userId: IUser["userId"]) => void;
+    onChangeStatus: (userId: IUser["userId"]) => void;
     userId: string;
 }
 
