@@ -11,17 +11,3 @@ export type QueryInfo = {
     preloadedQuery: PreloadedQuery<OperationType>;
     queryObject: any;
 };
-
-export type ErrorResponse = {
-    response: {
-        errors: Error[];
-    };
-};
-
-export type Error = {
-    extensions: {
-        path: string;
-        code: string;
-    };
-    message: string;
-};

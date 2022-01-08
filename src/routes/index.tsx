@@ -14,7 +14,7 @@ import Login from "src/pages/Login";
 import Post from "src/pages/Post";
 import InsertPage from "src/pages/UpSertUser/InsertPage";
 import UpdatePage from "src/pages/UpSertUser/UpdatePage";
-import User from "src/pages/Users";
+import Users from "src/pages/Users";
 
 type RouteCustom = {
     path: string;
@@ -30,6 +30,14 @@ const publicRoutes: RouteCustom[] = [
         component: Login,
     },
     {
+        path: "/logout",
+        name: "login",
+        component: Login,
+    },
+];
+
+const privateRoutes: RouteCustom[] = [
+    {
         path: "/users/create",
         name: "user-create",
         component: InsertPage,
@@ -40,18 +48,10 @@ const publicRoutes: RouteCustom[] = [
         component: UpdatePage,
     },
     {
-        path: "/user",
-        name: "user",
-        component: User,
+        path: "/users",
+        name: "users",
+        component: Users,
     },
-    {
-        path: "/logout",
-        name: "login",
-        component: Login,
-    },
-];
-
-const privateRoutes: RouteCustom[] = [
     {
         path: "/comments",
         name: "comments",
