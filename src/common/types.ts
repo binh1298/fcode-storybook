@@ -1,6 +1,6 @@
 import { PreloadedQuery, UseQueryLoaderLoadQueryOptions } from "react-relay";
 import { GraphQLTaggedNode, OperationType, VariablesOf } from "relay-runtime";
-import { Maybe } from "src/generated/graphql";
+import { Users } from "src/generated/graphql";
 
 export type PagePropsWithQuery<T extends OperationType> = {
     queryReference: PreloadedQuery<T>;
@@ -14,9 +14,9 @@ export type QueryInfo = {
 };
 
 export interface IUser {
-    name?: string;
-    email?: string;
-    isActive?: boolean;
-    avatar?: Maybe<string>;
-    userId?: string;
+    name?: Users["name"];
+    email?: Users["email"];
+    isActive?: Users["isActive"];
+    avatar?: Users["avatar"];
+    userId?: Users["userId"];
 }

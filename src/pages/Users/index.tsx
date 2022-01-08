@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
+import { Users } from "src/generated/graphql";
 
 import { Add, ArrowLeft, ArrowRight } from "@mui/icons-material";
 import { useMediaQuery, useTheme } from "@mui/material";
@@ -40,11 +41,11 @@ const User = () => {
 
     const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
-    const onUpdate = (userId: string) => {
+    const onUpdate = (userId: Users["userId"]) => {
         history.push(`/users/${userId}`);
     };
 
-    const onChangeStatus = (userId: string) => {
+    const onChangeStatus = (userId: Users["userId"]) => {
         let selectedUser = data && data.users.find((user) => user.userId === userId);
         if (selectedUser) {
             mutate({

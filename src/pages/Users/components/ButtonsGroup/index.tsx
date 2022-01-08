@@ -7,6 +7,7 @@ export interface IActionProps {
     onUpdate: (userId: string) => void;
     onChangeStatus: (userId: string) => void;
 }
+
 const ButtonGroups = (props: IActionProps) => {
     return (
         <BoxBase data-testid="UserCard__buttons">

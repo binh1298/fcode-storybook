@@ -1,5 +1,6 @@
 import { useHistory, useParams } from "react-router-dom";
 import { IUser } from "src/common/types";
+import { Users } from "src/generated/graphql";
 
 import { CircularProgress } from "@mui/material";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
@@ -10,7 +11,7 @@ import useGetUserDetail from "../hooks/useGetUserDetail";
 import useUpdateUser from "src/pages/Users/hooks/useUpdateUser";
 
 const UpdatePage = () => {
-    const { id } = useParams<{ id: string }>();
+    const { id } = useParams<{ id: Users["userId"] }>();
     const { data, isLoading } = useGetUserDetail({ variables: { userId: id } });
 
     const history = useHistory();

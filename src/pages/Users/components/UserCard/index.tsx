@@ -1,5 +1,4 @@
-import { IUser } from "src/common/types";
-import { Maybe } from "src/generated/graphql";
+import { Users } from "src/generated/graphql";
 
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
@@ -12,14 +11,14 @@ import GridBase from "src/components/Grids";
 import ButtonGroups from "../ButtonsGroup";
 import Content from "../Content";
 
-export interface IUserProps extends IUser {
-    name: string;
-    email: string;
-    isActive: boolean;
-    avatar?: Maybe<string>;
-    onUpdate: (userId: IUser["userId"]) => void;
-    onChangeStatus: (userId: IUser["userId"]) => void;
-    userId: string;
+export interface IUserProps {
+    name: Users["name"];
+    email: Users["email"];
+    isActive: Users["isActive"];
+    avatar?: Users["avatar"];
+    onUpdate: (userId: Users["userId"]) => void;
+    onChangeStatus: (userId: Users["userId"]) => void;
+    userId: Users["userId"];
 }
 
 export const anonymousAvatarLink =
