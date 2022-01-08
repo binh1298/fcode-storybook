@@ -1,3 +1,4 @@
+import { IUser } from "src/common/types";
 import { Maybe } from "src/generated/graphql";
 
 import AvatarBase from "src/components/Avatars/AvatarBase";
@@ -10,14 +11,6 @@ import GridBase from "src/components/Grids";
 
 import ButtonGroups from "../ButtonsGroup";
 import Content from "../Content";
-
-export interface IUser {
-    name?: string;
-    email?: string;
-    isActive?: boolean;
-    avatar?: Maybe<string>;
-    userId?: string;
-}
 
 export interface IUserProps extends IUser {
     name: string;

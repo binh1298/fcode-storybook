@@ -1,5 +1,3 @@
-import React from "react";
-
 import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
 

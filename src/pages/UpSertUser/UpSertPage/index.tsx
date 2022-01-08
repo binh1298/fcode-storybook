@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { IUser } from "src/common/types";
 import { GetUserDetailQuery } from "src/generated/graphql";
 
 import BoxBase from "src/components/Boxes/BoxBase";
@@ -7,7 +8,7 @@ import ButtonBase from "src/components/Buttons/ButtonBase";
 import ImageBase from "src/components/Images/ImageBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
-import { anonymousAvatarLink, IUser } from "src/pages/Users/components/UserCard";
+import { anonymousAvatarLink } from "src/pages/Users/components/UserCard";
 
 interface IUpSertPageProps {
     userProps?: GetUserDetailQuery["users_by_pk"];

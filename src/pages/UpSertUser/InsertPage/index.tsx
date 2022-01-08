@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
+import { IUser } from "src/common/types";
 
 import useSnackbar from "src/components/SnackBars/useSnackbar";
-import { IUser } from "src/pages/Users/components/UserCard";
 
 import UpSertPage from "../UpSertPage";
 import useInsertUser from "../hooks/useInsertUser";

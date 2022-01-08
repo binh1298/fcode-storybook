@@ -1,8 +1,8 @@
 import { useHistory, useParams } from "react-router-dom";
+import { IUser } from "src/common/types";
 
 import { CircularProgress } from "@mui/material";
 import useSnackbar from "src/components/SnackBars/useSnackbar";
-import { IUser } from "src/pages/Users/components/UserCard";
 
 import UpSertPage from "../UpSertPage";
 import useGetUserDetail from "../hooks/useGetUserDetail";
