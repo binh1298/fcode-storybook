@@ -1,9 +1,9 @@
-import TextfieldBase, { TexfieldBaseProps } from "../";
+import TextfieldBase, { TextfieldBaseProps } from "../";
 
 import { render, RenderResult } from "@testing-library/react";
 import TestThemeProvider from "src/test-utils/TestThemeProvider";
 
-const TestComponent = (props: TexfieldBaseProps) => (
+const TestComponent = (props: TextfieldBaseProps) => (
     <TestThemeProvider>
         <TextfieldBase {...props} />
     </TestThemeProvider>
@@ -14,7 +14,7 @@ const TestComponent = (props: TexfieldBaseProps) => (
 //You can have multiple describes, however, the current describes are not meaningful to other people
 
 describe("Structure of <TextfieldBase />", () => {
-    const props: TexfieldBaseProps = {
+    const props: TextfieldBaseProps = {
         id: "test",
         label: "Test",
         value: "Value",
@@ -29,7 +29,7 @@ describe("Structure of <TextfieldBase />", () => {
 describe("<TextfieldBase />", () => {
     let wrapper: RenderResult;
 
-    const propsWithErrorMessage: TexfieldBaseProps = {
+    const propsWithErrorMessage: TextfieldBaseProps = {
         label: "Test",
         value: "Value",
         errorMessage: "error message",
@@ -44,7 +44,7 @@ describe("<TextfieldBase />", () => {
 describe("<TextfieldBase />", () => {
     let wrapper: RenderResult;
 
-    const propsWithNoErrorMessage: TexfieldBaseProps = {
+    const propsWithNoErrorMessage: TextfieldBaseProps = {
         label: "Test",
         value: "Value",
         errorMessage: undefined,
