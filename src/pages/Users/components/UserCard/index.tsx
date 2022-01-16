@@ -1,5 +1,6 @@
 import { Users } from "src/generated/graphql";
 
+import PairButton from "../../../../components/ButtonGroups/PairButton";
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
 import CardActionsBase from "src/components/CardActions";
@@ -8,7 +9,6 @@ import CardBase from "src/components/Cards/CardBase";
 import DividerBase from "src/components/Dividers/DividerBase";
 import GridBase from "src/components/Grids";
 
-import ButtonGroups from "../ButtonsGroup";
 import Content from "../Content";
 
 export interface IUserProps {
@@ -42,11 +42,13 @@ const UserCard = (userProps: IUserProps) => {
                             </CardContentBase>
                             <DividerBase variant="fullWidth"></DividerBase>
                             <CardActionsBase>
-                                <ButtonGroups
-                                    onUpdate={userProps.onUpdate}
-                                    onChangeStatus={userProps.onChangeStatus}
-                                    userId={userProps.userId}
-                                    isActive={userProps.isActive}
+                                <PairButton
+                                    FirstButtonName="UPDATE"
+                                    SecondButtonName={userProps.isActive ? "DEACTIVE" : "ACTIVE"}
+                                    onClickFirstButton={() => userProps.onUpdate(userProps.userId)}
+                                    onClickSecondButton={() =>
+                                        userProps.onChangeStatus(userProps.userId)
+                                    }
                                 />
                             </CardActionsBase>
                         </BoxBase>

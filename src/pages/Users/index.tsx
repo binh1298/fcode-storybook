@@ -72,7 +72,7 @@ const User = () => {
         userList = <CircularProgressBase />;
     } else {
         userList = (
-            <BoxBase mt={1} width={1} display="flex" justifyContent="space-between" flexWrap="wrap">
+            <BoxBase mt={1} width={1} display="flex" flexWrap="wrap">
                 {data?.users.map((user) => {
                     return (
                         <BoxBase minHeight={100} boxSizing="border-box" p={1} key={user.email}>
