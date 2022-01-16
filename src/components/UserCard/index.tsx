@@ -1,6 +1,5 @@
 import { Users } from "src/generated/graphql";
 
-import PairButton from "../../../../components/ButtonGroups/PairButton";
 import AvatarBase from "src/components/Avatars/AvatarBase";
 import BoxBase from "src/components/Boxes/BoxBase";
 import CardActionsBase from "src/components/CardActions";
@@ -8,8 +7,9 @@ import CardContentBase from "src/components/CardContents/CardContentBase";
 import CardBase from "src/components/Cards/CardBase";
 import DividerBase from "src/components/Dividers/DividerBase";
 import GridBase from "src/components/Grids";
+import TypographyBase from "src/components/Typography/TypographyBase";
 
-import Content from "../Content";
+import PairButton from "../PairButtons/PairButton";
 
 export interface IUserProps {
     name: Users["name"];
@@ -36,9 +36,10 @@ const UserCard = (userProps: IUserProps) => {
                         />
                     </GridBase>
                     <GridBase item sm={7}>
-                        <BoxBase>
+                        <BoxBase my={1}>
                             <CardContentBase>
-                                <Content name={userProps.name} email={userProps.email} />
+                                <TypographyBase variant="h6">{userProps.name}</TypographyBase>
+                                <TypographyBase variant="body2">{userProps.email}</TypographyBase>
                             </CardContentBase>
                             <DividerBase variant="fullWidth"></DividerBase>
                             <CardActionsBase>

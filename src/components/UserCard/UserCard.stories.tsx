@@ -1,11 +1,11 @@
 import UserCard, { IUserProps } from ".";
 
-import { Story, Meta } from "@storybook/react";
+import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/UserCard/UserCard",
+    title: "Components/UserCard",
     component: UserCard,
-} as Meta;
+};
 
 const Template: Story<IUserProps> = (args) => {
     return <UserCard {...args} />;

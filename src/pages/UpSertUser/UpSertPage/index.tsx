@@ -8,7 +8,7 @@ import ButtonBase from "src/components/Buttons/ButtonBase";
 import ImageBase from "src/components/Images/ImageBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
-import { anonymousAvatarLink } from "src/pages/Users/components/UserCard";
+import { anonymousAvatarLink } from "src/components/UserCard";
 
 interface IUpSertPageProps {
     userProps?: GetUserDetailQuery["users_by_pk"];

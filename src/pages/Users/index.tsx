@@ -11,7 +11,7 @@ import DividerBase from "src/components/Dividers/DividerBase";
 import CircularProgressBase from "src/components/Progress/CircularProgressBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
-import UserCard from "src/pages/Users/components/UserCard";
+import UserCard from "src/components/UserCard";
 
 import useGetUsersList from "./hooks/useGetUsersList";
 import useUpdateUser from "./hooks/useUpdateUser";
