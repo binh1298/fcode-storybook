@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Property } from "csstype";
 
 import { Box as MaterialBox, BoxProps as MaterialBoxProps } from "@mui/material";
@@ -99,41 +101,38 @@ export interface BoxBaseProps extends MaterialBoxProps {
     shouldHaveBorder?: boolean;
 }
 
-const BoxBase: React.FC<BoxBaseProps> = ({
-    bgcolor,
-    colorProps = "main",
-    color,
-    overrideColor,
-    shouldHaveBorder,
-    ...rest
-}) => {
-    let backgroundColor = undefined;
-    if (bgcolor === "common") {
-        color = "text.primary";
-        backgroundColor = "background.default";
-    } else if (bgcolor) {
-        color = bgcolor + ".contrastText";
-        backgroundColor = `${bgcolor}.${colorProps}`;
-    } else {
-        color = color || "text.primary";
+const BoxBase = React.forwardRef<unknown, BoxBaseProps>(
+    (props: BoxBaseProps, ref: React.Ref<unknown>) => {
+        const { bgcolor, colorProps = "main", overrideColor, shouldHaveBorder, ...rest } = props;
+        let backgroundColor = undefined;
+        let { color } = props;
+        if (bgcolor === "common") {
+            color = "text.primary";
+            backgroundColor = "background.default";
+        } else if (bgcolor) {
+            color = bgcolor + ".contrastText";
+            backgroundColor = `${bgcolor}.${colorProps}`;
+        } else {
+            color = color || "text.primary";
+        }
+        if (overrideColor) {
+            color = overrideColor + ".main";
+        }
+        if (shouldHaveBorder) {
+            return (
+                <MaterialBox
+                    bgcolor={backgroundColor}
+                    color={color}
+                    border="1px solid"
+                    borderColor="divider"
+                    borderRadius="0px"
+                    {...rest}
+                />
+            );
+        } else {
+            return <MaterialBox bgcolor={backgroundColor} color={color} {...rest} ref={ref} />;
+        }
     }
-    if (overrideColor) {
-        color = overrideColor + ".main";
-    }
-    if (shouldHaveBorder) {
-        return (
-            <MaterialBox
-                bgcolor={backgroundColor}
-                color={color}
-                border="1px solid"
-                borderColor="divider"
-                borderRadius="0px"
-                {...rest}
-            />
-        );
-    } else {
-        return <MaterialBox bgcolor={backgroundColor} color={color} {...rest} />;
-    }
-};
+);
 
 export default BoxBase;

@@ -2,5 +2,11 @@
     "description": {
         "welcome": "FCode Storybook チームー、ようこそ。",
         "firstUser": "一番目のユーザーは Bình Phạm"
+    },
+     "navigationMenu": {
+        "logout": "ログアウト",
+        "home": "家",
+        "user":"ユーザー",
+        "post": "ポスト"
     }
 }

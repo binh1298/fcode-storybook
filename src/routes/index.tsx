@@ -4,6 +4,8 @@ import { loadQuery } from "react-relay";
 import { Switch } from "react-router-dom";
 import { QueryInfo } from "src/common/types";
 
+import NavigationMenu from "src/components/NavigationMenu";
+
 import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -12,11 +14,11 @@ import Comments from "src/pages/Comments";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
-import Demo from "src/pages/Users";
 
 type RouteCustom = {
     path: string;
     name: string;
+    exact: boolean;
     component: ComponentType<any>;
     queryInfo?: QueryInfo;
 };
@@ -25,39 +27,34 @@ const publicRoutes: RouteCustom[] = [
     {
         path: "/login",
         name: "login",
+        exact: true,
         component: Login,
     },
     {
         path: "/logout",
         name: "login",
+        exact: true,
         component: Login,
     },
 ];
 
 const privateRoutes: RouteCustom[] = [
     {
-        path: "/comments",
-        name: "comments",
-        component: Comments,
-    },
-    {
-        path: "/demo",
-        name: "demo",
-        component: Demo,
-    },
-    {
         path: "/posts",
         name: "posts",
+        exact: true,
         component: Post,
     },
     {
         path: "/posts/:id",
         name: "postDetail",
-        component: Post,
+        exact: true,
+        component: Comments,
     },
     {
         path: "/",
         name: "home",
+        exact: true,
         component: Home,
         queryInfo: {
             query: HomeUserGraphQL,
@@ -71,12 +68,16 @@ export const Routes = () => {
     return (
         <Switch>
             {publicRoutes.map((route) => (
-                <PublicRoute key={route.name} exact={true} {...route} />
+                <PublicRoute key={route.name} {...route} />
             ))}
-            {privateRoutes.map((route) => {
-                const { queryInfo, ...rest } = route;
-                return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;
-            })}
+            <>
+                <NavigationMenu />
+
+                {privateRoutes.map((route) => {
+                    const { queryInfo, ...rest } = route;
+                    return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;
+                })}
+            </>
         </Switch>
     );
 };

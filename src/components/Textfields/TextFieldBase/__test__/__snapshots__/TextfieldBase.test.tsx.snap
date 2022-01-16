@@ -6,8 +6,10 @@ exports[`<TextfieldBase /> should not show error color when not have any error m
     class="MuiFormControl-root MuiTextField-root makeStyles-root-17 makeStyles-root-21 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      class="makeStyles-cssLabel-15 makeStyles-cssLabel-19 MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-1sagrvw-MuiFormLabel-root-MuiInputLabel-root"
+      class="makeStyles-cssLabel-15 makeStyles-cssLabel-19 MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled css-9p2q6w-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink="true"
+      for="mui-2"
+      id="mui-2-label"
     >
       Test
     </label>
@@ -17,6 +19,7 @@ exports[`<TextfieldBase /> should not show error color when not have any error m
       <input
         aria-invalid="false"
         class="MuiOutlinedInput-input MuiInputBase-input css-1trjin0-MuiInputBase-input-MuiOutlinedInput-input"
+        id="mui-2"
         type="text"
         value="Value"
       />
@@ -25,7 +28,7 @@ exports[`<TextfieldBase /> should not show error color when not have any error m
         class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-186xcr5"
+          class="css-1z7n62"
         >
           <span>
             Test
@@ -43,8 +46,10 @@ exports[`<TextfieldBase /> should show error color when errorMessage is availabl
     class="MuiFormControl-root MuiTextField-root makeStyles-root-10 makeStyles-root-14 css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      class="makeStyles-cssLabel-8 makeStyles-cssLabel-12 MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-error MuiFormLabel-filled css-1sagrvw-MuiFormLabel-root-MuiInputLabel-root"
+      class="makeStyles-cssLabel-8 makeStyles-cssLabel-12 MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary Mui-error MuiFormLabel-filled css-9p2q6w-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink="true"
+      for="mui-1"
+      id="mui-1-label"
     >
       Test
     </label>
@@ -52,8 +57,10 @@ exports[`<TextfieldBase /> should show error color when errorMessage is availabl
       class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary Mui-error MuiInputBase-formControl makeStyles-fontColor-9 makeStyles-fontColor-13 css-1u1j92g-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
+        aria-describedby="mui-1-helper-text"
         aria-invalid="true"
         class="MuiOutlinedInput-input MuiInputBase-input css-1trjin0-MuiInputBase-input-MuiOutlinedInput-input"
+        id="mui-1"
         type="text"
         value="Value"
       />
@@ -62,7 +69,7 @@ exports[`<TextfieldBase /> should show error color when errorMessage is availabl
         class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-186xcr5"
+          class="css-1z7n62"
         >
           <span>
             Test
@@ -72,6 +79,7 @@ exports[`<TextfieldBase /> should show error color when errorMessage is availabl
     </div>
     <p
       class="MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-1id7my8-MuiFormHelperText-root"
+      id="mui-1-helper-text"
     >
       error message
     </p>

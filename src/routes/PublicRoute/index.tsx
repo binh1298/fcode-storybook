@@ -7,7 +7,6 @@ const PublicRoute = (props: RouteProps) => {
     if (!user?.email) {
         return <Route {...props} />;
     }
-
     return <Redirect to="/" />;
 };
 export default PublicRoute;

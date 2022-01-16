@@ -1,32 +1,70 @@
-import { MenuItem, Select } from "@mui/material";
+import { useState } from "react";
+
+import TranslateIcon from "@mui/icons-material/Translate";
+import { MenuItem, Menu } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import BoxBase from "src/components/Boxes/BoxBase";
+import DividerBase from "src/components/Dividers/DividerBase";
+import IconButtonBase from "src/components/IconButtons/IconButtonBase";
 
 import { useTranslation } from "react-i18next";
 
-const languages: {
-    en: { nativeName: string };
-    ja: { nativeName: string };
-} = {
-    en: { nativeName: "English" },
-    ja: { nativeName: "Japanese" },
-};
-
 const LanguageSwitcher = () => {
-    const { i18n } = useTranslation();
-    return (
-        <Select
-            labelId="label"
-            id="select"
-            onChange={(event) => {
-                const value = event.target.value;
-                if (!(value === "en" || value === "ja")) return;
+    const [languageMenu, setLanguageMenu] = useState(null);
+    const handleLanguageIconClick = (event: any) => {
+        setLanguageMenu(event.currentTarget);
+    };
+    const handleLanguageMenuClose = (event: any) => {
+        const value = event.currentTarget.lang;
+        if (!(value === "en" || value === "ja")) return;
+        i18n.changeLanguage(value);
+        setLanguageMenu(null);
+    };
 
-                i18n.changeLanguage(value);
-            }}
-            value={i18n.language}
-        >
-            <MenuItem value={"en"}>{languages["en"].nativeName}</MenuItem>
-            <MenuItem value={"ja"}>{languages["ja"].nativeName}</MenuItem>
-        </Select>
+    const { i18n, t } = useTranslation("common");
+    return (
+        <>
+            <Tooltip title="Change language" enterDelay={200}>
+                <IconButtonBase color="inherit" onClick={handleLanguageIconClick}>
+                    <TranslateIcon />
+                </IconButtonBase>
+            </Tooltip>
+            <Menu
+                id="language-menu"
+                anchorEl={languageMenu}
+                open={Boolean(languageMenu)}
+                onClose={handleLanguageMenuClose}
+                PaperProps={{
+                    variant: "outlined",
+                    elevation: 0,
+                    sx: {
+                        mt: 1,
+                        minWidth: 180,
+                        backgroundImage: "none",
+                    },
+                }}
+            >
+                <MenuItem
+                    value="en"
+                    onClick={handleLanguageMenuClose}
+                    lang="en"
+                    selected={i18n.language === "en"}
+                >
+                    {t("nativeName.english")}
+                </MenuItem>
+                <MenuItem
+                    value="ja"
+                    onClick={handleLanguageMenuClose}
+                    lang="ja"
+                    selected={i18n.language === "ja"}
+                >
+                    {t("nativeName.japanese")}
+                </MenuItem>
+                <BoxBase sx={{ my: 1 }}>
+                    <DividerBase />
+                </BoxBase>
+            </Menu>
+        </>
     );
 };
 

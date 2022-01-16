@@ -13,14 +13,16 @@ interface CustomRouteProps extends Omit<RouteProps, "component"> {
 const PrivateRoute = (props: CustomRouteProps) => {
     const user = LocalStorageUtils.getUser();
     if (!user?.email) return <Redirect to="/login" />;
-
     if (!props.queryInfo) return <Route {...props} />;
 
     const { component, ...rest } = props;
     const { queryObject, query, preloadedQuery } = props.queryInfo;
-    const finalComponent = !props.queryInfo
-        ? component
-        : component && withQuery<typeof queryObject>(component, query, preloadedQuery);
-    return <Route {...rest} component={finalComponent} />;
+
+    const FinalComponent = withQuery<typeof queryObject>(component, query, preloadedQuery);
+    return (
+        <Route {...rest}>
+            <FinalComponent />
+        </Route>
+    );
 };
 export default PrivateRoute;

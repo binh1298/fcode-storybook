@@ -2,6 +2,8 @@ import React, { createContext, useState } from "react";
 
 import AlertBase, { AlertBaseProps } from "../components/Alerts/AlertBase";
 import SnackbarBase from "../components/SnackBars/SnackbarBase";
+import { SnackbarCloseReason } from "@mui/material/Snackbar";
+import BoxBase from "src/components/Boxes/BoxBase";
 
 type showSnackbar = (newAlert: AlertBaseProps) => void;
 export const SnackbarContext = createContext<showSnackbar>(({}) => {});
@@ -15,7 +17,10 @@ const SnackbarProvider: React.FC = ({ children }) => {
         setOpen(true);
     };
 
-    const handleClose = (e?: React.SyntheticEvent, reason?: string) => {
+    const handleClose = (
+        event: Event | React.SyntheticEvent<any, Event>,
+        reason: SnackbarCloseReason
+    ) => {
         if (reason === "clickaway") {
             return;
         }
@@ -29,7 +34,9 @@ const SnackbarProvider: React.FC = ({ children }) => {
         <SnackbarContext.Provider value={showSnackbar}>
             {children}
             <SnackbarBase open={open} onClose={handleClose} autoHideDuration={4000}>
-                <AlertBase variant="filled" {...alert} onClose={handleClose} />
+                <BoxBase display="flex" alignItems="center">
+                    <AlertBase variant="filled" {...alert} />
+                </BoxBase>
             </SnackbarBase>
         </SnackbarContext.Provider>
     );
