@@ -18,11 +18,6 @@ describe("<PairButton />", () => {
         },
     };
 
-    // beforeEach(() => {
-    //     isFirstButtonClicked = false;
-    //     isSecondButtonClicked = false;
-    // });
-
     const TestComponent = (props: PairButtonProps) => (
         <TestThemeProvider>
             <PairButton {...props} />

@@ -6,7 +6,7 @@ import ButtonBase from "../../Buttons/ButtonBase";
 import { Story } from "@storybook/react";
 
 export default {
-    title: "Components/ButtonGroups/ButtonGroupBase",
+    title: "Components/ButtonGroupBase",
     subcomponents: {
         ButtonBase,
     },
