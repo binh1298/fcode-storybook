@@ -1,15 +1,12 @@
 import { ReactNode } from "react";
 
 import { Button as MaterialButton, ButtonProps as MaterialButtonProps } from "@mui/material";
-import CircularProgressBase from "src/components/Progress/CircularProgressBase";
+
+import CircularProgressBase from "../../Progress/CircularProgressBase";
 
 export interface ButtonBaseProps extends MaterialButtonProps {
     isLoading?: boolean;
 }
-
-const buttonStyle = {
-    borderRadius: "calc(1rem + 6px)",
-};
 
 const ButtonBase = (props: ButtonBaseProps) => {
     const { isLoading, color, startIcon, size, disabled, ...rest } = props;
@@ -46,9 +43,11 @@ const ButtonBase = (props: ButtonBaseProps) => {
 
     return (
         <MaterialButton
+            sx={{
+                borderRadius: "calc(1rem + 6px)",
+            }}
             startIcon={startButtonIcon}
             color={color}
-            style={buttonStyle}
             disabled={buttonBaseDisabled}
             {...rest}
             data-testid="ButtonBase__root"
