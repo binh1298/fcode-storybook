@@ -22,7 +22,7 @@ import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
 const Comments = () => {
     const user = LocalStorageUtils.getUser();
-    const postId = useParams<string>().id!;
+    const postId = useParams().id!;
 
     const {
         data: postDetailData,

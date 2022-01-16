@@ -13,6 +13,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ButtonBase from "src/components/Buttons/ButtonBase";
+import GridBase from "src/components/Grids";
 
 import PostEditor from "./PostEditor";
 
@@ -85,15 +86,15 @@ const PostCard = (props: PostCardProps) => {
                     )}
                 </BoxBase>
                 {!isOpen && (
-                    <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
-                        <BoxBase mr={1}>
+                    <GridBase container spacing={2} justifyContent="flex-end">
+                        <GridBase item>
                             <Link to={`/posts/${post.postId}`} style={{ textDecoration: "none" }}>
                                 <ButtonBase variant="contained" startIcon={<CommentIcon />}>
                                     Comment
                                 </ButtonBase>
                             </Link>
-                        </BoxBase>
-                        <BoxBase mr={1}>
+                        </GridBase>
+                        <GridBase item>
                             <IconButtonBase
                                 variant="circular"
                                 size="small"
@@ -102,8 +103,8 @@ const PostCard = (props: PostCardProps) => {
                             >
                                 <EditIcon />
                             </IconButtonBase>
-                        </BoxBase>
-                        <BoxBase>
+                        </GridBase>
+                        <GridBase item>
                             <IconButtonBase
                                 variant="circular"
                                 size="small"
@@ -112,8 +113,8 @@ const PostCard = (props: PostCardProps) => {
                             >
                                 <DeleteIcon />
                             </IconButtonBase>
-                        </BoxBase>
-                    </BoxBase>
+                        </GridBase>
+                    </GridBase>
                 )}
             </BoxBase>
         </BoxBase>

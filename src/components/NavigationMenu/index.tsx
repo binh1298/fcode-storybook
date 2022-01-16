@@ -24,17 +24,19 @@ import ListBase from "src/components/Lists/ListBase";
 import ToolbarBase from "src/components/Toolbars/ToolbarBase";
 import TypographyBase from "src/components/Typography/TypographyBase";
 
+import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "src/i18n/LanguageSwitcher";
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
-const navigationFeatureItems = [
-    { icon: <HomeIcon />, text: "Home", path: "/" },
-    { icon: <PeopleIcon />, text: "User", path: "/users" },
-    { icon: <AllInboxIcon />, text: "Post", path: "/posts" },
-];
-const NavigationBar: React.FC = () => {
+const NavigationMenu: React.FC = () => {
     const [open, setOpen] = useState(false);
     const location = useLocation();
+    const { t } = useTranslation("home");
+    const navigationFeatureItems = [
+        { icon: <HomeIcon />, text: t("navigationMenu.home"), path: "/" },
+        { icon: <PeopleIcon />, text: t("navigationMenu.user"), path: "/users" },
+        { icon: <AllInboxIcon />, text: t("navigationMenu.post"), path: "/posts" },
+    ];
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -65,7 +67,7 @@ const NavigationBar: React.FC = () => {
                     <LanguageSwitcher />
                     <Tooltip title="Logout" enterDelay={200}>
                         <ButtonBase color="inherit" onClick={logout}>
-                            Logout
+                            {t("navigationMenu.logout")}
                         </ButtonBase>
                     </Tooltip>
                 </ToolbarBase>
@@ -105,4 +107,4 @@ const NavigationBar: React.FC = () => {
     );
 };
 
-export default NavigationBar;
+export default NavigationMenu;

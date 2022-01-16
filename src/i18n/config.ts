@@ -19,16 +19,7 @@ export const resources = {
     },
     ja: { home: jaHome, login: jaLogin, common: jaCommon },
 } as const;
-export const LANGUAGES_LABEL = [
-    {
-        code: "en",
-        text: "english",
-    },
-    {
-        code: "ja",
-        text: "japanese",
-    },
-];
+
 i18n.use(LanguageDetector)
     .use(initReactI18next)
     .init({

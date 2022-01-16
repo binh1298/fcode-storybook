@@ -2,5 +2,11 @@
     "description": {
         "welcome": "Welcome, FCode Storybook Team",
         "firstUser": "The first user is {{userName}}"
+    },
+    "navigationMenu": {
+        "logout": "Logout",
+        "home": "Home",
+        "user":"User",
+        "post": "Post"
     }
 }

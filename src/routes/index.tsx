@@ -4,7 +4,7 @@ import { loadQuery } from "react-relay";
 import { Switch } from "react-router-dom";
 import { QueryInfo } from "src/common/types";
 
-import NavigationBar from "src/components/NavigationBar";
+import NavigationMenu from "src/components/NavigationMenu";
 
 import RelayEnvironment from "../RelayEnvironment";
 import PrivateRoute from "./PrivateRoute";
@@ -71,7 +71,8 @@ export const Routes = () => {
                 <PublicRoute key={route.name} {...route} />
             ))}
             <>
-                <NavigationBar />
+                <NavigationMenu />
+
                 {privateRoutes.map((route) => {
                     const { queryInfo, ...rest } = route;
                     return <PrivateRoute key={route.name} queryInfo={queryInfo} {...rest} />;

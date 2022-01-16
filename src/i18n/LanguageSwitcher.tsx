@@ -7,8 +7,6 @@ import BoxBase from "src/components/Boxes/BoxBase";
 import DividerBase from "src/components/Dividers/DividerBase";
 import IconButtonBase from "src/components/IconButtons/IconButtonBase";
 
-import { LANGUAGES_LABEL } from "./config";
-
 import { useTranslation } from "react-i18next";
 
 const LanguageSwitcher = () => {
@@ -46,17 +44,22 @@ const LanguageSwitcher = () => {
                     },
                 }}
             >
-                {LANGUAGES_LABEL.map((item, index) => (
-                    <MenuItem
-                        key={index}
-                        value={item.code}
-                        onClick={handleLanguageMenuClose}
-                        lang={item.code}
-                        selected={i18n.language === item.code}
-                    >
-                        {item.code === "en" ? t("nativeName.english") : t("nativeName.japanese")}
-                    </MenuItem>
-                ))}
+                <MenuItem
+                    value="en"
+                    onClick={handleLanguageMenuClose}
+                    lang="en"
+                    selected={i18n.language === "en"}
+                >
+                    {t("nativeName.english")}
+                </MenuItem>
+                <MenuItem
+                    value="ja"
+                    onClick={handleLanguageMenuClose}
+                    lang="ja"
+                    selected={i18n.language === "ja"}
+                >
+                    {t("nativeName.japanese")}
+                </MenuItem>
                 <BoxBase sx={{ my: 1 }}>
                     <DividerBase />
                 </BoxBase>

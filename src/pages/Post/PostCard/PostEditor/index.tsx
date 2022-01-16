@@ -49,7 +49,7 @@ const PostEditor = (props: PostEditorProps) => {
 
             <RichEditorBase initContent={value} getValue={getEditorValue} />
 
-            <GridBase container>
+            <GridBase container spacing={2}>
                 {type == "update" && (
                     <GridBase item>
                         <ButtonBase variant="contained" color="secondary" onClick={onCancel}>

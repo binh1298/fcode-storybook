@@ -63,7 +63,7 @@ const Login = () => {
                 console.log("fetchToken", resultObject);
                 if (resultObject.success) {
                     LocalStorageUtils.setItem("token", resultObject.data);
-                    updateQueryClient(LocalStorageUtils.getToken());
+                    updateQueryClient(resultObject.data);
                     history.push(redirectRouteAfterLogin);
                 } else if (resultObject.data.code === 401) {
                     fetchLoginUri();
