@@ -18,7 +18,7 @@ import Post from "src/pages/Post";
 type RouteCustom = {
     path: string;
     name: string;
-    exact: boolean | undefined;
+    exact: boolean;
     component: ComponentType<any>;
     queryInfo?: QueryInfo;
 };
@@ -54,18 +54,7 @@ const privateRoutes: RouteCustom[] = [
     {
         path: "/",
         name: "home",
-        exact: false,
-        component: Home,
-        queryInfo: {
-            query: HomeUserGraphQL,
-            preloadedQuery: loadQuery(RelayEnvironment, HomeUserGraphQL, {}),
-            queryObject: Object,
-        },
-    },
-    {
-        path: "/home",
-        name: "ja",
-        exact: false,
+        exact: true,
         component: Home,
         queryInfo: {
             query: HomeUserGraphQL,

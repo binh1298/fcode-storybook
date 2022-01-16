@@ -23,7 +23,7 @@ const LanguageSwitcher = () => {
         setLanguageMenu(null);
     };
 
-    const { i18n } = useTranslation("common");
+    const { i18n, t } = useTranslation("common");
     return (
         <>
             <Tooltip title="Change language" enterDelay={200}>
@@ -54,7 +54,7 @@ const LanguageSwitcher = () => {
                         lang={item.code}
                         selected={i18n.language === item.code}
                     >
-                        {item.text}
+                        {item.code === "en" ? t("nativeName.english") : t("nativeName.japanese")}
                     </MenuItem>
                 ))}
                 <BoxBase sx={{ my: 1 }}>

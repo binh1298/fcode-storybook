@@ -53,7 +53,7 @@ const Post = () => {
             style={{ minHeight: "100vh" }}
             justifyContent="flex-end"
             flexDirection="column"
-            paddingTop={20}
+            paddingTop={10}
         >
             <Grid container justifyContent="center">
                 <BoxBase

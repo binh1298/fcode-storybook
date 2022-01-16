@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { NavLink, withRouter, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { ArrowLeft as ArrowLeftIcon } from "@mui/icons-material";
 import { Menu as MenuIcon } from "@mui/icons-material";
@@ -38,6 +38,9 @@ const NavigationBar: React.FC = () => {
     const handleDrawerOpen = () => {
         setOpen(true);
     };
+    /* eslint-disable no-console */
+    console.log("rendered");
+    /* eslint-enable no-console */
     const fcodeAvatarUrl =
         "https://res.cloudinary.com/dq7l8216n/image/upload/v1620235303/FCode-Avatar.png";
     const handleDrawerClose = () => {
@@ -84,7 +87,7 @@ const NavigationBar: React.FC = () => {
                     </BoxBase>
                 </BoxBase>
                 <DividerBase />
-                <ListBase disablePadding bgcolor="primary">
+                <ListBase disablePadding>
                     {navigationFeatureItems.map((item, index) => (
                         <NavLink to={item.path} style={{ textDecoration: "none" }} key={index}>
                             <ListItemButtonBase
@@ -102,4 +105,4 @@ const NavigationBar: React.FC = () => {
     );
 };
 
-export default withRouter(NavigationBar);
+export default NavigationBar;

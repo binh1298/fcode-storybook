@@ -1,3 +1,7 @@
 {
-    "runCommand": "Run: <0>{{command}}</0>"
+    "runCommand": "Run: <0>{{command}}</0>",
+    "nativeName": {
+        "english": "English",
+        "japanese": "Japanese"
+    }
 }

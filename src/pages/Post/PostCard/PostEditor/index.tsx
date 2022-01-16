@@ -2,6 +2,7 @@ import { ChangeEventHandler, useRef, useState } from "react";
 
 import BoxBase from "src/components/Boxes/BoxBase";
 import ButtonBase from "src/components/Buttons/ButtonBase";
+import GridBase from "src/components/Grids";
 import RichEditorBase from "src/components/RichEditor/RichEditorBase";
 import TextFieldBase from "src/components/Textfields/TextFieldBase";
 
@@ -48,20 +49,20 @@ const PostEditor = (props: PostEditorProps) => {
 
             <RichEditorBase initContent={value} getValue={getEditorValue} />
 
-            <BoxBase pt={2} width={1} display="flex" justifyContent="flex-end">
+            <GridBase container>
                 {type == "update" && (
-                    <BoxBase mr={1}>
+                    <GridBase item>
                         <ButtonBase variant="contained" color="secondary" onClick={onCancel}>
                             {t("posts:cancel")}
                         </ButtonBase>
-                    </BoxBase>
+                    </GridBase>
                 )}
-                <BoxBase mr={1}>
+                <GridBase item>
                     <ButtonBase variant="contained" color="primary" onClick={handleSave}>
                         {type == "update" ? t("posts:save") : t("posts:submit")}
                     </ButtonBase>
-                </BoxBase>
-            </BoxBase>
+                </GridBase>
+            </GridBase>
         </BoxBase>
     );
 };

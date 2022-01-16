@@ -20,12 +20,9 @@ import usePostDetail from "./hooks/usePostDetail";
 
 import LocalStorageUtils from "src/utils/LocalStorageUtils";
 
-type Param = {
-    id: string;
-};
 const Comments = () => {
     const user = LocalStorageUtils.getUser();
-    const postId = useParams<Param>().id!;
+    const postId = useParams<string>().id!;
 
     const {
         data: postDetailData,

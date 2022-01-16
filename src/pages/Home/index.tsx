@@ -25,7 +25,6 @@ export const HomeUserGraphQL = graphql`
 const Home = (props: PagePropsWithQuery<HomeUserQuery>) => {
     const data = usePreloadedQuery<HomeUserQuery>(HomeUserGraphQL, props.queryReference);
     const { t } = useTranslation(["common", "home"]);
-
     return (
         <header className="App-header">
             <LanguageSwitcher />

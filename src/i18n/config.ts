@@ -22,11 +22,11 @@ export const resources = {
 export const LANGUAGES_LABEL = [
     {
         code: "en",
-        text: "English",
+        text: "english",
     },
     {
         code: "ja",
-        text: "Japanese",
+        text: "japanese",
     },
 ];
 i18n.use(LanguageDetector)
