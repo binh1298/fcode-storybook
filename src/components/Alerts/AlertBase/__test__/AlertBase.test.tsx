@@ -35,7 +35,7 @@ describe("<AlertBase />", () => {
         const AlertBaseRoot = screen.getByTestId("AlertBase__root");
 
         expect(AlertBaseRoot).toHaveStyle(`
-        backgroundColor: ${replyTheme.palette.success.main};`);
+        color: rgb(49, 79, 50);`);
         expect(AlertBaseRoot).toHaveClass("MuiAlert-outlinedSuccess");
     });
 });

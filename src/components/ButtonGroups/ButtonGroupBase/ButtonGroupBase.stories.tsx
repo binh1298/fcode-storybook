@@ -17,19 +17,7 @@ const Template: Story<ButtonGroupBaseProps> = (args) => <ButtonGroupBase {...arg
 
 export const ContainedButtonGroup = Template.bind({});
 ContainedButtonGroup.args = {
-    children: (
-        <React.Fragment>
-            <ButtonBase variant="contained" color="primary">
-                One
-            </ButtonBase>
-            <ButtonBase variant="contained" color="secondary">
-                Two
-            </ButtonBase>
-            <ButtonBase variant="contained" color="primary">
-                Three
-            </ButtonBase>
-        </React.Fragment>
-    ),
+    children: "Test",
     variant: "contained",
 };
 

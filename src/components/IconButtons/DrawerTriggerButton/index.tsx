@@ -12,9 +12,10 @@ const DrawerTriggerButton = (props: DrawerTriggerButtonProps) => {
 
     return (
         <MaterialIconButton
-            sx={{ display: open ? "none" : "block", marginRight: "1rem", color: "inherit" }}
-            data-testid="DrawerTriggerButton__root"
+            color="inherit"
             edge="start"
+            sx={{ display: open ? "none" : "block", marginRight: "1rem" }}
+            data-testid="DrawerTriggerButton__root"
             {...props}
         />
     );

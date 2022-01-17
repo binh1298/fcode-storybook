@@ -13,7 +13,6 @@ describe("<UserCard /> has", () => {
     };
     it("avatar should is anonymous link when avatar is undefine", () => {
         const { getByAltText } = render(<UserCard {...reuseProps} />);
-
         const image = getByAltText(reuseProps.email);
 
         expect(image).toHaveAttribute("src", anonymousAvatarLink);
@@ -23,7 +22,6 @@ describe("<UserCard /> has", () => {
         const demoLink =
             "https://yolo.vn/wp-content/uploads/2019/08/hinh-anh-cho-pomsky-dep-45.jpg";
         const { getByAltText } = render(<UserCard {...reuseProps} avatar={demoLink} />);
-
         const image = getByAltText(reuseProps.email);
 
         expect(image).toHaveAttribute("src", demoLink);

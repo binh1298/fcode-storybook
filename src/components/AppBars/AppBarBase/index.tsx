@@ -22,7 +22,7 @@ const AppBarBase = (props: AppBarBaseProps) => {
                     duration: theme.transitions.duration.leavingScreen,
                 }),
                 ...(open && {
-                    marginLeft: drawerWidth,
+                    marginLeft: `${drawerWidth}px`,
                     width: `calc(100% - ${drawerWidth}px)`,
                     transition: theme.transitions.create(["width", "margin"], {
                         easing: theme.transitions.easing.sharp,
