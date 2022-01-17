@@ -1203,20 +1203,56 @@ export type UpdatePostByIdMutation = { __typename?: "mutation_root" } & {
     update_posts_by_pk?: Maybe<{ __typename?: "posts" } & Pick<Posts, "postId">>;
 };
 
-export type InsertUserOneMutationMutationVariables = Exact<{
-    avatar: Scalars["String"];
-    email: Scalars["String"];
-    name: Scalars["String"];
+export type GetUserDetailQueryVariables = Exact<{
+    userId: Scalars["uuid"];
 }>;
 
-export type InsertUserOneMutationMutation = { __typename?: "mutation_root" } & {
-    insert_users_one?: Maybe<
-        { __typename?: "users" } & Pick<Users, "email" | "userId" | "name" | "avatar">
+export type GetUserDetailQuery = { __typename?: "query_root" } & {
+    users_by_pk?: Maybe<
+        { __typename?: "users" } & Pick<
+            Users,
+            "avatar" | "email" | "isActive" | "role" | "userId" | "name"
+        >
     >;
 };
 
-export type UsersListQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type InsertUserMutationVariables = Exact<{
+    email: Scalars["String"];
+    avatar?: Maybe<Scalars["String"]>;
+    name: Scalars["String"];
+}>;
 
-export type UsersListQueryQuery = { __typename?: "query_root" } & {
-    users: Array<{ __typename?: "users" } & Pick<Users, "name" | "email" | "role" | "userId">>;
+export type InsertUserMutation = { __typename?: "mutation_root" } & {
+    insert_users_one?: Maybe<{ __typename?: "users" } & Pick<Users, "userId" | "name" | "email">>;
+};
+
+export type GetUsersListQueryVariables = Exact<{
+    offset?: Maybe<Scalars["Int"]>;
+    limit?: Maybe<Scalars["Int"]>;
+    _ilike?: Maybe<Scalars["String"]>;
+}>;
+
+export type GetUsersListQuery = { __typename?: "query_root" } & {
+    users: Array<
+        { __typename?: "users" } & Pick<
+            Users,
+            "email" | "name" | "avatar" | "role" | "userId" | "isActive"
+        >
+    >;
+};
+
+export type UpdateUserMutationVariables = Exact<{
+    avatar?: Maybe<Scalars["String"]>;
+    name: Scalars["String"];
+    userId: Scalars["uuid"];
+    isActive?: Maybe<Scalars["Boolean"]>;
+}>;
+
+export type UpdateUserMutation = { __typename?: "mutation_root" } & {
+    update_users_by_pk?: Maybe<
+        { __typename?: "users" } & Pick<
+            Users,
+            "avatar" | "email" | "name" | "userId" | "role" | "isActive"
+        >
+    >;
 };

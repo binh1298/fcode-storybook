@@ -12,7 +12,9 @@ import Comments from "src/pages/Comments";
 import Home, { HomeUserGraphQL } from "src/pages/Home";
 import Login from "src/pages/Login";
 import Post from "src/pages/Post";
-import Demo from "src/pages/Users";
+import InsertPage from "src/pages/UpSertUser/InsertPage";
+import UpdatePage from "src/pages/UpSertUser/UpdatePage";
+import Users from "src/pages/Users";
 
 type RouteCustom = {
     path: string;
@@ -36,14 +38,24 @@ const publicRoutes: RouteCustom[] = [
 
 const privateRoutes: RouteCustom[] = [
     {
+        path: "/users/create",
+        name: "user-create",
+        component: InsertPage,
+    },
+    {
+        path: "/users/:id",
+        name: "user-detail",
+        component: UpdatePage,
+    },
+    {
+        path: "/users",
+        name: "users",
+        component: Users,
+    },
+    {
         path: "/comments",
         name: "comments",
         component: Comments,
-    },
-    {
-        path: "/demo",
-        name: "demo",
-        component: Demo,
     },
     {
         path: "/posts",
